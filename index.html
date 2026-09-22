@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Chronicles of Valdris</title>
+  <meta name="description" content="A living, JSON-driven reference for every system in Stillmarch — combat, houses, economy, sieges, crafting, and the build history behind them." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="scrim" id="scrim"></div>
+  <div class="app">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger" aria-label="Open navigation"><span></span></button>
+      <span class="topbar__title" id="topbarTitle"></span>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="brand__mark" id="brandMark"></span>
+        <span class="brand__sub" id="brandSub"></span>
+      </div>
+      <input class="search" id="search" type="search" placeholder="Search systems&hellip;" autocomplete="off" />
+      <div class="nav-groups" id="navGroups"></div>
+      <div class="sidebar__foot">
+        <span>data/game-data.json</span>
+        <button class="theme-toggle" id="themeToggle" type="button">&#9789; Dark</button>
+      </div>
+    </nav>
+
+    <main class="main" id="main"></main>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

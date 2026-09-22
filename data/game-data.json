@@ -1,0 +1,554 @@
+{
+  "site": {
+    "title": "The Chronicles of Valdris",
+    "subtitle": "A living record of Stillmarch's systems",
+    "build": "0.2.0-action.19",
+    "updated": "2026-09-22",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–22 Sept 2026), Sethan's official dev update, and patch notes for action.17 and action.19. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+  },
+  "statuses": {
+    "confirmed": { "label": "Confirmed", "short": "Dev update", "desc": "Stated in Sethan's official “What is Stillmarch, actually?” post." },
+    "live19": { "label": "Live · action.19", "short": "action.19", "desc": "Shipped and testable as of build 0.2.0-action.19 (21 Sept). Supersedes action.17 where numbers conflict." },
+    "live17": { "label": "Live · action.17", "short": "action.17", "desc": "Shipped and testable as of build 0.2.0-action.17 (20 Sept)." },
+    "idea": { "label": "Backlog", "short": "Idea", "desc": "Proposed in conversation, not implemented — in several cases explicitly deferred (e.g. to 1.0)." },
+    "bug-open": { "label": "Open issue", "short": "Open", "desc": "Reported by testers, not yet resolved as of the latest build." },
+    "bug-fixed": { "label": "Fixed", "short": "Fixed", "desc": "Reported by testers and resolved in a subsequent build." }
+  },
+  "nav": [
+    {
+      "group": "The World",
+      "items": ["overview", "setting-lore", "world-geography", "dungeons-raids"]
+    },
+    {
+      "group": "Power & Politics",
+      "items": ["houses-politics", "economy-banking", "great-projects-chronicles"]
+    },
+    {
+      "group": "War & Survival",
+      "items": ["combat", "forgotten", "focus-system", "territory-control", "invasion"]
+    },
+    {
+      "group": "Trade & Craft",
+      "items": ["crafting-materials", "building-logistics"]
+    },
+    {
+      "group": "Interface",
+      "items": ["ui-hud"]
+    },
+    {
+      "group": "The Record",
+      "items": ["roadmap", "patch-notes", "dev-testing", "bounty-system", "community-meta"]
+    }
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "title": "Elevator Pitch",
+      "dek": "A dark-medieval sandbox MMO whose history is written entirely by the players.",
+      "status": "confirmed",
+      "blocks": [
+        { "type": "p", "text": "Stillmarch is a dark-medieval, open-world sandbox MMO built on PvP, building, crafting, and politics. There is no main quest and no NPC king telling anyone what to do — the server's history is written entirely by the players: alliances, betrayals, who took which region from whom, and when.", "status": "confirmed" },
+        { "type": "p", "text": "Reference points the developer named directly: Albion, Lineage 2, EVE, and Pax Dei.", "status": "confirmed" },
+        { "type": "note", "tone": "idea", "text": "The developer is explicit this is a passion project, not an attempt at “WoW 2.0,” and that he's deliberately avoiding an Ashes of Creation–style situation — announcing a hundred systems and shipping only a tenth. The scope is large, but design centers on a small number of systems that all interlock." },
+        { "type": "h", "text": "The Core Design Chain" },
+        { "type": "chain", "items": [
+          "Rare resources",
+          "Gear strong enough to win fights",
+          "Held regions",
+          "Trade routes & treasury",
+          "The Great Projects",
+          "The Chronicles"
+        ] }
+      ]
+    },
+    {
+      "id": "setting-lore",
+      "title": "Setting & Lore",
+      "dek": "Valdris, a thousand years after the Stillness.",
+      "blocks": [
+        { "type": "p", "text": "The continent is called Valdris. A thousand years ago the empire Perpetua united it, ended every war, and declared history finished." },
+        { "type": "p", "text": "Then came the Stillness — not an invasion or a plague, but a slow cultural collapse: people simply stopped finishing things. Within a few years the whole continent went silent." },
+        { "type": "p", "text": "The only people who escaped by ship were the ones still capable of friction and unfinished business: debtors, heretics, sailors, prisoners. Players are their descendants, returning after a thousand years with nothing — no books, no records, no time to pack." },
+        { "type": "h", "text": "What's left behind" },
+        { "type": "list", "items": [
+          "Obelisks — machines left behind by Perpetua that nobody alive understands. Players light Obelisks that aren't theirs and build villages around them.",
+          "The Forgotten — Perpetua's soldiers, still walking their patrols in old watchtowers, because a patrol has no defined end and nobody ever told them to stop.",
+          "The Blight — spreads outward from Forgotten-held sites. Color drains from the land, wood starts behaving like stone, and animals there aren't sick, just confused."
+        ] },
+        { "type": "quote", "text": "Remember shame rather than remember nothing.", "cite": "Returner custom — Returners write everything down, including their own betrayals" },
+        { "type": "p", "text": "Tradition: every player-built building has one small detail left deliberately unfinished, for reasons nobody can explain." },
+        { "type": "note", "tone": "idea", "text": "Overall tone: a world winding down, carried by a small, stubborn, possibly unjustified hope that this time civilization holds." }
+      ]
+    },
+    {
+      "id": "houses-politics",
+      "title": "Houses, Baronies, Kingdoms & Empires",
+      "dek": "The guild unit is a House — part family, part company, with no preset class.",
+      "status": "confirmed",
+      "blocks": [
+        { "type": "p", "text": "There's no pre-selected “guild type.” What a House is comes from what its members actually do week to week, not a checkbox at creation. Specialization is dynamic — stop running the banks and you stop being a banking House.", "status": "confirmed" },
+        { "type": "table", "caption": "House archetypes (emergent, not chosen)", "headers": ["Type", "What it does"], "rows": [
+          ["Feudal House", "Holds Obelisks, walls, and a castle; lives off land and taxes."],
+          ["Banking House", "Runs loans and letters of credit; can fund or cut off anyone."],
+          ["Trading House", "Runs trade routes along the roads."],
+          ["Religious House", "Builds a temple, runs its own faith and followers."],
+          ["Mercenary House", "Keeps barracks, sells its blades to whichever side pays — can work both sides of a war."],
+          ["Bandit", "Lives off robbery on the roads, flying a bandit's flag."]
+        ] },
+        { "type": "h", "text": "Scaling structure" },
+        { "type": "list", "items": [
+          "A House holding 3 regions becomes a barony.",
+          "Baronies allied under an elected king (elections every 4 weeks; no single barony can hold more than 30% of the vote) form a kingdom.",
+          "Allied kingdoms form an empire — the server is only expected to support 2–3 empires at once.",
+          "The crown is borrowed, never owned."
+        ] },
+        { "type": "note", "tone": "lore", "text": "Betrayal is built into the culture: it gets written into the Chronicles, and in some Houses is considered an honor rather than a shame." }
+      ]
+    },
+    {
+      "id": "combat",
+      "title": "Combat",
+      "dek": "Crosshair-aimed action combat where the animation is the clock.",
+      "blocks": [
+        { "type": "p", "text": "Base kit: action combat, crosshair aiming, not tab-target. Five weapon stances — sword & shield, greatsword, staff, bow, and bare hands — each with distinct animations and skills.", "status": "confirmed" },
+        { "type": "h", "text": "Basic attack commit & combos" },
+        { "type": "list", "status": "live19", "items": [
+          "The animation is the clock: a hit lands exactly at the clip's contact frame; the next swing can only start once the current swing ends. The server enforces the same timing, so client and server agree on what landed.",
+          "Direction locks at the start of the swing — turning only returns during recovery. Movement speed during a swing drops to 70%.",
+          "Combo chains: clicking inside the “chain window” starts the next swing immediately; clicking earlier buffers the input; holding LMB keeps swinging without dropping to idle. Chains use real combo variants (sword A1→A2→A3; greatsword A1→A2→A3_B); the last swing in a chain is a finisher at x1.3 damage. The crosshair ring lights up when the chain window is open.",
+          "Root motion on basics: the character moves exactly as animated during a swing (no artificial forward step); the server plays the identical variant so other players see the same thing you do. A swing now stops at the target instead of pushing through it.",
+          "Legs no longer slide while swinging on the move — the swing plays on the upper body, legs are driven by locomotion separately.",
+          "Dodge (Alt) during a basic's recovery now works correctly — the dodge impulse was previously getting lost under the animation.",
+          "Block (RMB) pressed during a swing's active window now waits for recovery before engaging, same as dodge.",
+          "Staff: Holy Bolt runs on the same commit system — a 3-variant chain with a finisher; you can shoot while moving (50% movement slow while casting).",
+          "Bow: Quick Shot uses the same swing-window system as melee weapons; you can shoot while moving without leg-sliding.",
+          "Hit sounds are quieter and throttled to at most once every 0.4s per target, so a rapid combo no longer thuds on a repetitive loop.",
+          "Buff/debuff replication rewritten: effect state (Sunder, bleed, slow, stun, Stagger, Bone Wall, taunt, mob casting) is now correctly replicated per-character — fixed a bug where you could see debuff icons on players who didn't actually have that debuff."
+        ] },
+        { "type": "h", "text": "Block & guard" },
+        { "type": "list", "status": "live17", "items": [
+          "RMB, melee weapons only. Holding RMB raises your guard; a block bar appears above the cast bar.",
+          "Block pool = weapon Block Rating + shield Block Rating, shown on the item tooltip and character panel.",
+          "Holding the block slowly drains the pool on its own; every frontal hit drains its damage from the pool, and only 30% of that hit's damage still gets through to you.",
+          "Guard break: pool hits empty → 6 seconds with no blocking and no pool regeneration. Release the block and the pool regenerates passively over time.",
+          "Block only covers the front arc (±65°), slows movement to 60%, and locks out skills while held. Dodging (Alt) drops your guard immediately.",
+          "Dedicated guard-up animations for sword & shield and greatsword; a blocked hit sparks and rings, a guard break plays a parry animation.",
+          "Blockable: sweeps and cones, including the skeleton Heavy Blow. Not blockable: ground-effect abilities — Rain of Arrows, Ground Slam, Radiance, the Iron Vigil aura, and bleeds."
+        ] },
+        { "type": "table", "caption": "Block pool by item tier", "headers": ["Item", "Block Rating"], "rows": [
+          ["Sword", "40–60"],
+          ["Greatsword", "55–80"],
+          ["Shield", "120–210"]
+        ] },
+        { "type": "note", "tone": "bug", "text": "Fixed, action.19: blocking with a sheathed weapon previously let you guard bare-handed — now blocking properly draws the weapon first, like attacking does." },
+        { "type": "h", "text": "Melee basics (arc hits)" },
+        { "type": "p", "status": "live17", "text": "Basic swings hit every enemy in a cone in front of you, crosshair-aimed (your body turns into the swing), up to 8 targets." },
+        { "type": "table", "caption": "Reach & arc by weapon (action.17)", "headers": ["Weapon", "Range", "Arc"], "rows": [
+          ["Sword", "3 m", "120°"],
+          ["Greatsword", "4.2 m (strikes), 4.3 m (sweeps)", "150°"],
+          ["Fists", "3 m", "90°"]
+        ] },
+        { "type": "list", "status": "live17", "items": [
+          "Dodge (Alt) shows a small white cooldown bar under the crosshair; the dodge icon was removed from the skill bar.",
+          "Character panel has Attack Speed and Block Rating rows."
+        ] },
+        { "type": "note", "tone": "bug", "text": "Fixed, action.17: hitting multiple enemies at once previously only showed 2 damage numbers, due to an engine RPC cap." },
+        { "type": "h", "text": "Balance tuning (post-21 Sept playtest)" },
+        { "type": "list", "status": "live19", "items": [
+          "Fervor: a hit taken now gives 50% less Fervor; Fervor starts draining 7s after the last exchange of damage (was ~18s in action.17) — much faster drain onset.",
+          "Player HP x1.5: base HP 200 → 300, and every armor HP bonus is also x1.5 — a direct response to PvP time-to-kill feeling too short.",
+          "Weapon tiers strengthened: Tier 3 weapons deal x2.05 of Tier 1 damage, Tier 4 weapons deal x2.9 of Tier 1 damage.",
+          "Mob respawn standardized to 30 minutes, including mobs running their own separate copy of stats."
+        ] },
+        { "type": "table", "caption": "Named Tier 4 weapon damage", "headers": ["Weapon", "Damage"], "rows": [
+          ["Sword", "38–46"],
+          ["Greatsword", "64–87"],
+          ["Staff", "38–46"]
+        ] },
+        { "type": "h", "text": "General design notes" },
+        { "type": "list", "items": [
+          { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon). Individual skill trees per weapon are planned.", "status": "confirmed" },
+          { "text": "Commitment mechanic (basics commit you to the swing's direction/animation, no canceling mid-swing) was chosen after reviewing New World combat footage, aiming for a middle ground between New World (fast, weighty, laggy at scale) and Pax Dei (slower-paced)." },
+          { "text": "Resources: Fervor (rage, physical weapons) and Lumen (mana, magic weapons) — only the relevant bar shows depending on equipped weapon; dual-resource loadouts are planned. Guard and Stamina also exist; Stamina is hidden by default." },
+          { "text": "Resource cost tuning: Lumen ability costs +25% (Mending 19, Renewal 25, Blessing 31, Resurrect 63, Combat Res 100); Fervor generation −40% (further reduced again in action.19).", "status": "live17" },
+          { "text": "Action bar: roughly 8–10 spell slots plus extra consumable/item slots." },
+          { "text": "Damage/healing numbers should only display for the player, not allies/party; drop the “+” on healing numbers; damage numbers slightly smaller.", "status": "bug-open" },
+          { "text": "Low HP feedback is currently only a heartbeat sound cue — no visual indicator yet.", "status": "bug-open" },
+          { "text": "No plans for damage/healing meters — considered too likely to push toward min-maxing." },
+          { "text": "Party size: 5 players." },
+          { "text": "Death penalty: dying drops your entire purse/bag near your corpse; 20% of gold is permanently lost (see Economy)." },
+          { "text": "Crafting/gathering XP was multiplied 10x by the developer to stress-test crafting further." },
+          { "text": "Gathering without a tool equipped shouldn't award XP.", "status": "bug-open" },
+          { "text": "A weapon left in the helmet slot was incorrectly determining weapon type/animations — now only what's actually in your hands counts.", "status": "bug-fixed" }
+        ] }
+      ]
+    },
+    {
+      "id": "forgotten",
+      "title": "The Forgotten",
+      "dek": "Perpetua's soldiers, still walking patrols nobody ever ended.",
+      "blocks": [
+        { "type": "p", "text": "The Forgotten have been buffed twice in two days: once in direct response to players gaining block and area-hit basics (action.17), and again based on 21 Sept playtest feedback (action.19). See Combat → Balance Tuning for the current damage/HP/armor multipliers (currently x2.5 HP and damage over action.17's already-buffed numbers, x4.3 of original base stats overall; armor 70/26).", "status": "live19" },
+        { "type": "table", "caption": "Enemy roster", "headers": ["Type", "Gear"], "rows": [
+          ["Veteran", "Full armor, sword and shield"],
+          ["Warrior", "Light armor, sword"],
+          ["Stalker", "Rags, sword"],
+          ["Acolyte", "Toga, staff"]
+        ] },
+        { "type": "list", "items": [
+          { "text": "A built-in halberd-wielding type was removed.", "status": "live17" },
+          { "text": "Every watchtower has +3 Forgotten added to its garrison (2 warriors + 1 veteran).", "status": "live17" },
+          { "text": "Forgotten use the same animation packs as players — sword & shield / staff stances, strikes, Blight Bolt cast, Heavy Blow, Bone Wall, pounce." },
+          { "text": "The acolyte's Blight Bolt was resolving as a Heavy Blow (no projectile, no damage) and acolytes were double-casting — both fixed.", "status": "bug-fixed" },
+          { "text": "The acolyte's Blight Bolt now requires line of sight — it can no longer shoot through dungeon walls.", "status": "bug-fixed" }
+        ] },
+        { "type": "note", "tone": "lore", "text": "Forgotten patrol the Blight Hills biome (see Crafting & Materials)." }
+      ]
+    },
+    {
+      "id": "focus-system",
+      "title": "Focus System",
+      "dek": "XP modifiers that reward staying warmed up.",
+      "blocks": [
+        { "type": "list", "items": [
+          "Warrior's Focus and Artisan's Focus are separate meters. High Focus grants bonus XP (combat for Warrior's, crafting/gathering for Artisan's); low Focus applies a penalty.",
+          "Focus depletes as you perform the associated actions."
+        ] },
+        { "type": "p", "status": "live19", "text": "In the HUD, a Focus arc next to the HP bar appears only once Focus drops below 75% — i.e. once the bonus is actually gone, since that's the point it's worth knowing about." },
+        { "type": "note", "tone": "idea", "text": "Planned: player-built taverns will regenerate Focus quickly once it's maxed out, encouraging players to socialize in cities." }
+      ]
+    },
+    {
+      "id": "ui-hud",
+      "title": "UI / HUD",
+      "dek": "Rebuilt in action.19 around a “minimal, contextual” philosophy.",
+      "status": "live19",
+      "blocks": [
+        { "type": "h", "text": "Layout & bars" },
+        { "type": "list", "items": [
+          "Health, Lumen, and Fervor sit above the action bar (moved off the old top-left corner placement).",
+          "HP is visibly thicker, grows in size during combat, and gets a brighter frame plus a crossed-swords icon while in combat.",
+          "Numbers display on bars during combat and on hover.",
+          "Damage trail: after a hit, a bright segment of the bar lingers briefly before draining out.",
+          "Two XP bars run under the action bar at full width — main weapon and shield/offhand — and brighten for 3s after gaining XP; hover shows level and progress.",
+          "Focus arcs next to HP appear only below 75% Focus.",
+          "Bars never change length, only visibility/emphasis."
+        ] },
+        { "type": "h", "text": "Fading / contextual states" },
+        { "type": "p", "text": "The HUD fades out when nothing is happening (calm / ready / combat all exist as states) and returns fully when you draw a weapon, move, acquire a target, or exchange damage." },
+        { "type": "h", "text": "Buffs, debuffs & nameplates" },
+        { "type": "list", "items": [
+          "Buff/debuff icons sit directly above the bars: square icons with a burn-down timer frame (gold = buff, red = debuff), debuffs rendered larger. Hover shows name + description; no separate numeric counters.",
+          "Nameplates 2.0: party members and allies always show HP + Lumen/Fervor; enemies show HP, and only show Lumen/Fervor when it's not full. An idle mob's name only appears once you're within 35 m. Plates shrink with distance, there's a cap on how many render at once, and target/party/boss plates always show regardless of the cap.",
+          "The old target frame in the corner is gone — that information now lives on the nameplate above the target itself. An enemy currently attacking you shows via an aggro badge next to your HP (warning icon + attacker count).",
+          "Party mini-frames sit top-left (same margin as chat): name, HP number + bar, a thin Lumen/Fervor bar, the ally's buffs/debuffs, and icons for their equipped weapon and shield. Click a frame to target that player."
+        ] },
+        { "type": "h", "text": "Compass, toasts & chat" },
+        { "type": "list", "items": [
+          "Compass runs along the top: cardinal directions; Obelisks (diamond icon) and settlements (house icon), each showing the nearest one's name and distance; party members (green dot); a living boss nearby (warning icon); your own cart; your last death spot (skull icon). The compass never fades.",
+          "Toasts (small popups above the bars) replace chat-line spam for: loot (stacks, e.g. “+2 Bone”), XP gains, warnings (e.g. lantern out of oil, shown with a red frame), and region/workshop messages. Max 3 toasts at once, 4s duration, each with an icon; a copy of every toast is still written to chat as a journal log.",
+          "Chat fades after 10s with no new messages, and reappears on a new incoming line or when you start typing (Enter)."
+        ] },
+        { "type": "h", "text": "Menu & settings" },
+        { "type": "list", "items": [
+          "All menu icons collapsed into a single button in the bottom-right. Hovering or pressing Tab expands them under the cursor; a second Tab press or clicking an entry collapses it again. Tab no longer toggles the old bare cursor mode.",
+          "Map (M): the cart and your last death spot now render as proper icons.",
+          "Settings → HUD settings (new panel): HUD visibility profile (Minimal / Full / Auto — Auto hides the whole HUD when calm), bar numbers (in combat / always / hover-only), nameplate mode (default / names always / minimal), compass on/off, interface scale (80–125%), and chat opacity."
+        ] },
+        { "type": "h", "text": "Visual style" },
+        { "type": "list", "items": [
+          "Flat bars and plates in a cold-steel palette — no gradient backgrounds, no pack textures or frames, a single font throughout.",
+          "Resource colors: HP deep red, Lumen amber, Fervor ember.",
+          "All HUD icons (menu, compass, map, toasts) now come from a single consistent icon pack."
+        ] },
+        { "type": "h", "text": "Region / House UI" },
+        { "type": "list", "status": "live17", "items": [
+          "Political map (M key): shows who holds each region, its level, prestige, and whether it contains T4 resources.",
+          "House screen 2.0 (G or the House icon): tabs — Overview (crest + holdings), Members, Regions, Bank. House name displays in gold over a member's head instead of a default “<Guild>” placeholder.",
+          "Region window 2.0: tabs — Overview / Requisitions / Treasury / Plots / Residents / Upgrade — shown based on the viewer's role (outsider, resident, Castellan, Baron); includes a treasury ledger."
+        ] },
+        { "type": "note", "tone": "idea", "text": "Carried over: UI icons originally sourced from a free itch.io pack (“Line Game Icons Ultimate Collection” by SunGraphica), since consolidated into the single HUD icon pack above; crafting/item icons are still screenshots of the in-game item mesh, flagged as needing polish. Possible loading hitches tied to world-partition streaming are flagged for investigation, not yet confirmed as a core issue." }
+      ]
+    },
+    {
+      "id": "economy-banking",
+      "title": "Economy & Banking",
+      "dek": "Gold is regional, risky to carry, and painful to lose.",
+      "blocks": [
+        { "type": "h", "text": "Gold loss on death" },
+        { "type": "p", "status": "live17", "text": "Dying drops your entire purse into the bag by your corpse. 20% is permanently lost; the remainder is a lootable entry in the loot window with Take / Take All options. This was deliberately set extreme to start, to be tuned down later if needed." },
+        { "type": "h", "text": "Mints & regional banking" },
+        { "type": "list", "items": [
+          "Mints act as regional banks: depositing gold protects it from theft/death loss and lets you spend it at markets/crafters within that region only. Mints are not global — moving gold elsewhere means carrying it in inventory, where it's stealable again.",
+          "Ancient coins are convertible into gold via mints.",
+          { "text": "Mint Deposit/Withdraw now refreshes your account balance and purse immediately — previously this could go stale.", "status": "bug-fixed" }
+        ] },
+        { "type": "h", "text": "House banks" },
+        { "type": "p", "text": "The bank belongs to the House, not the region — that's the core idea. The mint coins gold into a House bank account, and deposits/withdrawals happen at the mint.", "status": "live17" },
+        { "type": "quote", "text": "If you own 3 regions as a House, everybody will be able to use the same bank in every of these regions.", "cite": "Sethan, on House bank branches" },
+        { "type": "list", "status": "live17", "items": [
+          "Branch network: a House automatically gets a branch in every region it holds — one shared account, usable at any of them. Deposit in one region, withdraw in another.",
+          "Branches aren't limited to a House's own regions: a region owner can license another House's bank to operate there too. Enough licenses and a single House's bank becomes, in practice, a global bank — even though no bank is globally guaranteed by design.",
+          "No “opening an account”: any player — House member or complete stranger — can walk up to a licensed branch and deposit or withdraw. There's no signup step.",
+          "Every deposit and withdrawal is taxed, and that cut is split between the bank's House and the region owner where the transaction physically happens.",
+          "The House master additionally sets the House's own transaction tax (minimum 2%); the Crown takes a flat 2% on top of that.",
+          "A bank House can freeze an account. So far this has been tied to war: if your House is declared an enemy of a bank's House, your account there is frozen — and other banks can freeze your assets too, effectively letting a third party apply financial pressure on someone else's war.",
+          "The Crown bank is a last resort for orphaned accounts (no House to claim them), taking a 40% cut.",
+          "Plot rent is auto-deducted from the House bank account (0.6 g/m²/day).",
+          "The same licensing model applies to religious Houses (churches)."
+        ] },
+        { "type": "note", "tone": "idea", "text": "Mercenary contracts: a mercenary House can be hired for a fee — no automated success verification; the hirer signs and pays, the mercenary House manually marks the job “completed” to release payment." },
+        { "type": "h", "text": "Region upkeep — Requisitions" },
+        { "type": "list", "status": "live17", "items": [
+          "Every week, a region posts requisitions on a board at its Obelisk: planks, oak, blocks, ingots, logs, nails — paid for out of the region's treasury.",
+          "Board deliveries are the only way to deliver resources to a region and to trigger region upgrades (via the Region Upgrade tab).",
+          "Unmet upkeep costs prestige; a region with no funds goes dormant after 14 days.",
+          "The Obelisk zone is restricted to residents of the House currently holding it.",
+          "House prestige is gained from paid upkeep, region upgrades, and member deliveries; it's only lost from negative events (unmet upkeep, an expired claim)."
+        ] },
+        { "type": "table", "caption": "Delivery pay rates", "headers": ["Resource", "Pay"], "rows": [
+          ["Plank", "5 g"],
+          ["Oak", "9 g"],
+          ["Block", "5 g"],
+          ["Ingot", "13 g"],
+          ["Log", "4 g"],
+          ["Nail", "5 g"]
+        ] },
+        { "type": "note", "tone": "idea", "text": "A level-2 region's upkeep runs to roughly 7,200 gold/week." }
+      ]
+    },
+    {
+      "id": "great-projects-chronicles",
+      "title": "Great Projects & The Chronicles",
+      "dek": "Where the treasury goes, and where the server's history is kept.",
+      "status": "confirmed",
+      "blocks": [
+        { "type": "p", "text": "Great Projects: seven one-of-a-kind structures, one per server, funded by regional trade routes and treasuries." },
+        { "type": "p", "text": "The Chronicles: a permanent, server-wide historical record of what players did — including betrayals. This is the payoff of the full design chain: resources → gear → regions → trade/treasury → Great Projects → Chronicles." }
+      ]
+    },
+    {
+      "id": "crafting-materials",
+      "title": "Crafting, Gathering & Materials",
+      "dek": "Four tiers of materials; the top tier only grows in corrupted ground.",
+      "blocks": [
+        { "type": "p", "status": "confirmed", "text": "Confirmed systems: crafting, gathering, hunting, and skinning. Four tiers of materials — Tier 3 weapons deal x2.05 of Tier 1 damage, Tier 4 weapons deal x2.9 of Tier 1 damage." },
+        { "type": "h", "text": "Blight biomes & Tier 4 resources" },
+        { "type": "table", "caption": "Three blighted biomes on the current map", "headers": ["Biome", "Location", "Yields"], "rows": [
+          ["Blight Forest", "Near Heartland", "Ancient Wood"],
+          ["Blight Plains", "Near Ashvale", "Blight Fibre"],
+          ["Blight Hills", "North (patrolled by the Forgotten)", "Mithral"]
+        ] },
+        { "type": "list", "status": "live17", "items": [
+          "Tier 4 resources grow only in these three biomes — the plain “Blight” decoration around watchtowers elsewhere doesn't count.",
+          "Blighted wildlife (Blight Forest & Blight Plains): wolves, stags, and does — noticeably stronger, with changed skin (grey, blotched, no fur, darker/more sinister-looking); stags fight with their antlers and charge. Skinning blighted animals yields Blight Hide (T3).",
+          "Tier 2 workshops process the four T4 resources (Mithral, Ancient Wood, Blight Fibre, Beast Hide) and require the region to be level 2.",
+          "Holding an Obelisk near a Blight biome gives a House a unique material advantage."
+        ] },
+        { "type": "h", "text": "Other notes" },
+        { "type": "list", "items": [
+          "A mint exists for currency conversion/processing (see Economy & Banking).",
+          "Crafting is considered fairly solid already; crafting XP was multiplied 10x by the developer to push further testing.",
+          { "text": "Gathering without a tool equipped shouldn't award XP.", "status": "bug-open" },
+          "Weapons have associated “spells” tied to them — a system still being tested.",
+          "Item/crafting icons are currently screenshots of the actual item mesh, not custom-drawn."
+        ] }
+      ]
+    },
+    {
+      "id": "building-logistics",
+      "title": "Building & Logistics",
+      "dek": "Plots, protected ground, and a grid-based fight for inventory space.",
+      "blocks": [
+        { "type": "p", "status": "confirmed", "text": "Building on claimed land: plots and rent." },
+        { "type": "p", "status": "live17", "text": "Plot rent: 0.6 gold/m²/day, auto-deducted from the House bank account." },
+        { "type": "h", "text": "Resource protection inside build boundaries" },
+        { "type": "p", "status": "live19", "text": "Nothing respawns inside a region's build boundary — gathered trees, mined ore, and killed animals do not come back inside the circle where zones can be painted. Living animals and standing (ungathered) trees are left alone. The boundary radius scales with Obelisk level." },
+        { "type": "table", "headers": ["Obelisk level", "Boundary radius"], "rows": [
+          ["L1", "60 m"], ["L2", "100 m"], ["L3", "160 m"], ["L4", "240 m"]
+        ] },
+        { "type": "p", "status": "live19", "text": "Roads in the zone planner: the built-in road always counts as a road (same treatment as the forced core zone around the Obelisk), so the Obelisk can't be walled off using the road as a loophole; roads also don't count against a village's maximum size." },
+        { "type": "h", "text": "Inventory" },
+        { "type": "list", "items": [
+          "Grid-based with variable item sizes (Path of Exile–style) — a deliberate design choice, not a weight system, meant to make inventory space itself a form of economic scarcity so one player can't solo-haul unlimited rare resources.",
+          "A weight-based alternative was proposed and rejected — exploitable (e.g. one cart hauling multiple “overencumbered” players, jokingly nicknamed the “Stillmarch Taxi Service”)."
+        ] },
+        { "type": "p", "status": "confirmed", "text": "Hand cart: implemented, used for hauling large quantities of materials. Caravans are planned for later — larger-scale transport, and the supply-line mechanic for sieges." }
+      ]
+    },
+    {
+      "id": "territory-control",
+      "title": "Territory Control: Obelisks & Sieges",
+      "dek": "Taking land by force — barely tested, and next on the roadmap.",
+      "blocks": [
+        { "type": "p", "text": "Obelisks are the core territorial control points. As of the DM conversation this system was barely tested, and taking land by force is explicitly the next major system on the roadmap — not yet live." },
+        { "type": "note", "tone": "bug", "text": "Fixed, action.19: false “Move closer to the Obelisk” errors on activation, deposits, and settling are fixed — activation range is properly 12 m, measured on the ground plane, plus server-side slack." },
+        { "type": "h", "text": "Planned claiming process" },
+        { "type": "olist", "items": [
+          "An attacking House crafts a Siege Banner.",
+          "The banner is placed in the attacker's own region, an allied region, or a starter village (if the House holds no region).",
+          "Players join the Army by interacting with the placed banner.",
+          "The banner's owner activates it once ready, officially forming the Army.",
+          "The Army travels to the target region to attempt the siege."
+        ] },
+        { "type": "list", "items": [
+          "Sieges only happen during a siege window — each region sets its own attackable window.",
+          "Each siege runs in its own separate game instance, to avoid the large-scale lag Sethan observed in Pax Dei.",
+          "The attacking Army must complete objectives (e.g. capture and hold points) to advance; success hands the region to the Army's leader.",
+          "Version 1 / MVP plan: a simple open-field “king of the hill” fight — no walls, no siege weapons — purely to validate the core loop. Fortifications and siege weapons come later.",
+          "Army supplies: each player death deducts a fixed amount; supplies are resupplied mid-siege via caravans from the controlling region (v1: craft “Supplies,” load on a cart, travel to the Army); destroying enemy supply caravans is a valid strategy. Defending regions use the same system with a baseline city bonus.",
+          "Max players per siege instance: undecided — a hard cap, or a flank system (separate sub-instances per flank, choosable respawn point) are both under consideration."
+        ] },
+        { "type": "note", "tone": "idea", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." }
+      ]
+    },
+    {
+      "id": "invasion",
+      "title": "The Invasion",
+      "dek": "A recurring mini-wipe world event, roughly every 6 months.",
+      "blocks": [
+        { "type": "list", "items": [
+          "High-level mob armies siege Obelisks worldwide and destroy buildings/progress there.",
+          "Structurally like a PvP siege, but the attackers are PvE (AI armies).",
+          "Destruction is partially guaranteed — armies are too numerous/powerful to fully stop — but actual damage scales with how well the server organizes its defense. Players can't defend everywhere and must choose priorities.",
+          "Anti-zerg / anti-stagnation design: disproportionately targets the largest/most dominant factions, to stop any empire from running the server uncontested and to prevent a permanent status quo."
+        ] },
+        { "type": "note", "tone": "lore", "text": "Stated philosophy: the game should be unafraid to destroy player-built property/progress, unlike most MMOs. Also referenced as “the Forgotten pushing back” — part of the world eventually acting on its own, later on the roadmap." }
+      ]
+    },
+    {
+      "id": "world-geography",
+      "title": "World Geography",
+      "dek": "Valdris, current playable slice: 5 km².",
+      "status": "confirmed",
+      "blocks": [
+        { "type": "table", "caption": "The five regions", "headers": ["Region", "Notes"], "rows": [
+          ["Northreach", "Has its own Obelisk"],
+          ["Heartland", "Has its own Obelisk — near Blight Forest"],
+          ["Southmere", "Has its own Obelisk"],
+          ["Eastwood", "Has its own Obelisk"],
+          ["Ashvale", "Has its own Obelisk — near Blight Plains"]
+        ] },
+        { "type": "list", "items": [
+          "Three Wayfarer villages — one confirmed by name: Highmoor (village glade with a cemetery at its edge; nearby forest visibility fixed in the Friday hotfixes).",
+          "Eight Forgotten watchtowers (each garrisoned with 2 warriors + 1 veteran on top of existing Forgotten, since action.17).",
+          "Rivers, roads, day/night cycle, weather.",
+          "The Blackrust Gaol dungeon.",
+          "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north)."
+        ] }
+      ]
+    },
+    {
+      "id": "dungeons-raids",
+      "title": "Dungeons & Raids",
+      "dek": "5-man dungeons and 20-man raids.",
+      "status": "confirmed",
+      "blocks": [
+        { "type": "list", "items": [
+          "5-man instanced dungeons — confirmed.",
+          "20-man raids — confirmed.",
+          "Blackrust Gaol — a specific dungeon already in the current playable slice."
+        ] }
+      ]
+    },
+    {
+      "id": "bounty-system",
+      "title": "Bounty / Justice System",
+      "dek": "Proposed, explicitly deferred — possibly to 1.0.",
+      "status": "idea",
+      "blocks": [
+        { "type": "note", "tone": "idea", "text": "Nothing in this section is implemented. It's recorded here as a design idea floated in conversation and explicitly deferred." },
+        { "type": "list", "status": "idea", "items": [
+          "Victim of an attack chooses: duel to the death, or flee. Escaping into a village without dying lets them report the attacker to that city's public Bounty List.",
+          "Other players can pick up a bounty as a personal contract for a reward (type undecided).",
+          "Nameplates would only flag players who are actually on a bounty list.",
+          "Limited active reports per victim; exceeding it applies a “coward” debuff to discourage spam.",
+          "Bounties must be self-funded by whoever places them, to keep them tied to genuine motivation.",
+          "Intended to drive roleplay/drama; possible “Bounty Hunter”-style achievements floated."
+        ] }
+      ]
+    },
+    {
+      "id": "roadmap",
+      "title": "Roadmap",
+      "dek": "What's next, and how players will get in.",
+      "status": "confirmed",
+      "blocks": [
+        { "type": "h", "text": "What's next" },
+        { "type": "olist", "items": [
+          "Taking land by force: raids for loot, Obelisk assaults, capture banners, and Houses actually losing regions.",
+          "Baronies and kingdoms “for real”: alliances, elections, casus belli.",
+          "Markets per region, mounts, taverns.",
+          "The world starting to move on its own: caravans, events, the Forgotten pushing back."
+        ] },
+        { "type": "h", "text": "Access roadmap" },
+        { "type": "olist", "items": [
+          "Small playtests",
+          "Founder's Access",
+          "Early Access"
+        ] },
+        { "type": "note", "tone": "idea", "text": "No dates committed until they're real." }
+      ]
+    },
+    {
+      "id": "patch-notes",
+      "title": "Build & Patch History",
+      "dek": "action.17 (20 Sept) through action.19 (21 Sept).",
+      "blocks": [
+        { "type": "h", "text": "0.2.0-action.19 — 21 Sept" },
+        { "type": "p", "text": "Requires the new client; characters and the database were untouched by this update. Headline changes: the full HUD rebuild, the animation-clock basic attack system with real combo chains and root motion, the post-playtest balance pass (Fervor, player HP x1.5, Forgotten x2.5 HP/damage, T3/T4 weapon multipliers, 30-min mob respawn), the Obelisk activation-range fix (12 m), build-boundary respawn protection scaled by Obelisk level, and road protections in the zone planner." },
+        { "type": "h", "text": "Fixes from the forum (Sunday's playtest, folded into action.19)" },
+        { "type": "list", "status": "bug-fixed", "items": [
+          "The lantern now remembers its oil level between sessions (previously reset to empty on login, and a lit lantern immediately consumed a flask) — reported by Czubik.",
+          "Mint Deposit/Withdraw now refreshes the account balance and purse immediately — reported by Czubik.",
+          "Blocking with a sheathed weapon now draws the weapon first, like attacking does — no more bare-handed guarding — reported by Lucyphere.",
+          "Iron Vigil now greys out and refuses activation if you lack the required 20 Fervor aura reserve — reported by Lucyphere.",
+          "Berserker's Fury: the greatsword aura visual no longer extends far past the blade tip — reported by Czubik.",
+          "The acolyte's Blight Bolt now requires line of sight — no more shots through dungeon walls."
+        ] },
+        { "type": "h", "text": "0.2.0-action.17 — 20 Sept" },
+        { "type": "p", "text": "Changes since action.12: the full Block & Guard system, arc-based melee basics with per-weapon reach/target caps, the buffed and re-typed Forgotten roster, the three named Blight biomes with their T4 resources and blighted wildlife, Tier 2 workshops, region requisitions/upkeep/prestige, House banks with branch networks and Crown fallback, House screen 2.0 and Region window 2.0, the political map, floating reward text, Lumen cost increase (+25%) and Fervor generation decrease (−40%), the damage-number RPC bug fix, and the helmet-slot weapon-type bug fix. New client required; server-side tests now gate every build." },
+        { "type": "h", "text": "Friday evening hotfixes (action.13–16)" },
+        { "type": "list", "status": "bug-fixed", "items": [
+          "New characters no longer spawn under the terrain.",
+          "Highmoor: forest now properly hidden from the village glade and from in front of the cemetery.",
+          "Enemy skill sounds no longer carry across the whole map; nearby animals call more often.",
+          "Berserker's Fury effect now covers the whole greatsword blade; the weapon no longer disappears after skinning; Sundering Strike effects are now visible to every player, not just the caster.",
+          "Highmoor cemetery repositioned to the edge of the village glade.",
+          "A skill pressed mid-basic-swing now fires at the basic's contact point (input buffering fix).",
+          "Automatic graphics quality detection on first launch (benchmark-based, capped at Epic).",
+          "Admin chat warnings before server restarts (10/5/1 minute countdowns)."
+        ] }
+      ]
+    },
+    {
+      "id": "dev-testing",
+      "title": "Development & Testing",
+      "dek": "Solo dev, self-hosted, tested as if it were finished.",
+      "blocks": [
+        { "type": "list", "items": [
+          "Target for the small map: 20–30 concurrent players to validate core friction points; a larger map would need hundreds.",
+          "Small-map testing was expected within about a week or two of the DM conversation (20 Sept 2026).",
+          "“Forgotten Castles” — a world area/feature being brought online for testing around this time.",
+          "Hosting: self-hosted on the developer's own PC, tunneled with an app called playit for early testing; plan is to move to Hetzner for actual alpha/playtest hosting.",
+          "Backend: server-side persistence and economy-logic tests gate every build.",
+          "Client versioning: each build requires the matching client — older clients can't connect. Characters and the database persist across builds."
+        ] },
+        { "type": "note", "tone": "idea", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
+      ]
+    },
+    {
+      "id": "community-meta",
+      "title": "Community / Meta",
+      "dek": "Solo developer, full creative control, no committee.",
+      "blocks": [
+        { "type": "p", "text": "Solo developer project (“passion project”), full creative control, no committee-driven feature gating. Heavy use of AI/agentic coding tools, both in the developer's day job and on this project." },
+        { "type": "list", "items": [
+          "Reference points used repeatedly in discussion: New World (combat impact/weight, poor at scale), Pax Dei (slower combat pacing, UI comparisons, siege/lag cautionary tale — referenced as possibly winding down: “pax dei ded”), Albion, Lineage 2, EVE (sandbox/politics comparisons from the dev update).",
+          "Community channels: 🕯️｜lore (world fragments, deliberately incomplete), 💬｜general (design discussion, read by the dev), and a Playtests role in Channels & Roles for first access to playtest pings.",
+          "Active forum/playtest reporters named in patch notes: Czubik, Lucyphere."
+        ] }
+      ]
+    }
+  ]
+}
