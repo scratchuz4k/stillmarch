@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.2.0-action.19",
+    "build": "0.2.0-action.20",
     "updated": "2026-09-22",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–22 Sept 2026), Sethan's official dev update, and patch notes for action.17 and action.19. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–22 Sept 2026), Sethan's official dev update, and patch notes for action.17, action.19 and action.20. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live20": { "label": "Implemented", "short": "action.20", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.20 (22 Sept). Supersedes earlier builds where numbers conflict." },
     "live19": { "label": "Implemented", "short": "action.19", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.19 (21 Sept). Supersedes action.17 where numbers conflict." },
     "live17": { "label": "Implemented", "short": "action.17", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.17 (20 Sept)." },
     "bug-fixed": { "label": "Implemented", "short": "Fixed", "group": "implemented", "desc": "Implemented, and correctly so — reported broken by testers, then resolved in a later build." },
@@ -35,7 +36,7 @@
     },
     {
       "group": "Interface",
-      "items": ["ui-hud"]
+      "items": ["ui-hud", "party-social"]
     },
     {
       "group": "The Record",
@@ -123,7 +124,7 @@
           "Direction locks at the start of the swing — turning only returns during recovery. Movement speed during a swing drops to 70%.",
           "Combo chains: clicking inside the “chain window” starts the next swing immediately; clicking earlier buffers the input; holding LMB keeps swinging without dropping to idle. Chains use real combo variants (sword A1→A2→A3; greatsword A1→A2→A3_B); the last swing in a chain is a finisher at x1.3 damage. The crosshair ring lights up when the chain window is open.",
           "Root motion on basics: the character moves exactly as animated during a swing (no artificial forward step); the server plays the identical variant so other players see the same thing you do. A swing now stops at the target instead of pushing through it.",
-          "Legs no longer slide while swinging on the move — the swing plays on the upper body, legs are driven by locomotion separately.",
+          "Legs no longer slide while swinging on the move — the swing plays on the upper body, legs are driven by locomotion separately (extended to skills in action.20).",
           "Dodge (Alt) during a basic's recovery now works correctly — the dodge impulse was previously getting lost under the animation.",
           "Block (RMB) pressed during a swing's active window now waits for recovery before engaging, same as dodge.",
           "Staff: Holy Bolt runs on the same commit system — a 3-variant chain with a finisher; you can shoot while moving (50% movement slow while casting).",
@@ -131,6 +132,21 @@
           "Hit sounds are quieter and throttled to at most once every 0.4s per target, so a rapid combo no longer thuds on a repetitive loop.",
           "Buff/debuff replication rewritten: effect state (Sunder, bleed, slow, stun, Stagger, Bone Wall, taunt, mob casting) is now correctly replicated per-character — fixed a bug where you could see debuff icons on players who didn't actually have that debuff."
         ] },
+        { "type": "h", "text": "Skill commit & spin attacks" },
+        { "type": "list", "status": "live20", "items": [
+          "Basic ↔ skill commit: a basic pressed during a skill waits for the skill to end; a skill pressed during a basic swing waits for the chain window.",
+          "The chain window opens 0.2s before the end of every swing — a click inside it is rewarded with an immediate follow-up, a held LMB waits until the swing ends.",
+          "Spin attacks — Great Sweep, Rend, Shattering Sweep, Execute — play on the full body with a movement lock.",
+          "Great Sweep deals its damage in 3 portions during the spin and shows a channel bar.",
+          "Skills cast while moving play on the upper body — legs come from locomotion, no sliding."
+        ] },
+        { "type": "h", "text": "Healing & support" },
+        { "type": "list", "status": "live20", "items": [
+          "T cycles through allies to heal — party first, alive before dead. The cast bar names the target: “Holy Mending → Name”, or “Self”.",
+          "Target too far: an instant heal is refused before the cast; a cast-time heal lands on you instead and shows a warning. Party frames flash red with “Too far”.",
+          "Heals and buffs only work on allies — party and House members — never on enemies."
+        ] },
+        { "type": "note", "status": "bug-fixed", "text": "Fixed, action.20: the HoT (Renew) kept healing noticeably longer than its buff icon's counter showed — the kit's clock mixed real time with game time, and refreshing the buff stacked a second tick loop. It now ends together with its icon." },
         { "type": "h", "text": "Block & guard" },
         { "type": "list", "status": "live17", "items": [
           "RMB, melee weapons only. Holding RMB raises your guard; a block bar appears above the cast bar.",
@@ -141,6 +157,7 @@
           "Dedicated guard-up animations for sword & shield and greatsword; a blocked hit sparks and rings, a guard break plays a parry animation.",
           "Blockable: sweeps and cones, including the skeleton Heavy Blow. Not blockable: ground-effect abilities — Rain of Arrows, Ground Slam, Radiance, the Iron Vigil aura, and bleeds."
         ] },
+        { "type": "p", "status": "live20", "text": "Guard responsiveness: the guard rises the instant RMB is pressed (no longer waiting for server replication) and ×2.2 faster; releasing RMB lowers the shield at once." },
         { "type": "table", "caption": "Block pool by item tier", "headers": ["Item", "Block Rating"], "rows": [
           ["Sword", "40–60"],
           ["Greatsword", "55–80"],
@@ -180,6 +197,7 @@
           { "text": "Resource cost tuning: Lumen ability costs +25% (Mending 19, Renewal 25, Blessing 31, Resurrect 63, Combat Res 100); Fervor generation −40% (further reduced again in action.19).", "status": "live17" },
           { "text": "Action bar: roughly 8–10 spell slots plus extra consumable/item slots." },
           { "text": "Damage/healing numbers should only display for the player, not allies/party; drop the “+” on healing numbers; damage numbers slightly smaller.", "status": "bug-open" },
+          { "text": "Partly addressed in action.20: other people's damage numbers are shown at ×0.5 size when they're in your party, and hidden entirely for strangers.", "status": "live20" },
           { "text": "Low HP feedback is currently only a heartbeat sound cue — no visual indicator yet.", "status": "bug-open" },
           { "text": "No plans for damage/healing meters — considered too likely to push toward min-maxing." },
           { "text": "Party size: 5 players." },
@@ -194,7 +212,17 @@
       "title": "The Forgotten",
       "dek": "Perpetua's soldiers, still walking patrols nobody ever ended.",
       "blocks": [
-        { "type": "p", "text": "The Forgotten have been buffed twice in two days: once in direct response to players gaining block and area-hit basics (action.17), and again based on 21 Sept playtest feedback (action.19). See Combat → Balance Tuning for the current damage/HP/armor multipliers (currently x2.5 HP and damage over action.17's already-buffed numbers, x4.3 of original base stats overall; armor 70/26).", "status": "live19" },
+        { "type": "p", "text": "The Forgotten have been buffed twice in two days: once in direct response to players gaining block and area-hit basics (action.17), and again based on 21 Sept playtest feedback (action.19): x2.5 HP and damage over action.17's already-buffed numbers (x4.3 of original base stats overall; armor 70/26).", "status": "live19" },
+        { "type": "p", "text": "Hit 50% harder again in action.20: the damage multiplier on basics and skills went from x2.5 to x3.75. HP and armor are unchanged.", "status": "live20" },
+        { "type": "h", "text": "Strongholds" },
+        { "type": "p", "text": "The eight small watchtower pairs were rebuilt into four large strongholds, one per region: Northreach, Heartland, Eastwood and Southmere. Each stronghold's gate stands at the end of its road and the ground under its walls is levelled. The old watchtower sites are growing back into forest.", "status": "live20" },
+        { "type": "table", "caption": "Garrison per stronghold (action.20)", "headers": ["Type", "Count"], "rows": [
+          ["Warrior", "16"],
+          ["Veteran", "6"],
+          ["Acolyte", "6"],
+          ["Stalker", "4"],
+          ["Ancient Bone Warden", "1 — alone in the centre of the throne hall"]
+        ] },
         { "type": "table", "caption": "Enemy roster", "headers": ["Type", "Gear"], "rows": [
           ["Veteran", "Full armor, sword and shield"],
           ["Warrior", "Light armor, sword"],
@@ -203,7 +231,7 @@
         ] },
         { "type": "list", "items": [
           { "text": "A built-in halberd-wielding type was removed.", "status": "live17" },
-          { "text": "Every watchtower has +3 Forgotten added to its garrison (2 warriors + 1 veteran).", "status": "live17" },
+          { "text": "Every watchtower had +3 Forgotten added to its garrison (2 warriors + 1 veteran) — superseded by the action.20 strongholds.", "status": "live17" },
           { "text": "Forgotten use the same animation packs as players — sword & shield / staff stances, strikes, Blight Bolt cast, Heavy Blow, Bone Wall, pounce." },
           { "text": "The acolyte's Blight Bolt was resolving as a Heavy Blow (no projectile, no damage) and acolytes were double-casting — both fixed.", "status": "bug-fixed" },
           { "text": "The acolyte's Blight Bolt now requires line of sight — it can no longer shoot through dungeon walls.", "status": "bug-fixed" }
@@ -227,8 +255,8 @@
     {
       "id": "ui-hud",
       "title": "UI / HUD",
-      "dek": "Rebuilt in action.19 around a “minimal, contextual” philosophy.",
-      "status": "live19",
+      "dek": "Rebuilt in action.19 around a “minimal, contextual” philosophy; refined in action.20 after feedback.",
+      "status": "live20",
       "blocks": [
         { "type": "h", "text": "Layout & bars" },
         { "type": "list", "items": [
@@ -263,9 +291,22 @@
         ] },
         { "type": "h", "text": "Visual style" },
         { "type": "list", "items": [
-          "Flat bars and plates in a cold-steel palette — no gradient backgrounds, no pack textures or frames, a single font throughout.",
+          "Flat bars and plates in a cold-steel palette — no gradient backgrounds, no pack textures or frames (the single font of action.19 was replaced in action.20 — see below).",
           "Resource colors: HP deep red, Lumen amber, Fervor ember.",
           "All HUD icons (menu, compass, map, toasts) now come from a single consistent icon pack."
+        ] },
+        { "type": "h", "text": "action.20 revision (after feedback)" },
+        { "type": "list", "status": "live20", "items": [
+          "New fonts: Alegreya Sans for text, Cinzel for numbers, the compass and damage.",
+          "Only the active resource is shown (Lumen or Fervor) — on the bars, party frames and nameplates; both return once a weapon uses both.",
+          "Bars: HP 16/20 px, resources 9 px, gains animate; Lumen and Fervor numbers are shown separately in their bar colours.",
+          "XP bars are only visible for 3s after a gain (or on hover with the cursor), replacing the always-on brighten effect.",
+          "Notifications restyled New World–style: item icon in a square, “Looted X ×N”, “+N XP <weapon>”, small 12 px icons, warnings marked with a red “!”.",
+          "Cast bar: icon on the left, spell name in small caps, time remaining on the right; channels count down.",
+          "The buff countdown ring fades together with the HUD; the aggro badge next to HP lost its background (10 px triangle + attacker count).",
+          "Chat no longer wakes up for loot/XP — it's active only while typing and hides after silence. The “Combat” HUD state now triggers only on damage involving you.",
+          "Nameplates 2.0 are on by default; the kit's own player plate is collapsed.",
+          "Party frames: see Party & Player Interaction."
         ] },
         { "type": "h", "text": "Region / House UI" },
         { "type": "list", "status": "live17", "items": [
@@ -274,6 +315,27 @@
           "Region window 2.0: tabs — Overview / Requisitions / Treasury / Plots / Residents / Upgrade — shown based on the viewer's role (outsider, resident, Castellan, Baron); includes a treasury ledger."
         ] },
         { "type": "note", "status": "idea", "text": "Carried over: UI icons originally sourced from a free itch.io pack (“Line Game Icons Ultimate Collection” by SunGraphica), since consolidated into the single HUD icon pack above; crafting/item icons are still screenshots of the in-game item mesh, flagged as needing polish. Possible loading hitches tied to world-partition streaming are flagged for investigation, not yet confirmed as a core issue." }
+      ]
+    },
+    {
+      "id": "party-social",
+      "title": "Party & Player Interaction",
+      "dek": "Targeting, whispering, trading and inviting — added in action.20.",
+      "status": "live20",
+      "blocks": [
+        { "type": "h", "text": "Player menu" },
+        { "type": "list", "items": [
+          "[F] on a player targets them; holding F opens a menu: Target / Whisper / Trade / Invite to Party / Invite to House.",
+          "Right-clicking a party mini-frame (cursor via Tab) opens the same menu, plus Promote / Kick / Leave for the party leader.",
+          "Whisper opens chat with “/w Name” already typed.",
+          "The party/House invite popup now collapses after Accept/Decline — the cursor no longer stays on screen."
+        ] },
+        { "type": "h", "text": "Party frames" },
+        { "type": "list", "items": [
+          "C+2…C+5 targets a party member: the targeted frame gets a gold border and gold name, and the member gets a green outline over their head.",
+          "A frame flashes green when your heal lands, and red with “Too far” when the target is out of range (see Combat → Healing & support).",
+          "Frames are wider (140), long names are clipped with an ellipsis, weapon-type glyphs sit in a column to the left of the frame, and ally buffs are smaller with a thin ring."
+        ] }
       ]
     },
     {
@@ -450,7 +512,8 @@
         ] },
         { "type": "list", "items": [
           "Three Wayfarer villages — one confirmed by name: Highmoor (village glade with a cemetery at its edge; nearby forest visibility fixed in the Friday hotfixes).",
-          "Eight Forgotten watchtowers (each garrisoned with 2 warriors + 1 veteran on top of existing Forgotten, since action.17).",
+          { "text": "Four Forgotten strongholds — Northreach, Heartland, Eastwood, Southmere — replaced the eight small watchtowers; each gate stands at the end of its road (see The Forgotten → Strongholds).", "status": "live20" },
+          { "text": "Bridges: the huge terrain ramps at both ends of every bridge are gone — the bridge slope now meets the ground.", "status": "live20" },
           "Rivers, roads, day/night cycle, weather.",
           "The Blackrust Gaol dungeon.",
           "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north)."
@@ -511,8 +574,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through action.19 (21 Sept).",
+      "dek": "action.17 (20 Sept) through action.20 (22 Sept).",
       "blocks": [
+        { "type": "h", "text": "0.2.0-action.20 — 22 Sept" },
+        { "type": "p", "text": "Requires the new client — the map changed, so old versions cannot join the server. Characters and the database were untouched. Headline changes: the watchtowers rebuilt as four large Forgotten strongholds, Forgotten damage x2.5 → x3.75, bridge ramps removed, the player menu and party-frame targeting, heal targeting (T) with range checks and ally-only heals, the Renew HoT timing fix, a HUD revision after feedback (new fonts, active-resource-only bars, New World–style notifications, quieter chat), and combat commit/animation work on skills, spin attacks and block." },
         { "type": "h", "text": "0.2.0-action.19 — 21 Sept" },
         { "type": "p", "text": "Requires the new client; characters and the database were untouched by this update. Headline changes: the full HUD rebuild, the animation-clock basic attack system with real combo chains and root motion, the post-playtest balance pass (Fervor, player HP x1.5, Forgotten x2.5 HP/damage, T3/T4 weapon multipliers, 30-min mob respawn), the Obelisk activation-range fix (12 m), build-boundary respawn protection scaled by Obelisk level, and road protections in the zone planner." },
         { "type": "h", "text": "Fixes from the forum (Sunday's playtest, folded into action.19)" },
@@ -547,7 +612,7 @@
         { "type": "list", "items": [
           "Target for the small map: 20–30 concurrent players to validate core friction points; a larger map would need hundreds.",
           "Small-map testing was expected within about a week or two of the DM conversation (20 Sept 2026).",
-          "“Forgotten Castles” — a world area/feature being brought online for testing around this time.",
+          "“Forgotten Castles” — a world area/feature being brought online for testing around this time; most likely what shipped in action.20 as the four Forgotten strongholds.",
           "Hosting: self-hosted on the developer's own PC, tunneled with an app called playit for early testing; plan is to move to Hetzner for actual alpha/playtest hosting.",
           "Backend: server-side persistence and economy-logic tests gate every build.",
           "Client versioning: each build requires the matching client — older clients can't connect. Characters and the database persist across builds."

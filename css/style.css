@@ -28,6 +28,7 @@
 
   --confirmed: #2f6a7a;
   --implemented: #3f7d51;
+  --live20: var(--implemented);
   --live19: var(--implemented);
   --live17: var(--implemented);
   --idea: #6e6a7a;
@@ -68,6 +69,7 @@
 
     --confirmed: #79b3c4;
     --implemented: #6fbb85;
+    --live20: var(--implemented);
     --live19: var(--implemented);
     --live17: var(--implemented);
     --idea: #8d90a3;
@@ -101,6 +103,7 @@
 
   --confirmed: #79b3c4;
   --implemented: #6fbb85;
+  --live20: var(--implemented);
   --live19: var(--implemented);
   --live17: var(--implemented);
   --idea: #8d90a3;
@@ -495,6 +498,7 @@ button { font-family: inherit; }
   background: currentColor;
 }
 .badge--confirmed { color: var(--confirmed); background: color-mix(in srgb, var(--confirmed) 14%, transparent); border-color: color-mix(in srgb, var(--confirmed) 35%, transparent); }
+.badge--live20 { color: var(--live20); background: color-mix(in srgb, var(--live20) 14%, transparent); border-color: color-mix(in srgb, var(--live20) 35%, transparent); }
 .badge--live19 { color: var(--live19); background: color-mix(in srgb, var(--live19) 14%, transparent); border-color: color-mix(in srgb, var(--live19) 35%, transparent); }
 .badge--live17 { color: var(--live17); background: color-mix(in srgb, var(--live17) 14%, transparent); border-color: color-mix(in srgb, var(--live17) 35%, transparent); }
 .badge--idea { color: var(--idea); background: color-mix(in srgb, var(--idea) 14%, transparent); border-color: color-mix(in srgb, var(--idea) 35%, transparent); }
