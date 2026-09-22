@@ -5,8 +5,8 @@
     data: null,
     sectionOrder: [],
     sectionsById: {},
-    activeStatuses: new Set(),
     collapsedGroups: new Set(),
+    hideIdeas: false,
     searching: false,
     currentId: null
   };
@@ -46,7 +46,6 @@
     })
     .then(function (data) {
       state.data = data;
-      Object.keys(data.statuses).forEach(function (k) { state.activeStatuses.add(k); });
       data.sections.forEach(function (s) {
         state.sectionsById[s.id] = s;
       });
@@ -68,7 +67,7 @@
       console.error(err);
     });
 
-  /* ---------------- Shell (sidebar, legend, topbar) ---------------- */
+  /* ---------------- Shell (sidebar, topbar) ---------------- */
 
   function buildShell() {
     document.title = state.data.site.title;
@@ -80,6 +79,15 @@
 
     $('#search').addEventListener('input', function (e) {
       filterNav(e.target.value);
+    });
+
+    var ideaToggle = $('#hideIdeasToggle');
+    try { state.hideIdeas = localStorage.getItem('stillmarch-hide-ideas') === '1'; } catch (e) {}
+    ideaToggle.checked = state.hideIdeas;
+    ideaToggle.addEventListener('change', function () {
+      state.hideIdeas = ideaToggle.checked;
+      try { localStorage.setItem('stillmarch-hide-ideas', state.hideIdeas ? '1' : '0'); } catch (e) {}
+      applyIdeaVisibility();
     });
 
     $('#hamburger').addEventListener('click', function () {
@@ -236,34 +244,9 @@
     }
   }
 
-  function buildLegend(container) {
-    container.innerHTML = '';
-    container.appendChild(el('span', { class: 'legend__label', text: 'Show:' }));
-    Object.keys(state.data.statuses).forEach(function (key) {
-      var meta = state.data.statuses[key];
-      var chip = el('button', { class: 'chip' + (state.activeStatuses.has(key) ? '' : ' off'), type: 'button', 'data-status': key, title: meta.desc }, [
-        el('span', { class: 'chip__dot' }),
-        document.createTextNode(meta.label)
-      ]);
-      chip.addEventListener('click', function () {
-        if (state.activeStatuses.has(key)) {
-          state.activeStatuses.delete(key);
-          chip.classList.add('off');
-        } else {
-          state.activeStatuses.add(key);
-          chip.classList.remove('off');
-        }
-        applyStatusFilter();
-      });
-      container.appendChild(chip);
-    });
-  }
-
-  function applyStatusFilter() {
-    $$('[data-status-item]').forEach(function (node) {
-      var status = node.getAttribute('data-status-item');
-      var visible = !status || state.activeStatuses.has(status);
-      node.classList.toggle('li--filtered', !visible);
+  function applyIdeaVisibility() {
+    $$('[data-status-item="idea"]').forEach(function (node) {
+      node.hidden = state.hideIdeas;
     });
   }
 
@@ -304,21 +287,98 @@
     }
     content.appendChild(head);
 
-    var legend = el('div', { class: 'legend', id: 'legendSection' });
-    buildLegend(legend);
-    content.appendChild(legend);
-
     (section.blocks || []).forEach(function (block) {
       var node = renderBlock(block);
       if (node) content.appendChild(node);
     });
 
+    if (section.generated === 'backlog-index') {
+      content.appendChild(buildBacklogIndex(id));
+    }
+
     content.appendChild(buildPageNav(id));
 
     main.appendChild(content);
-    applyStatusFilter();
+    applyIdeaVisibility();
     main.scrollTop = 0;
     window.scrollTo(0, 0);
+  }
+
+  function buildBacklogIndex(selfId) {
+    var wrap = el('div', { class: 'backlog-index block' });
+
+    var wholeSections = [];
+    var itemized = [];
+
+    state.sectionOrder.forEach(function (id) {
+      if (id === selfId) return;
+      var section = state.sectionsById[id];
+      if (section.status === 'idea') {
+        wholeSections.push(section);
+        return;
+      }
+      var found = [];
+      (section.blocks || []).forEach(function (block) {
+        if (block.type === 'p' && block.status === 'idea') {
+          found.push(block.text);
+        } else if (block.type === 'note' && block.tone === 'idea') {
+          found.push(block.text);
+        } else if (block.type === 'list' || block.type === 'olist') {
+          block.items.forEach(function (item) {
+            var isObj = typeof item === 'object';
+            var status = isObj ? item.status : block.status;
+            if (status === 'idea') found.push(isObj ? item.text : item);
+          });
+        }
+      });
+      if (found.length) itemized.push({ section: section, items: found });
+    });
+
+    var total = wholeSections.length + itemized.reduce(function (n, g) { return n + g.items.length; }, 0);
+    wrap.appendChild(el('p', {
+      class: 'backlog-index__summary',
+      text: total + ' idea' + (total === 1 ? '' : 's') + ' on record across ' + (wholeSections.length + itemized.length) + ' page' + ((wholeSections.length + itemized.length) === 1 ? '' : 's') + '.'
+    }));
+
+    if (wholeSections.length) {
+      wrap.appendChild(el('h2', { class: 'block--h', text: 'Entire systems, not started' }));
+      var cards = el('div', { class: 'backlog-cards' });
+      wholeSections.forEach(function (section) {
+        var card = el('button', { class: 'backlog-card', type: 'button' }, [
+          el('span', { class: 'backlog-card__eyebrow', text: findGroupFor(section.id) }),
+          el('span', { class: 'backlog-card__title', text: section.title }),
+          section.dek ? el('span', { class: 'backlog-card__dek', text: section.dek }) : null
+        ]);
+        card.addEventListener('click', function () { goTo(section.id); });
+        cards.appendChild(card);
+      });
+      wrap.appendChild(cards);
+    }
+
+    if (itemized.length) {
+      wrap.appendChild(el('h2', { class: 'block--h', text: 'Ideas floated inside live systems' }));
+      itemized.forEach(function (group) {
+        var box = el('div', { class: 'backlog-group' });
+        var head = el('button', { class: 'backlog-group__head', type: 'button' }, [
+          el('span', { class: 'backlog-group__eyebrow', text: findGroupFor(group.section.id) }),
+          el('span', { class: 'backlog-group__title', text: group.section.title + ' →' })
+        ]);
+        head.addEventListener('click', function () { goTo(group.section.id); });
+        box.appendChild(head);
+        var ul = el('ul', { class: 'list' });
+        group.items.forEach(function (text) {
+          ul.appendChild(el('li', { text: text }));
+        });
+        box.appendChild(ul);
+        wrap.appendChild(box);
+      });
+    }
+
+    if (!total) {
+      wrap.appendChild(el('p', { class: 'backlog-index__summary', text: 'Nothing left on the backlog — everything proposed has shipped.' }));
+    }
+
+    return wrap;
   }
 
   function findGroupFor(id) {
@@ -395,7 +455,8 @@
         return wrap;
       }
       case 'note': {
-        var note = el('div', { class: 'note note--' + (block.tone || 'idea') + ' block' });
+        var note = el('div', { class: 'note note--' + (block.tone || 'context') + ' block' });
+        if (block.tone === 'idea') note.setAttribute('data-status-item', 'idea');
         note.appendChild(document.createTextNode(block.text));
         return note;
       }

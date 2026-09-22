@@ -38,6 +38,10 @@
     {
       "group": "The Record",
       "items": ["roadmap", "patch-notes", "dev-testing", "bounty-system", "community-meta"]
+    },
+    {
+      "group": "Backlog",
+      "items": ["backlog"]
     }
   ],
   "sections": [
@@ -49,7 +53,7 @@
       "blocks": [
         { "type": "p", "text": "Stillmarch is a dark-medieval, open-world sandbox MMO built on PvP, building, crafting, and politics. There is no main quest and no NPC king telling anyone what to do — the server's history is written entirely by the players: alliances, betrayals, who took which region from whom, and when.", "status": "confirmed" },
         { "type": "p", "text": "Reference points the developer named directly: Albion, Lineage 2, EVE, and Pax Dei.", "status": "confirmed" },
-        { "type": "note", "tone": "idea", "text": "The developer is explicit this is a passion project, not an attempt at “WoW 2.0,” and that he's deliberately avoiding an Ashes of Creation–style situation — announcing a hundred systems and shipping only a tenth. The scope is large, but design centers on a small number of systems that all interlock." },
+        { "type": "note", "tone": "context", "text": "The developer is explicit this is a passion project, not an attempt at “WoW 2.0,” and that he's deliberately avoiding an Ashes of Creation–style situation — announcing a hundred systems and shipping only a tenth. The scope is large, but design centers on a small number of systems that all interlock." },
         { "type": "h", "text": "The Core Design Chain" },
         { "type": "chain", "items": [
           "Rare resources",
@@ -77,7 +81,7 @@
         ] },
         { "type": "quote", "text": "Remember shame rather than remember nothing.", "cite": "Returner custom — Returners write everything down, including their own betrayals" },
         { "type": "p", "text": "Tradition: every player-built building has one small detail left deliberately unfinished, for reasons nobody can explain." },
-        { "type": "note", "tone": "idea", "text": "Overall tone: a world winding down, carried by a small, stubborn, possibly unjustified hope that this time civilization holds." }
+        { "type": "note", "tone": "lore", "text": "Overall tone: a world winding down, carried by a small, stubborn, possibly unjustified hope that this time civilization holds." }
       ]
     },
     {
@@ -297,7 +301,7 @@
           "Plot rent is auto-deducted from the House bank account (0.6 g/m²/day).",
           "The same licensing model applies to religious Houses (churches)."
         ] },
-        { "type": "note", "tone": "idea", "text": "Mercenary contracts: a mercenary House can be hired for a fee — no automated success verification; the hirer signs and pays, the mercenary House manually marks the job “completed” to release payment." },
+        { "type": "note", "tone": "context", "text": "Mercenary contracts: a mercenary House can be hired for a fee — no automated success verification; the hirer signs and pays, the mercenary House manually marks the job “completed” to release payment." },
         { "type": "h", "text": "Region upkeep — Requisitions" },
         { "type": "list", "status": "live17", "items": [
           "Every week, a region posts requisitions on a board at its Obelisk: planks, oak, blocks, ingots, logs, nails — paid for out of the region's treasury.",
@@ -314,7 +318,7 @@
           ["Log", "4 g"],
           ["Nail", "5 g"]
         ] },
-        { "type": "note", "tone": "idea", "text": "A level-2 region's upkeep runs to roughly 7,200 gold/week." }
+        { "type": "note", "tone": "context", "text": "A level-2 region's upkeep runs to roughly 7,200 gold/week." }
       ]
     },
     {
@@ -329,7 +333,7 @@
         { "type": "p", "text": "Completing all seven doesn't end the server. A Great Project can be destroyed — either by a siege whose specific objective is tearing it down, or as a side effect of the region it stands in being captured outright." },
         { "type": "h", "text": "Kingdom-wide bonuses" },
         { "type": "p", "text": "Each of the seven Great Projects grants a different server-wide bonus to the kingdom that holds it — deliberately powerful (“OP”, in Sethan's words), which is what makes holding one worth defending and worth sieging. Examples given: higher chance of rare resource spawns, bonus damage/HP in battle, and full map visibility of every enemy army and caravan." },
-        { "type": "note", "tone": "idea", "text": "No seasons: the world doesn't reset or rank on a recurring cycle — the Chronicles and whatever's been built stand permanently, subject only to what other players (or the Invasion) do to them." }
+        { "type": "note", "tone": "context", "text": "No seasons: the world doesn't reset or rank on a recurring cycle — the Chronicles and whatever's been built stand permanently, subject only to what other players (or the Invasion) do to them." }
       ]
     },
     {
@@ -405,7 +409,7 @@
           "Max players per siege instance: undecided — a hard cap, or a flank system (separate sub-instances per flank, choosable respawn point) are both under consideration.",
           "A siege's objective doesn't have to be capturing the region: it can instead target a Great Project standing there for outright destruction (see Great Projects & The Chronicles). Capturing the region destroys any Great Project in it as a side effect either way."
         ] },
-        { "type": "note", "tone": "idea", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." }
+        { "type": "note", "tone": "context", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." }
       ]
     },
     {
@@ -493,7 +497,7 @@
           "Founder's Access",
           "Early Access"
         ] },
-        { "type": "note", "tone": "idea", "text": "No dates committed until they're real." }
+        { "type": "note", "tone": "context", "text": "No dates committed until they're real." }
       ]
     },
     {
@@ -540,7 +544,7 @@
           "Backend: server-side persistence and economy-logic tests gate every build.",
           "Client versioning: each build requires the matching client — older clients can't connect. Characters and the database persist across builds."
         ] },
-        { "type": "note", "tone": "idea", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
+        { "type": "note", "tone": "context", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
     },
     {
@@ -554,6 +558,16 @@
           "Community channels: 🕯️｜lore (world fragments, deliberately incomplete), 💬｜general (design discussion, read by the dev), and a Playtests role in Channels & Roles for first access to playtest pings.",
           "Active forum/playtest reporters named in patch notes: Czubik, Lucyphere."
         ] }
+      ]
+    },
+    {
+      "id": "backlog",
+      "title": "Backlog & Ideas",
+      "dek": "Everything proposed but not committed — pulled live from every system's idea-tagged notes.",
+      "status": "idea",
+      "generated": "backlog-index",
+      "blocks": [
+        { "type": "p", "text": "Nothing on this page is built. It's a standing list of what's been floated in conversation but not implemented — some explicitly deferred (a few as far out as 1.0) — collected here so it's easy to see everything that's still just an idea without digging through every system page for a Backlog badge. Each entry links back to where it actually lives." }
       ]
     }
   ]
