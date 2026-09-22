@@ -185,7 +185,6 @@
           { "text": "Party size: 5 players." },
           { "text": "Death penalty: dying drops your entire purse/bag near your corpse; 20% of gold is permanently lost (see Economy)." },
           { "text": "Crafting/gathering XP was multiplied 10x by the developer to stress-test crafting further." },
-          { "text": "Gathering without a tool equipped shouldn't award XP.", "status": "bug-open" },
           { "text": "A weapon left in the helmet slot was incorrectly determining weapon type/animations — now only what's actually in your hands counts.", "status": "bug-fixed" }
         ] }
       ]
@@ -368,7 +367,6 @@
         { "type": "list", "items": [
           "A mint exists for currency conversion/processing (see Economy & Banking).",
           "Crafting is considered fairly solid already; crafting XP was multiplied 10x by the developer to push further testing.",
-          { "text": "Gathering without a tool equipped shouldn't award XP.", "status": "bug-open" },
           "Weapons have associated “spells” tied to them — a system still being tested.",
           "Item/crafting icons are currently screenshots of the actual item mesh, not custom-drawn."
         ] }
