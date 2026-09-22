@@ -468,20 +468,20 @@ button { font-family: inherit; }
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 2px 8px;
+  gap: 4px;
+  padding: 1px 6px;
   border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   border: 1px solid transparent;
   white-space: nowrap;
 }
 .badge::before {
   content: '';
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: currentColor;
 }
