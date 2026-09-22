@@ -559,8 +559,11 @@ button { font-family: inherit; }
 }
 
 .li-badge {
-  display: block;
   margin-top: 4px;
+}
+
+.list-block__badge {
+  margin-bottom: 8px;
 }
 
 /* ---------- Chain (overview diagram) ---------- */

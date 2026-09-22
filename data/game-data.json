@@ -290,16 +290,23 @@
         { "type": "h", "text": "House banks" },
         { "type": "p", "text": "The bank belongs to the House, not the region — that's the core idea. The mint coins gold into a House bank account, and deposits/withdrawals happen at the mint.", "status": "live17" },
         { "type": "quote", "text": "If you own 3 regions as a House, everybody will be able to use the same bank in every of these regions.", "cite": "Sethan, on House bank branches" },
+        { "type": "h", "text": "Branches & licensing" },
         { "type": "list", "status": "live17", "items": [
-          "Branch network: a House automatically gets a branch in every region it holds — one shared account, usable at any of them. Deposit in one region, withdraw in another.",
+          "A House automatically gets a branch in every region it holds — one shared account, usable at any of them. Deposit in one region, withdraw in another.",
           "Branches aren't limited to a House's own regions: a region owner can license another House's bank to operate there too. Enough licenses and a single House's bank becomes, in practice, a global bank — even though no bank is globally guaranteed by design.",
+          "The same licensing model applies to religious Houses (churches)."
+        ] },
+        { "type": "h", "text": "Using an account" },
+        { "type": "list", "status": "live17", "items": [
           "No “opening an account”: any player — House member or complete stranger — can walk up to a licensed branch and deposit or withdraw. There's no signup step.",
+          "A bank House can freeze an account. So far this has been tied to war: if your House is declared an enemy of a bank's House, your account there is frozen — and other banks can freeze your assets too, effectively letting a third party apply financial pressure on someone else's war."
+        ] },
+        { "type": "h", "text": "Taxes & fees" },
+        { "type": "list", "status": "live17", "items": [
           "Every deposit and withdrawal is taxed, and that cut is split between the bank's House and the region owner where the transaction physically happens.",
           "The House master additionally sets the House's own transaction tax (minimum 2%); the Crown takes a flat 2% on top of that.",
-          "A bank House can freeze an account. So far this has been tied to war: if your House is declared an enemy of a bank's House, your account there is frozen — and other banks can freeze your assets too, effectively letting a third party apply financial pressure on someone else's war.",
           "The Crown bank is a last resort for orphaned accounts (no House to claim them), taking a 40% cut.",
-          "Plot rent is auto-deducted from the House bank account (0.6 g/m²/day).",
-          "The same licensing model applies to religious Houses (churches)."
+          "Plot rent is auto-deducted from the House bank account (0.6 g/m²/day)."
         ] },
         { "type": "note", "tone": "context", "text": "Mercenary contracts: a mercenary House can be hired for a fee — no automated success verification; the hirer signs and pays, the mercenary House manually marks the job “completed” to release payment." },
         { "type": "h", "text": "Region upkeep — Requisitions" },

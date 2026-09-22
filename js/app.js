@@ -407,23 +407,39 @@
       case 'olist': {
         var tag = block.type === 'olist' ? 'ol' : 'ul';
         var list = el(tag, { class: block.type });
+        var hasOwnItemStatus = block.items.some(function (item) {
+          return typeof item === 'object' && item.status;
+        });
         block.items.forEach(function (item) {
           var isObj = typeof item === 'object';
           var text = isObj ? item.text : item;
-          var status = isObj ? item.status : block.status;
+          var itemStatus = isObj ? item.status : null;
           var li = el('li', {});
-          if (status) li.setAttribute('data-status-item', status);
-          li.appendChild(document.createTextNode(text));
-          if (status) {
-            var b = badge(status);
+          if (itemStatus) {
+            li.setAttribute('data-status-item', itemStatus);
+            li.appendChild(document.createTextNode(text));
+            li.appendChild(document.createElement('br'));
+            var b = badge(itemStatus);
             if (b) {
               b.classList.add('li-badge');
               li.appendChild(b);
             }
+          } else {
+            li.appendChild(document.createTextNode(text));
           }
           list.appendChild(li);
         });
-        return el('div', { class: 'block' }, [list]);
+        var wrap = el('div', { class: 'block list-block' });
+        if (block.status && !hasOwnItemStatus) {
+          wrap.setAttribute('data-status-item', block.status);
+          var headBadge = badge(block.status);
+          if (headBadge) {
+            headBadge.classList.add('list-block__badge');
+            wrap.appendChild(headBadge);
+          }
+        }
+        wrap.appendChild(list);
+        return wrap;
       }
       case 'chain': {
         var chain = el('div', { class: 'chain block' });
