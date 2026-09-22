@@ -6,6 +6,8 @@
     sectionOrder: [],
     sectionsById: {},
     activeStatuses: new Set(),
+    collapsedGroups: new Set(),
+    searching: false,
     currentId: null
   };
 
@@ -119,11 +121,48 @@
     document.querySelector('.app').classList.remove('nav-open');
   }
 
+  function loadCollapsedGroups() {
+    try {
+      var raw = localStorage.getItem('stillmarch-collapsed-groups');
+      return raw ? new Set(JSON.parse(raw)) : new Set();
+    } catch (e) { return new Set(); }
+  }
+
+  function saveCollapsedGroups() {
+    try {
+      localStorage.setItem('stillmarch-collapsed-groups', JSON.stringify(Array.from(state.collapsedGroups)));
+    } catch (e) {}
+  }
+
   function buildNav() {
+    state.collapsedGroups = loadCollapsedGroups();
     var wrap = $('#navGroups');
     wrap.innerHTML = '';
     state.data.nav.forEach(function (group) {
-      wrap.appendChild(el('div', { class: 'nav-group__title', text: group.group }));
+      var collapsed = state.collapsedGroups.has(group.group);
+      var groupEl = el('div', { class: 'nav-group' + (collapsed ? ' is-collapsed' : ''), 'data-group': group.group });
+
+      var titleBtn = el('button', {
+        class: 'nav-group__title', type: 'button',
+        'aria-expanded': collapsed ? 'false' : 'true'
+      }, [
+        el('span', { class: 'nav-group__chevron', html: '&#9656;' }),
+        el('span', { text: group.group })
+      ]);
+
+      var itemsWrap = el('div', { class: 'nav-group__items' });
+      itemsWrap.hidden = collapsed;
+
+      titleBtn.addEventListener('click', function () {
+        var nowCollapsed = !groupEl.classList.contains('is-collapsed');
+        groupEl.classList.toggle('is-collapsed', nowCollapsed);
+        itemsWrap.hidden = nowCollapsed && !state.searching;
+        titleBtn.setAttribute('aria-expanded', nowCollapsed ? 'false' : 'true');
+        if (nowCollapsed) state.collapsedGroups.add(group.group);
+        else state.collapsedGroups.delete(group.group);
+        saveCollapsedGroups();
+      });
+
       group.items.forEach(function (id) {
         var section = state.sectionsById[id];
         if (!section) return;
@@ -137,30 +176,55 @@
           dot
         ]);
         btn.addEventListener('click', function () {
+          var search = $('#search');
+          if (search && search.value) {
+            search.value = '';
+            filterNav('');
+          }
           goTo(id);
           closeNav();
         });
-        wrap.appendChild(btn);
+        itemsWrap.appendChild(btn);
       });
+
+      groupEl.appendChild(titleBtn);
+      groupEl.appendChild(itemsWrap);
+      wrap.appendChild(groupEl);
     });
+  }
+
+  function expandGroupFor(id) {
+    var groupEl = null;
+    $$('.nav-group').forEach(function (g) {
+      if ($('.nav-item[data-id="' + id + '"]', g)) groupEl = g;
+    });
+    if (!groupEl || !groupEl.classList.contains('is-collapsed')) return;
+    groupEl.classList.remove('is-collapsed');
+    $('.nav-group__items', groupEl).hidden = false;
+    $('.nav-group__title', groupEl).setAttribute('aria-expanded', 'true');
+    state.collapsedGroups.delete(groupEl.getAttribute('data-group'));
+    saveCollapsedGroups();
   }
 
   function filterNav(query) {
     query = (query || '').trim().toLowerCase();
+    state.searching = !!query;
     var any = false;
-    $$('.nav-item').forEach(function (btn) {
-      var match = !query || btn.getAttribute('data-title').indexOf(query) !== -1;
-      btn.hidden = !match;
-      if (match) any = true;
-    });
-    $$('.nav-group__title').forEach(function (h) {
-      var sib = h.nextElementSibling;
+    $$('.nav-group').forEach(function (g) {
+      var itemsWrap = $('.nav-group__items', g);
       var groupHasVisible = false;
-      while (sib && sib.classList && sib.classList.contains('nav-item')) {
-        if (!sib.hidden) groupHasVisible = true;
-        sib = sib.nextElementSibling;
+      $$('.nav-item', g).forEach(function (btn) {
+        var match = !query || btn.getAttribute('data-title').indexOf(query) !== -1;
+        btn.hidden = !match;
+        if (match) groupHasVisible = true;
+      });
+      if (query) {
+        itemsWrap.hidden = !groupHasVisible;
+      } else {
+        itemsWrap.hidden = g.classList.contains('is-collapsed');
       }
-      h.hidden = !groupHasVisible;
+      $('.nav-group__title', g).hidden = query && !groupHasVisible;
+      if (groupHasVisible) any = true;
     });
     var existing = $('#noResults');
     if (!any) {
@@ -220,6 +284,7 @@
     if (!section) return;
     state.currentId = id;
 
+    expandGroupFor(id);
     $$('.nav-item').forEach(function (btn) {
       btn.classList.toggle('active', btn.getAttribute('data-id') === id);
     });
