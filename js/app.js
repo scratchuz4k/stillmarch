@@ -321,7 +321,7 @@
       (section.blocks || []).forEach(function (block) {
         if (block.type === 'p' && block.status === 'idea') {
           found.push(block.text);
-        } else if (block.type === 'note' && block.tone === 'idea') {
+        } else if (block.type === 'note' && block.status === 'idea') {
           found.push(block.text);
         } else if (block.type === 'list' || block.type === 'olist') {
           block.items.forEach(function (item) {
@@ -471,9 +471,16 @@
         return wrap;
       }
       case 'note': {
-        var note = el('div', { class: 'note note--' + (block.tone || 'context') + ' block' });
-        if (block.tone === 'idea') note.setAttribute('data-status-item', 'idea');
+        var status = block.status || 'info';
+        var note = el('div', { class: 'note note--' + status + ' block' });
+        note.style.setProperty('--note-accent', 'var(--' + status + ')');
+        note.setAttribute('data-status-item', status);
         note.appendChild(document.createTextNode(block.text));
+        var noteBadge = badge(status);
+        if (noteBadge) {
+          noteBadge.classList.add('note__badge');
+          note.appendChild(noteBadge);
+        }
         return note;
       }
       case 'quote': {

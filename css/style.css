@@ -32,6 +32,8 @@
   --idea: #6e6a7a;
   --bug-fixed: #3f7d51;
   --bug-open: #a3352c;
+  --lore: #7a4568;
+  --info: #3f6478;
 
   --font-display: 'Cinzel', 'Iowan Old Style', Georgia, serif;
   --font-body: 'Spectral', Georgia, 'Iowan Old Style', serif;
@@ -69,6 +71,8 @@
     --idea: #8d90a3;
     --bug-fixed: #6fbb85;
     --bug-open: #d3776b;
+    --lore: #c48fb3;
+    --info: #86b0c4;
 
     color-scheme: dark;
   }
@@ -99,6 +103,8 @@
   --idea: #8d90a3;
   --bug-fixed: #6fbb85;
   --bug-open: #d3776b;
+  --lore: #c48fb3;
+  --info: #86b0c4;
 
   color-scheme: dark;
 }
@@ -491,6 +497,8 @@ button { font-family: inherit; }
 .badge--idea { color: var(--idea); background: color-mix(in srgb, var(--idea) 14%, transparent); border-color: color-mix(in srgb, var(--idea) 35%, transparent); }
 .badge--bug-fixed { color: var(--bug-fixed); background: color-mix(in srgb, var(--bug-fixed) 14%, transparent); border-color: color-mix(in srgb, var(--bug-fixed) 35%, transparent); }
 .badge--bug-open { color: var(--bug-open); background: color-mix(in srgb, var(--bug-open) 14%, transparent); border-color: color-mix(in srgb, var(--bug-open) 35%, transparent); }
+.badge--lore { color: var(--lore); background: color-mix(in srgb, var(--lore) 14%, transparent); border-color: color-mix(in srgb, var(--lore) 35%, transparent); }
+.badge--info { color: var(--info); background: color-mix(in srgb, var(--info) 14%, transparent); border-color: color-mix(in srgb, var(--info) 35%, transparent); }
 
 /* ---------- Blocks ---------- */
 
@@ -647,12 +655,10 @@ tbody tr:hover { background: var(--surface-2); }
   background: var(--surface-2);
   font-size: 0.94rem;
   color: var(--ink-dim);
-  border-left: 3px solid var(--border-strong);
+  border-left: 3px solid var(--note-accent, var(--border-strong));
 }
-.note--lore { border-left-color: var(--confirmed); font-style: italic; }
-.note--bug { border-left-color: var(--bug-fixed); }
-.note--idea { border-left-color: var(--idea); }
-.note--context { border-left-color: var(--border-strong); }
+.note--lore { font-style: italic; }
+.note__badge { margin-top: 8px; }
 
 /* ---------- Quote ---------- */
 
