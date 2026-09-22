@@ -324,7 +324,12 @@
       "status": "confirmed",
       "blocks": [
         { "type": "p", "text": "Great Projects: seven one-of-a-kind structures, one per server, funded by regional trade routes and treasuries." },
-        { "type": "p", "text": "The Chronicles: a permanent, server-wide historical record of what players did — including betrayals. This is the payoff of the full design chain: resources → gear → regions → trade/treasury → Great Projects → Chronicles." }
+        { "type": "p", "text": "The Chronicles: a permanent, server-wide historical record of what players did — including betrayals. This is the payoff of the full design chain: resources → gear → regions → trade/treasury → Great Projects → Chronicles." },
+        { "type": "h", "text": "Finishing one isn't “gg”" },
+        { "type": "p", "text": "Completing all seven doesn't end the server. A Great Project can be destroyed — either by a siege whose specific objective is tearing it down, or as a side effect of the region it stands in being captured outright." },
+        { "type": "h", "text": "Kingdom-wide bonuses" },
+        { "type": "p", "text": "Each of the seven Great Projects grants a different server-wide bonus to the kingdom that holds it — deliberately powerful (“OP”, in Sethan's words), which is what makes holding one worth defending and worth sieging. Examples given: higher chance of rare resource spawns, bonus damage/HP in battle, and full map visibility of every enemy army and caravan." },
+        { "type": "note", "tone": "idea", "text": "No seasons: the world doesn't reset or rank on a recurring cycle — the Chronicles and whatever's been built stand permanently, subject only to what other players (or the Invasion) do to them." }
       ]
     },
     {
@@ -397,7 +402,8 @@
           "The attacking Army must complete objectives (e.g. capture and hold points) to advance; success hands the region to the Army's leader.",
           "Version 1 / MVP plan: a simple open-field “king of the hill” fight — no walls, no siege weapons — purely to validate the core loop. Fortifications and siege weapons come later.",
           "Army supplies: each player death deducts a fixed amount; supplies are resupplied mid-siege via caravans from the controlling region (v1: craft “Supplies,” load on a cart, travel to the Army); destroying enemy supply caravans is a valid strategy. Defending regions use the same system with a baseline city bonus.",
-          "Max players per siege instance: undecided — a hard cap, or a flank system (separate sub-instances per flank, choosable respawn point) are both under consideration."
+          "Max players per siege instance: undecided — a hard cap, or a flank system (separate sub-instances per flank, choosable respawn point) are both under consideration.",
+          "A siege's objective doesn't have to be capturing the region: it can instead target a Great Project standing there for outright destruction (see Great Projects & The Chronicles). Capturing the region destroys any Great Project in it as a side effect either way."
         ] },
         { "type": "note", "tone": "idea", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." }
       ]
