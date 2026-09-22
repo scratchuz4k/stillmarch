@@ -8,10 +8,10 @@
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
-    "live19": { "label": "Live · action.19", "short": "action.19", "group": "implemented", "desc": "Implemented. Shipped and testable as of build 0.2.0-action.19 (21 Sept). Supersedes action.17 where numbers conflict." },
-    "live17": { "label": "Live · action.17", "short": "action.17", "group": "implemented", "desc": "Implemented. Shipped and testable as of build 0.2.0-action.17 (20 Sept)." },
-    "bug-fixed": { "label": "Fixed", "short": "Fixed", "group": "implemented", "desc": "Implemented, and correctly so — reported broken by testers, then resolved in a later build." },
-    "bug-open": { "label": "Open issue", "short": "Open", "group": "implemented", "desc": "Implemented, but currently broken — reported by testers, not yet resolved." },
+    "live19": { "label": "Implemented", "short": "action.19", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.19 (21 Sept). Supersedes action.17 where numbers conflict." },
+    "live17": { "label": "Implemented", "short": "action.17", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.17 (20 Sept)." },
+    "bug-fixed": { "label": "Implemented", "short": "Fixed", "group": "implemented", "desc": "Implemented, and correctly so — reported broken by testers, then resolved in a later build." },
+    "bug-open": { "label": "Open issue", "short": "Open", "group": "issue", "desc": "Implemented, but currently broken — reported by testers, not yet resolved." },
     "idea": { "label": "Backlog", "short": "Idea", "group": "backlog", "desc": "Floated in conversation only — not announced, not implemented, no commitment either way." },
     "lore": { "label": "Lore", "short": "Lore", "group": "narrative", "desc": "World/narrative flavor, not a system or its status — setting detail as written." },
     "info": { "label": "Information", "short": "Info", "group": "narrative", "desc": "A factual or contextual aside — a number, a clarification, dev process — that isn't itself a build or backlog status." }

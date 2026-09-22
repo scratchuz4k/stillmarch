@@ -27,10 +27,11 @@
   --fervor: #a3432c;
 
   --confirmed: #2f6a7a;
-  --live19: #935a1e;
-  --live17: #8a7a3e;
+  --implemented: #3f7d51;
+  --live19: var(--implemented);
+  --live17: var(--implemented);
   --idea: #6e6a7a;
-  --bug-fixed: #3f7d51;
+  --bug-fixed: var(--implemented);
   --bug-open: #a3352c;
   --lore: #7a4568;
   --info: #3f6478;
@@ -66,10 +67,11 @@
     --fervor: #c1503a;
 
     --confirmed: #79b3c4;
-    --live19: #d1a052;
-    --live17: #b8a45c;
+    --implemented: #6fbb85;
+    --live19: var(--implemented);
+    --live17: var(--implemented);
     --idea: #8d90a3;
-    --bug-fixed: #6fbb85;
+    --bug-fixed: var(--implemented);
     --bug-open: #d3776b;
     --lore: #c48fb3;
     --info: #86b0c4;
@@ -98,10 +100,11 @@
   --fervor: #c1503a;
 
   --confirmed: #79b3c4;
-  --live19: #d1a052;
-  --live17: #b8a45c;
+  --implemented: #6fbb85;
+  --live19: var(--implemented);
+  --live17: var(--implemented);
   --idea: #8d90a3;
-  --bug-fixed: #6fbb85;
+  --bug-fixed: var(--implemented);
   --bug-open: #d3776b;
   --lore: #c48fb3;
   --info: #86b0c4;
