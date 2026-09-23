@@ -4,7 +4,7 @@
     "subtitle": "A living record of the game's systems",
     "build": "0.2.0-action.20",
     "updated": "2026-09-22",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–23 Sept 2026), Sethan's official dev update, and patch notes for action.17, action.19 and action.20. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–23 Sept 2026), Sethan's official dev update, the demo cheatsheet, and patch notes for action.17, action.19 and action.20. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
@@ -20,7 +20,7 @@
   "nav": [
     {
       "group": "The World",
-      "items": ["overview", "setting-lore", "world-geography", "dungeons-raids"]
+      "items": ["overview", "getting-started", "setting-lore", "world-geography", "dungeons-raids"]
     },
     {
       "group": "Power & Politics",
@@ -66,6 +66,42 @@
           "The Great Projects",
           "The Chronicles"
         ] }
+      ]
+    },
+    {
+      "id": "getting-started",
+      "title": "Getting Started",
+      "dek": "The demo cheatsheet: keys, and the first hours from pebbles to a settlement.",
+      "blocks": [
+        { "type": "table", "caption": "Keys", "headers": ["Key", "Action"], "rows": [
+          ["WASD / mouse", "Move / look"],
+          ["Alt", "Side-step dodge"],
+          ["Middle mouse", "Auto-run"],
+          ["Tab", "Free cursor — menus, clicking on people"],
+          ["LMB", "Basic attack of the weapon in hand"],
+          ["1–9, 0", "Skills"],
+          ["F", "Interact / pick up"],
+          ["B", "Backpack"],
+          ["V", "Character & gear"],
+          ["K", "Skills & weapon levels"],
+          ["M", "Map"],
+          ["G", "Guild (House)"],
+          ["J", "Wayfarer roster"],
+          ["L", "Lantern (Auto / On / Off)"],
+          ["N", "Build mode"],
+          ["Esc", "Menu"],
+          ["Delete", "Drop the item under the cursor"]
+        ] },
+        { "type": "h", "text": "The first hours" },
+        { "type": "olist", "items": [
+          "Make money first: pebbles, sticks and herbs lie all over the ground around the Wayfarer Village and need no tools. Sell them at the Crown orders board next to the mint.",
+          "Make tools: stick + stone hand recipes give crude tools — hatchet, pickaxe, sickle, knife. Put them in the TOOLS slots.",
+          "Gather raw materials, have workshop NPCs process them, and craft (or buy) gear at the player benches — see Crafting, Gathering & Materials.",
+          "Fight with whatever weapon you like — the weapon in your hand is your class. Wolves and deer are the easy start; the skeleton guards (the Forgotten) at the four strongholds hit hard — bring a group or a healer.",
+          "Keep Focus above 75% for +10% XP; carry a lantern at night.",
+          "Settle down: a House leader claims an Obelisk and builds a settlement on the claim grid (N). Talk to people — most of the economy is other people's needs."
+        ] },
+        { "type": "note", "status": "info", "text": "Source: the demo cheatsheet handed to players. It isn't dated and likely predates action.20: it places the skeleton guards at the watchtowers, which action.20 rebuilt as four strongholds — updated to strongholds here." }
       ]
     },
     {
@@ -191,6 +227,9 @@
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
+          { "text": "No classes — the weapon in your hand is your class: sword & shield = tank, two-hander = damage, staff = healer, bow = ranged. At weapon level 1 you only have the basic attack; each level unlocks one skill (K shows skills and weapon levels)." },
+          { "text": "Heavy armour protects more but slows you down. The weapon tooltip shows Attack Speed." },
+          { "text": "Dying leaves your body where you fell: a staff user can resurrect you, otherwise you respawn at the graveyard." },
           { "text": "Individual skill trees per weapon are planned.", "status": "confirmed" },
           { "text": "Commitment mechanic (basics commit you to the swing's direction/animation, no canceling mid-swing) was chosen after reviewing New World combat footage, aiming for a middle ground between New World (fast, weighty, laggy at scale) and Pax Dei (slower-paced)." },
           { "text": "Resources: Fervor (rage, physical weapons) and Lumen (mana, magic weapons) — only the relevant bar shows depending on equipped weapon; dual-resource loadouts are planned. Guard and Stamina also exist; Stamina is hidden by default." },
@@ -246,9 +285,11 @@
       "blocks": [
         { "type": "list", "items": [
           "Warrior's Focus and Artisan's Focus are separate meters. High Focus grants bonus XP (combat for Warrior's, crafting/gathering for Artisan's); low Focus applies a penalty.",
-          "Focus depletes as you perform the associated actions."
+          "Focus depletes as you perform the associated actions — long grinding drains it.",
+          "Above 75% Focus you earn +10% XP."
         ] },
         { "type": "p", "status": "live19", "text": "In the HUD, a Focus arc next to the HP bar appears only once Focus drops below 75% — i.e. once the bonus is actually gone, since that's the point it's worth knowing about." },
+        { "type": "note", "status": "info", "text": "Naming: the demo cheatsheet calls the crafting meter “Craftsman's Focus”; the DMs call it “Artisan's Focus”." },
         { "type": "note", "status": "idea", "text": "Planned: player-built taverns will regenerate Focus quickly once it's maxed out, encouraging players to socialize in cities." }
       ]
     },
@@ -345,6 +386,8 @@
       "blocks": [
         { "type": "h", "text": "Gold loss on death" },
         { "type": "p", "status": "live17", "text": "Dying drops your entire purse into the bag by your corpse. 20% is permanently lost; the remainder is a lootable entry in the loot window with Take / Take All options. This was deliberately set extreme to start, to be tuned down later if needed." },
+        { "type": "h", "text": "Starter money: the Crown orders board" },
+        { "type": "p", "text": "The Crown buys basic goods (pebbles, sticks, herbs) at fixed prices at the Crown orders board, next to the mint in the Wayfarer Village — the starter money tap. Trades between players happen player to player (Tab, click a player → Trade)." },
         { "type": "h", "text": "Mints & regional banking" },
         { "type": "list", "items": [
           "Mints act as regional banks: depositing gold protects it from theft/death loss and lets you spend it at markets/crafters within that region only. Mints are not global — moving gold elsewhere means carrying it in inventory, where it's stealable again.",
@@ -420,11 +463,25 @@
           ["Blight Hills", "North (patrolled by the Forgotten)", "Mithral"]
         ] },
         { "type": "list", "status": "live17", "items": [
-          "Tier 4 resources grow only in these three biomes — the plain “Blight” decoration around watchtowers elsewhere doesn't count.",
+          "The Blight is recognisable by purple air and violet crystals — stronger enemies, rarer materials.",
+          "Tier 4 resources grow only in these three biomes — the plain “Blight” decoration around the Forgotten's sites elsewhere (the old watchtowers, now the strongholds) doesn't count.",
           "Blighted wildlife (Blight Forest & Blight Plains): wolves, stags, and does — noticeably stronger, with changed skin (grey, blotched, no fur, darker/more sinister-looking); stags fight with their antlers and charge. Skinning blighted animals yields Blight Hide (T3).",
           "Tier 2 workshops process the four T4 resources (Mithral, Ancient Wood, Blight Fibre, Beast Hide) and require the region to be level 2.",
           "Holding an Obelisk near a Blight biome gives a House a unique material advantage."
         ] },
+        { "type": "h", "text": "Tools & gathering" },
+        { "type": "list", "items": [
+          "Pebbles, sticks and herbs lie on the ground and need no tools to pick up.",
+          "Crude tools come from stick + stone hand recipes: hatchet (wood), pickaxe (ore, stone), sickle (herbs), knife (skinning). They go in the TOOLS slots; iron tools come from the blacksmith later.",
+          "Trees, ore veins and stone deposits are shared: everyone hitting the same node works on the same progress bar.",
+          "Wolves and deer give hides, fat and bones — skin the body with a knife."
+        ] },
+        { "type": "h", "text": "Processors vs crafters" },
+        { "type": "table", "headers": ["", "Who", "What they do"], "rows": [
+          ["Processors", "Workshop NPCs in the village: sawmill, mason, smelter, tannery, loom, drying rack", "Turn raw materials into processed ones (logs → planks, ore → ingots, hides → leather) for a small Crown fee"],
+          ["Crafters", "Players at the benches: carpenter, anvil, leatherworker, tailor, alchemist", "Make components and finished goods — weapons, armour, tools, potions — from processed materials"]
+        ] },
+        { "type": "p", "text": "Workshop queues are private and keep running while you're away, up to 2 hours of work per workshop — hand in the materials, come back later." },
         { "type": "h", "text": "Other notes" },
         { "type": "list", "items": [
           "A mint exists for currency conversion/processing (see Economy & Banking).",
@@ -549,7 +606,7 @@
           "Three Wayfarer villages — one confirmed by name: Highmoor (village glade with a cemetery at its edge; nearby forest visibility fixed in the Friday hotfixes).",
           { "text": "Four Forgotten strongholds — Northreach, Heartland, Eastwood, Southmere — replaced the eight small watchtowers; each gate stands at the end of its road (see The Forgotten → Strongholds).", "status": "live20" },
           { "text": "Bridges: the huge terrain ramps at both ends of every bridge are gone — the bridge slope now meets the ground.", "status": "live20" },
-          "Rivers, roads, day/night cycle, weather.",
+          "Rivers, roads, day/night cycle, weather. Nights are dark: a belt lets you hang a lantern (from the blacksmith, lamp oil from the alchemist) and, for archers, a quiver.",
           "The Blackrust Gaol dungeon.",
           "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north)."
         ] }
