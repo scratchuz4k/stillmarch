@@ -4,7 +4,7 @@
     "subtitle": "A living record of the game's systems",
     "build": "0.2.0-action.20",
     "updated": "2026-09-22",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–22 Sept 2026), Sethan's official dev update, and patch notes for action.17, action.19 and action.20. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–23 Sept 2026), Sethan's official dev update, and patch notes for action.17, action.19 and action.20. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
@@ -28,7 +28,7 @@
     },
     {
       "group": "War & Survival",
-      "items": ["combat", "forgotten", "focus-system", "territory-control", "invasion"]
+      "items": ["combat", "forgotten", "focus-system", "territory-control", "armies", "invasion"]
     },
     {
       "group": "Trade & Craft",
@@ -471,6 +471,7 @@
           "The banner's owner activates it once ready, officially forming the Army.",
           "The Army travels to the target region to attempt the siege."
         ] },
+        { "type": "note", "status": "info", "text": "Army formation has since taken shape in development — roles, reward budgets and mercenary pay are now visible in the House window's Army tab. See Armies & Campaigns." },
         { "type": "list", "items": [
           "Sieges only happen during a siege window — each region sets its own attackable window.",
           "Each siege runs in its own separate game instance, to avoid the large-scale lag Sethan observed in Pax Dei.",
@@ -481,6 +482,40 @@
           "A siege's objective doesn't have to be capturing the region: it can instead target a Great Project standing there for outright destruction (see Great Projects & The Chronicles). Capturing the region destroys any Great Project in it as a side effect either way."
         ] },
         { "type": "note", "status": "info", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." }
+      ]
+    },
+    {
+      "id": "armies",
+      "title": "Armies & Campaigns",
+      "dek": "Pick a role, march on a campaign, get paid from the commander's treasury.",
+      "blocks": [
+        { "type": "p", "status": "confirmed", "text": "An army exists to prepare for and fight the instanced siege battle — but an army is still an army once the fight starts, and some of its work happens outside the instance, in the open world. An army marches only on a campaign: its commander names a target and sets aside a reward budget." },
+        { "type": "h", "text": "Roles" },
+        { "type": "p", "status": "confirmed", "text": "The role you pick when joining decides what you get rewarded for while the army's campaign is active. Soldiers hold the line, quartermasters carry supplies, scouts watch the roads, engineers work the siege engines." },
+        { "type": "table", "caption": "What each role is rewarded for (during the battle)", "headers": ["Role", "Rewarded for"], "rows": [
+          ["Soldier", "Capturing objectives — fights inside the battle instance"],
+          ["Quartermaster", "Supplying the army"],
+          ["Scout", "Marking and destroying enemy caravans — operates outside the battle instance, in the open world"],
+          ["Engineer", "Using siege weapons"],
+          ["Mercenary", "Paid a flat fee per attack window by the commander (e.g. 20 gold) rather than by role"]
+        ] },
+        { "type": "list", "status": "confirmed", "items": [
+          "Scouts can mark an enemy army — with a rough estimate of its size and supplies — or enemy caravans; marks appear on the map for a couple of minutes.",
+          "Role actions feed a contribution score, which determines how much each member gets paid.",
+          "Pay doesn't come from the game: the army's commander must have the money in their House's treasury."
+        ] },
+        { "type": "h", "text": "The Army tab (dev build, 23 Sept)" },
+        { "type": "list", "items": [
+          "The House window gained Heraldry, Diplomacy, Realm and Army tabs alongside Overview / Members / Regions / Bank.",
+          "An army entry shows its name and campaign (e.g. “Army of Straznicy Doliny · defense of Northreach Test”), its commander, where its banner was raised, and a mustering deadline (UTC).",
+          "Campaign terms are listed up front: reward budget (e.g. 50 gold), mercenary pay per attack window (e.g. 20 gold), and whether allies are welcome.",
+          "The roster counts each role (Soldier / Quartermaster / Scout / Engineer / Mercenary) and lists the Houses in the ranks; you can switch role (Serve as Soldier / Scout / Engineer) or leave the army.",
+          "“Armies of the realm” lists other armies and their state (e.g. mustering, stood down); “Raise an army” starts a new campaign."
+        ] },
+        { "type": "note", "status": "info", "text": "Seen in a screenshot of a development build shared on 23 Sept (test region “Northreach Test”), not in a numbered patch yet. The UI is placeholder — Sethan asked for no comments on it. The systems still need testers." },
+        { "type": "h", "text": "Role progression (pitch)" },
+        { "type": "note", "status": "idea", "text": "Scratch pitched Wardogs-style progression: instead of locking you into a role, the actions you perform earn XP in matching role trees, so a character can specialize over time (e.g. engineer unlocking ladders, rams, trebuchets and archer defenses; scout getting extra map pings). Sethan found it more sandboxy in a way, but won't add skill trees for this in the near future — too much work for something only useful during sieges. Role actions still count toward the contribution score." },
+        { "type": "note", "status": "info", "text": "Wardogs comparison: it also pays you at the end of a match against what you spent on weapons and armor (a gold sink). Stillmarch is similar, but lost gear gets destroyed, and the payer is a player House, not the game." }
       ]
     },
     {
@@ -627,7 +662,7 @@
       "blocks": [
         { "type": "p", "text": "Solo developer project (“passion project”), full creative control, no committee-driven feature gating. Heavy use of AI/agentic coding tools, both in the developer's day job and on this project." },
         { "type": "list", "items": [
-          "Reference points used repeatedly in discussion: New World (combat impact/weight, poor at scale), Pax Dei (slower combat pacing, UI comparisons, siege/lag cautionary tale — referenced as possibly winding down: “pax dei ded”), Albion, Lineage 2, EVE (sandbox/politics comparisons from the dev update).",
+          "Reference points used repeatedly in discussion: New World (combat impact/weight, poor at scale), Pax Dei (slower combat pacing, UI comparisons, siege/lag cautionary tale — referenced as possibly winding down: “pax dei ded”), Albion, Lineage 2, EVE (sandbox/politics comparisons from the dev update), Wardogs (role-based army XP and post-match pay, raised by Scratch on 23 Sept).",
           "Community channels: 🕯️｜lore (world fragments, deliberately incomplete), 💬｜general (design discussion, read by the dev), and a Playtests role in Channels & Roles for first access to playtest pings.",
           "Active forum/playtest reporters named in patch notes: Czubik, Lucyphere."
         ] }
