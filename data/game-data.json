@@ -516,6 +516,9 @@
           "House-owned wayfarers (Scratch): since villages are ruled by Houses, wayfarers could belong to the House — something it grinds for and shows off its wealth with. Declined: plots in a village don't have to be House-owned; anyone can become a citizen and rent a plot.",
           "Unlocking wayfarers in the open world, Conan Exiles–style (Scratch): free prisoners from low-level NPC camps to add them to the hiring window. Declined — “there's like a million games with npc workers”; hiring stays a button in the window."
         ] },
+        { "type": "h", "text": "Pitch: levelled House wayfarers" },
+        { "type": "note", "status": "idea", "text": "Scratch's follow-up pitch, after the House-owned idea was declined: keep wayfarers a House thing, so they show which Houses are active rather than which players (“look, these guys have a lvl 4 wayfarer”). Instead of being required to run a station, a wayfarer's level would unlock recipe tiers — a forge with no wayfarer makes white gear, a lvl 1 wayfarer adds green, lvl 2 green and blue, and so on up to gold. Wayfarers would be found in the open world as an exploration reward: lvl 1 in small camps all over the world, lvl 2 in elite camps, lvl 3 in dungeons, lvl 4 in raids — possibly a grind for trader Houses to take on PvE and dungeons. No response from Sethan beyond the lore correction below." },
+        { "type": "note", "status": "lore", "text": "Wayfarers aren't found in the Stillness: they're the same people as you, coming back to the continent — just House-less (Sethan, correcting the pitch's lore angle)." },
         { "type": "note", "status": "info", "text": "From the DMs of 23–24 Sept." }
       ]
     },
