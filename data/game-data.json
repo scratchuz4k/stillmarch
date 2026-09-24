@@ -4,7 +4,7 @@
     "subtitle": "A living record of the game's systems",
     "build": "0.2.0-action.20",
     "updated": "2026-09-22",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–23 Sept 2026), Sethan's official dev update, the demo cheatsheet, and patch notes for action.17, action.19 and action.20. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, and patch notes for action.17, action.19 and action.20. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
@@ -32,7 +32,7 @@
     },
     {
       "group": "Trade & Craft",
-      "items": ["crafting-materials", "building-logistics"]
+      "items": ["crafting-materials", "building-logistics", "wayfarers"]
     },
     {
       "group": "Interface",
@@ -144,6 +144,12 @@
           "Baronies allied under an elected king (elections every 4 weeks; no single barony can hold more than 30% of the vote) form a kingdom.",
           "Allied kingdoms form an empire — the server is only expected to support 2–3 empires at once.",
           "The crown is borrowed, never owned."
+        ] },
+        { "type": "h", "text": "Regions vs Houses" },
+        { "type": "list", "status": "confirmed", "items": [
+          "An Obelisk isn't the House: the House just rules the region.",
+          "Anyone can become a citizen of a region by clicking a button on its Obelisk, and anyone can rent a plot — plots in a village don't have to be House-owned.",
+          "Regions will have NPCs tied to the region itself, such as NPC guards, which are also hired (see Wayfarers & NPC Workers)."
         ] },
         { "type": "note", "status": "lore", "text": "Betrayal is built into the culture: it gets written into the Chronicles, and in some Houses is considered an honor rather than a shame." }
       ]
@@ -478,10 +484,10 @@
         ] },
         { "type": "h", "text": "Processors vs crafters" },
         { "type": "table", "headers": ["", "Who", "What they do"], "rows": [
-          ["Processors", "Workshop NPCs in the village: sawmill, mason, smelter, tannery, loom, drying rack", "Turn raw materials into processed ones (logs → planks, ore → ingots, hides → leather) for a small Crown fee"],
+          ["Processors", "Workshop stations in the village, worked by NPCs: sawmill, mason, smelter, tannery, loom, drying rack", "Turn raw materials into processed ones (logs → planks, ore → ingots, hides → leather) for a small Crown fee"],
           ["Crafters", "Players at the benches: carpenter, anvil, leatherworker, tailor, alchemist", "Make components and finished goods — weapons, armour, tools, potions — from processed materials"]
         ] },
-        { "type": "p", "text": "Workshop queues are private and keep running while you're away, up to 2 hours of work per workshop — hand in the materials, come back later." },
+        { "type": "p", "text": "Workshop queues are private and keep running while you're away, up to 2 hours of work per workshop — hand in the materials, come back later. A station only works with a wayfarer assigned to it (see Wayfarers & NPC Workers)." },
         { "type": "h", "text": "Other notes" },
         { "type": "list", "items": [
           "A mint exists for currency conversion/processing (see Economy & Banking).",
@@ -489,6 +495,28 @@
           "Weapons have associated “spells” tied to them — a system still being tested.",
           "Item/crafting icons are currently screenshots of the actual item mesh, not custom-drawn."
         ] }
+      ]
+    },
+    {
+      "id": "wayfarers",
+      "title": "Wayfarers & NPC Workers",
+      "dek": "Hired NPC workers that staff the stations and bring life to the cities.",
+      "blocks": [
+        { "type": "list", "status": "confirmed", "items": [
+          "Wayfarers are player-owned NPC workers: you hire them to work for you. They belong to the player, not the House.",
+          "Hiring is a button in the hiring window (the cheatsheet's J key opens the Wayfarer roster).",
+          "2 per player by default; there will be ways to increase that (not detailed yet).",
+          "A wayfarer works a crafting/processing station — without one the station doesn't work. You still queue up resources yourself (e.g. ores in a smelter) and can do anything else while the queue runs.",
+          "Sethan's comparison: no different from a Pax Dei smelter, except that instead of coal you provide gold."
+        ] },
+        { "type": "p", "status": "confirmed", "text": "Region NPCs are a separate kind: NPCs tied to the region itself, such as NPC guards, which will also be hired." },
+        { "type": "note", "status": "info", "text": "Why they exist: to bring life to the cities and the game, avoiding the barren-wasteland feel of most Pax Dei cities." },
+        { "type": "h", "text": "Ideas that were turned down" },
+        { "type": "list", "items": [
+          "House-owned wayfarers (Scratch): since villages are ruled by Houses, wayfarers could belong to the House — something it grinds for and shows off its wealth with. Declined: plots in a village don't have to be House-owned; anyone can become a citizen and rent a plot.",
+          "Unlocking wayfarers in the open world, Conan Exiles–style (Scratch): free prisoners from low-level NPC camps to add them to the hiring window. Declined — “there's like a million games with npc workers”; hiring stays a button in the window."
+        ] },
+        { "type": "note", "status": "info", "text": "From the DMs of 23–24 Sept." }
       ]
     },
     {
