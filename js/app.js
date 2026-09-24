@@ -72,7 +72,8 @@
   function buildShell() {
     document.title = state.data.site.title;
     $('#brandMark').textContent = state.data.site.title;
-    $('#brandSub').textContent = 'Build ' + state.data.site.build + ' · updated ' + state.data.site.updated;
+    $('#brandSub').textContent = 'Build ' + state.data.site.build + ' · ' + state.data.site.updated;
+    $('#brandSub').title = 'Build ' + state.data.site.build + ', updated ' + state.data.site.updated;
     $('#topbarTitle').textContent = state.data.site.title;
 
     buildNav();
