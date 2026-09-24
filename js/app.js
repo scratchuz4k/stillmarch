@@ -263,10 +263,34 @@
     render(id);
   }
 
+  /* ---------------- Analytics (GoatCounter) ---------------- */
+
+  // Sections live behind #hashes, so GoatCounter's automatic count on page
+  // load only ever sees "/". Count each section as its own page view instead.
+  function trackView(id) {
+    if (state.trackedId === id) return;
+    var gc = window.goatcounter;
+    if (!gc || !gc.count) {
+      state.pendingTrackId = id;
+      return;
+    }
+    state.trackedId = id;
+    state.pendingTrackId = null;
+    gc.count({ path: location.pathname + '#' + id, title: state.sectionsById[id].title });
+  }
+
+  var gcScript = document.getElementById('goatcounter');
+  if (gcScript) {
+    gcScript.addEventListener('load', function () {
+      if (state.pendingTrackId) trackView(state.pendingTrackId);
+    });
+  }
+
   function render(id) {
     var section = state.sectionsById[id];
     if (!section) return;
     state.currentId = id;
+    trackView(id);
 
     expandGroupFor(id);
     $$('.nav-item').forEach(function (btn) {
