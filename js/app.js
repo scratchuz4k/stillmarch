@@ -276,6 +276,8 @@
     main.innerHTML = '';
     var content = el('div', { class: 'content' });
 
+    if (section.hero) content.appendChild(renderHero(section.hero));
+
     var head = el('div', { class: 'section-head' });
     var eyebrow = findGroupFor(id);
     head.appendChild(el('div', { class: 'section-head__eyebrow', text: eyebrow }));
@@ -387,6 +389,12 @@
       if (g.items.indexOf(id) !== -1) found = g.group;
     });
     return found;
+  }
+
+  function renderHero(hero) {
+    var fig = el('figure', { class: 'hero hero--' + (hero.shape || 'wide') });
+    fig.appendChild(el('img', { src: hero.src, alt: hero.alt || '', loading: 'eager', decoding: 'async' }));
+    return fig;
   }
 
   function renderBlock(block) {

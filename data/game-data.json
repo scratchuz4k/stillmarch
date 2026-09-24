@@ -52,6 +52,7 @@
       "id": "overview",
       "title": "Elevator Pitch",
       "dek": "A dark-medieval sandbox MMO whose history is written entirely by the players.",
+      "hero": { "src": "assets/banner.webp", "alt": "Stillmarch logo: a four-pointed compass star inside a bronze circle, beside the wordmark STILLMARCH" },
       "status": "confirmed",
       "blocks": [
         { "type": "p", "text": "Stillmarch is a dark-medieval, open-world sandbox MMO built on PvP, building, crafting, and politics. There is no main quest and no NPC king telling anyone what to do — the server's history is written entirely by the players: alliances, betrayals, who took which region from whom, and when.", "status": "confirmed" },
@@ -108,6 +109,7 @@
       "id": "setting-lore",
       "title": "Setting & Lore",
       "dek": "Valdris, a thousand years after the Stillness.",
+      "hero": { "src": "assets/emblem.webp", "alt": "The Stillmarch emblem: a steel compass star with a glowing blue core, framed by a bronze circle", "shape": "square" },
       "blocks": [
         { "type": "p", "text": "The continent is called Valdris. A thousand years ago the empire Perpetua united it, ended every war, and declared history finished." },
         { "type": "p", "text": "Then came the Stillness — not an invasion or a plague, but a slow cultural collapse: people simply stopped finishing things. Within a few years the whole continent went silent." },
@@ -518,8 +520,7 @@
         ] },
         { "type": "h", "text": "Pitch: levelled House wayfarers" },
         { "type": "note", "status": "idea", "text": "Scratch's follow-up pitch, after the House-owned idea was declined: keep wayfarers a House thing, so they show which Houses are active rather than which players (“look, these guys have a lvl 4 wayfarer”). Instead of being required to run a station, a wayfarer's level would unlock recipe tiers — a forge with no wayfarer makes white gear, a lvl 1 wayfarer adds green, lvl 2 green and blue, and so on up to gold. Wayfarers would be found in the open world as an exploration reward: lvl 1 in small camps all over the world, lvl 2 in elite camps, lvl 3 in dungeons, lvl 4 in raids — possibly a grind for trader Houses to take on PvE and dungeons. No response from Sethan beyond the lore correction below." },
-        { "type": "note", "status": "lore", "text": "Wayfarers aren't found in the Stillness: they're the same people as you, coming back to the continent — just House-less (Sethan, correcting the pitch's lore angle)." },
-        { "type": "note", "status": "info", "text": "From the DMs of 23–24 Sept." }
+        { "type": "note", "status": "lore", "text": "Wayfarers aren't found in the Stillness: they're the same people as you, coming back to the continent — just House-less (Sethan, correcting the pitch's lore angle)." }
       ]
     },
     {
