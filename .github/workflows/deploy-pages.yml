@@ -14,6 +14,12 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+# One Pages site, two apps:
+#   /            -> dev/  (the systems reference, deployed as-is)
+#   /preview/    -> web/  (the Vue landing page, unlisted)
+env:
+  PREVIEW_PATH: preview
+
 jobs:
   deploy:
     environment:
@@ -23,12 +29,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Build landing page
+        working-directory: web
+        run: |
+          npm ci
+          npm run build
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r dev/. _site/
+          mkdir -p "_site/$PREVIEW_PATH"
+          cp -r web/dist/. "_site/$PREVIEW_PATH/"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "./_site"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
