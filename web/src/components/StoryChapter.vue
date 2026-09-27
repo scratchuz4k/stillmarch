@@ -6,7 +6,11 @@ defineProps<{ chapter: Chapter; side: 'left' | 'right' }>()
 </script>
 
 <template>
-  <section class="chapter" :class="[`chapter--${side}`, { 'chapter--blight': chapter.tone === 'blight' }]">
+  <section
+    class="chapter"
+    :class="[`chapter--${side}`, { 'chapter--blight': chapter.tone === 'blight' }]"
+    :data-compass-side="side === 'left' ? 1 : -1"
+  >
     <article class="panel">
       <header class="panel__head">
         <span v-reveal class="panel__numeral" aria-hidden="true">{{ chapter.numeral }}</span>
@@ -94,6 +98,42 @@ defineProps<{ chapter: Chapter; side: 'left' | 'right' }>()
 
 @media (min-width: 600px) {
   .panel { padding: 3rem 2.75rem 2.75rem; }
+}
+
+/* Large screens: the panel becomes a full-height column, half the width, flush
+   against its side of the screen. */
+@media (min-width: 1024px) {
+  .chapter {
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    min-height: 100svh;
+    padding: 10svh 3.5vw;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .chapter--left .panel { border-right: 1px solid var(--tone-line); }
+  .chapter--right .panel { border-left: 1px solid var(--tone-line); }
+
+  .panel::before {
+    top: 20%;
+    bottom: 20%;
+  }
+
+  /* Keep line length readable on very wide monitors. */
+  .panel > * {
+    width: 100%;
+    max-width: 34rem;
+    margin-inline: auto;
+  }
 }
 
 .panel__head {

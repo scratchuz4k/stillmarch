@@ -315,9 +315,37 @@ onMounted(() => {
   const pointer = { x: 0, y: 0 }
   const pointerSmooth = { x: 0, y: 0 }
 
+  // On wide screens the compass slides partly into the half of the screen the
+  // text panel leaves free. Sections declare that with data-compass-side:
+  // 1 = push right, -1 = push left, 0 = centred.
+  const SIDE_SHIFT = 0.28 // fraction of the half-screen: part-way over, not fully
+  let anchors: { center: number; side: number }[] = []
+  let sideTarget = 0
+  let side = 0
+
+  const measure = () => {
+    anchors = [...document.querySelectorAll<HTMLElement>('[data-compass-side]')].map((el) => {
+      const r = el.getBoundingClientRect()
+      return { center: r.top + window.scrollY + r.height / 2, side: Number(el.dataset.compassSide) || 0 }
+    })
+  }
+
   const onScroll = () => {
     const max = document.documentElement.scrollHeight - window.innerHeight
     scrollTarget = max > 0 ? window.scrollY / max : 0
+
+    sideTarget = 0
+    if (window.innerWidth < 1024 || anchors.length === 0) return
+    // Blend between the two sections either side of the viewport's centre.
+    const v = window.scrollY + window.innerHeight / 2
+    const next = anchors.findIndex((a) => a.center >= v)
+    if (next <= 0) sideTarget = anchors[0]!.side
+    else if (next === -1) sideTarget = anchors[anchors.length - 1]!.side
+    else {
+      const a = anchors[next - 1]!
+      const b = anchors[next]!
+      sideTarget = a.side + (b.side - a.side) * smoothstep(0, 1, (v - a.center) / (b.center - a.center))
+    }
   }
   const onPointer = (e: PointerEvent) => {
     pointer.x = (e.clientX / window.innerWidth) * 2 - 1
@@ -331,12 +359,19 @@ onMounted(() => {
     // Pull back on narrow screens so the ring stays in frame.
     camera.fov = w / h < 0.8 ? 62 : 40
     camera.updateProjectionMatrix()
+    measure()
     onScroll()
   }
 
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('pointermove', onPointer, { passive: true })
   window.addEventListener('resize', onResize)
+  // Section heights shift as fonts load and content reveals; keep anchors fresh.
+  const layoutObserver = new ResizeObserver(() => {
+    measure()
+    onScroll()
+  })
+  layoutObserver.observe(document.body)
   onResize()
 
   // --- Loop ----------------------------------------------------------------
@@ -353,11 +388,12 @@ onMounted(() => {
     scroll += (scrollTarget - scroll) * ease
     pointerSmooth.x += (pointer.x - pointerSmooth.x) * ease
     pointerSmooth.y += (pointer.y - pointerSmooth.y) * ease
+    side += (sideTarget - side) * ease
 
     const spin = reducedMotion ? 0 : t * 0.08
 
     // Scroll story: the compass turns a full revolution and tilts back,
-    // while the camera dollies in and drifts to one side.
+    // while the camera dollies in.
     compass.rotation.z = -scroll * Math.PI * 2 + spin
     compass.rotation.x = -scroll * 1.1 + pointerSmooth.y * 0.15
     compass.rotation.y = Math.sin(scroll * Math.PI) * 0.6 + pointerSmooth.x * 0.25
@@ -365,9 +401,14 @@ onMounted(() => {
     compass.position.y = Math.max(0, 1 - scroll * 8) * 0.7
 
     camera.position.z = 9 - Math.sin(scroll * Math.PI) * 3
-    camera.position.x = Math.sin(scroll * Math.PI * 2) * 1.6
     camera.position.y = -scroll * 1.2
     camera.lookAt(0, -scroll * 0.6, 0)
+
+    // Convert the side shift from a screen fraction to world units at the
+    // compass's distance from the camera.
+    const halfWidth =
+      camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect
+    compass.position.x = side * SIDE_SHIFT * halfWidth
 
     // Blight: nothing in the hero, fully taken by the closing section.
     const blight = smoothstep(0.06, 0.92, scroll)
@@ -425,6 +466,7 @@ onMounted(() => {
 
   cleanup = () => {
     cancelAnimationFrame(frame)
+    layoutObserver.disconnect()
     window.removeEventListener('scroll', onScroll)
     window.removeEventListener('pointermove', onPointer)
     window.removeEventListener('resize', onResize)

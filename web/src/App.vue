@@ -13,7 +13,7 @@ const REFERENCE_URL = '../'
   <div class="vignette" aria-hidden="true"></div>
 
   <main class="page">
-    <section class="hero">
+    <section class="hero" data-compass-side="0">
       <h1 v-reveal class="hero__title ruled">{{ hero.title }}</h1>
       <p v-reveal="1" class="hero__sub">{{ hero.sub }}</p>
       <span v-reveal="2" class="hero__cue" aria-hidden="true">Scroll to begin</span>
@@ -26,7 +26,7 @@ const REFERENCE_URL = '../'
       :side="i % 2 ? 'right' : 'left'"
     />
 
-    <section class="closing">
+    <section class="closing" data-compass-side="0">
       <h2 v-reveal class="closing__title ruled">{{ closing.title }}</h2>
 
       <ol v-reveal="1" class="path" aria-label="Road to launch">
