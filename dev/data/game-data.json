@@ -1,23 +1,26 @@
 {
   "site": {
-    "title": "The Chronicles of Valdris",
-    "subtitle": "A living record of Stillmarch's systems",
-    "build": "0.2.0-action.19",
-    "updated": "2026-09-22",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–22 Sept 2026), Sethan's official dev update, and patch notes for action.17 and action.19. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "title": "Stillmarch",
+    "subtitle": "A living record of the game's systems",
+    "build": "0.2.0-action.20",
+    "updated": "2026-09-24",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, and patch notes for action.17, action.19 and action.20. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
-    "confirmed": { "label": "Confirmed", "short": "Dev update", "desc": "Stated in Sethan's official “What is Stillmarch, actually?” post." },
-    "live19": { "label": "Live · action.19", "short": "action.19", "desc": "Shipped and testable as of build 0.2.0-action.19 (21 Sept). Supersedes action.17 where numbers conflict." },
-    "live17": { "label": "Live · action.17", "short": "action.17", "desc": "Shipped and testable as of build 0.2.0-action.17 (20 Sept)." },
-    "idea": { "label": "Backlog", "short": "Idea", "desc": "Proposed in conversation, not implemented — in several cases explicitly deferred (e.g. to 1.0)." },
-    "bug-open": { "label": "Open issue", "short": "Open", "desc": "Reported by testers, not yet resolved as of the latest build." },
-    "bug-fixed": { "label": "Fixed", "short": "Fixed", "desc": "Reported by testers and resolved in a subsequent build." }
+    "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live20": { "label": "Implemented", "short": "action.20", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.20 (22 Sept). Supersedes earlier builds where numbers conflict." },
+    "live19": { "label": "Implemented", "short": "action.19", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.19 (21 Sept). Supersedes action.17 where numbers conflict." },
+    "live17": { "label": "Implemented", "short": "action.17", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.17 (20 Sept)." },
+    "bug-fixed": { "label": "Implemented", "short": "Fixed", "group": "implemented", "desc": "Implemented, and correctly so — reported broken by testers, then resolved in a later build." },
+    "bug-open": { "label": "Open issue", "short": "Open", "group": "issue", "desc": "Implemented, but currently broken — reported by testers, not yet resolved." },
+    "idea": { "label": "Backlog", "short": "Idea", "group": "backlog", "desc": "Floated in conversation only — not announced, not implemented, no commitment either way." },
+    "lore": { "label": "Lore", "short": "Lore", "group": "narrative", "desc": "World/narrative flavor, not a system or its status — setting detail as written." },
+    "info": { "label": "Information", "short": "Info", "group": "narrative", "desc": "A factual or contextual aside — a number, a clarification, dev process — that isn't itself a build or backlog status." }
   },
   "nav": [
     {
       "group": "The World",
-      "items": ["overview", "setting-lore", "world-geography", "dungeons-raids"]
+      "items": ["overview", "getting-started", "setting-lore", "world-geography", "dungeons-raids"]
     },
     {
       "group": "Power & Politics",
@@ -25,19 +28,23 @@
     },
     {
       "group": "War & Survival",
-      "items": ["combat", "forgotten", "focus-system", "territory-control", "invasion"]
+      "items": ["combat", "forgotten", "focus-system", "territory-control", "armies", "invasion"]
     },
     {
       "group": "Trade & Craft",
-      "items": ["crafting-materials", "building-logistics"]
+      "items": ["crafting-materials", "building-logistics", "wayfarers"]
     },
     {
       "group": "Interface",
-      "items": ["ui-hud"]
+      "items": ["ui-hud", "party-social"]
     },
     {
       "group": "The Record",
       "items": ["roadmap", "patch-notes", "dev-testing", "bounty-system", "community-meta"]
+    },
+    {
+      "group": "Backlog",
+      "items": ["backlog"]
     }
   ],
   "sections": [
@@ -45,11 +52,12 @@
       "id": "overview",
       "title": "Elevator Pitch",
       "dek": "A dark-medieval sandbox MMO whose history is written entirely by the players.",
+      "hero": { "src": "assets/banner.webp", "alt": "Stillmarch logo: a four-pointed compass star inside a bronze circle, beside the wordmark STILLMARCH" },
       "status": "confirmed",
       "blocks": [
         { "type": "p", "text": "Stillmarch is a dark-medieval, open-world sandbox MMO built on PvP, building, crafting, and politics. There is no main quest and no NPC king telling anyone what to do — the server's history is written entirely by the players: alliances, betrayals, who took which region from whom, and when.", "status": "confirmed" },
         { "type": "p", "text": "Reference points the developer named directly: Albion, Lineage 2, EVE, and Pax Dei.", "status": "confirmed" },
-        { "type": "note", "tone": "idea", "text": "The developer is explicit this is a passion project, not an attempt at “WoW 2.0,” and that he's deliberately avoiding an Ashes of Creation–style situation — announcing a hundred systems and shipping only a tenth. The scope is large, but design centers on a small number of systems that all interlock." },
+        { "type": "note", "status": "info", "text": "The developer is explicit this is a passion project, not an attempt at “WoW 2.0,” and that he's deliberately avoiding an Ashes of Creation–style situation — announcing a hundred systems and shipping only a tenth. The scope is large, but design centers on a small number of systems that all interlock." },
         { "type": "h", "text": "The Core Design Chain" },
         { "type": "chain", "items": [
           "Rare resources",
@@ -62,9 +70,46 @@
       ]
     },
     {
+      "id": "getting-started",
+      "title": "Getting Started",
+      "dek": "The demo cheatsheet: keys, and the first hours from pebbles to a settlement.",
+      "blocks": [
+        { "type": "table", "caption": "Keys", "headers": ["Key", "Action"], "rows": [
+          ["WASD / mouse", "Move / look"],
+          ["Alt", "Side-step dodge"],
+          ["Middle mouse", "Auto-run"],
+          ["Tab", "Free cursor — menus, clicking on people"],
+          ["LMB", "Basic attack of the weapon in hand"],
+          ["1–9, 0", "Skills"],
+          ["F", "Interact / pick up"],
+          ["B", "Backpack"],
+          ["V", "Character & gear"],
+          ["K", "Skills & weapon levels"],
+          ["M", "Map"],
+          ["G", "Guild (House)"],
+          ["J", "Wayfarer roster"],
+          ["L", "Lantern (Auto / On / Off)"],
+          ["N", "Build mode"],
+          ["Esc", "Menu"],
+          ["Delete", "Drop the item under the cursor"]
+        ] },
+        { "type": "h", "text": "The first hours" },
+        { "type": "olist", "items": [
+          "Make money first: pebbles, sticks and herbs lie all over the ground around the Wayfarer Village and need no tools. Sell them at the Crown orders board next to the mint.",
+          "Make tools: stick + stone hand recipes give crude tools — hatchet, pickaxe, sickle, knife. Put them in the TOOLS slots.",
+          "Gather raw materials, have workshop NPCs process them, and craft (or buy) gear at the player benches — see Crafting, Gathering & Materials.",
+          "Fight with whatever weapon you like — the weapon in your hand is your class. Wolves and deer are the easy start; the skeleton guards (the Forgotten) at the four strongholds hit hard — bring a group or a healer.",
+          "Keep Focus above 75% for +10% XP; carry a lantern at night.",
+          "Settle down: a House leader claims an Obelisk and builds a settlement on the claim grid (N). Talk to people — most of the economy is other people's needs."
+        ] },
+        { "type": "note", "status": "info", "text": "Source: the demo cheatsheet handed to players. It isn't dated and likely predates action.20: it places the skeleton guards at the watchtowers, which action.20 rebuilt as four strongholds — updated to strongholds here." }
+      ]
+    },
+    {
       "id": "setting-lore",
       "title": "Setting & Lore",
       "dek": "Valdris, a thousand years after the Stillness.",
+      "hero": { "src": "assets/emblem.webp", "alt": "The Stillmarch emblem: a steel compass star with a glowing blue core, framed by a bronze circle", "shape": "square" },
       "blocks": [
         { "type": "p", "text": "The continent is called Valdris. A thousand years ago the empire Perpetua united it, ended every war, and declared history finished." },
         { "type": "p", "text": "Then came the Stillness — not an invasion or a plague, but a slow cultural collapse: people simply stopped finishing things. Within a few years the whole continent went silent." },
@@ -77,7 +122,7 @@
         ] },
         { "type": "quote", "text": "Remember shame rather than remember nothing.", "cite": "Returner custom — Returners write everything down, including their own betrayals" },
         { "type": "p", "text": "Tradition: every player-built building has one small detail left deliberately unfinished, for reasons nobody can explain." },
-        { "type": "note", "tone": "idea", "text": "Overall tone: a world winding down, carried by a small, stubborn, possibly unjustified hope that this time civilization holds." }
+        { "type": "note", "status": "lore", "text": "Overall tone: a world winding down, carried by a small, stubborn, possibly unjustified hope that this time civilization holds." }
       ]
     },
     {
@@ -102,7 +147,13 @@
           "Allied kingdoms form an empire — the server is only expected to support 2–3 empires at once.",
           "The crown is borrowed, never owned."
         ] },
-        { "type": "note", "tone": "lore", "text": "Betrayal is built into the culture: it gets written into the Chronicles, and in some Houses is considered an honor rather than a shame." }
+        { "type": "h", "text": "Regions vs Houses" },
+        { "type": "list", "status": "confirmed", "items": [
+          "An Obelisk isn't the House: the House just rules the region.",
+          "Anyone can become a citizen of a region by clicking a button on its Obelisk, and anyone can rent a plot — plots in a village don't have to be House-owned.",
+          "Regions will have NPCs tied to the region itself, such as NPC guards, which are also hired (see Wayfarers & NPC Workers)."
+        ] },
+        { "type": "note", "status": "lore", "text": "Betrayal is built into the culture: it gets written into the Chronicles, and in some Houses is considered an honor rather than a shame." }
       ]
     },
     {
@@ -110,14 +161,14 @@
       "title": "Combat",
       "dek": "Crosshair-aimed action combat where the animation is the clock.",
       "blocks": [
-        { "type": "p", "text": "Base kit: action combat, crosshair aiming, not tab-target. Five weapon stances — sword & shield, greatsword, staff, bow, and bare hands — each with distinct animations and skills.", "status": "confirmed" },
+        { "type": "p", "text": "Base kit: action combat, crosshair aiming, not tab-target. Five weapon stances — sword & shield, greatsword, staff, bow, and bare hands — each with distinct animations and skills.", "status": "live17" },
         { "type": "h", "text": "Basic attack commit & combos" },
         { "type": "list", "status": "live19", "items": [
           "The animation is the clock: a hit lands exactly at the clip's contact frame; the next swing can only start once the current swing ends. The server enforces the same timing, so client and server agree on what landed.",
           "Direction locks at the start of the swing — turning only returns during recovery. Movement speed during a swing drops to 70%.",
           "Combo chains: clicking inside the “chain window” starts the next swing immediately; clicking earlier buffers the input; holding LMB keeps swinging without dropping to idle. Chains use real combo variants (sword A1→A2→A3; greatsword A1→A2→A3_B); the last swing in a chain is a finisher at x1.3 damage. The crosshair ring lights up when the chain window is open.",
           "Root motion on basics: the character moves exactly as animated during a swing (no artificial forward step); the server plays the identical variant so other players see the same thing you do. A swing now stops at the target instead of pushing through it.",
-          "Legs no longer slide while swinging on the move — the swing plays on the upper body, legs are driven by locomotion separately.",
+          "Legs no longer slide while swinging on the move — the swing plays on the upper body, legs are driven by locomotion separately (extended to skills in action.20).",
           "Dodge (Alt) during a basic's recovery now works correctly — the dodge impulse was previously getting lost under the animation.",
           "Block (RMB) pressed during a swing's active window now waits for recovery before engaging, same as dodge.",
           "Staff: Holy Bolt runs on the same commit system — a 3-variant chain with a finisher; you can shoot while moving (50% movement slow while casting).",
@@ -125,6 +176,21 @@
           "Hit sounds are quieter and throttled to at most once every 0.4s per target, so a rapid combo no longer thuds on a repetitive loop.",
           "Buff/debuff replication rewritten: effect state (Sunder, bleed, slow, stun, Stagger, Bone Wall, taunt, mob casting) is now correctly replicated per-character — fixed a bug where you could see debuff icons on players who didn't actually have that debuff."
         ] },
+        { "type": "h", "text": "Skill commit & spin attacks" },
+        { "type": "list", "status": "live20", "items": [
+          "Basic ↔ skill commit: a basic pressed during a skill waits for the skill to end; a skill pressed during a basic swing waits for the chain window.",
+          "The chain window opens 0.2s before the end of every swing — a click inside it is rewarded with an immediate follow-up, a held LMB waits until the swing ends.",
+          "Spin attacks — Great Sweep, Rend, Shattering Sweep, Execute — play on the full body with a movement lock.",
+          "Great Sweep deals its damage in 3 portions during the spin and shows a channel bar.",
+          "Skills cast while moving play on the upper body — legs come from locomotion, no sliding."
+        ] },
+        { "type": "h", "text": "Healing & support" },
+        { "type": "list", "status": "live20", "items": [
+          "T cycles through allies to heal — party first, alive before dead. The cast bar names the target: “Holy Mending → Name”, or “Self”.",
+          "Target too far: an instant heal is refused before the cast; a cast-time heal lands on you instead and shows a warning. Party frames flash red with “Too far”.",
+          "Heals and buffs only work on allies — party and House members — never on enemies."
+        ] },
+        { "type": "note", "status": "bug-fixed", "text": "Fixed, action.20: the HoT (Renew) kept healing noticeably longer than its buff icon's counter showed — the kit's clock mixed real time with game time, and refreshing the buff stacked a second tick loop. It now ends together with its icon." },
         { "type": "h", "text": "Block & guard" },
         { "type": "list", "status": "live17", "items": [
           "RMB, melee weapons only. Holding RMB raises your guard; a block bar appears above the cast bar.",
@@ -135,12 +201,13 @@
           "Dedicated guard-up animations for sword & shield and greatsword; a blocked hit sparks and rings, a guard break plays a parry animation.",
           "Blockable: sweeps and cones, including the skeleton Heavy Blow. Not blockable: ground-effect abilities — Rain of Arrows, Ground Slam, Radiance, the Iron Vigil aura, and bleeds."
         ] },
+        { "type": "p", "status": "live20", "text": "Guard responsiveness: the guard rises the instant RMB is pressed (no longer waiting for server replication) and ×2.2 faster; releasing RMB lowers the shield at once." },
         { "type": "table", "caption": "Block pool by item tier", "headers": ["Item", "Block Rating"], "rows": [
           ["Sword", "40–60"],
           ["Greatsword", "55–80"],
           ["Shield", "120–210"]
         ] },
-        { "type": "note", "tone": "bug", "text": "Fixed, action.19: blocking with a sheathed weapon previously let you guard bare-handed — now blocking properly draws the weapon first, like attacking does." },
+        { "type": "note", "status": "bug-fixed", "text": "Fixed, action.19: blocking with a sheathed weapon previously let you guard bare-handed — now blocking properly draws the weapon first, like attacking does." },
         { "type": "h", "text": "Melee basics (arc hits)" },
         { "type": "p", "status": "live17", "text": "Basic swings hit every enemy in a cone in front of you, crosshair-aimed (your body turns into the swing), up to 8 targets." },
         { "type": "table", "caption": "Reach & arc by weapon (action.17)", "headers": ["Weapon", "Range", "Arc"], "rows": [
@@ -152,7 +219,7 @@
           "Dodge (Alt) shows a small white cooldown bar under the crosshair; the dodge icon was removed from the skill bar.",
           "Character panel has Attack Speed and Block Rating rows."
         ] },
-        { "type": "note", "tone": "bug", "text": "Fixed, action.17: hitting multiple enemies at once previously only showed 2 damage numbers, due to an engine RPC cap." },
+        { "type": "note", "status": "bug-fixed", "text": "Fixed, action.17: hitting multiple enemies at once previously only showed 2 damage numbers, due to an engine RPC cap." },
         { "type": "h", "text": "Balance tuning (post-21 Sept playtest)" },
         { "type": "list", "status": "live19", "items": [
           "Fervor: a hit taken now gives 50% less Fervor; Fervor starts draining 7s after the last exchange of damage (was ~18s in action.17) — much faster drain onset.",
@@ -167,18 +234,22 @@
         ] },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
-          { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon). Individual skill trees per weapon are planned.", "status": "confirmed" },
+          { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
+          { "text": "No classes — the weapon in your hand is your class: sword & shield = tank, two-hander = damage, staff = healer, bow = ranged. At weapon level 1 you only have the basic attack; each level unlocks one skill (K shows skills and weapon levels)." },
+          { "text": "Heavy armour protects more but slows you down. The weapon tooltip shows Attack Speed." },
+          { "text": "Dying leaves your body where you fell: a staff user can resurrect you, otherwise you respawn at the graveyard." },
+          { "text": "Individual skill trees per weapon are planned.", "status": "confirmed" },
           { "text": "Commitment mechanic (basics commit you to the swing's direction/animation, no canceling mid-swing) was chosen after reviewing New World combat footage, aiming for a middle ground between New World (fast, weighty, laggy at scale) and Pax Dei (slower-paced)." },
           { "text": "Resources: Fervor (rage, physical weapons) and Lumen (mana, magic weapons) — only the relevant bar shows depending on equipped weapon; dual-resource loadouts are planned. Guard and Stamina also exist; Stamina is hidden by default." },
           { "text": "Resource cost tuning: Lumen ability costs +25% (Mending 19, Renewal 25, Blessing 31, Resurrect 63, Combat Res 100); Fervor generation −40% (further reduced again in action.19).", "status": "live17" },
           { "text": "Action bar: roughly 8–10 spell slots plus extra consumable/item slots." },
           { "text": "Damage/healing numbers should only display for the player, not allies/party; drop the “+” on healing numbers; damage numbers slightly smaller.", "status": "bug-open" },
+          { "text": "Partly addressed in action.20: other people's damage numbers are shown at ×0.5 size when they're in your party, and hidden entirely for strangers.", "status": "live20" },
           { "text": "Low HP feedback is currently only a heartbeat sound cue — no visual indicator yet.", "status": "bug-open" },
           { "text": "No plans for damage/healing meters — considered too likely to push toward min-maxing." },
           { "text": "Party size: 5 players." },
           { "text": "Death penalty: dying drops your entire purse/bag near your corpse; 20% of gold is permanently lost (see Economy)." },
           { "text": "Crafting/gathering XP was multiplied 10x by the developer to stress-test crafting further." },
-          { "text": "Gathering without a tool equipped shouldn't award XP.", "status": "bug-open" },
           { "text": "A weapon left in the helmet slot was incorrectly determining weapon type/animations — now only what's actually in your hands counts.", "status": "bug-fixed" }
         ] }
       ]
@@ -188,7 +259,17 @@
       "title": "The Forgotten",
       "dek": "Perpetua's soldiers, still walking patrols nobody ever ended.",
       "blocks": [
-        { "type": "p", "text": "The Forgotten have been buffed twice in two days: once in direct response to players gaining block and area-hit basics (action.17), and again based on 21 Sept playtest feedback (action.19). See Combat → Balance Tuning for the current damage/HP/armor multipliers (currently x2.5 HP and damage over action.17's already-buffed numbers, x4.3 of original base stats overall; armor 70/26).", "status": "live19" },
+        { "type": "p", "text": "The Forgotten have been buffed twice in two days: once in direct response to players gaining block and area-hit basics (action.17), and again based on 21 Sept playtest feedback (action.19): x2.5 HP and damage over action.17's already-buffed numbers (x4.3 of original base stats overall; armor 70/26).", "status": "live19" },
+        { "type": "p", "text": "Hit 50% harder again in action.20: the damage multiplier on basics and skills went from x2.5 to x3.75. HP and armor are unchanged.", "status": "live20" },
+        { "type": "h", "text": "Strongholds" },
+        { "type": "p", "text": "The eight small watchtower pairs were rebuilt into four large strongholds, one per region: Northreach, Heartland, Eastwood and Southmere. Each stronghold's gate stands at the end of its road and the ground under its walls is levelled. The old watchtower sites are growing back into forest.", "status": "live20" },
+        { "type": "table", "caption": "Garrison per stronghold (action.20)", "headers": ["Type", "Count"], "rows": [
+          ["Warrior", "16"],
+          ["Veteran", "6"],
+          ["Acolyte", "6"],
+          ["Stalker", "4"],
+          ["Ancient Bone Warden", "1 — alone in the centre of the throne hall"]
+        ] },
         { "type": "table", "caption": "Enemy roster", "headers": ["Type", "Gear"], "rows": [
           ["Veteran", "Full armor, sword and shield"],
           ["Warrior", "Light armor, sword"],
@@ -197,12 +278,12 @@
         ] },
         { "type": "list", "items": [
           { "text": "A built-in halberd-wielding type was removed.", "status": "live17" },
-          { "text": "Every watchtower has +3 Forgotten added to its garrison (2 warriors + 1 veteran).", "status": "live17" },
+          { "text": "Every watchtower had +3 Forgotten added to its garrison (2 warriors + 1 veteran) — superseded by the action.20 strongholds.", "status": "live17" },
           { "text": "Forgotten use the same animation packs as players — sword & shield / staff stances, strikes, Blight Bolt cast, Heavy Blow, Bone Wall, pounce." },
           { "text": "The acolyte's Blight Bolt was resolving as a Heavy Blow (no projectile, no damage) and acolytes were double-casting — both fixed.", "status": "bug-fixed" },
           { "text": "The acolyte's Blight Bolt now requires line of sight — it can no longer shoot through dungeon walls.", "status": "bug-fixed" }
         ] },
-        { "type": "note", "tone": "lore", "text": "Forgotten patrol the Blight Hills biome (see Crafting & Materials)." }
+        { "type": "note", "status": "lore", "text": "Forgotten patrol the Blight Hills biome (see Crafting & Materials)." }
       ]
     },
     {
@@ -212,17 +293,19 @@
       "blocks": [
         { "type": "list", "items": [
           "Warrior's Focus and Artisan's Focus are separate meters. High Focus grants bonus XP (combat for Warrior's, crafting/gathering for Artisan's); low Focus applies a penalty.",
-          "Focus depletes as you perform the associated actions."
+          "Focus depletes as you perform the associated actions — long grinding drains it.",
+          "Above 75% Focus you earn +10% XP."
         ] },
         { "type": "p", "status": "live19", "text": "In the HUD, a Focus arc next to the HP bar appears only once Focus drops below 75% — i.e. once the bonus is actually gone, since that's the point it's worth knowing about." },
-        { "type": "note", "tone": "idea", "text": "Planned: player-built taverns will regenerate Focus quickly once it's maxed out, encouraging players to socialize in cities." }
+        { "type": "note", "status": "info", "text": "Naming: the demo cheatsheet calls the crafting meter “Craftsman's Focus”; the DMs call it “Artisan's Focus”." },
+        { "type": "note", "status": "idea", "text": "Planned: player-built taverns will regenerate Focus quickly once it's maxed out, encouraging players to socialize in cities." }
       ]
     },
     {
       "id": "ui-hud",
       "title": "UI / HUD",
-      "dek": "Rebuilt in action.19 around a “minimal, contextual” philosophy.",
-      "status": "live19",
+      "dek": "Rebuilt in action.19 around a “minimal, contextual” philosophy; refined in action.20 after feedback.",
+      "status": "live20",
       "blocks": [
         { "type": "h", "text": "Layout & bars" },
         { "type": "list", "items": [
@@ -257,9 +340,22 @@
         ] },
         { "type": "h", "text": "Visual style" },
         { "type": "list", "items": [
-          "Flat bars and plates in a cold-steel palette — no gradient backgrounds, no pack textures or frames, a single font throughout.",
+          "Flat bars and plates in a cold-steel palette — no gradient backgrounds, no pack textures or frames (the single font of action.19 was replaced in action.20 — see below).",
           "Resource colors: HP deep red, Lumen amber, Fervor ember.",
           "All HUD icons (menu, compass, map, toasts) now come from a single consistent icon pack."
+        ] },
+        { "type": "h", "text": "action.20 revision (after feedback)" },
+        { "type": "list", "status": "live20", "items": [
+          "New fonts: Alegreya Sans for text, Cinzel for numbers, the compass and damage.",
+          "Only the active resource is shown (Lumen or Fervor) — on the bars, party frames and nameplates; both return once a weapon uses both.",
+          "Bars: HP 16/20 px, resources 9 px, gains animate; Lumen and Fervor numbers are shown separately in their bar colours.",
+          "XP bars are only visible for 3s after a gain (or on hover with the cursor), replacing the always-on brighten effect.",
+          "Notifications restyled New World–style: item icon in a square, “Looted X ×N”, “+N XP <weapon>”, small 12 px icons, warnings marked with a red “!”.",
+          "Cast bar: icon on the left, spell name in small caps, time remaining on the right; channels count down.",
+          "The buff countdown ring fades together with the HUD; the aggro badge next to HP lost its background (10 px triangle + attacker count).",
+          "Chat no longer wakes up for loot/XP — it's active only while typing and hides after silence. The “Combat” HUD state now triggers only on damage involving you.",
+          "Nameplates 2.0 are on by default; the kit's own player plate is collapsed.",
+          "Party frames: see Party & Player Interaction."
         ] },
         { "type": "h", "text": "Region / House UI" },
         { "type": "list", "status": "live17", "items": [
@@ -267,7 +363,28 @@
           "House screen 2.0 (G or the House icon): tabs — Overview (crest + holdings), Members, Regions, Bank. House name displays in gold over a member's head instead of a default “<Guild>” placeholder.",
           "Region window 2.0: tabs — Overview / Requisitions / Treasury / Plots / Residents / Upgrade — shown based on the viewer's role (outsider, resident, Castellan, Baron); includes a treasury ledger."
         ] },
-        { "type": "note", "tone": "idea", "text": "Carried over: UI icons originally sourced from a free itch.io pack (“Line Game Icons Ultimate Collection” by SunGraphica), since consolidated into the single HUD icon pack above; crafting/item icons are still screenshots of the in-game item mesh, flagged as needing polish. Possible loading hitches tied to world-partition streaming are flagged for investigation, not yet confirmed as a core issue." }
+        { "type": "note", "status": "idea", "text": "Carried over: UI icons originally sourced from a free itch.io pack (“Line Game Icons Ultimate Collection” by SunGraphica), since consolidated into the single HUD icon pack above; crafting/item icons are still screenshots of the in-game item mesh, flagged as needing polish. Possible loading hitches tied to world-partition streaming are flagged for investigation, not yet confirmed as a core issue." }
+      ]
+    },
+    {
+      "id": "party-social",
+      "title": "Party & Player Interaction",
+      "dek": "Targeting, whispering, trading and inviting — added in action.20.",
+      "status": "live20",
+      "blocks": [
+        { "type": "h", "text": "Player menu" },
+        { "type": "list", "items": [
+          "[F] on a player targets them; holding F opens a menu: Target / Whisper / Trade / Invite to Party / Invite to House.",
+          "Right-clicking a party mini-frame (cursor via Tab) opens the same menu, plus Promote / Kick / Leave for the party leader.",
+          "Whisper opens chat with “/w Name” already typed.",
+          "The party/House invite popup now collapses after Accept/Decline — the cursor no longer stays on screen."
+        ] },
+        { "type": "h", "text": "Party frames" },
+        { "type": "list", "items": [
+          "C+2…C+5 targets a party member: the targeted frame gets a gold border and gold name, and the member gets a green outline over their head.",
+          "A frame flashes green when your heal lands, and red with “Too far” when the target is out of range (see Combat → Healing & support).",
+          "Frames are wider (140), long names are clipped with an ellipsis, weapon-type glyphs sit in a column to the left of the frame, and ally buffs are smaller with a thin ring."
+        ] }
       ]
     },
     {
@@ -277,6 +394,8 @@
       "blocks": [
         { "type": "h", "text": "Gold loss on death" },
         { "type": "p", "status": "live17", "text": "Dying drops your entire purse into the bag by your corpse. 20% is permanently lost; the remainder is a lootable entry in the loot window with Take / Take All options. This was deliberately set extreme to start, to be tuned down later if needed." },
+        { "type": "h", "text": "Starter money: the Crown orders board" },
+        { "type": "p", "text": "The Crown buys basic goods (pebbles, sticks, herbs) at fixed prices at the Crown orders board, next to the mint in the Wayfarer Village — the starter money tap. Trades between players happen player to player (Tab, click a player → Trade)." },
         { "type": "h", "text": "Mints & regional banking" },
         { "type": "list", "items": [
           "Mints act as regional banks: depositing gold protects it from theft/death loss and lets you spend it at markets/crafters within that region only. Mints are not global — moving gold elsewhere means carrying it in inventory, where it's stealable again.",
@@ -286,18 +405,25 @@
         { "type": "h", "text": "House banks" },
         { "type": "p", "text": "The bank belongs to the House, not the region — that's the core idea. The mint coins gold into a House bank account, and deposits/withdrawals happen at the mint.", "status": "live17" },
         { "type": "quote", "text": "If you own 3 regions as a House, everybody will be able to use the same bank in every of these regions.", "cite": "Sethan, on House bank branches" },
+        { "type": "h", "text": "Branches & licensing" },
         { "type": "list", "status": "live17", "items": [
-          "Branch network: a House automatically gets a branch in every region it holds — one shared account, usable at any of them. Deposit in one region, withdraw in another.",
+          "A House automatically gets a branch in every region it holds — one shared account, usable at any of them. Deposit in one region, withdraw in another.",
           "Branches aren't limited to a House's own regions: a region owner can license another House's bank to operate there too. Enough licenses and a single House's bank becomes, in practice, a global bank — even though no bank is globally guaranteed by design.",
-          "No “opening an account”: any player — House member or complete stranger — can walk up to a licensed branch and deposit or withdraw. There's no signup step.",
-          "Every deposit and withdrawal is taxed, and that cut is split between the bank's House and the region owner where the transaction physically happens.",
-          "The House master additionally sets the House's own transaction tax (minimum 2%); the Crown takes a flat 2% on top of that.",
-          "A bank House can freeze an account. So far this has been tied to war: if your House is declared an enemy of a bank's House, your account there is frozen — and other banks can freeze your assets too, effectively letting a third party apply financial pressure on someone else's war.",
-          "The Crown bank is a last resort for orphaned accounts (no House to claim them), taking a 40% cut.",
-          "Plot rent is auto-deducted from the House bank account (0.6 g/m²/day).",
           "The same licensing model applies to religious Houses (churches)."
         ] },
-        { "type": "note", "tone": "idea", "text": "Mercenary contracts: a mercenary House can be hired for a fee — no automated success verification; the hirer signs and pays, the mercenary House manually marks the job “completed” to release payment." },
+        { "type": "h", "text": "Using an account" },
+        { "type": "list", "status": "live17", "items": [
+          "No “opening an account”: any player — House member or complete stranger — can walk up to a licensed branch and deposit or withdraw. There's no signup step.",
+          "A bank House can freeze an account. So far this has been tied to war: if your House is declared an enemy of a bank's House, your account there is frozen — and other banks can freeze your assets too, effectively letting a third party apply financial pressure on someone else's war."
+        ] },
+        { "type": "h", "text": "Taxes & fees" },
+        { "type": "list", "status": "live17", "items": [
+          "Every deposit and withdrawal is taxed, and that cut is split between the bank's House and the region owner where the transaction physically happens.",
+          "The House master additionally sets the House's own transaction tax (minimum 2%); the Crown takes a flat 2% on top of that.",
+          "The Crown bank is a last resort for orphaned accounts (no House to claim them), taking a 40% cut.",
+          "Plot rent is auto-deducted from the House bank account (0.6 g/m²/day)."
+        ] },
+        { "type": "note", "status": "info", "text": "Mercenary contracts: a mercenary House can be hired for a fee — no automated success verification; the hirer signs and pays, the mercenary House manually marks the job “completed” to release payment." },
         { "type": "h", "text": "Region upkeep — Requisitions" },
         { "type": "list", "status": "live17", "items": [
           "Every week, a region posts requisitions on a board at its Obelisk: planks, oak, blocks, ingots, logs, nails — paid for out of the region's treasury.",
@@ -314,7 +440,7 @@
           ["Log", "4 g"],
           ["Nail", "5 g"]
         ] },
-        { "type": "note", "tone": "idea", "text": "A level-2 region's upkeep runs to roughly 7,200 gold/week." }
+        { "type": "note", "status": "info", "text": "A level-2 region's upkeep runs to roughly 7,200 gold/week." }
       ]
     },
     {
@@ -324,7 +450,12 @@
       "status": "confirmed",
       "blocks": [
         { "type": "p", "text": "Great Projects: seven one-of-a-kind structures, one per server, funded by regional trade routes and treasuries." },
-        { "type": "p", "text": "The Chronicles: a permanent, server-wide historical record of what players did — including betrayals. This is the payoff of the full design chain: resources → gear → regions → trade/treasury → Great Projects → Chronicles." }
+        { "type": "p", "text": "The Chronicles: a permanent, server-wide historical record of what players did — including betrayals. This is the payoff of the full design chain: resources → gear → regions → trade/treasury → Great Projects → Chronicles." },
+        { "type": "h", "text": "Finishing one isn't “gg”" },
+        { "type": "p", "text": "Completing all seven doesn't end the server. A Great Project can be destroyed — either by a siege whose specific objective is tearing it down, or as a side effect of the region it stands in being captured outright." },
+        { "type": "h", "text": "Kingdom-wide bonuses" },
+        { "type": "p", "text": "Each of the seven Great Projects grants a different server-wide bonus to the kingdom that holds it — deliberately powerful (“OP”, in Sethan's words), which is what makes holding one worth defending and worth sieging. Examples given: higher chance of rare resource spawns, bonus damage/HP in battle, and full map visibility of every enemy army and caravan." },
+        { "type": "note", "status": "info", "text": "No seasons: the world doesn't reset or rank on a recurring cycle — the Chronicles and whatever's been built stand permanently, subject only to what other players (or the Invasion) do to them." }
       ]
     },
     {
@@ -332,7 +463,7 @@
       "title": "Crafting, Gathering & Materials",
       "dek": "Four tiers of materials; the top tier only grows in corrupted ground.",
       "blocks": [
-        { "type": "p", "status": "confirmed", "text": "Confirmed systems: crafting, gathering, hunting, and skinning. Four tiers of materials — Tier 3 weapons deal x2.05 of Tier 1 damage, Tier 4 weapons deal x2.9 of Tier 1 damage." },
+        { "type": "p", "status": "live17", "text": "Crafting, gathering, hunting, and skinning are all in and playable. Four tiers of materials — Tier 3 weapons deal x2.05 of Tier 1 damage, Tier 4 weapons deal x2.9 of Tier 1 damage." },
         { "type": "h", "text": "Blight biomes & Tier 4 resources" },
         { "type": "table", "caption": "Three blighted biomes on the current map", "headers": ["Biome", "Location", "Yields"], "rows": [
           ["Blight Forest", "Near Heartland", "Ancient Wood"],
@@ -340,19 +471,56 @@
           ["Blight Hills", "North (patrolled by the Forgotten)", "Mithral"]
         ] },
         { "type": "list", "status": "live17", "items": [
-          "Tier 4 resources grow only in these three biomes — the plain “Blight” decoration around watchtowers elsewhere doesn't count.",
+          "The Blight is recognisable by purple air and violet crystals — stronger enemies, rarer materials.",
+          "Tier 4 resources grow only in these three biomes — the plain “Blight” decoration around the Forgotten's sites elsewhere (the old watchtowers, now the strongholds) doesn't count.",
           "Blighted wildlife (Blight Forest & Blight Plains): wolves, stags, and does — noticeably stronger, with changed skin (grey, blotched, no fur, darker/more sinister-looking); stags fight with their antlers and charge. Skinning blighted animals yields Blight Hide (T3).",
           "Tier 2 workshops process the four T4 resources (Mithral, Ancient Wood, Blight Fibre, Beast Hide) and require the region to be level 2.",
           "Holding an Obelisk near a Blight biome gives a House a unique material advantage."
         ] },
+        { "type": "h", "text": "Tools & gathering" },
+        { "type": "list", "items": [
+          "Pebbles, sticks and herbs lie on the ground and need no tools to pick up.",
+          "Crude tools come from stick + stone hand recipes: hatchet (wood), pickaxe (ore, stone), sickle (herbs), knife (skinning). They go in the TOOLS slots; iron tools come from the blacksmith later.",
+          "Trees, ore veins and stone deposits are shared: everyone hitting the same node works on the same progress bar.",
+          "Wolves and deer give hides, fat and bones — skin the body with a knife."
+        ] },
+        { "type": "h", "text": "Processors vs crafters" },
+        { "type": "table", "headers": ["", "Who", "What they do"], "rows": [
+          ["Processors", "Workshop stations in the village, worked by NPCs: sawmill, mason, smelter, tannery, loom, drying rack", "Turn raw materials into processed ones (logs → planks, ore → ingots, hides → leather) for a small Crown fee"],
+          ["Crafters", "Players at the benches: carpenter, anvil, leatherworker, tailor, alchemist", "Make components and finished goods — weapons, armour, tools, potions — from processed materials"]
+        ] },
+        { "type": "p", "text": "Workshop queues are private and keep running while you're away, up to 2 hours of work per workshop — hand in the materials, come back later. A station only works with a wayfarer assigned to it (see Wayfarers & NPC Workers)." },
         { "type": "h", "text": "Other notes" },
         { "type": "list", "items": [
           "A mint exists for currency conversion/processing (see Economy & Banking).",
           "Crafting is considered fairly solid already; crafting XP was multiplied 10x by the developer to push further testing.",
-          { "text": "Gathering without a tool equipped shouldn't award XP.", "status": "bug-open" },
           "Weapons have associated “spells” tied to them — a system still being tested.",
           "Item/crafting icons are currently screenshots of the actual item mesh, not custom-drawn."
         ] }
+      ]
+    },
+    {
+      "id": "wayfarers",
+      "title": "Wayfarers & NPC Workers",
+      "dek": "Hired NPC workers that staff the stations and bring life to the cities.",
+      "blocks": [
+        { "type": "list", "status": "confirmed", "items": [
+          "Wayfarers are player-owned NPC workers: you hire them to work for you. They belong to the player, not the House.",
+          "Hiring is a button in the hiring window (the cheatsheet's J key opens the Wayfarer roster).",
+          "2 per player by default; there will be ways to increase that (not detailed yet).",
+          "A wayfarer works a crafting/processing station — without one the station doesn't work. You still queue up resources yourself (e.g. ores in a smelter) and can do anything else while the queue runs.",
+          "Sethan's comparison: no different from a Pax Dei smelter, except that instead of coal you provide gold."
+        ] },
+        { "type": "p", "status": "confirmed", "text": "Region NPCs are a separate kind: NPCs tied to the region itself, such as NPC guards, which will also be hired." },
+        { "type": "note", "status": "info", "text": "Why they exist: to bring life to the cities and the game, avoiding the barren-wasteland feel of most Pax Dei cities." },
+        { "type": "h", "text": "Ideas that were turned down" },
+        { "type": "list", "items": [
+          "House-owned wayfarers (Scratch): since villages are ruled by Houses, wayfarers could belong to the House — something it grinds for and shows off its wealth with. Declined: plots in a village don't have to be House-owned; anyone can become a citizen and rent a plot.",
+          "Unlocking wayfarers in the open world, Conan Exiles–style (Scratch): free prisoners from low-level NPC camps to add them to the hiring window. Declined — “there's like a million games with npc workers”; hiring stays a button in the window."
+        ] },
+        { "type": "h", "text": "Pitch: levelled House wayfarers" },
+        { "type": "note", "status": "idea", "text": "Scratch's follow-up pitch, after the House-owned idea was declined: keep wayfarers a House thing, so they show which Houses are active rather than which players (“look, these guys have a lvl 4 wayfarer”). Instead of being required to run a station, a wayfarer's level would unlock recipe tiers — a forge with no wayfarer makes white gear, a lvl 1 wayfarer adds green, lvl 2 green and blue, and so on up to gold. Wayfarers would be found in the open world as an exploration reward: lvl 1 in small camps all over the world, lvl 2 in elite camps, lvl 3 in dungeons, lvl 4 in raids — possibly a grind for trader Houses to take on PvE and dungeons. No response from Sethan beyond the lore correction below." },
+        { "type": "note", "status": "lore", "text": "Wayfarers aren't found in the Stillness: they're the same people as you, coming back to the continent — just House-less (Sethan, correcting the pitch's lore angle)." }
       ]
     },
     {
@@ -360,7 +528,7 @@
       "title": "Building & Logistics",
       "dek": "Plots, protected ground, and a grid-based fight for inventory space.",
       "blocks": [
-        { "type": "p", "status": "confirmed", "text": "Building on claimed land: plots and rent." },
+        { "type": "p", "status": "live17", "text": "Building on claimed land: plots and rent." },
         { "type": "p", "status": "live17", "text": "Plot rent: 0.6 gold/m²/day, auto-deducted from the House bank account." },
         { "type": "h", "text": "Resource protection inside build boundaries" },
         { "type": "p", "status": "live19", "text": "Nothing respawns inside a region's build boundary — gathered trees, mined ore, and killed animals do not come back inside the circle where zones can be painted. Living animals and standing (ungathered) trees are left alone. The boundary radius scales with Obelisk level." },
@@ -373,7 +541,8 @@
           "Grid-based with variable item sizes (Path of Exile–style) — a deliberate design choice, not a weight system, meant to make inventory space itself a form of economic scarcity so one player can't solo-haul unlimited rare resources.",
           "A weight-based alternative was proposed and rejected — exploitable (e.g. one cart hauling multiple “overencumbered” players, jokingly nicknamed the “Stillmarch Taxi Service”)."
         ] },
-        { "type": "p", "status": "confirmed", "text": "Hand cart: implemented, used for hauling large quantities of materials. Caravans are planned for later — larger-scale transport, and the supply-line mechanic for sieges." }
+        { "type": "p", "status": "live17", "text": "Hand cart: implemented, used for hauling large quantities of materials." },
+        { "type": "p", "status": "confirmed", "text": "Caravans are planned for later — larger-scale transport, and the supply-line mechanic for sieges." }
       ]
     },
     {
@@ -382,7 +551,7 @@
       "dek": "Taking land by force — barely tested, and next on the roadmap.",
       "blocks": [
         { "type": "p", "text": "Obelisks are the core territorial control points. As of the DM conversation this system was barely tested, and taking land by force is explicitly the next major system on the roadmap — not yet live." },
-        { "type": "note", "tone": "bug", "text": "Fixed, action.19: false “Move closer to the Obelisk” errors on activation, deposits, and settling are fixed — activation range is properly 12 m, measured on the ground plane, plus server-side slack." },
+        { "type": "note", "status": "bug-fixed", "text": "Fixed, action.19: false “Move closer to the Obelisk” errors on activation, deposits, and settling are fixed — activation range is properly 12 m, measured on the ground plane, plus server-side slack." },
         { "type": "h", "text": "Planned claiming process" },
         { "type": "olist", "items": [
           "An attacking House crafts a Siege Banner.",
@@ -391,15 +560,51 @@
           "The banner's owner activates it once ready, officially forming the Army.",
           "The Army travels to the target region to attempt the siege."
         ] },
+        { "type": "note", "status": "info", "text": "Army formation has since taken shape in development — roles, reward budgets and mercenary pay are now visible in the House window's Army tab. See Armies & Campaigns." },
         { "type": "list", "items": [
           "Sieges only happen during a siege window — each region sets its own attackable window.",
           "Each siege runs in its own separate game instance, to avoid the large-scale lag Sethan observed in Pax Dei.",
           "The attacking Army must complete objectives (e.g. capture and hold points) to advance; success hands the region to the Army's leader.",
           "Version 1 / MVP plan: a simple open-field “king of the hill” fight — no walls, no siege weapons — purely to validate the core loop. Fortifications and siege weapons come later.",
           "Army supplies: each player death deducts a fixed amount; supplies are resupplied mid-siege via caravans from the controlling region (v1: craft “Supplies,” load on a cart, travel to the Army); destroying enemy supply caravans is a valid strategy. Defending regions use the same system with a baseline city bonus.",
-          "Max players per siege instance: undecided — a hard cap, or a flank system (separate sub-instances per flank, choosable respawn point) are both under consideration."
+          "Max players per siege instance: undecided — a hard cap, or a flank system (separate sub-instances per flank, choosable respawn point) are both under consideration.",
+          "A siege's objective doesn't have to be capturing the region: it can instead target a Great Project standing there for outright destruction (see Great Projects & The Chronicles). Capturing the region destroys any Great Project in it as a side effect either way."
         ] },
-        { "type": "note", "tone": "idea", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." }
+        { "type": "note", "status": "info", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." }
+      ]
+    },
+    {
+      "id": "armies",
+      "title": "Armies & Campaigns",
+      "dek": "Pick a role, march on a campaign, get paid from the commander's treasury.",
+      "blocks": [
+        { "type": "p", "status": "confirmed", "text": "An army exists to prepare for and fight the instanced siege battle — but an army is still an army once the fight starts, and some of its work happens outside the instance, in the open world. An army marches only on a campaign: its commander names a target and sets aside a reward budget." },
+        { "type": "h", "text": "Roles" },
+        { "type": "p", "status": "confirmed", "text": "The role you pick when joining decides what you get rewarded for while the army's campaign is active. Soldiers hold the line, quartermasters carry supplies, scouts watch the roads, engineers work the siege engines." },
+        { "type": "table", "caption": "What each role is rewarded for (during the battle)", "headers": ["Role", "Rewarded for"], "rows": [
+          ["Soldier", "Capturing objectives — fights inside the battle instance"],
+          ["Quartermaster", "Supplying the army"],
+          ["Scout", "Marking and destroying enemy caravans — operates outside the battle instance, in the open world"],
+          ["Engineer", "Using siege weapons"],
+          ["Mercenary", "Paid a flat fee per attack window by the commander (e.g. 20 gold) rather than by role"]
+        ] },
+        { "type": "list", "status": "confirmed", "items": [
+          "Scouts can mark an enemy army — with a rough estimate of its size and supplies — or enemy caravans; marks appear on the map for a couple of minutes.",
+          "Role actions feed a contribution score, which determines how much each member gets paid.",
+          "Pay doesn't come from the game: the army's commander must have the money in their House's treasury."
+        ] },
+        { "type": "h", "text": "The Army tab (dev build, 23 Sept)" },
+        { "type": "list", "items": [
+          "The House window gained Heraldry, Diplomacy, Realm and Army tabs alongside Overview / Members / Regions / Bank.",
+          "An army entry shows its name and campaign (e.g. “Army of Straznicy Doliny · defense of Northreach Test”), its commander, where its banner was raised, and a mustering deadline (UTC).",
+          "Campaign terms are listed up front: reward budget (e.g. 50 gold), mercenary pay per attack window (e.g. 20 gold), and whether allies are welcome.",
+          "The roster counts each role (Soldier / Quartermaster / Scout / Engineer / Mercenary) and lists the Houses in the ranks; you can switch role (Serve as Soldier / Scout / Engineer) or leave the army.",
+          "“Armies of the realm” lists other armies and their state (e.g. mustering, stood down); “Raise an army” starts a new campaign."
+        ] },
+        { "type": "note", "status": "info", "text": "Seen in a screenshot of a development build shared on 23 Sept (test region “Northreach Test”), not in a numbered patch yet. The UI is placeholder — Sethan asked for no comments on it. The systems still need testers." },
+        { "type": "h", "text": "Role progression (pitch)" },
+        { "type": "note", "status": "idea", "text": "Scratch pitched Wardogs-style progression: instead of locking you into a role, the actions you perform earn XP in matching role trees, so a character can specialize over time (e.g. engineer unlocking ladders, rams, trebuchets and archer defenses; scout getting extra map pings). Sethan found it more sandboxy in a way, but won't add skill trees for this in the near future — too much work for something only useful during sieges. Role actions still count toward the contribution score." },
+        { "type": "note", "status": "info", "text": "Wardogs comparison: it also pays you at the end of a match against what you spent on weapons and armor (a gold sink). Stillmarch is similar, but lost gear gets destroyed, and the payer is a player House, not the game." }
       ]
     },
     {
@@ -413,14 +618,14 @@
           "Destruction is partially guaranteed — armies are too numerous/powerful to fully stop — but actual damage scales with how well the server organizes its defense. Players can't defend everywhere and must choose priorities.",
           "Anti-zerg / anti-stagnation design: disproportionately targets the largest/most dominant factions, to stop any empire from running the server uncontested and to prevent a permanent status quo."
         ] },
-        { "type": "note", "tone": "lore", "text": "Stated philosophy: the game should be unafraid to destroy player-built property/progress, unlike most MMOs. Also referenced as “the Forgotten pushing back” — part of the world eventually acting on its own, later on the roadmap." }
+        { "type": "note", "status": "lore", "text": "Stated philosophy: the game should be unafraid to destroy player-built property/progress, unlike most MMOs. Also referenced as “the Forgotten pushing back” — part of the world eventually acting on its own, later on the roadmap." }
       ]
     },
     {
       "id": "world-geography",
       "title": "World Geography",
       "dek": "Valdris, current playable slice: 5 km².",
-      "status": "confirmed",
+      "status": "live17",
       "blocks": [
         { "type": "table", "caption": "The five regions", "headers": ["Region", "Notes"], "rows": [
           ["Northreach", "Has its own Obelisk"],
@@ -431,8 +636,9 @@
         ] },
         { "type": "list", "items": [
           "Three Wayfarer villages — one confirmed by name: Highmoor (village glade with a cemetery at its edge; nearby forest visibility fixed in the Friday hotfixes).",
-          "Eight Forgotten watchtowers (each garrisoned with 2 warriors + 1 veteran on top of existing Forgotten, since action.17).",
-          "Rivers, roads, day/night cycle, weather.",
+          { "text": "Four Forgotten strongholds — Northreach, Heartland, Eastwood, Southmere — replaced the eight small watchtowers; each gate stands at the end of its road (see The Forgotten → Strongholds).", "status": "live20" },
+          { "text": "Bridges: the huge terrain ramps at both ends of every bridge are gone — the bridge slope now meets the ground.", "status": "live20" },
+          "Rivers, roads, day/night cycle, weather. Nights are dark: a belt lets you hang a lantern (from the blacksmith, lamp oil from the alchemist) and, for archers, a quiver.",
           "The Blackrust Gaol dungeon.",
           "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north)."
         ] }
@@ -442,12 +648,11 @@
       "id": "dungeons-raids",
       "title": "Dungeons & Raids",
       "dek": "5-man dungeons and 20-man raids.",
-      "status": "confirmed",
       "blocks": [
         { "type": "list", "items": [
-          "5-man instanced dungeons — confirmed.",
-          "20-man raids — confirmed.",
-          "Blackrust Gaol — a specific dungeon already in the current playable slice."
+          { "text": "5-man instanced dungeons.", "status": "confirmed" },
+          { "text": "20-man raids.", "status": "confirmed" },
+          { "text": "Blackrust Gaol — a specific dungeon already in the current playable slice.", "status": "live17" }
         ] }
       ]
     },
@@ -457,7 +662,7 @@
       "dek": "Proposed, explicitly deferred — possibly to 1.0.",
       "status": "idea",
       "blocks": [
-        { "type": "note", "tone": "idea", "text": "Nothing in this section is implemented. It's recorded here as a design idea floated in conversation and explicitly deferred." },
+        { "type": "note", "status": "idea", "text": "Nothing in this section is implemented. It's recorded here as a design idea floated in conversation and explicitly deferred." },
         { "type": "list", "status": "idea", "items": [
           "Victim of an attack chooses: duel to the death, or flee. Escaping into a village without dying lets them report the attacker to that city's public Bounty List.",
           "Other players can pick up a bounty as a personal contract for a reward (type undecided).",
@@ -487,14 +692,16 @@
           "Founder's Access",
           "Early Access"
         ] },
-        { "type": "note", "tone": "idea", "text": "No dates committed until they're real." }
+        { "type": "note", "status": "info", "text": "No dates committed until they're real." }
       ]
     },
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through action.19 (21 Sept).",
+      "dek": "action.17 (20 Sept) through action.20 (22 Sept).",
       "blocks": [
+        { "type": "h", "text": "0.2.0-action.20 — 22 Sept" },
+        { "type": "p", "text": "Requires the new client — the map changed, so old versions cannot join the server. Characters and the database were untouched. Headline changes: the watchtowers rebuilt as four large Forgotten strongholds, Forgotten damage x2.5 → x3.75, bridge ramps removed, the player menu and party-frame targeting, heal targeting (T) with range checks and ally-only heals, the Renew HoT timing fix, a HUD revision after feedback (new fonts, active-resource-only bars, New World–style notifications, quieter chat), and combat commit/animation work on skills, spin attacks and block." },
         { "type": "h", "text": "0.2.0-action.19 — 21 Sept" },
         { "type": "p", "text": "Requires the new client; characters and the database were untouched by this update. Headline changes: the full HUD rebuild, the animation-clock basic attack system with real combo chains and root motion, the post-playtest balance pass (Fervor, player HP x1.5, Forgotten x2.5 HP/damage, T3/T4 weapon multipliers, 30-min mob respawn), the Obelisk activation-range fix (12 m), build-boundary respawn protection scaled by Obelisk level, and road protections in the zone planner." },
         { "type": "h", "text": "Fixes from the forum (Sunday's playtest, folded into action.19)" },
@@ -529,12 +736,12 @@
         { "type": "list", "items": [
           "Target for the small map: 20–30 concurrent players to validate core friction points; a larger map would need hundreds.",
           "Small-map testing was expected within about a week or two of the DM conversation (20 Sept 2026).",
-          "“Forgotten Castles” — a world area/feature being brought online for testing around this time.",
+          "“Forgotten Castles” — a world area/feature being brought online for testing around this time; most likely what shipped in action.20 as the four Forgotten strongholds.",
           "Hosting: self-hosted on the developer's own PC, tunneled with an app called playit for early testing; plan is to move to Hetzner for actual alpha/playtest hosting.",
           "Backend: server-side persistence and economy-logic tests gate every build.",
           "Client versioning: each build requires the matching client — older clients can't connect. Characters and the database persist across builds."
         ] },
-        { "type": "note", "tone": "idea", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
+        { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
     },
     {
@@ -544,10 +751,20 @@
       "blocks": [
         { "type": "p", "text": "Solo developer project (“passion project”), full creative control, no committee-driven feature gating. Heavy use of AI/agentic coding tools, both in the developer's day job and on this project." },
         { "type": "list", "items": [
-          "Reference points used repeatedly in discussion: New World (combat impact/weight, poor at scale), Pax Dei (slower combat pacing, UI comparisons, siege/lag cautionary tale — referenced as possibly winding down: “pax dei ded”), Albion, Lineage 2, EVE (sandbox/politics comparisons from the dev update).",
+          "Reference points used repeatedly in discussion: New World (combat impact/weight, poor at scale), Pax Dei (slower combat pacing, UI comparisons, siege/lag cautionary tale — referenced as possibly winding down: “pax dei ded”), Albion, Lineage 2, EVE (sandbox/politics comparisons from the dev update), Wardogs (role-based army XP and post-match pay, raised by Scratch on 23 Sept).",
           "Community channels: 🕯️｜lore (world fragments, deliberately incomplete), 💬｜general (design discussion, read by the dev), and a Playtests role in Channels & Roles for first access to playtest pings.",
           "Active forum/playtest reporters named in patch notes: Czubik, Lucyphere."
         ] }
+      ]
+    },
+    {
+      "id": "backlog",
+      "title": "Backlog & Ideas",
+      "dek": "Everything proposed but not committed — pulled live from every system's idea-tagged notes.",
+      "status": "idea",
+      "generated": "backlog-index",
+      "blocks": [
+        { "type": "p", "text": "Nothing on this page is built. It's a standing list of what's been floated in conversation but not implemented — some explicitly deferred (a few as far out as 1.0) — collected here so it's easy to see everything that's still just an idea without digging through every system page for a Backlog badge. Each entry links back to where it actually lives." }
       ]
     }
   ]

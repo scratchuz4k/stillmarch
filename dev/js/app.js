@@ -5,7 +5,9 @@
     data: null,
     sectionOrder: [],
     sectionsById: {},
-    activeStatuses: new Set(),
+    collapsedGroups: new Set(),
+    hideIdeas: false,
+    searching: false,
     currentId: null
   };
 
@@ -44,7 +46,6 @@
     })
     .then(function (data) {
       state.data = data;
-      Object.keys(data.statuses).forEach(function (k) { state.activeStatuses.add(k); });
       data.sections.forEach(function (s) {
         state.sectionsById[s.id] = s;
       });
@@ -66,18 +67,28 @@
       console.error(err);
     });
 
-  /* ---------------- Shell (sidebar, legend, topbar) ---------------- */
+  /* ---------------- Shell (sidebar, topbar) ---------------- */
 
   function buildShell() {
     document.title = state.data.site.title;
     $('#brandMark').textContent = state.data.site.title;
-    $('#brandSub').textContent = 'Build ' + state.data.site.build + ' · updated ' + state.data.site.updated;
+    $('#brandSub').textContent = 'Build ' + state.data.site.build + ' · ' + state.data.site.updated;
+    $('#brandSub').title = 'Build ' + state.data.site.build + ', updated ' + state.data.site.updated;
     $('#topbarTitle').textContent = state.data.site.title;
 
     buildNav();
 
     $('#search').addEventListener('input', function (e) {
       filterNav(e.target.value);
+    });
+
+    var ideaToggle = $('#hideIdeasToggle');
+    try { state.hideIdeas = localStorage.getItem('stillmarch-hide-ideas') === '1'; } catch (e) {}
+    ideaToggle.checked = state.hideIdeas;
+    ideaToggle.addEventListener('change', function () {
+      state.hideIdeas = ideaToggle.checked;
+      try { localStorage.setItem('stillmarch-hide-ideas', state.hideIdeas ? '1' : '0'); } catch (e) {}
+      applyIdeaVisibility();
     });
 
     $('#hamburger').addEventListener('click', function () {
@@ -119,11 +130,48 @@
     document.querySelector('.app').classList.remove('nav-open');
   }
 
+  function loadCollapsedGroups() {
+    try {
+      var raw = localStorage.getItem('stillmarch-collapsed-groups');
+      return raw ? new Set(JSON.parse(raw)) : new Set();
+    } catch (e) { return new Set(); }
+  }
+
+  function saveCollapsedGroups() {
+    try {
+      localStorage.setItem('stillmarch-collapsed-groups', JSON.stringify(Array.from(state.collapsedGroups)));
+    } catch (e) {}
+  }
+
   function buildNav() {
+    state.collapsedGroups = loadCollapsedGroups();
     var wrap = $('#navGroups');
     wrap.innerHTML = '';
     state.data.nav.forEach(function (group) {
-      wrap.appendChild(el('div', { class: 'nav-group__title', text: group.group }));
+      var collapsed = state.collapsedGroups.has(group.group);
+      var groupEl = el('div', { class: 'nav-group' + (collapsed ? ' is-collapsed' : ''), 'data-group': group.group });
+
+      var titleBtn = el('button', {
+        class: 'nav-group__title', type: 'button',
+        'aria-expanded': collapsed ? 'false' : 'true'
+      }, [
+        el('span', { class: 'nav-group__chevron', html: '&#9656;' }),
+        el('span', { text: group.group })
+      ]);
+
+      var itemsWrap = el('div', { class: 'nav-group__items' });
+      itemsWrap.hidden = collapsed;
+
+      titleBtn.addEventListener('click', function () {
+        var nowCollapsed = !groupEl.classList.contains('is-collapsed');
+        groupEl.classList.toggle('is-collapsed', nowCollapsed);
+        itemsWrap.hidden = nowCollapsed && !state.searching;
+        titleBtn.setAttribute('aria-expanded', nowCollapsed ? 'false' : 'true');
+        if (nowCollapsed) state.collapsedGroups.add(group.group);
+        else state.collapsedGroups.delete(group.group);
+        saveCollapsedGroups();
+      });
+
       group.items.forEach(function (id) {
         var section = state.sectionsById[id];
         if (!section) return;
@@ -137,30 +185,55 @@
           dot
         ]);
         btn.addEventListener('click', function () {
+          var search = $('#search');
+          if (search && search.value) {
+            search.value = '';
+            filterNav('');
+          }
           goTo(id);
           closeNav();
         });
-        wrap.appendChild(btn);
+        itemsWrap.appendChild(btn);
       });
+
+      groupEl.appendChild(titleBtn);
+      groupEl.appendChild(itemsWrap);
+      wrap.appendChild(groupEl);
     });
+  }
+
+  function expandGroupFor(id) {
+    var groupEl = null;
+    $$('.nav-group').forEach(function (g) {
+      if ($('.nav-item[data-id="' + id + '"]', g)) groupEl = g;
+    });
+    if (!groupEl || !groupEl.classList.contains('is-collapsed')) return;
+    groupEl.classList.remove('is-collapsed');
+    $('.nav-group__items', groupEl).hidden = false;
+    $('.nav-group__title', groupEl).setAttribute('aria-expanded', 'true');
+    state.collapsedGroups.delete(groupEl.getAttribute('data-group'));
+    saveCollapsedGroups();
   }
 
   function filterNav(query) {
     query = (query || '').trim().toLowerCase();
+    state.searching = !!query;
     var any = false;
-    $$('.nav-item').forEach(function (btn) {
-      var match = !query || btn.getAttribute('data-title').indexOf(query) !== -1;
-      btn.hidden = !match;
-      if (match) any = true;
-    });
-    $$('.nav-group__title').forEach(function (h) {
-      var sib = h.nextElementSibling;
+    $$('.nav-group').forEach(function (g) {
+      var itemsWrap = $('.nav-group__items', g);
       var groupHasVisible = false;
-      while (sib && sib.classList && sib.classList.contains('nav-item')) {
-        if (!sib.hidden) groupHasVisible = true;
-        sib = sib.nextElementSibling;
+      $$('.nav-item', g).forEach(function (btn) {
+        var match = !query || btn.getAttribute('data-title').indexOf(query) !== -1;
+        btn.hidden = !match;
+        if (match) groupHasVisible = true;
+      });
+      if (query) {
+        itemsWrap.hidden = !groupHasVisible;
+      } else {
+        itemsWrap.hidden = g.classList.contains('is-collapsed');
       }
-      h.hidden = !groupHasVisible;
+      $('.nav-group__title', g).hidden = query && !groupHasVisible;
+      if (groupHasVisible) any = true;
     });
     var existing = $('#noResults');
     if (!any) {
@@ -172,34 +245,9 @@
     }
   }
 
-  function buildLegend(container) {
-    container.innerHTML = '';
-    container.appendChild(el('span', { class: 'legend__label', text: 'Show:' }));
-    Object.keys(state.data.statuses).forEach(function (key) {
-      var meta = state.data.statuses[key];
-      var chip = el('button', { class: 'chip' + (state.activeStatuses.has(key) ? '' : ' off'), type: 'button', 'data-status': key, title: meta.desc }, [
-        el('span', { class: 'chip__dot' }),
-        document.createTextNode(meta.label)
-      ]);
-      chip.addEventListener('click', function () {
-        if (state.activeStatuses.has(key)) {
-          state.activeStatuses.delete(key);
-          chip.classList.add('off');
-        } else {
-          state.activeStatuses.add(key);
-          chip.classList.remove('off');
-        }
-        applyStatusFilter();
-      });
-      container.appendChild(chip);
-    });
-  }
-
-  function applyStatusFilter() {
-    $$('[data-status-item]').forEach(function (node) {
-      var status = node.getAttribute('data-status-item');
-      var visible = !status || state.activeStatuses.has(status);
-      node.classList.toggle('li--filtered', !visible);
+  function applyIdeaVisibility() {
+    $$('[data-status-item="idea"]').forEach(function (node) {
+      node.hidden = state.hideIdeas;
     });
   }
 
@@ -215,11 +263,36 @@
     render(id);
   }
 
+  /* ---------------- Analytics (GoatCounter) ---------------- */
+
+  // Sections live behind #hashes, so GoatCounter's automatic count on page
+  // load only ever sees "/". Count each section as its own page view instead.
+  function trackView(id) {
+    if (state.trackedId === id) return;
+    var gc = window.goatcounter;
+    if (!gc || !gc.count) {
+      state.pendingTrackId = id;
+      return;
+    }
+    state.trackedId = id;
+    state.pendingTrackId = null;
+    gc.count({ path: location.pathname + '#' + id, title: state.sectionsById[id].title });
+  }
+
+  var gcScript = document.getElementById('goatcounter');
+  if (gcScript) {
+    gcScript.addEventListener('load', function () {
+      if (state.pendingTrackId) trackView(state.pendingTrackId);
+    });
+  }
+
   function render(id) {
     var section = state.sectionsById[id];
     if (!section) return;
     state.currentId = id;
+    trackView(id);
 
+    expandGroupFor(id);
     $$('.nav-item').forEach(function (btn) {
       btn.classList.toggle('active', btn.getAttribute('data-id') === id);
     });
@@ -227,6 +300,8 @@
     var main = $('#main');
     main.innerHTML = '';
     var content = el('div', { class: 'content' });
+
+    if (section.hero) content.appendChild(renderHero(section.hero));
 
     var head = el('div', { class: 'section-head' });
     var eyebrow = findGroupFor(id);
@@ -239,21 +314,98 @@
     }
     content.appendChild(head);
 
-    var legend = el('div', { class: 'legend', id: 'legendSection' });
-    buildLegend(legend);
-    content.appendChild(legend);
-
     (section.blocks || []).forEach(function (block) {
       var node = renderBlock(block);
       if (node) content.appendChild(node);
     });
 
+    if (section.generated === 'backlog-index') {
+      content.appendChild(buildBacklogIndex(id));
+    }
+
     content.appendChild(buildPageNav(id));
 
     main.appendChild(content);
-    applyStatusFilter();
+    applyIdeaVisibility();
     main.scrollTop = 0;
     window.scrollTo(0, 0);
+  }
+
+  function buildBacklogIndex(selfId) {
+    var wrap = el('div', { class: 'backlog-index block' });
+
+    var wholeSections = [];
+    var itemized = [];
+
+    state.sectionOrder.forEach(function (id) {
+      if (id === selfId) return;
+      var section = state.sectionsById[id];
+      if (section.status === 'idea') {
+        wholeSections.push(section);
+        return;
+      }
+      var found = [];
+      (section.blocks || []).forEach(function (block) {
+        if (block.type === 'p' && block.status === 'idea') {
+          found.push(block.text);
+        } else if (block.type === 'note' && block.status === 'idea') {
+          found.push(block.text);
+        } else if (block.type === 'list' || block.type === 'olist') {
+          block.items.forEach(function (item) {
+            var isObj = typeof item === 'object';
+            var status = isObj ? item.status : block.status;
+            if (status === 'idea') found.push(isObj ? item.text : item);
+          });
+        }
+      });
+      if (found.length) itemized.push({ section: section, items: found });
+    });
+
+    var total = wholeSections.length + itemized.reduce(function (n, g) { return n + g.items.length; }, 0);
+    wrap.appendChild(el('p', {
+      class: 'backlog-index__summary',
+      text: total + ' idea' + (total === 1 ? '' : 's') + ' on record across ' + (wholeSections.length + itemized.length) + ' page' + ((wholeSections.length + itemized.length) === 1 ? '' : 's') + '.'
+    }));
+
+    if (wholeSections.length) {
+      wrap.appendChild(el('h2', { class: 'block--h', text: 'Entire systems, not started' }));
+      var cards = el('div', { class: 'backlog-cards' });
+      wholeSections.forEach(function (section) {
+        var card = el('button', { class: 'backlog-card', type: 'button' }, [
+          el('span', { class: 'backlog-card__eyebrow', text: findGroupFor(section.id) }),
+          el('span', { class: 'backlog-card__title', text: section.title }),
+          section.dek ? el('span', { class: 'backlog-card__dek', text: section.dek }) : null
+        ]);
+        card.addEventListener('click', function () { goTo(section.id); });
+        cards.appendChild(card);
+      });
+      wrap.appendChild(cards);
+    }
+
+    if (itemized.length) {
+      wrap.appendChild(el('h2', { class: 'block--h', text: 'Ideas floated inside live systems' }));
+      itemized.forEach(function (group) {
+        var box = el('div', { class: 'backlog-group' });
+        var head = el('button', { class: 'backlog-group__head', type: 'button' }, [
+          el('span', { class: 'backlog-group__eyebrow', text: findGroupFor(group.section.id) }),
+          el('span', { class: 'backlog-group__title', text: group.section.title + ' →' })
+        ]);
+        head.addEventListener('click', function () { goTo(group.section.id); });
+        box.appendChild(head);
+        var ul = el('ul', { class: 'list' });
+        group.items.forEach(function (text) {
+          ul.appendChild(el('li', { text: text }));
+        });
+        box.appendChild(ul);
+        wrap.appendChild(box);
+      });
+    }
+
+    if (!total) {
+      wrap.appendChild(el('p', { class: 'backlog-index__summary', text: 'Nothing left on the backlog — everything proposed has shipped.' }));
+    }
+
+    return wrap;
   }
 
   function findGroupFor(id) {
@@ -262,6 +414,12 @@
       if (g.items.indexOf(id) !== -1) found = g.group;
     });
     return found;
+  }
+
+  function renderHero(hero) {
+    var fig = el('figure', { class: 'hero hero--' + (hero.shape || 'wide') });
+    fig.appendChild(el('img', { src: hero.src, alt: hero.alt || '', loading: 'eager', decoding: 'async' }));
+    return fig;
   }
 
   function renderBlock(block) {
@@ -282,23 +440,39 @@
       case 'olist': {
         var tag = block.type === 'olist' ? 'ol' : 'ul';
         var list = el(tag, { class: block.type });
+        var hasOwnItemStatus = block.items.some(function (item) {
+          return typeof item === 'object' && item.status;
+        });
         block.items.forEach(function (item) {
           var isObj = typeof item === 'object';
           var text = isObj ? item.text : item;
-          var status = isObj ? item.status : block.status;
+          var itemStatus = isObj ? item.status : null;
           var li = el('li', {});
-          if (status) li.setAttribute('data-status-item', status);
-          li.appendChild(document.createTextNode(text));
-          if (status) {
-            var b = badge(status);
+          if (itemStatus) {
+            li.setAttribute('data-status-item', itemStatus);
+            li.appendChild(document.createTextNode(text));
+            li.appendChild(document.createElement('br'));
+            var b = badge(itemStatus);
             if (b) {
               b.classList.add('li-badge');
               li.appendChild(b);
             }
+          } else {
+            li.appendChild(document.createTextNode(text));
           }
           list.appendChild(li);
         });
-        return el('div', { class: 'block' }, [list]);
+        var wrap = el('div', { class: 'block list-block' });
+        if (block.status && !hasOwnItemStatus) {
+          wrap.setAttribute('data-status-item', block.status);
+          var headBadge = badge(block.status);
+          if (headBadge) {
+            headBadge.classList.add('list-block__badge');
+            wrap.appendChild(headBadge);
+          }
+        }
+        wrap.appendChild(list);
+        return wrap;
       }
       case 'chain': {
         var chain = el('div', { class: 'chain block' });
@@ -330,8 +504,16 @@
         return wrap;
       }
       case 'note': {
-        var note = el('div', { class: 'note note--' + (block.tone || 'idea') + ' block' });
+        var status = block.status || 'info';
+        var note = el('div', { class: 'note note--' + status + ' block' });
+        note.style.setProperty('--note-accent', 'var(--' + status + ')');
+        note.setAttribute('data-status-item', status);
         note.appendChild(document.createTextNode(block.text));
+        var noteBadge = badge(status);
+        if (noteBadge) {
+          noteBadge.classList.add('note__badge');
+          note.appendChild(noteBadge);
+        }
         return note;
       }
       case 'quote': {
