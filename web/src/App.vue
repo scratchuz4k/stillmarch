@@ -198,6 +198,27 @@ const REFERENCE_URL = '../'
   color: var(--ink-faint);
 }
 
+/* Phones: left-align the closing so the title's ruler lines up with it, and
+   stack the road to launch vertically instead of letting it wrap. */
+@media (max-width: 599px) {
+  .closing {
+    align-items: flex-start;
+    padding-inline: 20px;
+    text-align: left;
+  }
+
+  .path {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin-top: 2.25rem;
+  }
+
+  .path li:not(:last-child)::after {
+    display: none;
+  }
+}
+
 .closing__cta {
   margin-top: 2.5rem;
   padding: 1rem 2rem;

@@ -315,9 +315,10 @@ onMounted(() => {
   const pointer = { x: 0, y: 0 }
   const pointerSmooth = { x: 0, y: 0 }
 
-  // On wide screens the compass slides partly into the half of the screen the
-  // text panel leaves free. Sections declare that with data-compass-side:
-  // 1 = push right, -1 = push left, 0 = centred.
+  // Sections declare where the compass should make room for their text with
+  // data-compass-side: 1 = panel on the left, -1 = panel on the right,
+  // 0 = centred. Wide screens slide the compass part-way into the free half;
+  // portrait screens (phones) lift it above the bottom text sheet instead.
   const SIDE_SHIFT = 0.28 // fraction of the half-screen: part-way over, not fully
   let anchors: { center: number; side: number }[] = []
   let sideTarget = 0
@@ -335,7 +336,7 @@ onMounted(() => {
     scrollTarget = max > 0 ? window.scrollY / max : 0
 
     sideTarget = 0
-    if (window.innerWidth < 1024 || anchors.length === 0) return
+    if (anchors.length === 0) return
     // Blend between the two sections either side of the viewport's centre.
     const v = window.scrollY + window.innerHeight / 2
     const next = anchors.findIndex((a) => a.center >= v)
@@ -397,18 +398,23 @@ onMounted(() => {
     compass.rotation.z = -scroll * Math.PI * 2 + spin
     compass.rotation.x = -scroll * 1.1 + pointerSmooth.y * 0.15
     compass.rotation.y = Math.sin(scroll * Math.PI) * 0.6 + pointerSmooth.x * 0.25
-    // Sit high in the hero so the title reads beneath it; settle as you scroll.
-    compass.position.y = Math.max(0, 1 - scroll * 8) * 0.7
 
     camera.position.z = 9 - Math.sin(scroll * Math.PI) * 3
     camera.position.y = -scroll * 1.2
     camera.lookAt(0, -scroll * 0.6, 0)
 
-    // Convert the side shift from a screen fraction to world units at the
-    // compass's distance from the camera.
-    const halfWidth =
-      camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect
-    compass.position.x = side * SIDE_SHIFT * halfWidth
+    // Placement is worked out as screen fractions, converted to world units
+    // at the compass's distance from the camera.
+    const halfHeight = camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))
+    const halfWidth = halfHeight * camera.aspect
+    const wide = window.innerWidth >= 1024
+    const portrait = camera.aspect < 0.8
+    // Sit high in the hero so the title reads beneath it; settle as you scroll.
+    const heroLift = Math.max(0, 1 - scroll * 8) * (portrait ? 0.36 : 0.21)
+    // On phones, rise above the chapter's text sheet.
+    const sheetLift = portrait ? Math.abs(side) * 0.42 : 0
+    compass.position.x = wide ? side * SIDE_SHIFT * halfWidth : 0
+    compass.position.y = (heroLift + sheetLift) * halfHeight
 
     // Blight: nothing in the hero, fully taken by the closing section.
     const blight = smoothstep(0.06, 0.92, scroll)

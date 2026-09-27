@@ -100,6 +100,94 @@ defineProps<{ chapter: Chapter; side: 'left' | 'right' }>()
   .panel { padding: 3rem 2.75rem 2.75rem; }
 }
 
+/* Phones and tablets: the text is a sheet anchored to the bottom of the
+   screen that fades up into the scene, leaving the compass visible above. */
+@media (max-width: 1023px) {
+  .chapter {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  /* Every sheet is the same full-height box with the same fade, whatever its
+     length: text sits at the bottom, and longer chapters reach up into the
+     fade (a soft shadow keeps them readable over the compass). */
+  .panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 100svh;
+    padding: 4.5rem 20px calc(2.5rem + env(safe-area-inset-bottom));
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(15 17 24 / 0.55) 22%,
+      rgb(15 17 24 / 0.92) 48%
+    );
+    text-shadow: 0 1px 12px rgb(15 17 24 / 0.9);
+  }
+
+  .chapter--blight .panel {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(20 11 31 / 0.55) 22%,
+      rgb(20 11 31 / 0.92) 48%
+    );
+    text-shadow: 0 1px 12px rgb(20 11 31 / 0.9);
+  }
+
+  .panel::before {
+    display: none;
+  }
+
+  .panel > * {
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 599px) {
+  .panel__numeral {
+    top: -0.9rem;
+    font-size: 4rem;
+  }
+
+  .panel__title {
+    font-size: 1.6rem;
+  }
+
+  .panel__body {
+    font-size: 1rem;
+  }
+
+  .panel__body:first-of-type {
+    font-size: 1.06rem;
+  }
+
+  .quote,
+  .ladder {
+    margin-top: 1.25rem;
+  }
+
+  .quote blockquote {
+    font-size: 1.2rem;
+  }
+
+  .ladder li {
+    padding-bottom: 0.7rem;
+  }
+
+  .ladder__note {
+    font-size: 0.94rem;
+  }
+}
+
 /* Large screens: the panel becomes a full-height column, half the width, flush
    against its side of the screen. */
 @media (min-width: 1024px) {

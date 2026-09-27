@@ -14,7 +14,9 @@ function getObserver() {
         observer!.unobserve(entry.target)
       }
     },
-    { rootMargin: '0px 0px -12% 0px', threshold: 0.1 },
+    // No bottom inset: on phones the text sits at the very bottom of the
+    // screen, and with scroll snapping it may never travel any higher.
+    { threshold: 0.15 },
   )
   return observer
 }
