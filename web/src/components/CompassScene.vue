@@ -410,7 +410,7 @@ onMounted(() => {
     const wide = window.innerWidth >= 1024
     const portrait = camera.aspect < 0.8
     // Sit high in the hero so the title reads beneath it; settle as you scroll.
-    const heroLift = Math.max(0, 1 - scroll * 8) * (portrait ? 0.36 : 0.21)
+    const heroLift = Math.max(0, 1 - scroll * 8) * (portrait ? 0.36 : 0.13)
     // On phones, rise above the chapter's text sheet.
     const sheetLift = portrait ? Math.abs(side) * 0.42 : 0
     compass.position.x = wide ? side * SIDE_SHIFT * halfWidth : 0

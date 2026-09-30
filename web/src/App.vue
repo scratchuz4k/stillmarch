@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import CompassScene from './components/CompassScene.vue'
+import SiteHeader from './components/SiteHeader.vue'
 import StoryChapter from './components/StoryChapter.vue'
+import { REFERENCE_URL } from './content/nav'
 import { chapters, closing, hero } from './content/story'
 import { vReveal } from './directives/reveal'
-
-// The systems reference (dev/) is deployed one level up from this page.
-const REFERENCE_URL = '../'
 </script>
 
 <template>
   <CompassScene />
   <div class="vignette" aria-hidden="true"></div>
+  <SiteHeader />
 
   <main class="page">
     <section class="hero" data-compass-side="0">
