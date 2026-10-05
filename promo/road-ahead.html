@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stillmarch: The Road Ahead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spectral:ital@1&display=block" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1118;
+    --card: #171a24;
+    --card-edge: #2a3040;
+    --ink: #e2e4eb;
+    --ink-dim: #a3a8b7;
+    --accent: #b8966a;
+    --accent-strong: #dcbd90;
+    --glow: #a9c2ff;
+    --blight: #b57cff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    background:
+      radial-gradient(ellipse 900px 420px at 50% 0%, rgba(169, 194, 255, .07), transparent 70%),
+      radial-gradient(ellipse 1400px 700px at 50% 110%, rgba(184, 150, 106, .06), transparent 70%),
+      var(--bg);
+    color: var(--ink);
+    font-family: 'Cinzel', Georgia, serif;
+    position: relative;
+  }
+  /* faint grain */
+  body::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  header { position: relative; height: 262px; text-align: center; }
+  header .logo {
+    position: absolute; left: 50%; top: -6px; transform: translateX(-50%);
+    height: 214px;
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 60%, transparent 100%);
+            mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 60%, transparent 100%);
+  }
+  header h1 {
+    position: absolute; left: 0; right: 0; top: 180px;
+    font-size: 56px; font-weight: 700; letter-spacing: .08em;
+    color: var(--accent);
+    text-shadow: 0 2px 0 rgba(0,0,0,.6);
+  }
+
+  main {
+    position: absolute; left: 44px; right: 44px; top: 262px; bottom: 0;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+  }
+  .col { position: relative; display: flex; flex-direction: column; }
+
+  .card {
+    position: relative; z-index: 2;
+    background: linear-gradient(180deg, #1b1f2b, var(--card));
+    border: 1px solid var(--card-edge);
+    border-top: 2px solid var(--accent);
+    padding: 26px 28px 26px 52px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.55);
+  }
+  .card::after { /* corner ticks */
+    content: ''; position: absolute; inset: 6px; pointer-events: none;
+    border: 1px solid rgba(184,150,106,.18);
+  }
+  .card h2 {
+    font-size: 31px; font-weight: 600; letter-spacing: .04em; color: var(--accent-strong);
+    padding-bottom: 12px; margin-bottom: 20px;
+    background:
+      linear-gradient(var(--accent), var(--accent)) left bottom / 100% 1px no-repeat,
+      repeating-linear-gradient(90deg, var(--accent) 0 1px, transparent 1px 72px) left bottom / 100% 9px no-repeat,
+      repeating-linear-gradient(90deg, var(--accent) 0 1px, transparent 1px 18px) left bottom / 100% 5px no-repeat;
+  }
+  .card .gem {
+    position: absolute; left: 18px; top: 46px; width: 22px; height: 22px;
+  }
+  .card .spine {
+    position: absolute; left: 28px; top: 74px; bottom: 26px; width: 1px;
+    background: linear-gradient(var(--accent), transparent);
+    opacity: .5;
+  }
+  ul { list-style: none; }
+  li {
+    position: relative; font-size: 21px; font-weight: 600; letter-spacing: .03em;
+    line-height: 1.25; padding: 9px 0; color: var(--ink);
+  }
+  li::before {
+    content: ''; position: absolute; left: -28px; top: 17px;
+    width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg);
+  }
+  li small {
+    display: block; font-family: 'Spectral', Georgia, serif; font-style: italic;
+    font-size: 17px; font-weight: 400; letter-spacing: 0; color: var(--ink-dim); margin-top: 2px;
+  }
+  ol { list-style: none; counter-reset: step; }
+  ol li { counter-increment: step; padding: 12px 0 12px 0; }
+  ol li::before {
+    content: counter(step, upper-roman); background: none; transform: none;
+    width: auto; height: auto; left: -40px; top: 13px;
+    font-size: 15px; color: var(--accent); width: 24px; text-align: center;
+  }
+  .note {
+    margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--card-edge);
+    font-family: 'Spectral', Georgia, serif; font-style: italic; font-size: 19px; color: var(--ink-dim);
+  }
+
+  .scene {
+    position: relative; z-index: 1; flex: 1; margin: -4px 16px 0;
+    overflow: hidden; border-left: 1px solid var(--card-edge); border-right: 1px solid var(--card-edge);
+  }
+  .scene svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .scene img.emblem {
+    position: absolute; left: 50%; top: 56%; transform: translate(-50%, -50%);
+    width: 118%; opacity: .95;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 42%, transparent 66%);
+            mask-image: radial-gradient(circle at 50% 50%, #000 42%, transparent 66%);
+  }
+  .blight li::before { background: var(--blight); }
+  .blight .card { border-top-color: var(--blight); }
+  .blight h2 { color: #d9c2ff; }
+  .blight li { padding: 7px 0; }
+  .blight li::before { top: 15px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="gem" viewBox="0 0 22 22">
+      <rect x="4" y="4" width="14" height="14" transform="rotate(45 11 11)" fill="#0f1118" stroke="#b8966a" stroke-width="1.5"/>
+      <rect x="8" y="8" width="6" height="6" transform="rotate(45 11 11)" fill="#b8966a"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <img class="logo" src="../web/src/assets/media/banner.webp" alt="">
+  <h1>THE ROAD AHEAD</h1>
+</header>
+
+<main>
+  <!-- CONQUEST -->
+  <section class="col">
+    <div class="card">
+      <svg class="gem"><use href="#gem"/></svg><span class="spine"></span>
+      <h2>CONQUEST</h2>
+      <ul>
+        <li>Raiding for loot</li>
+        <li>Obelisk assaults</li>
+        <li>Capture banners</li>
+        <li>Houses losing regions</li>
+        <li>Army roles<small>Soldier, quartermaster, scout, engineer</small></li>
+        <li>Caravans &amp; supply lines</li>
+        <li>Hired NPC guards</li>
+      </ul>
+    </div>
+    <div class="scene">
+      <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0d1019"/><stop offset=".7" stop-color="#1c2436"/><stop offset="1" stop-color="#2b3247"/>
+          </linearGradient>
+          <radialGradient id="oglow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#a9c2ff" stop-opacity=".55"/><stop offset="1" stop-color="#a9c2ff" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0f1118"/><stop offset=".18" stop-color="#0f1118" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="400" fill="url(#sky1)"/>
+        <g fill="#cfd8ff" opacity=".5"><circle cx="40" cy="120" r="1"/><circle cx="330" cy="90" r="1.2"/><circle cx="270" cy="150" r=".8"/><circle cx="90" cy="70" r=".8"/><circle cx="370" cy="170" r="1"/></g>
+        <path d="M0 300 L60 270 L120 285 L200 250 L280 280 L340 262 L400 278 V400 H0Z" fill="#161b28"/>
+        <ellipse cx="210" cy="190" rx="90" ry="120" fill="url(#oglow)"/>
+        <path d="M196 262 L203 108 L210 92 L217 108 L224 262Z" fill="#0b0d14" stroke="#a9c2ff" stroke-opacity=".5"/>
+        <circle cx="210" cy="148" r="5" fill="#dfe8ff"/>
+        <path d="M0 340 L80 318 L170 330 L260 310 L400 336 V400 H0Z" fill="#0d1018"/>
+        <!-- siege banner -->
+        <line x1="92" y1="345" x2="92" y2="200" stroke="#0a0c12" stroke-width="5"/>
+        <path d="M95 206 H150 L142 230 L150 254 H95Z" fill="#5a3d26"/>
+        <path d="M95 206 H150 L142 230 L150 254 H95Z" fill="none" stroke="#b8966a" stroke-width="1.5"/>
+        <g transform="translate(120 230)" stroke="#dcbd90" stroke-width="1.5" fill="none"><circle r="9"/><path d="M0 -14 L2 -2 L14 0 L2 2 L0 14 L-2 2 L-14 0 L-2 -2Z" fill="#dcbd90" stroke="none"/></g>
+        <rect width="400" height="400" fill="url(#fade)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- REALM -->
+  <section class="col">
+    <div class="card">
+      <svg class="gem"><use href="#gem"/></svg><span class="spine"></span>
+      <h2>THE REALM</h2>
+      <ul>
+        <li>Baronies &amp; kingdoms</li>
+        <li>Alliances</li>
+        <li>Royal elections</li>
+        <li>Casus belli</li>
+        <li>Markets in every region</li>
+        <li>Taverns</li>
+      </ul>
+    </div>
+    <div class="scene">
+      <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#11131c"/><stop offset=".6" stop-color="#2a2a33"/><stop offset="1" stop-color="#5a4632"/>
+          </linearGradient>
+          <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#dcbd90" stop-opacity=".6"/><stop offset="1" stop-color="#dcbd90" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="400" height="400" fill="url(#sky2)"/>
+        <circle cx="270" cy="270" r="140" fill="url(#sun)"/>
+        <path d="M0 300 L90 280 L180 296 L300 270 L400 290 V400 H0Z" fill="#2b2620"/>
+        <!-- keep on a hill -->
+        <path d="M40 400 Q140 300 260 300 Q340 300 400 330 V400Z" fill="#14141a"/>
+        <g fill="#0c0c11">
+          <rect x="150" y="200" width="56" height="110"/>
+          <path d="M146 200 L178 140 L210 200Z"/>
+          <rect x="206" y="240" width="90" height="70"/>
+          <rect x="290" y="218" width="34" height="92"/>
+          <path d="M286 218 L307 182 L328 218Z"/>
+          <g><rect x="206" y="232" width="10" height="10"/><rect x="226" y="232" width="10" height="10"/><rect x="246" y="232" width="10" height="10"/><rect x="266" y="232" width="10" height="10"/><rect x="284" y="232" width="8" height="10"/></g>
+        </g>
+        <line x1="178" y1="140" x2="178" y2="110" stroke="#0c0c11" stroke-width="3"/>
+        <path d="M180 110 L206 116 L180 124Z" fill="#b8966a"/>
+        <g fill="#dcbd90"><rect x="171" y="222" width="6" height="12"/><rect x="230" y="262" width="5" height="9"/><rect x="262" y="262" width="5" height="9"/><rect x="303" y="240" width="5" height="10"/></g>
+        <g fill="#dcbd90" opacity=".6"><rect x="96" y="352" width="4" height="5"/><rect x="118" y="360" width="4" height="5"/><rect x="340" y="348" width="4" height="5"/></g>
+        <rect width="400" height="400" fill="url(#fade)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ADVENTURE (Blight) -->
+  <section class="col blight">
+    <div class="card">
+      <svg class="gem"><use href="#gem"/></svg><span class="spine"></span>
+      <h2>ADVENTURE</h2>
+      <ul>
+        <li>5-man dungeons</li>
+        <li>Cursed Dungeons<small>PvPvE versions, with their own loot</small></li>
+        <li>20–25-man raids</li>
+        <li>The Tower<small>Solo, 5-man, 20-man &amp; PvPvE floors</small></li>
+        <li>World bosses<small>Random spawns, no map markers</small></li>
+        <li>Raids on settlements<small>PvE assaults on player towns</small></li>
+        <li>World events</li>
+        <li>Weapon skill trees</li>
+        <li>Mounts</li>
+      </ul>
+    </div>
+    <div class="scene">
+      <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#110f1c"/><stop offset=".7" stop-color="#2c1f45"/><stop offset="1" stop-color="#3e2a60"/>
+          </linearGradient>
+          <radialGradient id="haze" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#b57cff" stop-opacity=".45"/><stop offset="1" stop-color="#b57cff" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="crys" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e6d6ff"/><stop offset=".5" stop-color="#b57cff"/><stop offset="1" stop-color="#4b2a80"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="400" fill="url(#sky3)"/>
+        <ellipse cx="200" cy="300" rx="240" ry="110" fill="url(#haze)"/>
+        <!-- ruined arch, scaled down to stay whole above the taller card -->
+        <g transform="translate(200 322) scale(.52) translate(-200 -322)">
+        <g fill="#0e0b16">
+          <path d="M120 320 V170 Q200 90 280 170 V320 H256 V180 Q200 124 144 180 V320Z"/>
+          <path d="M256 180 L280 170 L292 186 L268 200Z"/>
+        </g>
+        <!-- forgotten patrol -->
+        <g fill="#08060d">
+          <path d="M186 318 v-38 q0-10 8-12 q-6-4-4-11 q4-7 10-3 q6 4 2 11 q8 3 8 13 v40Z"/>
+          <line x1="212" y1="320" x2="218" y2="244" stroke="#08060d" stroke-width="2.5"/>
+        </g>
+        <circle cx="198" cy="262" r="2.4" fill="#d9c2ff"/>
+        </g>
+        <path d="M0 330 Q100 310 200 326 Q300 340 400 320 V400 H0Z" fill="#120d1d"/>
+        <!-- crystals -->
+        <g stroke="#e6d6ff" stroke-opacity=".5" stroke-width=".8">
+          <path d="M40 360 L52 270 L66 360Z" fill="url(#crys)"/>
+          <path d="M62 365 L80 300 L92 365Z" fill="url(#crys)"/>
+          <path d="M24 370 L34 318 L46 370Z" fill="url(#crys)"/>
+          <path d="M320 365 L338 262 L356 365Z" fill="url(#crys)"/>
+          <path d="M350 370 L364 310 L378 370Z" fill="url(#crys)"/>
+          <path d="M300 372 L312 330 L324 372Z" fill="url(#crys)"/>
+        </g>
+        <path d="M0 360 Q120 350 200 366 Q300 380 400 358 V400 H0Z" fill="#0a0810"/>
+        <g fill="#d9c2ff" opacity=".7"><circle cx="150" cy="240" r="1.4"/><circle cx="260" cy="210" r="1.1"/><circle cx="90" cy="250" r="1"/><circle cx="300" cy="240" r="1.3"/><circle cx="230" cy="280" r="1"/></g>
+        <rect width="400" height="400" fill="url(#fade)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- THE PATH -->
+  <section class="col">
+    <div class="card">
+      <svg class="gem"><use href="#gem"/></svg><span class="spine"></span>
+      <h2>THE PATH</h2>
+      <ol>
+        <li>Small playtests</li>
+        <li>Founder’s Access</li>
+        <li>Early Access</li>
+      </ol>
+      <p class="note">No dates until they’re real.</p>
+    </div>
+    <div class="scene">
+      <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="eg" cx=".5" cy=".55" r=".6">
+            <stop offset="0" stop-color="#1d2436"/><stop offset="1" stop-color="#0f1118"/>
+          </radialGradient>
+        </defs>
+        <rect width="400" height="400" fill="url(#eg)"/>
+      </svg>
+      <img class="emblem" src="../web/src/assets/media/emblem.webp" alt="">
+    </div>
+  </section>
+</main>
+</body>
+</html>
