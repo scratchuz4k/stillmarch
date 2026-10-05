@@ -3,8 +3,8 @@
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
     "build": "0.2.0-action.20",
-    "updated": "2026-09-24",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, and patch notes for action.17, action.19 and action.20. Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "updated": "2026-10-05",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19 and action.20, and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
@@ -647,13 +647,22 @@
     {
       "id": "dungeons-raids",
       "title": "Dungeons & Raids",
-      "dek": "5-man dungeons and 20-man raids.",
+      "dek": "Instanced dungeons, raids and the Tower, plus world bosses and raids on settlements out in the open world.",
       "blocks": [
+        { "type": "h", "text": "Instanced" },
         { "type": "list", "items": [
-          { "text": "5-man instanced dungeons.", "status": "confirmed" },
-          { "text": "20-man raids.", "status": "confirmed" },
+          { "text": "5-man dungeons — closed instances.", "status": "confirmed" },
+          { "text": "Cursed Dungeons — PvPvE variants of the same 5-man dungeons, with different loot.", "status": "confirmed" },
+          { "text": "20–25-man raids — closed instances.", "status": "confirmed" },
+          { "text": "The Tower — closed-instance challenges that climb floor by floor. Each floor sets its own format: solo, 5-man, 20-man or PvPvE.", "status": "confirmed" },
           { "text": "Blackrust Gaol — a specific dungeon already in the current playable slice.", "status": "live17" }
-        ] }
+        ] },
+        { "type": "h", "text": "Open world" },
+        { "type": "list", "items": [
+          { "text": "World bosses with randomized spawns — nothing on the map marks where they are.", "status": "confirmed" },
+          { "text": "PvE raids on settlements (see also The Invasion).", "status": "confirmed" }
+        ] },
+        { "type": "note", "status": "info", "text": "Source: the dev team's PvE content list, 5 Oct 2026. Raids were previously listed as 20-man." }
       ]
     },
     {
