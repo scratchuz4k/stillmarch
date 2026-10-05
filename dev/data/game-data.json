@@ -639,7 +639,6 @@
           { "text": "Four Forgotten strongholds — Northreach, Heartland, Eastwood, Southmere — replaced the eight small watchtowers; each gate stands at the end of its road (see The Forgotten → Strongholds).", "status": "live20" },
           { "text": "Bridges: the huge terrain ramps at both ends of every bridge are gone — the bridge slope now meets the ground.", "status": "live20" },
           "Rivers, roads, day/night cycle, weather. Nights are dark: a belt lets you hang a lantern (from the blacksmith, lamp oil from the alchemist) and, for archers, a quiver.",
-          "The Blackrust Gaol dungeon.",
           "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north)."
         ] }
       ]
@@ -647,15 +646,14 @@
     {
       "id": "dungeons-raids",
       "title": "Dungeons & Raids",
-      "dek": "Instanced dungeons, raids and the Tower, plus world bosses and raids on settlements out in the open world.",
+      "dek": "Instanced dungeons, raids and the Spire, plus world bosses and raids on settlements out in the open world.",
       "blocks": [
         { "type": "h", "text": "Instanced" },
         { "type": "list", "items": [
           { "text": "5-man dungeons — closed instances.", "status": "confirmed" },
           { "text": "Cursed Dungeons — PvPvE variants of the same 5-man dungeons, with different loot.", "status": "confirmed" },
           { "text": "20–25-man raids — closed instances.", "status": "confirmed" },
-          { "text": "The Tower — closed-instance challenges that climb floor by floor. Each floor sets its own format: solo, 5-man, 20-man or PvPvE.", "status": "confirmed" },
-          { "text": "Blackrust Gaol — a specific dungeon already in the current playable slice.", "status": "live17" }
+          { "text": "The Spire — closed-instance challenges that climb floor by floor. Each floor sets its own format: solo, 5-man, 20-man or PvPvE.", "status": "confirmed" }
         ] },
         { "type": "h", "text": "Open world" },
         { "type": "list", "items": [
