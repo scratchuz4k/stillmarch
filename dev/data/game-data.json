@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.4.2",
+    "build": "0.4.3",
     "updated": "2026-10-13",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20 and 0.4.2 (9 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct) and 0.4.3 (10 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live043": { "label": "Implemented", "short": "0.4.3", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.4.3 (10 Oct). Supersedes earlier builds where numbers conflict." },
     "live042": { "label": "Implemented", "short": "0.4.2", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.4.2 (9 Oct). Supersedes the action builds where numbers conflict." },
     "live20": { "label": "Implemented", "short": "action.20", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.20 (22 Sept). Supersedes earlier builds where numbers conflict." },
     "live19": { "label": "Implemented", "short": "action.19", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.19 (21 Sept). Supersedes action.17 where numbers conflict." },
@@ -189,6 +190,10 @@
           "Clicking right after a skill no longer fires a basic attack with no animation — the attack waits until the skill ends.",
           "Holding LMB to attack no longer makes your character snap at the start of each swing.",
           "Sweeping Cleave deals 2.5× more damage."
+        ] },
+        { "type": "list", "status": "live043", "items": [
+          "A basic staff attack while moving plays on the upper body and your legs keep walking — you can shoot on the move.",
+          "The staff's third combo hit now matches the rest — it came from a different animation set."
         ] },
         { "type": "h", "text": "Healing & support" },
         { "type": "list", "status": "live20", "items": [
@@ -400,7 +405,7 @@
     {
       "id": "sound",
       "title": "Sound",
-      "dek": "Reworked in 0.4.2: weapon skills, player voices, enemy calls, and silence in the Blight.",
+      "dek": "Reworked in 0.4.2 and 0.4.3: weapon skills, Lumen casts, player voices, enemy calls, wind, and silence in the Blight.",
       "status": "live042",
       "blocks": [
         { "type": "h", "text": "Combat" },
@@ -420,6 +425,13 @@
           "Skinning has a sound.",
           "The stonemason taps stone instead of ringing a bell, and the saw sounds like one stroke, not two.",
           "Music fades out when you enter the Blight and stays silent there."
+        ] },
+        { "type": "h", "text": "Lumen, casts & wind (0.4.3)" },
+        { "type": "list", "status": "live043", "items": [
+          "Lumen without the “bells”: new sounds for casting and hitting with Holy Bolt, healing, blessings and auras, resurrection and the Iron Vigil pulse.",
+          "Every skill with a cast time plays a sound for the whole cast — gathering energy for Mending, Blessing and resurrections, embers for Berserker's Fury, a drawn bowstring for Aimed Shot. It fades out when the cast ends or is interrupted.",
+          "In sunny weather you can clearly hear the wind.",
+          "The annoying bumblebee and hissing grasshopper right next to the player are gone from the meadow."
         ] },
         { "type": "h", "text": "Settings" },
         { "type": "p", "text": "The sound settings have an “Other players' voices” slider (50% by default) that sets how loud other players' grunts and shouts are." },
@@ -575,6 +587,7 @@
         { "type": "p", "status": "confirmed", "text": "Region NPCs are a separate kind: NPCs tied to the region itself, such as NPC guards, which will also be hired." },
         { "type": "note", "status": "info", "text": "Why they exist: to bring life to the cities and the game, avoiding the barren-wasteland feel of most Pax Dei cities." },
         { "type": "p", "status": "live042", "text": "Wayfarers only get medieval hairstyles — women's styles for women, men's for men. Styles that were only short stubble were removed, since they couldn't be displayed properly; a character with a removed style gets a different allowed one." },
+        { "type": "p", "status": "live043", "text": "Wayfarers' hair and beards stay on their heads when they bend over." },
         { "type": "h", "text": "Ideas that were turned down" },
         { "type": "list", "items": [
           "House-owned wayfarers (Scratch): since villages are ruled by Houses, wayfarers could belong to the House — something it grinds for and shows off its wealth with. Declined: plots in a village don't have to be House-owned; anyone can become a citizen and rent a plot.",
@@ -704,7 +717,13 @@
           "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north).",
           { "text": "Bandit camps hold men and women, including the Brute and the Cutthroat; some lie in ambush. Drowners are out there too (both named in 0.4.2).", "status": "live042" }
         ] },
-        { "type": "h", "text": "Weather & sky (0.4.2)" },
+        { "type": "h", "text": "Bandits & wildlife (0.4.3)" },
+        { "type": "list", "status": "live043", "items": [
+          "In camp a sentry walks the edge of the clearing and stops to watch the forest, while the rest stay near the middle of the camp.",
+          "Out of combat bandits sheathe their weapons on their backs, and draw them when they spot you.",
+          "Bandits and animals no longer jitter in small circles on the spot — the AI kept pulling them back to their spawn point."
+        ] },
+        { "type": "h", "text": "Weather & sky" },
         { "type": "list", "status": "live042", "items": [
           "In a storm the sun and its rays disappear behind the clouds, and the sky closes over with a heavy grey layer. A full storm gets darker, with muted colours.",
           "Lightning is one strong flash instead of flickering. Thunder follows the flash: the closer the strike, the sooner and louder it comes.",
@@ -714,13 +733,18 @@
           "The thick violet haze is back over the Blight, strongholds included.",
           "The crack in the moon is see-through, showing the sky behind it."
         ] },
+        { "type": "list", "status": "live043", "items": [
+          "In sunny weather you can clearly see and hear the wind: grass and trees keep swaying, and gusts roll across the meadows.",
+          "When it clouds over the wind picks up, and the harder it rains, the stronger the gale. In a downpour trees and grass bend in the wind."
+        ] },
         { "type": "table", "caption": "Grass draw distance by graphics quality (0.4.2)", "headers": ["Quality", "Grass reach"], "rows": [
           ["Low, Medium", "Unchanged"],
           ["High", "30% further"],
           ["Epic", "Twice as far — about 70–120 m (was 35–60 m)"],
           ["Cinematic", "2.5× as far"]
         ] },
-        { "type": "p", "status": "live042", "text": "Grass reaches far enough that you no longer see where it ends, and vegetation keeps its detail further out." }
+        { "type": "p", "status": "live042", "text": "Grass reaches far enough that you no longer see where it ends, and vegetation keeps its detail further out." },
+        { "type": "p", "status": "live043", "text": "Grass on new terrain is built in the background and no longer freezes the frame; the long draw distance on Epic stays (see Development & Testing → Performance)." }
       ]
     },
     {
@@ -787,8 +811,13 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.4.2 (9 Oct).",
+      "dek": "action.17 (20 Sept) through 0.4.3 (10 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.4.3 — 10 Oct" },
+        { "type": "p", "text": "Update required (client + server). Changes since 0.4.2: a smoothness pass (no more stutter walking through the world, background grass building, a ~40% lighter render thread, the first memory cleanup moved under the loading screen); wind you can see and hear in fair weather, rising with clouds and rain; staff basics on the move and a matching third combo hit; new Lumen and cast sounds; bandit camps with a sentry, sheathed weapons out of combat, and no more jittering on the spot." },
+        { "type": "list", "status": "live043", "items": [
+          "Your character's head looks where the camera points while standing and walking; while running it looks ahead."
+        ] },
         { "type": "h", "text": "0.4.2 — 9 Oct" },
         { "type": "p", "text": "Update required (client + server). Changes since 0.4.0: the Forgotten strongholds garrisoned again after standing empty since the end of September; The Old Mine by Lucyphere replacing the previous dungeon and its boss (empty for now, there to explore); Forgotten and bandit normal attacks doing real damage again after hitting for 1 since 0.3.3; weapon reach cut to match the blade; Sweeping Cleave ×2.5 and Battle Surge removed; storms, lightning and thunder reworked; vegetation that sways in the wind and grass that reaches further; a sound pass (weapon skills, player voices, enemy calls, a low-health heartbeat); the T4 heavy set restyled; and HUD changes (a readable location banner, a Tab buff list, the aggro eye, a chat welcome)." },
         { "type": "list", "status": "live042", "items": [
@@ -837,6 +866,17 @@
           "Hosting: self-hosted on the developer's own PC, tunneled with an app called playit for early testing; plan is to move to Hetzner for actual alpha/playtest hosting.",
           "Backend: server-side persistence and economy-logic tests gate every build.",
           "Client versioning: each build requires the matching client — older clients can't connect. Characters and the database persist across builds."
+        ] },
+        { "type": "h", "text": "Performance (0.4.3)" },
+        { "type": "p", "status": "live043", "text": "The game no longer stutters as you walk through the world, especially on Epic. On the dev's test route (Epic, 6 minutes walking through meadows and forest), stutters longer than a quarter of a second dropped from almost one a minute to zero, and shorter ones (50 ms and up) from several a minute to less than one." },
+        { "type": "list", "status": "live043", "items": [
+          "Grass on new terrain is built in the background and no longer freezes the frame.",
+          "Turning the camera quickly no longer freezes the image.",
+          "The render thread is about 40% lighter, so slower CPUs should get more FPS.",
+          "The first big memory cleanup happens under the loading screen instead of two minutes into play.",
+          "Mobs, their names and their sounds no longer weigh on the game several times a second.",
+          "Bandits coming into range appear one after another instead of all in the same frame.",
+          "A storm building up or dying down no longer reworks the sunlight every frame."
         ] },
         { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
