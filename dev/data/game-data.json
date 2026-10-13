@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.4.3",
+    "build": "0.5.0",
     "updated": "2026-10-13",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct) and 0.4.3 (10 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct) and 0.5.0 (13 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live050": { "label": "Implemented", "short": "0.5.0", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.0 (13 Oct). Supersedes earlier builds where numbers conflict." },
     "live043": { "label": "Implemented", "short": "0.4.3", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.4.3 (10 Oct). Supersedes earlier builds where numbers conflict." },
     "live042": { "label": "Implemented", "short": "0.4.2", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.4.2 (9 Oct). Supersedes the action builds where numbers conflict." },
     "live20": { "label": "Implemented", "short": "action.20", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.20 (22 Sept). Supersedes earlier builds where numbers conflict." },
@@ -155,6 +156,15 @@
           "Anyone can become a citizen of a region by clicking a button on its Obelisk, and anyone can rent a plot — plots in a village don't have to be House-owned.",
           "Regions will have NPCs tied to the region itself, such as NPC guards, which are also hired (see Wayfarers & NPC Workers)."
         ] },
+        { "type": "h", "text": "House crest (0.5.0)" },
+        { "type": "list", "status": "live050", "items": [
+          "A new crest creator: 20 field divisions and any colour from an RGB picker, instead of a few fixed tinctures.",
+          "64 charges in four groups — classic, beasts, objects, symbols — 48 of them new.",
+          "Up to 3 layers of charges. Each can be moved, scaled, rotated, mirrored and repeated in heraldic layouts. A charge stays where you put it instead of dropping to the bottom of the shield.",
+          "Crests look painted on wood on shields, and like cloth on banners and standards.",
+          "Your crest shows on the Claim Banner, the claim camp standard, the world map, and in the House and region windows.",
+          "The banner's flag waves more calmly and follows the in-game wind, no longer clips into the wooden pole, and the crest on it is no longer squashed."
+        ] },
         { "type": "note", "status": "lore", "text": "Betrayal is built into the culture: it gets written into the Chronicles, and in some Houses is considered an honor rather than a shame." }
       ]
     },
@@ -257,6 +267,19 @@
           "Battle Surge removed: the first hit of a fight no longer gives bonus Fervor.",
           "Life leech shows as healing numbers."
         ] },
+        { "type": "h", "text": "0.5.0 changes" },
+        { "type": "list", "status": "live050", "items": [
+          "In action mode your basic attack goes for the enemy in front of the camera (20° cone); the ring shows the chosen target.",
+          "A basic attack cuts off a skill's animation once the skill has taken effect, so you don't wait for it to finish — only casts are protected. (Since action.20 a basic had waited for the whole skill.)",
+          "A dodge plays out fully (0.6 s). Skills pressed during it fire after it instead of cutting it short.",
+          "Taunt has a targeting mode: the first key press shows an arrow over the enemy (red in range, grey too far); a second press or LMB throws it, RMB cancels.",
+          "Shield Charge runs up to the target, and the damage and stun land on arrival.",
+          "Wide Slash no longer jerks your character and camera.",
+          "The staff stays planted while it releases a spell instead of sliding.",
+          "The sword's first combo hit is slower — it was too fast.",
+          "Stunned mobs really stand still: they don't shoot, turn or walk, and humans play a stunned animation.",
+          "Damage numbers no longer flash for a frame in the top-left corner of the screen."
+        ] },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
@@ -310,7 +333,9 @@
           { "text": "Forgotten use the same animation packs as players — sword & shield / staff stances, strikes, Blight Bolt cast, Heavy Blow, Bone Wall, pounce." },
           { "text": "The acolyte's Blight Bolt was resolving as a Heavy Blow (no projectile, no damage) and acolytes were double-casting — both fixed.", "status": "bug-fixed" },
           { "text": "The acolyte's Blight Bolt now requires line of sight — it can no longer shoot through dungeon walls.", "status": "bug-fixed" },
-          { "text": "The Forgotten shriek when they spot you, and let out a hollow cry before they crumble.", "status": "live042" }
+          { "text": "The Forgotten shriek when they spot you, and let out a hollow cry before they crumble.", "status": "live042" },
+          { "text": "Stronghold bosses such as the Ancient Bone Warden drop a Warden Relic 10% of the time — needed for a Claim Banner and for Obelisk level costs (see Territory Control). They also get a big health bar within 30 m.", "status": "live050" },
+          { "text": "13 Forgotten in one watchtower were facing the wrong way; they now stand correctly.", "status": "live050" }
         ] },
         { "type": "note", "status": "lore", "text": "Forgotten patrol the Blight Hills biome (see Crafting & Materials)." }
       ]
@@ -393,11 +418,24 @@
           "The aggro badge is now an eye that pulses gently on a dark glass background, with the attacker count lined up with it. It disappears once the enemy is dead or gives up.",
           "The chat greets you with “Welcome to Stillmarch!” and the current chat commands."
         ] },
+        { "type": "h", "text": "Event HUD & boss bars (0.5.0)" },
+        { "type": "list", "status": "live050", "items": [
+          "One shared layout for claims and bosses: an event card on the right (objectives and time) and a big bar at the top of the screen.",
+          "During an Obelisk claim the bar shows control for both sides — blue is your side, red your opponents, labelled “Enemies”. A light on the border shows whether you are gaining or losing.",
+          "Bosses in the dungeon and in the world (e.g. the Ancient Bone Warden in the strongholds) get a big health bar with their name, shown as soon as you come within 30 m.",
+          "Texts under the bar no longer overlap and stay readable against the sky."
+        ] },
         { "type": "h", "text": "Region / House UI" },
         { "type": "list", "status": "live17", "items": [
           "Political map (M key): shows who holds each region, its level, prestige, and whether it contains T4 resources.",
           "House screen 2.0 (G or the House icon): tabs — Overview (crest + holdings), Members, Regions, Bank. House name displays in gold over a member's head instead of a default “<Guild>” placeholder.",
           "Region window 2.0: tabs — Overview / Requisitions / Treasury / Plots / Residents / Upgrade — shown based on the viewer's role (outsider, resident, Castellan, Baron); includes a treasury ledger."
+        ] },
+        { "type": "list", "status": "live050", "items": [
+          "Region windows redone in 0.5.0. The region board keeps upkeep deliveries separate from projects.",
+          "The Obelisk window has tabs for the region, residency and plots.",
+          "The Castellan's Table (a building piece) opens an officials-only window: treasury, projects, land, people (see Building & Logistics).",
+          "Tabs look the same in every window."
         ] },
         { "type": "note", "status": "idea", "text": "Carried over: UI icons originally sourced from a free itch.io pack (“Line Game Icons Ultimate Collection” by SunGraphica), since consolidated into the single HUD icon pack above; crafting/item icons are still screenshots of the in-game item mesh, flagged as needing polish. Possible loading hitches tied to world-partition streaming are flagged for investigation, not yet confirmed as a core issue." }
       ]
@@ -432,6 +470,10 @@
           "Every skill with a cast time plays a sound for the whole cast — gathering energy for Mending, Blessing and resurrections, embers for Berserker's Fury, a drawn bowstring for Aimed Shot. It fades out when the cast ends or is interrupted.",
           "In sunny weather you can clearly hear the wind.",
           "The annoying bumblebee and hissing grasshopper right next to the player are gone from the meadow."
+        ] },
+        { "type": "list", "status": "live050", "items": [
+          "Taunt has a battle cry (male and female voice) under the shield bash.",
+          "Drums sound with the on-screen announcements of an Obelisk claim."
         ] },
         { "type": "h", "text": "Settings" },
         { "type": "p", "text": "The sound settings have an “Other players' voices” slider (50% by default) that sets how loud other players' grunts and shouts are." },
@@ -493,7 +535,7 @@
           "Every deposit and withdrawal is taxed, and that cut is split between the bank's House and the region owner where the transaction physically happens.",
           "The House master additionally sets the House's own transaction tax (minimum 2%); the Crown takes a flat 2% on top of that.",
           "The Crown bank is a last resort for orphaned accounts (no House to claim them), taking a 40% cut.",
-          "Plot rent is auto-deducted from the House bank account (0.6 g/m²/day)."
+          "Plot rent was auto-deducted from the House bank account (0.6 g/m²/day) — replaced in 0.5.0 by rent per period from your own account (see Building & Logistics)."
         ] },
         { "type": "note", "status": "info", "text": "Mercenary contracts: a mercenary House can be hired for a fee — no automated success verification; the hirer signs and pays, the mercenary House manually marks the job “completed” to release payment." },
         { "type": "h", "text": "Region upkeep — Requisitions" },
@@ -512,7 +554,16 @@
           ["Log", "4 g"],
           ["Nail", "5 g"]
         ] },
-        { "type": "note", "status": "info", "text": "A level-2 region's upkeep runs to roughly 7,200 gold/week." }
+        { "type": "note", "status": "info", "text": "A level-2 region's upkeep runs to roughly 7,200 gold/week." },
+        { "type": "p", "status": "live050", "text": "The region treasury is secret: only officials see the balance. Everyone else, on the map too, only sees whether the region is in debt." },
+        { "type": "h", "text": "Bank first, purse second (0.5.0)" },
+        { "type": "list", "status": "live050", "items": [
+          "A region's bank is the bank of the House that rules it. If the region has no ruler, or the House has no mint, it's the Crown Bank.",
+          "A workshop owner's income (75% of the customer's fee) goes to their account in the region's bank, even while they're offline.",
+          "These come out of your account in the region's bank first, with the purse covering the rest: processing-table fees; workshop upgrade licence and repair; hiring, upkeep and overdue wages of hirelings; plot claim fees. Plot rent works the same way.",
+          "Hireling upkeep is paid from your account even while you're offline — before, the debt kept piling up.",
+          "The backpack shows, under the purse, the bank of the region you're standing in and your balance there; its tooltip lists all your accounts."
+        ] }
       ]
     },
     {
@@ -569,7 +620,12 @@
           "Weapons have associated “spells” tied to them — a system still being tested.",
           "Item/crafting icons are currently screenshots of the actual item mesh, not custom-drawn."
         ] },
-        { "type": "p", "status": "live042", "text": "The top tier of the heavy armour set (T4 chest, shoulders and belt) is now bright steel with a white and red tabard, instead of dark armour with gold trim." }
+        { "type": "p", "status": "live042", "text": "The top tier of the heavy armour set (T4 chest, shoulders and belt) is now bright steel with a white and red tabard, instead of dark armour with gold trim." },
+        { "type": "list", "status": "live050", "items": [
+          "Claim Banner: Carpenter's Bench (Carpentry 10, tier 2), from a Warden Relic and tier 2 components.",
+          "Supplies: Carpenter's Bench (Carpentry 1). Each one pays for one respawn at a claim camp.",
+          "Warden Relic: a 10% drop from the stronghold bosses, such as the Ancient Bone Warden. It replaced the Ancient Sigil in Obelisk level costs."
+        ] }
       ]
     },
     {
@@ -604,7 +660,32 @@
       "dek": "Plots, protected ground, and a grid-based fight for inventory space.",
       "blocks": [
         { "type": "p", "status": "live17", "text": "Building on claimed land: plots and rent." },
-        { "type": "p", "status": "live17", "text": "Plot rent: 0.6 gold/m²/day, auto-deducted from the House bank account." },
+        { "type": "p", "status": "live17", "text": "Plot rent was 0.6 gold/m²/day, auto-deducted from the House bank account — replaced in 0.5.0 (see Plots & rent below)." },
+        { "type": "h", "text": "Plots & rent (0.5.0)" },
+        { "type": "list", "status": "live050", "items": [
+          "Plots are generated from the settlement plan and update with every change to districts and roads. Manually moving boundaries, removing plots and re-splitting are gone.",
+          "A plot keeps its number with its land: when a settlement grows, leases and buildings stay where they are.",
+          "The regional road built into the terrain counts as a town street, so plots line up along it too.",
+          "The residential and production zones are merged into one: Town.",
+          "Plot sizes: at least 12 m of frontage, at least 6 m on every side, at least 80 m².",
+          "Layout fixes: only the part of a street inside a district is split, so no plots straddle the district border; a block between two parallel streets is split in half (before, the second street got no plots on that side); plots no longer overlap at crossings or on bends.",
+          "Rent is 50 grains per m² per period, paid even while you're offline — first from your bank account, then from your purse.",
+          "Overdue rent blocks building on the plot; after 7 unpaid periods the plot goes back to the region.",
+          "You can prepay up to 30 periods. The plot window has “Pay 1”, “Pay 7” and “Release”."
+        ] },
+        { "type": "h", "text": "Running a settlement (0.5.0)" },
+        { "type": "list", "status": "live050", "items": [
+          "The Castellan's Table: a new building piece in the Civic district, one per settlement, built by the settlement's rulers. Its window is for officials only: treasury, projects, land, people.",
+          "Taking a plot back gives the tenant 3 days' notice and costs the House prestige.",
+          "Expelling a resident gives them 72 h and costs 10 prestige."
+        ] },
+        { "type": "h", "text": "Build mode (0.5.0)" },
+        { "type": "list", "status": "live050", "items": [
+          "The piece catalogue sits in the left column, with a status badge under the compass and a subtler grid.",
+          "The ghost piece follows your crosshair, and LMB and RMB no longer swing your weapon.",
+          "Every refusal tells you why.",
+          "Ruler rights work in every region — before, the client always asked about the first Obelisk."
+        ] },
         { "type": "h", "text": "Resource protection inside build boundaries" },
         { "type": "p", "status": "live19", "text": "Nothing respawns inside a region's build boundary — gathered trees, mined ore, and killed animals do not come back inside the circle where zones can be painted. Living animals and standing (ungathered) trees are left alone. The boundary radius scales with Obelisk level." },
         { "type": "table", "headers": ["Obelisk level", "Boundary radius"], "rows": [
@@ -616,18 +697,71 @@
           "Grid-based with variable item sizes (Path of Exile–style) — a deliberate design choice, not a weight system, meant to make inventory space itself a form of economic scarcity so one player can't solo-haul unlimited rare resources.",
           "A weight-based alternative was proposed and rejected — exploitable (e.g. one cart hauling multiple “overencumbered” players, jokingly nicknamed the “Stillmarch Taxi Service”)."
         ] },
+        { "type": "h", "text": "Item sizes & stacks (0.5.0)" },
+        { "type": "p", "status": "live050", "text": "Item sizes and stack sizes now come from one rule based on an item's value, instead of being set by eye. When you log in, your backpack is fitted to the new rules; anything that doesn't fit lies in a bag at your feet that only you can see and open. Nothing is lost." },
+        { "type": "table", "caption": "Stack sizes (0.5.0)", "headers": ["Items", "Stack"], "rows": [
+          ["Small goods", "50 / 25 / 10 / 5 / 1, by value"],
+          ["Food, potions, bandages", "10"],
+          ["Arrows", "50 in the backpack; the quiver is a separate container for 200"],
+          ["Coins", "100"],
+          ["1×1 crafting parts", "Stack"],
+          ["Gems and relics", "Don't stack"],
+          ["Anything bigger than 1×1", "Doesn't stack in the backpack"]
+        ] },
         { "type": "p", "status": "live17", "text": "Hand cart: implemented, used for hauling large quantities of materials." },
+        { "type": "table", "caption": "Cart bundles (0.5.0)", "headers": ["Goods", "Per bundle"], "rows": [
+          ["Planks", "5"],
+          ["Ingots", "4"],
+          ["Logs", "5"],
+          ["Stone, ore", "4"],
+          ["Cloth, leather", "10"]
+        ] },
+        { "type": "p", "status": "live050", "text": "The cart carries bundles, so processed goods are worth hauling further than raw ones. Cart load comes from the cargo's weight: a full cart of stone is over 100% and stops on a steep slope." },
         { "type": "p", "status": "confirmed", "text": "Caravans are planned for later — larger-scale transport, and the supply-line mechanic for sieges." }
       ]
     },
     {
       "id": "territory-control",
       "title": "Territory Control: Obelisks & Sieges",
-      "dek": "Taking land by force — barely tested, and next on the roadmap.",
+      "dek": "Claiming dormant Obelisks is in since 0.5.0; sieges are still to come.",
       "blocks": [
-        { "type": "p", "text": "Obelisks are the core territorial control points. As of the DM conversation this system was barely tested, and taking land by force is explicitly the next major system on the roadmap — not yet live." },
+        { "type": "p", "text": "Obelisks are the core territorial control points. At the time of the DM conversation this system was barely tested, and taking land by force was the next major system on the roadmap. 0.5.0 shipped the first piece: a House can claim a dormant Obelisk (below). The notes only cover dormant Obelisks — taking a region another House holds isn't described yet." },
         { "type": "note", "status": "bug-fixed", "text": "Fixed, action.19: false “Move closer to the Obelisk” errors on activation, deposits, and settling are fixed — activation range is properly 12 m, measured on the ground plane, plus server-side slack." },
-        { "type": "h", "text": "Planned claiming process" },
+        { "type": "h", "text": "Claiming a dormant Obelisk (0.5.0)" },
+        { "type": "p", "status": "live050", "text": "A House can claim a dormant Obelisk and make its region the House's own. The claim is a 15-minute fight for a 20 m ring around the House's Claim Banner." },
+        { "type": "list", "status": "live050", "items": [
+          "You need a Claim Banner, crafted at the Carpenter's Bench (Carpentry 10, tier 2) from a Warden Relic and tier 2 components. The Warden Relic drops 10% of the time from stronghold bosses such as the Ancient Bone Warden.",
+          "The House leader starts the claim in the dormant Obelisk's window. It shows the region's name, the requirements with check marks (House leader, Claim Banner in your backpack), the rules and a big claim button.",
+          "The banner stands next to the Obelisk with a 20 m ring around it, drawn on the ground like an attack telegraph in a different colour. Instead of hit points it has a 0–100% control bar."
+        ] },
+        { "type": "table", "caption": "Who's in the ring decides control", "headers": ["In the ring", "Control"], "rows": [
+          ["Enemies, nobody from your House", "Drains — to zero in 90 s, faster with more enemies. At 0% the banner falls."],
+          ["Only your House", "Refills; a fallen banner rises again, so you can retake it until the window closes"],
+          ["Both sides", "Holds still"]
+        ] },
+        { "type": "p", "status": "live050", "text": "Enemies are players outside your House and its allies, or Blight mobs." },
+        { "type": "h", "text": "Winning, losing, abandoning" },
+        { "type": "list", "status": "live050", "items": [
+          "You need 15 minutes of the banner standing, within a 30-minute window. There's no overtime: the claim succeeds the moment progress reaches 15:00, and the region becomes your House's, keeping its name.",
+          "The claim fails right away if less time is left in the window than progress is missing, or if the banner lies down for more than 5 minutes straight.",
+          "The House leader can abandon the claim (“Abandon the claim” in the Obelisk window, with confirmation). The banner is lost and unused Supplies come back.",
+          "Claiming unowned land is partial loot for both sides."
+        ] },
+        { "type": "h", "text": "Camp, respawns & Supplies" },
+        { "type": "list", "status": "live050", "items": [
+          "Claim camp: a tent with your House standard about 120 m from the banner, behind the House leader.",
+          "Respawning is your choice. After dying nearby a panel offers “Rise at the claim camp” (a wave every 60 s, 5 s of protection until you strike) or a normal return to the settlement or graveyard. Nobody is dropped back under the blade automatically.",
+          "Supplies (Carpenter's Bench, Carpentry 1): 1 Supplies = 1 camp respawn, up to 20. They're taken from the House leader's backpack and their cart parked nearby when the banner goes up."
+        ] },
+        { "type": "h", "text": "Blight waves & announcements" },
+        { "type": "list", "status": "live050", "items": [
+          "The first Blight wave comes after 2 minutes, then one every 3 minutes, each announced by purple mist 10 s before. The last wave is bigger and has an elite. Blight mobs in the ring drain control too.",
+          "Everyone in the region sees and hears the claim: an on-screen announcement with drums when the banner goes up, falls, rises again, holds or fails, plus chat reminders and a marker on the world map.",
+          "Progress shows in the event HUD — an event card on the right and a control bar at the top (see UI / HUD).",
+          "After a successful claim the banner disappears shortly after; a fallen banner fades out instead of lying on the ground."
+        ] },
+        { "type": "note", "status": "info", "text": "The claim has the shape of the planned v1 siege below — an open-field fight for a point, with Supplies paying for respawns — but it's started by a House leader with a Claim Banner, not by an Army with a Siege Banner." },
+        { "type": "h", "text": "Planned siege process" },
         { "type": "olist", "items": [
           "An attacking House crafts a Siege Banner.",
           "The banner is placed in the attacker's own region, an allied region, or a starter village (if the House holds no region).",
@@ -717,11 +851,15 @@
           "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north).",
           { "text": "Bandit camps hold men and women, including the Brute and the Cutthroat; some lie in ambush. Drowners are out there too (both named in 0.4.2).", "status": "live042" }
         ] },
-        { "type": "h", "text": "Bandits & wildlife (0.4.3)" },
+        { "type": "h", "text": "Bandits & wildlife" },
         { "type": "list", "status": "live043", "items": [
           "In camp a sentry walks the edge of the clearing and stops to watch the forest, while the rest stay near the middle of the camp.",
           "Out of combat bandits sheathe their weapons on their backs, and draw them when they spot you.",
           "Bandits and animals no longer jitter in small circles on the spot — the AI kept pulling them back to their spawn point."
+        ] },
+        { "type": "list", "status": "live050", "items": [
+          "Bandit archers draw their bow (0.8 s) instead of shooting instantly. They spot you from range and keep their distance instead of walking up to arm's length.",
+          "Melee mobs notice you from about 10 m."
         ] },
         { "type": "h", "text": "Weather & sky" },
         { "type": "list", "status": "live042", "items": [
@@ -750,10 +888,12 @@
     {
       "id": "dungeons-raids",
       "title": "Dungeons & Raids",
-      "dek": "The Old Mine is open to explore; instanced dungeons, raids and the Spire, plus world bosses and raids on settlements, are on the way.",
+      "dek": "The Old Mine, under the Abandoned Chapel, is open to explore; instanced dungeons, raids and the Spire, plus world bosses and raids on settlements, are on the way.",
       "blocks": [
         { "type": "h", "text": "In the game now" },
         { "type": "p", "status": "live042", "text": "The Old Mine, a dungeon built by Lucyphere: a chapel, mine tunnels, a labyrinth and a great hall. It replaced the previous dungeon and its boss in 0.4.2, and you enter through the same portal as before. For now it's empty — no enemies, boss or chests; it's there to explore." },
+        { "type": "p", "status": "live050", "text": "Rebuilt in 0.5.0: beams, pillars and planks in the first part, tunnel supports, a bandit chamber lit by torches, and patched holes. The entrance is now an abandoned chapel by the forest road (“Abandoned Chapel” on the map) with no trees growing inside, and the portal in the passage behind the statue has a visible swirl. Leaving the dungeon puts you in the middle of the nave, facing the way out." },
+        { "type": "note", "status": "info", "text": "The 0.5.0 notes give dungeon bosses a health bar but don't say whether The Old Mine has enemies or a boss yet — “empty” is as of 0.4.2." },
         { "type": "h", "text": "Instanced" },
         { "type": "list", "items": [
           { "text": "5-man dungeons — closed instances.", "status": "confirmed" },
@@ -805,14 +945,17 @@
           "Founder's Access",
           "Early Access"
         ] },
-        { "type": "note", "status": "info", "text": "No dates committed until they're real." }
+        { "type": "note", "status": "info", "text": "No dates committed until they're real." },
+        { "type": "note", "status": "live050", "text": "Taking land by force has started: since 0.5.0 a House can claim a dormant Obelisk with a Claim Banner (see Territory Control). Assaults on regions other Houses hold are still to come." }
       ]
     },
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.4.3 (10 Oct).",
+      "dek": "action.17 (20 Sept) through 0.5.0 (13 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.5.0 — 13 Oct" },
+        { "type": "p", "text": "Update required (client + server); characters, Houses, regions and bank accounts carry over. Changes since 0.4.3: claiming a dormant Obelisk (a 15-minute fight for a ring around a Claim Banner, with a claim camp, Supplies for respawns and Blight waves); an event HUD and boss health bars; a new House crest creator; plots generated from the settlement plan, with rent per period paid from your bank account; the Castellan's Table and redone region windows; bank first, purse second for fees and wages; item and stack sizes from one value-based rule, a separate quiver and cart bundles; combat changes (camera-cone targeting, basics cutting off skills, full dodges, Taunt targeting); and a rebuilt dungeon entered from the Abandoned Chapel." },
         { "type": "h", "text": "0.4.3 — 10 Oct" },
         { "type": "p", "text": "Update required (client + server). Changes since 0.4.2: a smoothness pass (no more stutter walking through the world, background grass building, a ~40% lighter render thread, the first memory cleanup moved under the loading screen); wind you can see and hear in fair weather, rising with clouds and rain; staff basics on the move and a matching third combo hit; new Lumen and cast sounds; bandit camps with a sentry, sheathed weapons out of combat, and no more jittering on the spot." },
         { "type": "list", "status": "live043", "items": [
