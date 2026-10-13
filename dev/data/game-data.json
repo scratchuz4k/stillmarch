@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.2.0-action.20",
-    "updated": "2026-10-05",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19 and action.20, and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.4.2",
+    "updated": "2026-10-13",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20 and 0.4.2 (9 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live042": { "label": "Implemented", "short": "0.4.2", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.4.2 (9 Oct). Supersedes the action builds where numbers conflict." },
     "live20": { "label": "Implemented", "short": "action.20", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.20 (22 Sept). Supersedes earlier builds where numbers conflict." },
     "live19": { "label": "Implemented", "short": "action.19", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.19 (21 Sept). Supersedes action.17 where numbers conflict." },
     "live17": { "label": "Implemented", "short": "action.17", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.2.0-action.17 (20 Sept)." },
@@ -36,7 +37,7 @@
     },
     {
       "group": "Interface",
-      "items": ["ui-hud", "party-social"]
+      "items": ["ui-hud", "sound", "party-social"]
     },
     {
       "group": "The Record",
@@ -184,6 +185,11 @@
           "Great Sweep deals its damage in 3 portions during the spin and shows a channel bar.",
           "Skills cast while moving play on the upper body — legs come from locomotion, no sliding."
         ] },
+        { "type": "list", "status": "live042", "items": [
+          "Clicking right after a skill no longer fires a basic attack with no animation — the attack waits until the skill ends.",
+          "Holding LMB to attack no longer makes your character snap at the start of each swing.",
+          "Sweeping Cleave deals 2.5× more damage."
+        ] },
         { "type": "h", "text": "Healing & support" },
         { "type": "list", "status": "live20", "items": [
           "T cycles through allies to heal — party first, alive before dead. The cast bar names the target: “Holy Mending → Name”, or “Self”.",
@@ -202,6 +208,7 @@
           "Blockable: sweeps and cones, including the skeleton Heavy Blow. Not blockable: ground-effect abilities — Rain of Arrows, Ground Slam, Radiance, the Iron Vigil aura, and bleeds."
         ] },
         { "type": "p", "status": "live20", "text": "Guard responsiveness: the guard rises the instant RMB is pressed (no longer waiting for server replication) and ×2.2 faster; releasing RMB lowers the shield at once." },
+        { "type": "p", "status": "live042", "text": "Holding your guard while nobody hits you drains the pool half as fast." },
         { "type": "table", "caption": "Block pool by item tier", "headers": ["Item", "Block Rating"], "rows": [
           ["Sword", "40–60"],
           ["Greatsword", "55–80"],
@@ -210,10 +217,18 @@
         { "type": "note", "status": "bug-fixed", "text": "Fixed, action.19: blocking with a sheathed weapon previously let you guard bare-handed — now blocking properly draws the weapon first, like attacking does." },
         { "type": "h", "text": "Melee basics (arc hits)" },
         { "type": "p", "status": "live17", "text": "Basic swings hit every enemy in a cone in front of you, crosshair-aimed (your body turns into the swing), up to 8 targets." },
-        { "type": "table", "caption": "Reach & arc by weapon (action.17)", "headers": ["Weapon", "Range", "Arc"], "rows": [
-          ["Sword", "3 m", "120°"],
-          ["Greatsword", "4.2 m (strikes), 4.3 m (sweeps)", "150°"],
-          ["Fists", "3 m", "90°"]
+        { "type": "table", "caption": "Reach by weapon (0.4.2)", "headers": ["Weapon", "Attack", "Reach", "Before"], "rows": [
+          ["One-handed", "Basic", "2.6 m", "3.0 m"],
+          ["One-handed", "Wide Slash", "2.8 m", "3.5 m"],
+          ["Two-handed", "Basic, Sundering, Execute", "3.4 m", "4.2 m"],
+          ["Two-handed", "Sweeping Cleave, Shattering", "3.0 m", "4.3 m"],
+          ["Fists", "Basic", "2.0 m", "3.0 m"]
+        ] },
+        { "type": "p", "status": "live042", "text": "Weapon reach was cut to match the length of the blade." },
+        { "type": "table", "caption": "Arc by weapon (action.17)", "headers": ["Weapon", "Arc"], "rows": [
+          ["Sword", "120°"],
+          ["Greatsword", "150°"],
+          ["Fists", "90°"]
         ] },
         { "type": "list", "status": "live17", "items": [
           "Dodge (Alt) shows a small white cooldown bar under the crosshair; the dodge icon was removed from the skill bar.",
@@ -232,6 +247,11 @@
           ["Greatsword", "64–87"],
           ["Staff", "38–46"]
         ] },
+        { "type": "h", "text": "Balance & feedback (0.4.2)" },
+        { "type": "list", "status": "live042", "items": [
+          "Battle Surge removed: the first hit of a fight no longer gives bonus Fervor.",
+          "Life leech shows as healing numbers."
+        ] },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
@@ -245,7 +265,7 @@
           { "text": "Action bar: roughly 8–10 spell slots plus extra consumable/item slots." },
           { "text": "Damage/healing numbers should only display for the player, not allies/party; drop the “+” on healing numbers; damage numbers slightly smaller.", "status": "bug-open" },
           { "text": "Partly addressed in action.20: other people's damage numbers are shown at ×0.5 size when they're in your party, and hidden entirely for strangers.", "status": "live20" },
-          { "text": "Low HP feedback is currently only a heartbeat sound cue — no visual indicator yet.", "status": "bug-open" },
+          { "text": "Low HP feedback is still sound only — since 0.4.2 a heartbeat plays below 40% health, heavier and faster below 20% (see Sound) — with no visual indicator yet.", "status": "bug-open" },
           { "text": "No plans for damage/healing meters — considered too likely to push toward min-maxing." },
           { "text": "Party size: 5 players." },
           { "text": "Death penalty: dying drops your entire purse/bag near your corpse; 20% of gold is permanently lost (see Economy)." },
@@ -261,8 +281,10 @@
       "blocks": [
         { "type": "p", "text": "The Forgotten have been buffed twice in two days: once in direct response to players gaining block and area-hit basics (action.17), and again based on 21 Sept playtest feedback (action.19): x2.5 HP and damage over action.17's already-buffed numbers (x4.3 of original base stats overall; armor 70/26).", "status": "live19" },
         { "type": "p", "text": "Hit 50% harder again in action.20: the damage multiplier on basics and skills went from x2.5 to x3.75. HP and armor are unchanged.", "status": "live20" },
+        { "type": "p", "text": "In 0.4.2 the normal attacks of the Warrior, Veteran, Patrol and Stalker hit for real damage again — they had been doing 1 damage since 0.3.3. Acolyte bolts now deal their damage when they reach you, not when they are cast.", "status": "live042" },
         { "type": "h", "text": "Strongholds" },
         { "type": "p", "text": "The eight small watchtower pairs were rebuilt into four large strongholds, one per region: Northreach, Heartland, Eastwood and Southmere. Each stronghold's gate stands at the end of its road and the ground under its walls is levelled. The old watchtower sites are growing back into forest.", "status": "live20" },
+        { "type": "p", "text": "Garrisoned again in 0.4.2: from the end of September all four strongholds stood empty, and the only fights were with the camps around them. The thick violet Blight haze is back over them too.", "status": "live042" },
         { "type": "table", "caption": "Garrison per stronghold (action.20)", "headers": ["Type", "Count"], "rows": [
           ["Warrior", "16"],
           ["Veteran", "6"],
@@ -274,14 +296,16 @@
           ["Veteran", "Full armor, sword and shield"],
           ["Warrior", "Light armor, sword"],
           ["Stalker", "Rags, sword"],
-          ["Acolyte", "Toga, staff"]
+          ["Acolyte", "Toga, staff"],
+          ["Patrol", "Not described yet — first named in 0.4.2"]
         ] },
         { "type": "list", "items": [
           { "text": "A built-in halberd-wielding type was removed.", "status": "live17" },
           { "text": "Every watchtower had +3 Forgotten added to its garrison (2 warriors + 1 veteran) — superseded by the action.20 strongholds.", "status": "live17" },
           { "text": "Forgotten use the same animation packs as players — sword & shield / staff stances, strikes, Blight Bolt cast, Heavy Blow, Bone Wall, pounce." },
           { "text": "The acolyte's Blight Bolt was resolving as a Heavy Blow (no projectile, no damage) and acolytes were double-casting — both fixed.", "status": "bug-fixed" },
-          { "text": "The acolyte's Blight Bolt now requires line of sight — it can no longer shoot through dungeon walls.", "status": "bug-fixed" }
+          { "text": "The acolyte's Blight Bolt now requires line of sight — it can no longer shoot through dungeon walls.", "status": "bug-fixed" },
+          { "text": "The Forgotten shriek when they spot you, and let out a hollow cry before they crumble.", "status": "live042" }
         ] },
         { "type": "note", "status": "lore", "text": "Forgotten patrol the Blight Hills biome (see Crafting & Materials)." }
       ]
@@ -357,6 +381,13 @@
           "Nameplates 2.0 are on by default; the kit's own player plate is collapsed.",
           "Party frames: see Party & Player Interaction."
         ] },
+        { "type": "h", "text": "0.4.2 changes" },
+        { "type": "list", "status": "live042", "items": [
+          "The banner shown when you enter a region or location is readable: engraved, outlined lettering on a soft dark backdrop. Before, it got lost against a bright sky or fog.",
+          "Tab shows your active buffs and debuffs at the bottom of the screen; hover one to read what it does.",
+          "The aggro badge is now an eye that pulses gently on a dark glass background, with the attacker count lined up with it. It disappears once the enemy is dead or gives up.",
+          "The chat greets you with “Welcome to Stillmarch!” and the current chat commands."
+        ] },
         { "type": "h", "text": "Region / House UI" },
         { "type": "list", "status": "live17", "items": [
           "Political map (M key): shows who holds each region, its level, prestige, and whether it contains T4 resources.",
@@ -364,6 +395,35 @@
           "Region window 2.0: tabs — Overview / Requisitions / Treasury / Plots / Residents / Upgrade — shown based on the viewer's role (outsider, resident, Castellan, Baron); includes a treasury ledger."
         ] },
         { "type": "note", "status": "idea", "text": "Carried over: UI icons originally sourced from a free itch.io pack (“Line Game Icons Ultimate Collection” by SunGraphica), since consolidated into the single HUD icon pack above; crafting/item icons are still screenshots of the in-game item mesh, flagged as needing polish. Possible loading hitches tied to world-partition streaming are flagged for investigation, not yet confirmed as a core issue." }
+      ]
+    },
+    {
+      "id": "sound",
+      "title": "Sound",
+      "dek": "Reworked in 0.4.2: weapon skills, player voices, enemy calls, and silence in the Blight.",
+      "status": "live042",
+      "blocks": [
+        { "type": "h", "text": "Combat" },
+        { "type": "list", "items": [
+          "New sounds for most weapon skills: Sweeping Cleave, Shattering, Sundering, Execute, Rend, Wide Slash, Shield Charge, Shield Bash, ground slams and bow shots.",
+          "One-handed swords sound like steel instead of a wooden practice sword.",
+          "Your character grunts when swinging a weapon or staff, with a heavier shout on combo finishers and weapon skills.",
+          "Jumping has a sound (gear rustle, sometimes a short breath), and your character pants when stamina runs out.",
+          "A heartbeat plays at low health: soft below 40%, heavier and faster below 20%."
+        ] },
+        { "type": "h", "text": "Enemies & the world" },
+        { "type": "list", "items": [
+          "Enemies call out when they spot you: the Forgotten shriek, wolves bark, drowners gurgle, bandits shout (men and women).",
+          "Dying Forgotten let out a hollow cry before they crumble.",
+          "Bandit camps can be heard from a distance — laughs, whistles, mutters — unless they're lying in ambush.",
+          "A herd no longer calls all at once, which sounded like an echo.",
+          "Skinning has a sound.",
+          "The stonemason taps stone instead of ringing a bell, and the saw sounds like one stroke, not two.",
+          "Music fades out when you enter the Blight and stays silent there."
+        ] },
+        { "type": "h", "text": "Settings" },
+        { "type": "p", "text": "The sound settings have an “Other players' voices” slider (50% by default) that sets how loud other players' grunts and shouts are." },
+        { "type": "note", "status": "info", "text": "Earlier sound fixes live with their systems: enemy skill sounds stopped carrying across the whole map in the Friday hotfixes, and hit sounds were made quieter and throttled in action.19 (see Combat)." }
       ]
     },
     {
@@ -496,7 +556,8 @@
           "Crafting is considered fairly solid already; crafting XP was multiplied 10x by the developer to push further testing.",
           "Weapons have associated “spells” tied to them — a system still being tested.",
           "Item/crafting icons are currently screenshots of the actual item mesh, not custom-drawn."
-        ] }
+        ] },
+        { "type": "p", "status": "live042", "text": "The top tier of the heavy armour set (T4 chest, shoulders and belt) is now bright steel with a white and red tabard, instead of dark armour with gold trim." }
       ]
     },
     {
@@ -513,6 +574,7 @@
         ] },
         { "type": "p", "status": "confirmed", "text": "Region NPCs are a separate kind: NPCs tied to the region itself, such as NPC guards, which will also be hired." },
         { "type": "note", "status": "info", "text": "Why they exist: to bring life to the cities and the game, avoiding the barren-wasteland feel of most Pax Dei cities." },
+        { "type": "p", "status": "live042", "text": "Wayfarers only get medieval hairstyles — women's styles for women, men's for men. Styles that were only short stubble were removed, since they couldn't be displayed properly; a character with a removed style gets a different allowed one." },
         { "type": "h", "text": "Ideas that were turned down" },
         { "type": "list", "items": [
           "House-owned wayfarers (Scratch): since villages are ruled by Houses, wayfarers could belong to the House — something it grinds for and shows off its wealth with. Declined: plots in a village don't have to be House-owned; anyone can become a citizen and rent a plot.",
@@ -639,15 +701,35 @@
           { "text": "Four Forgotten strongholds — Northreach, Heartland, Eastwood, Southmere — replaced the eight small watchtowers; each gate stands at the end of its road (see The Forgotten → Strongholds).", "status": "live20" },
           { "text": "Bridges: the huge terrain ramps at both ends of every bridge are gone — the bridge slope now meets the ground.", "status": "live20" },
           "Rivers, roads, day/night cycle, weather. Nights are dark: a belt lets you hang a lantern (from the blacksmith, lamp oil from the alchemist) and, for archers, a quiver.",
-          "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north)."
-        ] }
+          "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north).",
+          { "text": "Bandit camps hold men and women, including the Brute and the Cutthroat; some lie in ambush. Drowners are out there too (both named in 0.4.2).", "status": "live042" }
+        ] },
+        { "type": "h", "text": "Weather & sky (0.4.2)" },
+        { "type": "list", "status": "live042", "items": [
+          "In a storm the sun and its rays disappear behind the clouds, and the sky closes over with a heavy grey layer. A full storm gets darker, with muted colours.",
+          "Lightning is one strong flash instead of flickering. Thunder follows the flash: the closer the strike, the sooner and louder it comes.",
+          "You only see and hear strikes within about 1.4 km — about two a minute, each with its thunder. The huge bright rectangle that covered the screen on a close strike is gone.",
+          "Overcast skies are grey instead of blue or navy, and rain no longer tints the world blue.",
+          "Trees, bushes and grass clearly sway in the wind, and a storm whips them harder than normal wind does.",
+          "The thick violet haze is back over the Blight, strongholds included.",
+          "The crack in the moon is see-through, showing the sky behind it."
+        ] },
+        { "type": "table", "caption": "Grass draw distance by graphics quality (0.4.2)", "headers": ["Quality", "Grass reach"], "rows": [
+          ["Low, Medium", "Unchanged"],
+          ["High", "30% further"],
+          ["Epic", "Twice as far — about 70–120 m (was 35–60 m)"],
+          ["Cinematic", "2.5× as far"]
+        ] },
+        { "type": "p", "status": "live042", "text": "Grass reaches far enough that you no longer see where it ends, and vegetation keeps its detail further out." }
       ]
     },
     {
       "id": "dungeons-raids",
       "title": "Dungeons & Raids",
-      "dek": "Instanced dungeons, raids and the Spire, plus world bosses and raids on settlements out in the open world.",
+      "dek": "The Old Mine is open to explore; instanced dungeons, raids and the Spire, plus world bosses and raids on settlements, are on the way.",
       "blocks": [
+        { "type": "h", "text": "In the game now" },
+        { "type": "p", "status": "live042", "text": "The Old Mine, a dungeon built by Lucyphere: a chapel, mine tunnels, a labyrinth and a great hall. It replaced the previous dungeon and its boss in 0.4.2, and you enter through the same portal as before. For now it's empty — no enemies, boss or chests; it's there to explore." },
         { "type": "h", "text": "Instanced" },
         { "type": "list", "items": [
           { "text": "5-man dungeons — closed instances.", "status": "confirmed" },
@@ -705,8 +787,16 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through action.20 (22 Sept).",
+      "dek": "action.17 (20 Sept) through 0.4.2 (9 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.4.2 — 9 Oct" },
+        { "type": "p", "text": "Update required (client + server). Changes since 0.4.0: the Forgotten strongholds garrisoned again after standing empty since the end of September; The Old Mine by Lucyphere replacing the previous dungeon and its boss (empty for now, there to explore); Forgotten and bandit normal attacks doing real damage again after hitting for 1 since 0.3.3; weapon reach cut to match the blade; Sweeping Cleave ×2.5 and Battle Surge removed; storms, lightning and thunder reworked; vegetation that sways in the wind and grass that reaches further; a sound pass (weapon skills, player voices, enemy calls, a low-health heartbeat); the T4 heavy set restyled; and HUD changes (a readable location banner, a Tab buff list, the aggro eye, a chat welcome)." },
+        { "type": "list", "status": "live042", "items": [
+          "A weapon sheathed on your back lies flat against it, sits lower and no longer clips into your armour.",
+          "Skin no longer shows through the back of shirts when working bent over.",
+          "The stonemason holds his hammer in his hand, and the banker at the mint counts something in his hands instead of standing with his arms at his sides."
+        ] },
+        { "type": "note", "status": "info", "text": "Builds between action.20 and 0.4.2, including 0.3.3 and 0.4.0, aren't recorded here — their patch notes weren't collected. Version numbers switched from 0.2.0-action.N to 0.x.y somewhere in that gap." },
         { "type": "h", "text": "0.2.0-action.20 — 22 Sept" },
         { "type": "p", "text": "Requires the new client — the map changed, so old versions cannot join the server. Characters and the database were untouched. Headline changes: the watchtowers rebuilt as four large Forgotten strongholds, Forgotten damage x2.5 → x3.75, bridge ramps removed, the player menu and party-frame targeting, heal targeting (T) with range checks and ally-only heals, the Renew HoT timing fix, a HUD revision after feedback (new fonts, active-resource-only bars, New World–style notifications, quieter chat), and combat commit/animation work on skills, spin attacks and block." },
         { "type": "h", "text": "0.2.0-action.19 — 21 Sept" },
@@ -760,7 +850,7 @@
         { "type": "list", "items": [
           "Reference points used repeatedly in discussion: New World (combat impact/weight, poor at scale), Pax Dei (slower combat pacing, UI comparisons, siege/lag cautionary tale — referenced as possibly winding down: “pax dei ded”), Albion, Lineage 2, EVE (sandbox/politics comparisons from the dev update), Wardogs (role-based army XP and post-match pay, raised by Scratch on 23 Sept).",
           "Community channels: 🕯️｜lore (world fragments, deliberately incomplete), 💬｜general (design discussion, read by the dev), and a Playtests role in Channels & Roles for first access to playtest pings.",
-          "Active forum/playtest reporters named in patch notes: Czubik, Lucyphere."
+          "Active forum/playtest reporters named in patch notes: Czubik, Lucyphere. Lucyphere also built The Old Mine dungeon (0.4.2)."
         ] }
       ]
     },
