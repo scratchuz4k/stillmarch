@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.5.3",
-    "updated": "2026-10-13",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1 and 0.5.3 (13 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.6.0",
+    "updated": "2026-10-16",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct) and 0.6.0 (16 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live060": { "label": "Implemented", "short": "0.6.0", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.0 (16 Oct). Supersedes earlier builds where numbers conflict." },
     "live053": { "label": "Implemented", "short": "0.5.3", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.3 (13 Oct). Supersedes earlier builds where numbers conflict." },
     "live051": { "label": "Implemented", "short": "0.5.1", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.1 (13 Oct). Supersedes earlier builds where numbers conflict." },
     "live050": { "label": "Implemented", "short": "0.5.0", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.0 (13 Oct). Supersedes earlier builds where numbers conflict." },
@@ -296,6 +297,22 @@
           "With a staff in hand you always see Lumen — before, the bar sometimes switched to Fervor.",
           "T2–T4 staves get the larger Lumen pool like T1, and T2–T4 swords (one-handed, two-handed, longsword) get the Fervor bonus like T1. The bonuses used to apply to T1 only."
         ] },
+        { "type": "h", "text": "Archer (0.6.0)" },
+        { "type": "list", "status": "live060", "items": [
+          "Aim with RMB and draw with LMB. The crosshair closes as the string tightens and lights up at full draw.",
+          "New bow model, new movement with the bow in hand, and new draw, aim and release animations. The bow sits properly on your back.",
+          "New skill, Hawk's Descent (35 Fervor, 60 s cooldown): leap 9 m up, hover for up to 5 seconds and shoot talon arrows from above. Use it again to come down early.",
+          "The bow bar changes: Aimed Shot is gone, Crippling Shot unlocks at bow level 2 and Hawk's Descent at level 3. Rain of Arrows and Piercing Volley stay at 4 and 6.",
+          "Bow skills have their own effects instead of smoke and explosions. Piercing Volley fires 5 arrows with thick trails; Rain of Arrows sends a volley into the sky, then 18 arrows stick into the ground, and its damage lands together with the arrows.",
+          "Crippling Shot slows monsters reliably, leaves an icy trail and frosts the target's feet while the slow lasts.",
+          "New bow sounds — see Sound."
+        ] },
+        { "type": "h", "text": "0.6.0 changes" },
+        { "type": "list", "status": "live060", "items": [
+          "A blocked hit shows two numbers: the damage you took, and “N Blocked” for what your guard stopped. (In 0.5.3 a single “N Blocked” showed the damage that got through.)",
+          "Gear wears out: weapons with every hit you land, armour and shields with every hit you take. A broken weapon deals no damage and broken armour gives no protection (see Crafting → Durability & repair).",
+          "Dying costs 25% durability on everything you wear."
+        ] },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
@@ -352,7 +369,8 @@
           { "text": "The Forgotten shriek when they spot you, and let out a hollow cry before they crumble.", "status": "live042" },
           { "text": "Stronghold bosses such as the Ancient Bone Warden drop a Warden Relic 10% of the time — needed for a Claim Banner and for Obelisk level costs (see Territory Control). They also get a big health bar within 30 m.", "status": "live050" },
           { "text": "13 Forgotten in one watchtower were facing the wrong way; they now stand correctly.", "status": "live050" },
-          { "text": "The Veteran's area strike (Heavy Blow) winds up for 1.65 s instead of 1.4 s, giving you more time to dodge. The 0.5.3 notes call it the Skeleton Veteran.", "status": "live053" }
+          { "text": "The Veteran's area strike (Heavy Blow) winds up for 1.65 s instead of 1.4 s, giving you more time to dodge. The 0.5.3 notes call it the Skeleton Veteran.", "status": "live053" },
+          { "text": "The Forgotten can drop a Fragment of the Forgotten Blade, a Relic for weapons (see Crafting → Relics).", "status": "live060" }
         ] },
         { "type": "note", "status": "lore", "text": "Forgotten patrol the Blight Hills biome (see Crafting & Materials)." }
       ]
@@ -368,7 +386,11 @@
           "Above 75% Focus you earn +10% XP."
         ] },
         { "type": "p", "status": "live19", "text": "In the HUD, a Focus arc next to the HP bar appears only once Focus drops below 75% — i.e. once the bonus is actually gone, since that's the point it's worth knowing about." },
-        { "type": "note", "status": "info", "text": "Naming: the demo cheatsheet calls the crafting meter “Craftsman's Focus”; the DMs call it “Artisan's Focus”." },
+        { "type": "list", "status": "live060", "items": [
+          "Higher Craftsman's Focus raises your odds of a better quality when crafting; above 75%, stackable results have a 10% chance of one extra piece (see Crafting → Item quality).",
+          "With Combat Focus above 75%, a kill has a 5% chance for an extra rare drop (gems, silver ore)."
+        ] },
+        { "type": "note", "status": "info", "text": "Naming: the DMs call the meters “Warrior's Focus” and “Artisan's Focus”; the demo cheatsheet calls the crafting one “Craftsman's Focus”, and the 0.6.0 notes use “Combat Focus” and “Craftsman's Focus”." },
         { "type": "note", "status": "idea", "text": "Planned: player-built taverns will regenerate Focus quickly once it's maxed out, encouraging players to socialize in cities." }
       ]
     },
@@ -457,7 +479,21 @@
           "The Castellan's Table (a building piece) opens an officials-only window: treasury, projects, land, people (see Building & Logistics).",
           "Tabs look the same in every window."
         ] },
-        { "type": "note", "status": "idea", "text": "Carried over: UI icons originally sourced from a free itch.io pack (“Line Game Icons Ultimate Collection” by SunGraphica), since consolidated into the single HUD icon pack above; crafting/item icons are still screenshots of the in-game item mesh, flagged as needing polish. Possible loading hitches tied to world-partition streaming are flagged for investigation, not yet confirmed as a core issue." }
+        { "type": "h", "text": "Items & interface look (0.6.0)" },
+        { "type": "list", "status": "live060", "items": [
+          "New icons for all items, made in one style.",
+          "A tier badge (a Roman numeral) sits in the corner of every item that has a tier.",
+          "New interface look: darker iron and soot instead of navy blue and gold, with solid panels. Gold now marks only Masterwork items.",
+          "Stats in tooltips, at the crafting station and on the character card are shown as icons with numbers instead of sentences.",
+          "Item tiles use one mark per meaning: the glow shows quality, the corner badge shows tier, a crack mark shows a broken item, and a small mark shows a Relic.",
+          "Durability shows as a thin bar on the item and in the tooltip; you get a warning when something drops below 20%."
+        ] },
+        { "type": "h", "text": "Loot window (0.6.0)" },
+        { "type": "list", "status": "live060", "items": [
+          "Loot opens as a grid like your backpack, with items at their real size. The grid grows with the bag and keeps items in place while you take them.",
+          "Quality, durability and Relics are visible on loot, and hovering an item shows the full tooltip. A bag with something valuable plays its own sound."
+        ] },
+        { "type": "note", "status": "idea", "text": "Carried over: UI icons originally sourced from a free itch.io pack (“Line Game Icons Ultimate Collection” by SunGraphica), since consolidated into the single HUD icon pack above; crafting/item icons were screenshots of the in-game item mesh, flagged as needing polish, until 0.6.0 redrew them all in one style. Possible loading hitches tied to world-partition streaming are flagged for investigation, not yet confirmed as a core issue." }
       ]
     },
     {
@@ -498,6 +534,11 @@
         { "type": "list", "status": "live053", "items": [
           "Wolves sound meaner: a deeper voice, a snarl instead of a bark when they attack, new pain and death sounds, and a low growl at rest. The Alpha Wolf is deeper still.",
           "The staff's basic attack crackles with Lumen instead of whistling like a sling."
+        ] },
+        { "type": "list", "status": "live060", "items": [
+          "Bow sounds you can feel: a string crack and a low kick on every shot, separate sounds for each skill, arrow impacts, and a dry “tok” for every arrow that hits, which you hear even from 30 m.",
+          "The crafting reveal plays sparks and a sound that grow with the item's quality.",
+          "A loot bag with something valuable plays its own sound."
         ] },
         { "type": "h", "text": "Settings" },
         { "type": "p", "text": "The sound settings have an “Other players' voices” slider (50% by default) that sets how loud other players' grunts and shouts are." },
@@ -602,6 +643,7 @@
       "blocks": [
         { "type": "p", "text": "Great Projects: seven one-of-a-kind structures, one per server, funded by regional trade routes and treasuries." },
         { "type": "p", "text": "The Chronicles: a permanent, server-wide historical record of what players did — including betrayals. This is the payoff of the full design chain: resources → gear → regions → trade/treasury → Great Projects → Chronicles." },
+        { "type": "p", "status": "live060", "text": "Since 0.6.0 a Legendary T4 item — a Masterwork piece with a Relic — is written into its region's Chronicle (see Crafting → Relics)." },
         { "type": "h", "text": "Finishing one isn't “gg”" },
         { "type": "p", "text": "Completing all seven doesn't end the server. A Great Project can be destroyed — either by a siege whose specific objective is tearing it down, or as a side effect of the region it stands in being captured outright." },
         { "type": "h", "text": "Kingdom-wide bonuses" },
@@ -612,7 +654,7 @@
     {
       "id": "crafting-materials",
       "title": "Crafting, Gathering & Materials",
-      "dek": "Four tiers of materials; the top tier only grows in corrupted ground.",
+      "dek": "Four tiers of materials, the top one only in corrupted ground; since 0.6.0 crafted gear rolls a quality and wears out.",
       "blocks": [
         { "type": "p", "status": "live17", "text": "Crafting, gathering, hunting, and skinning are all in and playable. Four tiers of materials — Tier 3 weapons deal x2.05 of Tier 1 damage, Tier 4 weapons deal x2.9 of Tier 1 damage." },
         { "type": "h", "text": "Blight biomes & Tier 4 resources" },
@@ -646,13 +688,58 @@
           "A mint exists for currency conversion/processing (see Economy & Banking).",
           "Crafting is considered fairly solid already; crafting XP was multiplied 10x by the developer to push further testing.",
           "Weapons have associated “spells” tied to them — a system still being tested.",
-          "Item/crafting icons are currently screenshots of the actual item mesh, not custom-drawn."
+          "Item/crafting icons were screenshots of the actual item mesh, not custom-drawn — replaced in 0.6.0 by new icons for all items, in one style (see UI / HUD)."
         ] },
         { "type": "p", "status": "live042", "text": "The top tier of the heavy armour set (T4 chest, shoulders and belt) is now bright steel with a white and red tabard, instead of dark armour with gold trim." },
         { "type": "list", "status": "live050", "items": [
           "Claim Banner: Carpenter's Bench (Carpentry 10, tier 2), from a Warden Relic and tier 2 components.",
           "Supplies: Carpenter's Bench (Carpentry 1). Each one pays for one respawn at a claim camp.",
           "Warden Relic: a 10% drop from the stronghold bosses, such as the Ancient Bone Warden. It replaced the Ancient Sigil in Obelisk level costs."
+        ] },
+        { "type": "h", "text": "Item quality (0.6.0)" },
+        { "type": "list", "status": "live060", "items": [
+          "Crafted weapons, armour, shields and tools roll a quality: Common, Fine, Superior or Masterwork. Each step is worth half a tier, so a Superior T1 sword hits like a Common T2 one, and a Masterwork T3 piece beats a Common T4.",
+          "Crafting no longer fails. A recipe is locked until your profession reaches its level; after that it always works, and luck goes into the quality instead.",
+          "The crafting panel shows your odds for each quality before you craft. Higher Craftsman's Focus raises them.",
+          "Every crafted item carries the crafter's name.",
+          "Components and materials are always Common, so stacks stay interchangeable for trading.",
+          "With Craftsman's Focus above 75%, stackable results have a 10% chance of one extra piece.",
+          "Recipes up to 5 levels below you give full XP, up to 10 levels below give half, older ones a tenth.",
+          "The crafting station opens like the character screen: the station on the left, your backpack on the right, the world dimmed behind. A progress bar fills up and flashes when a piece is done, and a reveal plate shows the result, with sparks and a sound that grow with the quality.",
+          "Quality and durability stay with the item when you trade it, carry it in the cart, drop and pick it up, or lose it in a death bag.",
+          "Items you owned before 0.6.0 count as Common quality at full durability."
+        ] },
+        { "type": "h", "text": "Durability & repair (0.6.0)" },
+        { "type": "list", "status": "live060", "items": [
+          "Weapons wear with every hit you land, armour and shields with every hit you take, and tools with every gathering strike. Dying costs 25% durability on everything you wear.",
+          "A broken item does nothing until repaired: a broken weapon deals no damage, broken armour gives no protection, a broken tool can't gather.",
+          "Repair at the station that makes the item, for a part of its recipe. Better items can be repaired more times (1 + quality level).",
+          "A broken item with no repairs left can be recycled at the station: you get back about 40% of the raw materials one step down, never finished parts.",
+          "Durability shows as a thin bar on the item and in the tooltip, with a warning when something drops below 20%."
+        ] },
+        { "type": "h", "text": "Relics (0.6.0)" },
+        { "type": "table", "caption": "Relics and who drops them", "headers": ["Relic", "Dropped by", "Goes into"], "rows": [
+          ["Fragment of the Forgotten Blade", "The Forgotten", "Weapons"],
+          ["Alpha's Fang", "Wolves", "Weapons"],
+          ["Drowned Pearl", "Drowners", "Armour"],
+          ["Brigand's Signet", "Bandits", "Armour or shields"]
+        ] },
+        { "type": "list", "status": "live060", "items": [
+          "Monsters drop Relics tied to their kind; bosses drop a random one far more often. Relics have their own quality, and a better Relic gives a stronger effect.",
+          "Put a Relic in the new relic slot at the crafting station. It adds its effect to the item and gives a second quality roll; the better roll wins.",
+          "Effects: Blade and Fang give more Fervor and more damage, the Pearl faster Lumen regeneration, the Signet more physical protection.",
+          "A Masterwork item with a Relic becomes Legendary. A Legendary T4 item is written into the region's Chronicle.",
+          "With Combat Focus above 75%, a kill has a 5% chance for an extra rare drop (gems, silver ore)."
+        ] },
+        { "type": "note", "status": "info", "text": "The 0.6.0 notes don't say how these Relics relate to the Warden Relic (0.5.0), which stronghold bosses drop for Claim Banners and Obelisk levels." },
+        { "type": "h", "text": "Armour & tiers (0.6.0)" },
+        { "type": "list", "status": "live060", "items": [
+          "Light, medium and heavy sets change shape from tier to tier — more pieces, richer parts, an extra layer at T4 — instead of getting a colour filter. T4 metal is mithril.",
+          "Shoulder pieces are now part of the chest piece; there's no separate shoulder slot.",
+          "The medium set has a leather jerkin underneath, and no armour piece leaves holes in the body any more.",
+          "The cross symbols on the Healer set are replaced with Stillmarch marks.",
+          "Materials have tiers too: copper, tin and bronze T1, iron T2, steel T3, mithril T4 (spelled Mithral in older sources), and woods and hides likewise.",
+          "The steps between tiers are now even: T2 and T3 armour give about 4–5% less protection and HP bonus; weapon damage barely changes."
         ] }
       ]
     },
@@ -915,6 +1002,11 @@
           "When it clouds over the wind picks up, and the harder it rains, the stronger the gale. In a downpour trees and grass bend in the wind."
         ] },
         { "type": "p", "status": "live053", "text": "Grass follows the wind gusts: it moves gently between gusts, and leans and ripples clearly when you hear one. Less frame-to-frame jitter." },
+        { "type": "list", "status": "live060", "items": [
+          "At dawn and dusk the ground is no longer brighter than at noon.",
+          "Grass no longer jumps every third of a second.",
+          "Forests have ground mist under the trees in the daytime, and denser fog between them."
+        ] },
         { "type": "table", "caption": "Grass draw distance by graphics quality (0.4.2)", "headers": ["Quality", "Grass reach"], "rows": [
           ["Low, Medium", "Unchanged"],
           ["High", "30% further"],
@@ -934,6 +1026,7 @@
         { "type": "p", "status": "live042", "text": "The Old Mine, a dungeon built by Lucyphere: a chapel, mine tunnels, a labyrinth and a great hall. It replaced the previous dungeon and its boss in 0.4.2, and you enter through the same portal as before. For now it's empty — no enemies, boss or chests; it's there to explore." },
         { "type": "p", "status": "live050", "text": "Rebuilt in 0.5.0: beams, pillars and planks in the first part, tunnel supports, a bandit chamber lit by torches, and patched holes. The entrance is now an abandoned chapel by the forest road (“Abandoned Chapel” on the map) with no trees growing inside, and the portal in the passage behind the statue has a visible swirl. Leaving the dungeon puts you in the middle of the nave, facing the way out." },
         { "type": "p", "status": "live053", "text": "The chapel with the dungeon entrance sits 1.8 m lower in the ground. Coming back from the dungeon puts you in the same spot as before." },
+        { "type": "p", "status": "live060", "text": "Daylight no longer gets into the dungeon." },
         { "type": "note", "status": "info", "text": "The 0.5.0 notes give dungeon bosses a health bar but don't say whether The Old Mine has enemies or a boss yet — “empty” is as of 0.4.2." },
         { "type": "h", "text": "Instanced" },
         { "type": "list", "items": [
@@ -993,8 +1086,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.5.3 (13 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.0 (16 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.0 — 16 Oct" },
+        { "type": "p", "text": "Update required (client + server); characters, Houses, regions and bank accounts carry over, and items you already own count as Common quality at full durability. Changes since 0.5.3: item quality (Common, Fine, Superior, Masterwork) on every crafted weapon, armour piece, shield and tool, with crafting that no longer fails; durability, repair and recycling; Relics from monsters that add an effect and a second quality roll, and Legendary items; a grid loot window; the archer rebuilt (RMB to aim, a new bow, Hawk's Descent, new skill effects and sounds); armour sets that change shape by tier, with shoulders merged into the chest piece; new item icons with tier badges, even steps between tiers and a darker iron-and-soot interface; blocked hits showing both numbers; and fixes to dawn and dusk light, daylight in the dungeon, grass and forest mist." },
         { "type": "h", "text": "0.5.3 — 13 Oct" },
         { "type": "p", "text": "Update required (client + server); characters, Houses, regions and bank accounts carry over. Changes since 0.5.2: one real damage number per hit and a steel-blue “N Blocked”, with Fervor from monster hits and cast pushback no longer counted twice; monsters that stand still while attacking, come back after fleeing, run home untouchable and forget dead or distant players; a slower Veteran Heavy Blow and meaner wolves; smaller, later Obelisk claim waves; the staff basic attack halved, a Lumen bar that stays visible, and the T1 resource bonuses extended to T2–T4 staves and swords; grass that follows the gusts; the dungeon chapel set lower; wall gates that stay open while settlement raids are off; and login names that ignore case." },
         { "type": "note", "status": "info", "text": "0.5.2 isn't recorded here — its patch notes weren't collected. 0.5.1, 0.5.2 and 0.5.3 all came out on 13 Oct, the same day as 0.5.0." },
