@@ -4,7 +4,7 @@
     "subtitle": "A living record of the game's systems",
     "build": "0.6.1",
     "updated": "2026-10-16",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0 and 0.6.1 (16 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0 and 0.6.1 (16 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
@@ -789,7 +789,7 @@
     {
       "id": "building-logistics",
       "title": "Building & Logistics",
-      "dek": "Plots, protected ground, and a grid-based fight for inventory space.",
+      "dek": "The settlement planner, plots, protected ground, and a grid-based fight for inventory space.",
       "blocks": [
         { "type": "p", "status": "live17", "text": "Building on claimed land: plots and rent." },
         { "type": "p", "status": "live17", "text": "Plot rent was 0.6 gold/m²/day, auto-deducted from the House bank account — replaced in 0.5.0 (see Plots & rent below)." },
@@ -805,6 +805,23 @@
           "Overdue rent blocks building on the plot; after 7 unpaid periods the plot goes back to the region.",
           "You can prepay up to 30 periods. The plot window has “Pay 1”, “Pay 7” and “Release”."
         ] },
+        { "type": "h", "text": "Settlement planner" },
+        { "type": "p", "status": "confirmed", "text": "A settlement is drawn, not placed plot by plot. You draw the zones and the roads, and the plots appear on their own." },
+        { "type": "list", "status": "confirmed", "items": [
+          "Drawing works like spline points: put points down, and once you connect them they become an area. You can move the points later to change the area's shape and size.",
+          "Roads are drawn the same way, but a road doesn't have to be connected back into a loop.",
+          "The middle is a predefined Civic zone around the Obelisk. Civic buildings, such as the bank or the church, go on Civic zones.",
+          "The regional roads show in the planner and can't be deleted.",
+          "The land limit grows with each region level.",
+          "Plots need a minimum area.",
+          "Residents see the plots in the Obelisk window and can rent one.",
+          "The region's ruler can evict someone from their plot with a 72-hour warning, at the cost of House prestige."
+        ] },
+        { "type": "note", "status": "info", "text": "Sethan put the minimum plot area at “around 120 m²” from memory. The 0.5.0 notes say at least 80 m² (Plots & rent above)." },
+        { "type": "p", "status": "confirmed", "text": "Why draw it: Sethan saw how hard city planning is in Pax Dei. People have to agree to give up their plots, everything has to connect perfectly, some plots are wasted on roads and bridges, and sometimes someone builds their own little cobblestone airport in the middle of town. In Stillmarch, planning goes to a House's architects, as most big Pax Dei clans do anyway: a House can appoint a Castellan to run the region. It's less free than Pax Dei, where you put down plots and do whatever, but it lets a House set a city layout with roads and Civic zones, without the game predefining it." },
+        { "type": "quote", "text": "Beautiful cities will be one of the main endgame activities I believe.", "cite": "Sethan, on why every region should look different" },
+        { "type": "note", "status": "idea", "text": "Scratch would have been fine with fixed-size plots, with the House managing who gets access. Sethan kept free drawing, since it leaves more room for unique cities." },
+        { "type": "p", "status": "confirmed", "text": "Farming zones are planned for later, outside the walls. You'll draw the farming areas and they'll be split into plots that residents can rent, to plant any crops they want." },
         { "type": "h", "text": "Running a settlement (0.5.0)" },
         { "type": "list", "status": "live050", "items": [
           "The Castellan's Table: a new building piece in the Civic district, one per settlement, built by the settlement's rulers. Its window is for officials only: treasury, projects, land, people.",
@@ -863,7 +880,7 @@
     {
       "id": "territory-control",
       "title": "Territory Control: Obelisks & Sieges",
-      "dek": "Claiming dormant Obelisks is in since 0.5.0; sieges are still to come.",
+      "dek": "Claiming dormant Obelisks is in since 0.5.0; sieges and walls are still to come.",
       "blocks": [
         { "type": "p", "text": "Obelisks are the core territorial control points. At the time of the DM conversation this system was barely tested, and taking land by force was the next major system on the roadmap. 0.5.0 shipped the first piece: a House can claim a dormant Obelisk (below). The notes only cover dormant Obelisks — taking a region another House holds isn't described yet." },
         { "type": "note", "status": "bug-fixed", "text": "Fixed, action.19: false “Move closer to the Obelisk” errors on activation, deposits, and settling are fixed — activation range is properly 12 m, measured on the ground plane, plus server-side slack." },
@@ -922,6 +939,17 @@
           "Army supplies: each player death deducts a fixed amount; supplies are resupplied mid-siege via caravans from the controlling region (v1: craft “Supplies,” load on a cart, travel to the Army); destroying enemy supply caravans is a valid strategy. Defending regions use the same system with a baseline city bonus.",
           "Max players per siege instance: undecided — a hard cap, or a flank system (separate sub-instances per flank, choosable respawn point) are both under consideration.",
           "A siege's objective doesn't have to be capturing the region: it can instead target a Great Project standing there for outright destruction (see Great Projects & The Chronicles). Capturing the region destroys any Great Project in it as a side effect either way."
+        ] },
+        { "type": "h", "text": "Walls" },
+        { "type": "list", "status": "confirmed", "items": [
+          "The game builds a settlement's walls itself, from prefabs, along the border of the drawn settlement, on the outside of the Town zone, with gates where roads cross it (see the settlement planner in Building & Logistics).",
+          "Walls expand and shrink with the shape and size of the settlement.",
+          "For now, sieges only affect walls. Walls can be destroyed during a siege and then need rebuilding. Whether sieges will reach anything else comes later."
+        ] },
+        { "type": "note", "status": "info", "text": "Walls with gates are already in the build in some form: 0.5.3 fixed wall gates closing by themselves while settlement raids are off (see Building & Logistics)." },
+        { "type": "list", "items": [
+          "Whether player buildings will be inside the siege instance isn't decided yet.",
+          "The first playtest won't have a siege instance: it would be a separate server instance, which costs money, and 100 players isn't that many yet."
         ] },
         { "type": "note", "status": "info", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." }
       ]
