@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.5.1",
+    "build": "0.5.3",
     "updated": "2026-10-13",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0 and 0.5.1 (13 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1 and 0.5.3 (13 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live053": { "label": "Implemented", "short": "0.5.3", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.3 (13 Oct). Supersedes earlier builds where numbers conflict." },
     "live051": { "label": "Implemented", "short": "0.5.1", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.1 (13 Oct). Supersedes earlier builds where numbers conflict." },
     "live050": { "label": "Implemented", "short": "0.5.0", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.0 (13 Oct). Supersedes earlier builds where numbers conflict." },
     "live043": { "label": "Implemented", "short": "0.4.3", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.4.3 (10 Oct). Supersedes earlier builds where numbers conflict." },
@@ -281,6 +282,20 @@
           "Stunned mobs really stand still: they don't shoot, turn or walk, and humans play a stunned animation.",
           "Damage numbers no longer flash for a frame in the top-left corner of the screen."
         ] },
+        { "type": "h", "text": "0.5.3 changes" },
+        { "type": "list", "status": "live053", "items": [
+          "When an enemy hit you, two numbers popped up: the raw damage and the damage after armour. Now there's one — the real one.",
+          "A blocked hit shows “N Blocked” in steel blue, where N is the damage that got through. Before, the number looked like an unblocked hit even though you lost less HP.",
+          "The same bug counted Fervor from monster hits, and cast pushback, twice. Both now count once."
+        ] },
+        { "type": "h", "text": "Staff & resources (0.5.3)" },
+        { "type": "list", "status": "live053", "items": [
+          "The staff basic attack deals half the damage. It out-damaged the two-handed sword and let you keep moving.",
+          "New sprint animation with the staff, without the “angry” forward lean.",
+          "The Lumen bar no longer disappears at zero: an empty bar pulses so you can see you're out.",
+          "With a staff in hand you always see Lumen — before, the bar sometimes switched to Fervor.",
+          "T2–T4 staves get the larger Lumen pool like T1, and T2–T4 swords (one-handed, two-handed, longsword) get the Fervor bonus like T1. The bonuses used to apply to T1 only."
+        ] },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
@@ -336,7 +351,8 @@
           { "text": "The acolyte's Blight Bolt now requires line of sight — it can no longer shoot through dungeon walls.", "status": "bug-fixed" },
           { "text": "The Forgotten shriek when they spot you, and let out a hollow cry before they crumble.", "status": "live042" },
           { "text": "Stronghold bosses such as the Ancient Bone Warden drop a Warden Relic 10% of the time — needed for a Claim Banner and for Obelisk level costs (see Territory Control). They also get a big health bar within 30 m.", "status": "live050" },
-          { "text": "13 Forgotten in one watchtower were facing the wrong way; they now stand correctly.", "status": "live050" }
+          { "text": "13 Forgotten in one watchtower were facing the wrong way; they now stand correctly.", "status": "live050" },
+          { "text": "The Veteran's area strike (Heavy Blow) winds up for 1.65 s instead of 1.4 s, giving you more time to dodge. The 0.5.3 notes call it the Skeleton Veteran.", "status": "live053" }
         ] },
         { "type": "note", "status": "lore", "text": "Forgotten patrol the Blight Hills biome (see Crafting & Materials)." }
       ]
@@ -478,6 +494,10 @@
         { "type": "list", "status": "live050", "items": [
           "Taunt has a battle cry (male and female voice) under the shield bash.",
           "Drums sound with the on-screen announcements of an Obelisk claim."
+        ] },
+        { "type": "list", "status": "live053", "items": [
+          "Wolves sound meaner: a deeper voice, a snarl instead of a bark when they attack, new pain and death sounds, and a low growl at rest. The Alpha Wolf is deeper still.",
+          "The staff's basic attack crackles with Lumen instead of whistling like a sling."
         ] },
         { "type": "h", "text": "Settings" },
         { "type": "p", "text": "The sound settings have an “Other players' voices” slider (50% by default) that sets how loud other players' grunts and shouts are." },
@@ -687,6 +707,7 @@
           "Taking a plot back gives the tenant 3 days' notice and costs the House prestige.",
           "Expelling a resident gives them 72 h and costs 10 prestige."
         ] },
+        { "type": "p", "status": "live053", "text": "Wall gates no longer close by themselves while settlement raids are disabled (the current QA setting)." },
         { "type": "h", "text": "Build mode (0.5.0)" },
         { "type": "list", "status": "live050", "items": [
           "The piece catalogue sits in the left column, with a status badge under the compass and a subtler grid.",
@@ -763,10 +784,14 @@
         ] },
         { "type": "h", "text": "Blight waves & announcements" },
         { "type": "list", "status": "live050", "items": [
-          "The first Blight wave comes after 2 minutes, then one every 3 minutes, each announced by purple mist 10 s before. The last wave is bigger and has an elite. Blight mobs in the ring drain control too.",
+          "The first Blight wave came after 2 minutes, then one every 3 minutes (changed in 0.5.3, below), each announced by purple mist 10 s before. The last wave is bigger and has an elite. Blight mobs in the ring drain control too.",
           "Everyone in the region sees and hears the claim: an on-screen announcement with drums when the banner goes up, falls, rises again, holds or fails, plus chat reminders and a marker on the world map.",
           "Progress shows in the event HUD — an event card on the right and a control bar at the top (see UI / HUD).",
           "After a successful claim the banner disappears shortly after; a fallen banner fades out instead of lying on the ground."
+        ] },
+        { "type": "list", "status": "live053", "items": [
+          "Fewer monsters per wave: 2 + 1 per party member, up to 8 (was 3 + 2 per member, up to 14). A party of four now faces 6 per wave instead of 11.",
+          "The first wave arrives after 2:30 (was 2:00), then every 3:30 (was every 3:00). A claim's defence now has 3 regular waves and the final one, instead of 4 and the final."
         ] },
         { "type": "note", "status": "info", "text": "The claim has the shape of the planned v1 siege below — an open-field fight for a point, with Supplies paying for respawns — but it's started by a House leader with a Claim Banner, not by an Army with a Siege Banner." },
         { "type": "h", "text": "Planned siege process" },
@@ -869,6 +894,12 @@
           "Bandit archers draw their bow (0.8 s) instead of shooting instantly. They spot you from range and keep their distance instead of walking up to arm's length.",
           "Melee mobs notice you from about 10 m."
         ] },
+        { "type": "list", "status": "live053", "items": [
+          "Monsters no longer slide towards you during their attack animation — they stand still from wind-up to impact.",
+          "An enemy that fled (e.g. a bandit) comes back to fight whoever chased it instead of wandering home.",
+          "An enemy returning to its spawn runs and takes no damage until it gets there — you can no longer kill it in the back on the way.",
+          "Monsters forget a player who died or moved more than 90 m away, and bleeding ends on death. No more random damage after you respawn in the village while a fight goes on at the Obelisk."
+        ] },
         { "type": "h", "text": "Weather & sky" },
         { "type": "list", "status": "live042", "items": [
           "In a storm the sun and its rays disappear behind the clouds, and the sky closes over with a heavy grey layer. A full storm gets darker, with muted colours.",
@@ -883,6 +914,7 @@
           "In sunny weather you can clearly see and hear the wind: grass and trees keep swaying, and gusts roll across the meadows.",
           "When it clouds over the wind picks up, and the harder it rains, the stronger the gale. In a downpour trees and grass bend in the wind."
         ] },
+        { "type": "p", "status": "live053", "text": "Grass follows the wind gusts: it moves gently between gusts, and leans and ripples clearly when you hear one. Less frame-to-frame jitter." },
         { "type": "table", "caption": "Grass draw distance by graphics quality (0.4.2)", "headers": ["Quality", "Grass reach"], "rows": [
           ["Low, Medium", "Unchanged"],
           ["High", "30% further"],
@@ -901,6 +933,7 @@
         { "type": "h", "text": "In the game now" },
         { "type": "p", "status": "live042", "text": "The Old Mine, a dungeon built by Lucyphere: a chapel, mine tunnels, a labyrinth and a great hall. It replaced the previous dungeon and its boss in 0.4.2, and you enter through the same portal as before. For now it's empty — no enemies, boss or chests; it's there to explore." },
         { "type": "p", "status": "live050", "text": "Rebuilt in 0.5.0: beams, pillars and planks in the first part, tunnel supports, a bandit chamber lit by torches, and patched holes. The entrance is now an abandoned chapel by the forest road (“Abandoned Chapel” on the map) with no trees growing inside, and the portal in the passage behind the statue has a visible swirl. Leaving the dungeon puts you in the middle of the nave, facing the way out." },
+        { "type": "p", "status": "live053", "text": "The chapel with the dungeon entrance sits 1.8 m lower in the ground. Coming back from the dungeon puts you in the same spot as before." },
         { "type": "note", "status": "info", "text": "The 0.5.0 notes give dungeon bosses a health bar but don't say whether The Old Mine has enemies or a boss yet — “empty” is as of 0.4.2." },
         { "type": "h", "text": "Instanced" },
         { "type": "list", "items": [
@@ -960,8 +993,11 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.5.1 (13 Oct).",
+      "dek": "action.17 (20 Sept) through 0.5.3 (13 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.5.3 — 13 Oct" },
+        { "type": "p", "text": "Update required (client + server); characters, Houses, regions and bank accounts carry over. Changes since 0.5.2: one real damage number per hit and a steel-blue “N Blocked”, with Fervor from monster hits and cast pushback no longer counted twice; monsters that stand still while attacking, come back after fleeing, run home untouchable and forget dead or distant players; a slower Veteran Heavy Blow and meaner wolves; smaller, later Obelisk claim waves; the staff basic attack halved, a Lumen bar that stays visible, and the T1 resource bonuses extended to T2–T4 staves and swords; grass that follows the gusts; the dungeon chapel set lower; wall gates that stay open while settlement raids are off; and login names that ignore case." },
+        { "type": "note", "status": "info", "text": "0.5.2 isn't recorded here — its patch notes weren't collected. 0.5.1, 0.5.2 and 0.5.3 all came out on 13 Oct, the same day as 0.5.0." },
         { "type": "h", "text": "0.5.1 — 13 Oct" },
         { "type": "p", "text": "Update required (client + server). Changes since 0.5.0: much less video memory use, aimed at 12 GB and smaller cards, where forests on Medium to Epic used to overflow it and freeze the picture; a Hardware ray tracing on/off option, a video memory readout and a first-launch preset picked by your card's memory; a fresh set of shaders prepared at startup, for fewer stutters the first time you see a place; and a SOUND button in the main menu, where saved volumes now apply right away (SETTINGS is now GRAPHICS)." },
         { "type": "h", "text": "0.5.0 — 13 Oct" },
@@ -1020,6 +1056,7 @@
           "Backend: server-side persistence and economy-logic tests gate every build.",
           "Client versioning: each build requires the matching client — older clients can't connect. Characters and the database persist across builds."
         ] },
+        { "type": "p", "status": "live053", "text": "Login names are no longer case-sensitive: “Sethan” and “sethan” are the same account." },
         { "type": "h", "text": "Performance (0.4.3)" },
         { "type": "p", "status": "live043", "text": "The game no longer stutters as you walk through the world, especially on Epic. On the dev's test route (Epic, 6 minutes walking through meadows and forest), stutters longer than a quarter of a second dropped from almost one a minute to zero, and shorter ones (50 ms and up) from several a minute to less than one." },
         { "type": "list", "status": "live043", "items": [
