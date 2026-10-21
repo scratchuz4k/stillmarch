@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.5",
-    "updated": "2026-10-19",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct) and 0.6.5 (19 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.6.6",
+    "updated": "2026-10-20",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct) and 0.6.6 (20 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live066": { "label": "Implemented", "short": "0.6.6", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.6 (20 Oct). Supersedes earlier builds where numbers conflict." },
     "live065": { "label": "Implemented", "short": "0.6.5", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.5 (19 Oct). Supersedes earlier builds where numbers conflict." },
     "live061": { "label": "Implemented", "short": "0.6.1", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.1 (16 Oct). Supersedes earlier builds where numbers conflict." },
     "live060": { "label": "Implemented", "short": "0.6.0", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.0 (16 Oct). Supersedes earlier builds where numbers conflict." },
@@ -214,7 +215,7 @@
         { "type": "list", "status": "live20", "items": [
           "T cycles through allies to heal — party first, alive before dead. The cast bar names the target: “Holy Mending → Name”, or “Self”.",
           "Target too far: an instant heal is refused before the cast; a cast-time heal lands on you instead and shows a warning. Party frames flash red with “Too far”.",
-          "Heals and buffs only work on allies — party and House members — never on enemies."
+          "Heals and buffs only work on allies — party and House members — never on enemies. (Widened in 0.6.6 — see Open-world PvP below.)"
         ] },
         { "type": "note", "status": "bug-fixed", "text": "Fixed, action.20: the HoT (Renew) kept healing noticeably longer than its buff icon's counter showed — the kit's clock mixed real time with game time, and refreshing the buff stacked a second tick loop. It now ends together with its icon." },
         { "type": "h", "text": "Block & guard" },
@@ -317,6 +318,22 @@
         ] },
         { "type": "h", "text": "0.6.5 changes" },
         { "type": "p", "status": "live065", "text": "Far fewer movement corrections (rubber-banding). Dodge, Hawk's Leap (Hawk's Descent in the 0.6.0 notes) and the block pushback are predicted on your side and confirmed by the server in the same move; slows and stuns apply in step with your movement; and the stamina checks for sprint and jump match between your game and the server. The server also accepts small position differences." },
+        { "type": "h", "text": "Open-world PvP (0.6.6)" },
+        { "type": "list", "status": "live066", "items": [
+          "Outside safe zones you can damage any player who isn't in your party or warband. Your House and alliance no longer protect you from damage: accidentally hitting one of your own is on you and your reputation.",
+          "Aggression flag: attacking a player lights a flag for 2 minutes. The attacker and the victim with their party then see each other in red, and auto-targeting picks them up. Every further hit refreshes the flag, and the game shows a message about it.",
+          "In a siege, players on the same side of the declaration can't hurt each other.",
+          "Single-target heals work on your party, warband, House, allies and residents of your region, but not on strangers. Group heals still only cover your party or warband.",
+          "Auto-targeting only picks enemies and flagged players among other players, so it no longer jumps to random passers-by."
+        ] },
+        { "type": "table", "caption": "Names, nameplates and the target ring are coloured by relation (0.6.6)", "headers": ["Colour", "Who"], "rows": [
+          ["Green", "Party and warband"],
+          ["Blue", "Your House"],
+          ["Purple", "Allies"],
+          ["Gold", "Residents of your region"],
+          ["White", "Strangers"],
+          ["Red", "Only an enemy House at war, or a player with an aggression flag"]
+        ] },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
@@ -332,7 +349,7 @@
           { "text": "Partly addressed in action.20: other people's damage numbers are shown at ×0.5 size when they're in your party, and hidden entirely for strangers.", "status": "live20" },
           { "text": "Low HP feedback is still sound only — since 0.4.2 a heartbeat plays below 40% health, heavier and faster below 20% (see Sound) — with no visual indicator yet.", "status": "bug-open" },
           { "text": "No plans for damage/healing meters — considered too likely to push toward min-maxing." },
-          { "text": "Party size: 5 players." },
+          { "text": "Party size: 5 players. Since 0.6.6 a warband holds up to 25 (see Party & Player Interaction)." },
           { "text": "Death penalty: dying drops your entire purse/bag near your corpse; 20% of gold is permanently lost (see Economy)." },
           { "text": "Crafting/gathering XP was multiplied 10x by the developer to stress-test crafting further." },
           { "text": "A weapon left in the helmet slot was incorrectly determining weapon type/animations — now only what's actually in your hands counts.", "status": "bug-fixed" }
@@ -573,7 +590,7 @@
     {
       "id": "party-social",
       "title": "Party & Player Interaction",
-      "dek": "Targeting, whispering, trading and inviting — added in action.20.",
+      "dek": "Targeting, whispering, trading and inviting since action.20; warbands and loot rolls since 0.6.6.",
       "status": "live20",
       "blocks": [
         { "type": "h", "text": "Player menu" },
@@ -592,6 +609,28 @@
           "C+2…C+5 targets a party member: the targeted frame gets a gold border and gold name, and the member gets a green outline over their head.",
           "A frame flashes green when your heal lands, and red with “Too far” when the target is out of range (see Combat → Healing & support).",
           "Frames are wider (140), long names are clipped with an ellipsis, weapon-type glyphs sit in a column to the left of the frame, and ally buffs are smaller with a thin ring."
+        ] },
+        { "type": "h", "text": "Warbands (0.6.6)" },
+        { "type": "list", "status": "live066", "items": [
+          "The leader of a full party can invite a sixth person, which forms a warband: up to 25 players in 5 groups of 5. Invite with “Invite to Warband” in the player menu or “/invite Name” in chat, and the game asks you to confirm first. When the leader of another party joins, their whole party comes along.",
+          "Warband members work like a party: no damage between them, you see their health bars and compass markers, and mass heals cover the whole warband.",
+          "XP and gold from monsters are shared across the warband members nearby, but much more thinly than in a party: with 25 people each gets about 9% of what they'd get solo. Up to 5 people, party rules apply.",
+          "5×5 warband frames replace the small party frames. F1–F5 picks the group you want at hand, and Ctrl+1–5 targets players in that group.",
+          "From the player menu the leader can promote a member to leader, move them to another group or remove them. You leave a warband from the Escape menu (“Leave warband”) or the player menu.",
+          "If you disconnect, you keep your spot in the warband for 15 minutes.",
+          "Warband chat: “/wb text”."
+        ] },
+        { "type": "h", "text": "Loot rolls: Need / Greed / Pass (0.6.6)" },
+        { "type": "list", "status": "live066", "items": [
+          "When a monster drops a relic of Fine quality or better, or a rare material, while you're in a party or warband, every eligible player nearby gets a roll card on the left side of the screen: Need (Y), Greed (U), Pass (P). You have 30 seconds to decide, and no answer counts as Pass.",
+          "Everyone rolls d100. Need beats Greed, and with the same choice the higher roll wins. The item goes to the winner's backpack or, if it's full, to a bag only they can pick up. The result is posted in group chat.",
+          "If everyone passes, the item stays in a bag on the ground for anyone.",
+          "Loot from killed players isn't rolled for, but every pickup from their bag is posted in your party or warband chat: who took what from whom."
+        ] },
+        { "type": "h", "text": "Keys (0.6.6)" },
+        { "type": "list", "status": "live066", "items": [
+          "The new keys can be rebound in the controls settings, under “Group targeting & loot”: the targeting modifier (Ctrl), targets 1–5, groups 1–5 (F1–F5) and Need/Greed/Pass (Y/U/P).",
+          "Holding the targeting modifier doesn't fire skills from the action bar, so Ctrl+1 picks a player instead of casting."
         ] }
       ]
     },
@@ -718,7 +757,7 @@
         { "type": "p", "status": "live042", "text": "The top tier of the heavy armour set (T4 chest, shoulders and belt) is now bright steel with a white and red tabard, instead of dark armour with gold trim." },
         { "type": "list", "status": "live050", "items": [
           "Claim Banner: Carpenter's Bench (Carpentry 10, tier 2), from a Warden Relic and tier 2 components.",
-          "Supplies: Carpenter's Bench (Carpentry 1). Each one pays for one respawn at a claim camp.",
+          "Supplies: Carpenter's Bench (Carpentry 1; Carpentry 10 since 0.6.6). Each one pays for one respawn at a claim camp.",
           "Warden Relic: a 10% drop from the stronghold bosses, such as the Ancient Bone Warden. It replaced the Ancient Sigil in Obelisk level costs."
         ] },
         { "type": "h", "text": "Item quality (0.6.0)" },
@@ -930,11 +969,11 @@
         { "type": "list", "status": "live050", "items": [
           "Claim camp: a tent with your House standard about 120 m from the banner, behind the House leader.",
           "Respawning is your choice. After dying nearby a panel offers “Rise at the claim camp” (a wave every 60 s, 5 s of protection until you strike) or a normal return to the settlement or graveyard. Nobody is dropped back under the blade automatically.",
-          "Supplies (Carpenter's Bench, Carpentry 1): 1 Supplies = 1 camp respawn, up to 20. They're taken from the House leader's backpack and their cart parked nearby when the banner goes up."
+          "Supplies (Carpenter's Bench, Carpentry 1 — Carpentry 10 since 0.6.6): 1 Supplies = 1 camp respawn, up to 20. They're taken from the House leader's backpack and their cart parked nearby when the banner goes up."
         ] },
         { "type": "h", "text": "Blight waves & announcements" },
         { "type": "list", "status": "live050", "items": [
-          "The first Blight wave came after 2 minutes, then one every 3 minutes (changed in 0.5.3, below), each announced by purple mist 10 s before. The last wave is bigger and has an elite. Blight mobs in the ring drain control too.",
+          "The first Blight wave came after 2 minutes, then one every 3 minutes (changed in 0.5.3 and back again in 0.6.6, below), each announced by purple mist 10 s before. The last wave is bigger and has an elite. Blight mobs in the ring drain control too.",
           "Everyone in the region sees and hears the claim: an on-screen announcement with drums when the banner goes up, falls, rises again, holds or fails, plus chat reminders and a marker on the world map.",
           "Progress shows in the event HUD — an event card on the right and a control bar at the top (see UI / HUD).",
           "After a successful claim the banner disappears shortly after; a fallen banner fades out instead of lying on the ground."
@@ -947,6 +986,22 @@
           "Forgotten Servants in the waves attack with a proper swing in melee range. Before, some of their hits landed from a distance with no attacker.",
           "Waves arrive in groups instead of all at once, so the server and your game stutter less when a wave starts."
         ] },
+        { "type": "h", "text": "Claim hours, fortifications & banners (0.6.6)" },
+        { "type": "list", "status": "live066", "items": [
+          "Claims are only possible between 16:30 and 22:30 Central European Time, and the last banner can be placed at 22:00. The Obelisk window shows the hours and a countdown to the opening.",
+          "Blight waves come more often again: the first after 2 minutes, then every 3 minutes.",
+          "New fortifications from the carpenter's workshop: Spiked Barricade (Carpentry 10) and Mantlet (Carpentry 11), tier T2. Place them with RMB from your backpack at the edge of the claim circle. They have their own health and disappear when the claim ends. A wave that can't reach the circle breaks the fortifications together.",
+          "The banner cloth has folds and looks like canvas: weave, stains, a dirtier bottom edge, a shadow under the crossbar and light shining through. Its colours are much stronger and it slowly sways in the wind."
+        ] },
+        { "type": "table", "caption": "Banner levels (0.6.6)", "headers": ["Banner", "Level"], "rows": [
+          ["Claim", "10 — the easiest"],
+          ["Raid, Takeover", "12"],
+          ["Assault, Sabotage", "13"],
+          ["Army", "15"],
+          ["Siege", "16"],
+          ["Supplies", "10 (was 1)"]
+        ] },
+        { "type": "note", "status": "info", "text": "The levels match the Carpentry levels of the Claim Banner and Supplies recipes. The 0.6.6 notes don't say what the Raid, Takeover, Assault and Sabotage banners do yet." },
         { "type": "note", "status": "info", "text": "The claim has the shape of the planned v1 siege below — an open-field fight for a point, with Supplies paying for respawns — but it's started by a House leader with a Claim Banner, not by an Army with a Siege Banner." },
         { "type": "h", "text": "Planned siege process" },
         { "type": "olist", "items": [
@@ -1049,6 +1104,7 @@
           "Three Blight biomes: Blight Forest (near Heartland), Blight Plains (near Ashvale), Blight Hills (north).",
           { "text": "Bandit camps hold men and women, including the Brute and the Cutthroat; some lie in ambush. Drowners are out there too (both named in 0.4.2).", "status": "live042" }
         ] },
+        { "type": "p", "status": "live066", "text": "1,936 new rocks across the whole map: 574 cliffs, 853 scree piles, 385 outcrops and 124 groups of tors. Every rock sits with its base in the ground, none of them cover ore nodes, and they all have collision." },
         { "type": "h", "text": "Bandits & wildlife" },
         { "type": "list", "status": "live043", "items": [
           "In camp a sentry walks the edge of the clearing and stops to watch the forest, while the rest stay near the middle of the camp.",
@@ -1105,6 +1161,7 @@
         { "type": "p", "status": "live050", "text": "Rebuilt in 0.5.0: beams, pillars and planks in the first part, tunnel supports, a bandit chamber lit by torches, and patched holes. The entrance is now an abandoned chapel by the forest road (“Abandoned Chapel” on the map) with no trees growing inside, and the portal in the passage behind the statue has a visible swirl. Leaving the dungeon puts you in the middle of the nave, facing the way out." },
         { "type": "p", "status": "live053", "text": "The chapel with the dungeon entrance sits 1.8 m lower in the ground. Coming back from the dungeon puts you in the same spot as before." },
         { "type": "p", "status": "live060", "text": "Daylight no longer gets into the dungeon." },
+        { "type": "p", "status": "live066", "text": "More stones, fixed rock heights and a filled-out boss room. There's a small bandit camp at the dungeon entrance." },
         { "type": "note", "status": "info", "text": "The 0.5.0 notes give dungeon bosses a health bar but don't say whether The Old Mine has enemies or a boss yet — “empty” is as of 0.4.2." },
         { "type": "h", "text": "Instanced" },
         { "type": "list", "items": [
@@ -1164,8 +1221,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.5 (19 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.6 (20 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.6 — 20 Oct" },
+        { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and bank accounts carry over. Changes since 0.6.5: open-world PvP outside safe zones, with names coloured by relation and a 2-minute aggression flag; warbands of up to 25 players in 5 groups, with their own frames, chat and thinly shared XP and gold; Need / Greed / Pass rolls for good relics and rare materials, and a chat log of loot taken from killed players; rebindable group-targeting and loot keys; Obelisk claims limited to 16:30–22:30 CET, with Blight waves back to every 3 minutes, fortifications, new banner levels and a canvas banner cloth; 1,936 new rocks across the map; and a filled-out dungeon with a bandit camp at its entrance." },
         { "type": "h", "text": "0.6.5 — 19 Oct" },
         { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and bank accounts carry over. Changes since 0.6.1: much less video memory use (a dense forest at 1080p on Epic went from about 9.6 to 7.2 GB) and a Video memory saver option; a fix for the crash when ray tracing was switched off during play; far fewer movement corrections; less server work per player, with saving spread out; Obelisk waves that arrive in groups, with Forgotten Servants swinging properly; walking with the character hub open, the three Wayfarer villages on the compass, and a new House invitation window; the private storage chest actually placed in the villages; quality on light armour, recycling of any crafted item, and crafting and processing window fixes; and a basic town plan for newly claimed regions." },
         { "type": "list", "status": "live065", "items": [
