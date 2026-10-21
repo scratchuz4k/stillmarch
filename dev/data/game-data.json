@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.1",
-    "updated": "2026-10-16",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0 and 0.6.1 (16 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.6.5",
+    "updated": "2026-10-19",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct) and 0.6.5 (19 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live065": { "label": "Implemented", "short": "0.6.5", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.5 (19 Oct). Supersedes earlier builds where numbers conflict." },
     "live061": { "label": "Implemented", "short": "0.6.1", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.1 (16 Oct). Supersedes earlier builds where numbers conflict." },
     "live060": { "label": "Implemented", "short": "0.6.0", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.0 (16 Oct). Supersedes earlier builds where numbers conflict." },
     "live053": { "label": "Implemented", "short": "0.5.3", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.3 (13 Oct). Supersedes earlier builds where numbers conflict." },
@@ -314,6 +315,8 @@
           "Gear wears out: weapons with every hit you land, armour and shields with every hit you take. A broken weapon deals no damage and broken armour gives no protection (see Crafting → Durability & repair).",
           "Dying costs 25% durability on everything you wear."
         ] },
+        { "type": "h", "text": "0.6.5 changes" },
+        { "type": "p", "status": "live065", "text": "Far fewer movement corrections (rubber-banding). Dodge, Hawk's Leap (Hawk's Descent in the 0.6.0 notes) and the block pushback are predicted on your side and confirmed by the server in the same move; slows and stuns apply in step with your movement; and the stamina checks for sprint and jump match between your game and the server. The server also accepts small position differences." },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
@@ -359,7 +362,8 @@
           ["Warrior", "Light armor, sword"],
           ["Stalker", "Rags, sword"],
           ["Acolyte", "Toga, staff"],
-          ["Patrol", "Not described yet — first named in 0.4.2"]
+          ["Patrol", "Not described yet — first named in 0.4.2"],
+          ["Servant", "Not described yet — first named in 0.6.5, in Obelisk claim waves"]
         ] },
         { "type": "list", "items": [
           { "text": "A built-in halberd-wielding type was removed.", "status": "live17" },
@@ -496,6 +500,11 @@
           "Obelisk, region, castellan, storehouse, map, chronicle and order windows keep their slate-and-gold look.",
           "“Crafted by” in tooltips is grey and no longer blends into the item description."
         ] },
+        { "type": "list", "status": "live065", "items": [
+          "The character hub (Tab) no longer stops your character — you can walk with any tab open.",
+          "The compass shows the three Wayfarer villages — Firstlanding, Fernhollow and Highmoor — as a house icon from anywhere on the map. The nearest village shows its name and distance, like the nearest Obelisk.",
+          "The “Crafted by” line in item tooltips is easier to tell apart from the description."
+        ] },
         { "type": "h", "text": "Loot window (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
           "Loot opens as a grid like your backpack, with items at their real size. The grid grows with the bag and keeps items in place while you take them.",
@@ -573,6 +582,10 @@
           "Right-clicking a party mini-frame (cursor via Tab) opens the same menu, plus Promote / Kick / Leave for the party leader.",
           "Whisper opens chat with “/w Name” already typed.",
           "The party/House invite popup now collapses after Accept/Decline — the cursor no longer stays on screen."
+        ] },
+        { "type": "list", "status": "live065", "items": [
+          "A House invitation opens in the game's own window with the House name, and joining shows a banner with the House crest and who invited you.",
+          "Inviting by name no longer cares about upper and lower case."
         ] },
         { "type": "h", "text": "Party frames" },
         { "type": "list", "items": [
@@ -726,6 +739,12 @@
           "Item icons in the crafting window keep their shape — ingots are no longer squeezed into squares.",
           "The “+” in the relic slot sits in the middle of the slot."
         ] },
+        { "type": "list", "status": "live065", "items": [
+          "Quality now shows on light armour with small stats, like the Outcast set. A Fine or Superior piece used to have the same numbers as a Common one; tooltips and the character card now show one decimal where needed, and the bonus counts in combat.",
+          "Crafting station: the XP shown matches what you get, including learning mode and Focus. Materials are shown times the chosen amount, recipes above your level are listed with a padlock and the level you need, Focus gives a chance for +1 item on stackable goods, and the queue bar lets you remove a single order or cancel all.",
+          "Processing: “All” means everything you can afford, and “Collect ready” works when an order is only partly done.",
+          "New names: Iron and Steel Longsword, Iron and Steel Zweihander."
+        ] },
         { "type": "h", "text": "Durability & repair (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
           "Weapons wear with every hit you land, armour and shields with every hit you take, and tools with every gathering strike. Dying costs 25% durability on everything you wear.",
@@ -734,6 +753,7 @@
           "A broken item with no repairs left can be recycled at the station: you get back about 40% of the raw materials one step down, never finished parts.",
           "Durability shows as a thin bar on the item and in the tooltip, with a warning when something drops below 20%."
         ] },
+        { "type": "p", "status": "live065", "text": "You can recycle any item made at a station, not only broken ones. Recycling an item that still works asks for confirmation first." },
         { "type": "h", "text": "Relics (0.6.0)" },
         { "type": "table", "caption": "Relics and who drops them", "headers": ["Relic", "Dropped by", "Goes into"], "rows": [
           ["Fragment of the Forgotten Blade", "The Forgotten", "Weapons"],
@@ -829,6 +849,7 @@
           "Expelling a resident gives them 72 h and costs 10 prestige."
         ] },
         { "type": "p", "status": "live053", "text": "Wall gates no longer close by themselves while settlement raids are disabled (the current QA setting)." },
+        { "type": "p", "status": "live065", "text": "After claiming a region you can place the Castellan's Table and assign plots again. A new region starts with a basic town plan (civic core and roads) instead of none." },
         { "type": "h", "text": "Build mode (0.5.0)" },
         { "type": "list", "status": "live050", "items": [
           "The piece catalogue sits in the left column, with a status badge under the compass and a subtler grid.",
@@ -873,6 +894,7 @@
           "The grid and stacking work like the cart: 80 cells to start, and 4 upgrades up to 240 cells, for 50 Marks, then 2, 8 and 32 Crowns. The cost comes from your bank first, and the coin is spent for good.",
           "The grid in the storage and cart windows now looks like the backpack."
         ] },
+        { "type": "p", "status": "live065", "text": "In 0.6.1 the chest was missing from the world. Since 0.6.5 it stands next to the Crown Orders board (the wooden board with a roof) in Highmoor, Firstlanding and Fernhollow." },
         { "type": "note", "status": "info", "text": "The 0.6.1 notes price the upgrades in Marks and Crowns — coin names that appear nowhere else in this record, which otherwise speaks of gold (and grains, for plot rent)." },
         { "type": "p", "status": "confirmed", "text": "Caravans are planned for later — larger-scale transport, and the supply-line mechanic for sieges." }
       ]
@@ -920,6 +942,10 @@
         { "type": "list", "status": "live053", "items": [
           "Fewer monsters per wave: 2 + 1 per party member, up to 8 (was 3 + 2 per member, up to 14). A party of four now faces 6 per wave instead of 11.",
           "The first wave arrives after 2:30 (was 2:00), then every 3:30 (was every 3:00). A claim's defence now has 3 regular waves and the final one, instead of 4 and the final."
+        ] },
+        { "type": "list", "status": "live065", "items": [
+          "Forgotten Servants in the waves attack with a proper swing in melee range. Before, some of their hits landed from a distance with no attacker.",
+          "Waves arrive in groups instead of all at once, so the server and your game stutter less when a wave starts."
         ] },
         { "type": "note", "status": "info", "text": "The claim has the shape of the planned v1 siege below — an open-field fight for a point, with Supplies paying for respawns — but it's started by a House leader with a Claim Banner, not by an Army with a Siege Banner." },
         { "type": "h", "text": "Planned siege process" },
@@ -1016,7 +1042,7 @@
           ["Ashvale", "Has its own Obelisk — near Blight Plains"]
         ] },
         { "type": "list", "items": [
-          "Three Wayfarer villages — one confirmed by name: Highmoor (village glade with a cemetery at its edge; nearby forest visibility fixed in the Friday hotfixes).",
+          "Three Wayfarer villages: Firstlanding, Fernhollow and Highmoor (all three named in 0.6.5). Highmoor has a village glade with a cemetery at its edge; its nearby forest visibility was fixed in the Friday hotfixes.",
           { "text": "Four Forgotten strongholds — Northreach, Heartland, Eastwood, Southmere — replaced the eight small watchtowers; each gate stands at the end of its road (see The Forgotten → Strongholds).", "status": "live20" },
           { "text": "Bridges: the huge terrain ramps at both ends of every bridge are gone — the bridge slope now meets the ground.", "status": "live20" },
           "Rivers, roads, day/night cycle, weather. Nights are dark: a belt lets you hang a lantern (from the blacksmith, lamp oil from the alchemist) and, for archers, a quiver.",
@@ -1138,8 +1164,15 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.1 (16 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.5 (19 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.5 — 19 Oct" },
+        { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and bank accounts carry over. Changes since 0.6.1: much less video memory use (a dense forest at 1080p on Epic went from about 9.6 to 7.2 GB) and a Video memory saver option; a fix for the crash when ray tracing was switched off during play; far fewer movement corrections; less server work per player, with saving spread out; Obelisk waves that arrive in groups, with Forgotten Servants swinging properly; walking with the character hub open, the three Wayfarer villages on the compass, and a new House invitation window; the private storage chest actually placed in the villages; quality on light armour, recycling of any crafted item, and crafting and processing window fixes; and a basic town plan for newly claimed regions." },
+        { "type": "list", "status": "live065", "items": [
+          "Other players' armour no longer stretches when they are far away or when your view distance is set lower.",
+          "If something was built or placed where you logged out (a wall, a claim banner, another player), you could log back in without a character — just the sky and the default interface. You now appear right next to that spot."
+        ] },
+        { "type": "note", "status": "info", "text": "There are no patch notes here for 0.6.2–0.6.4: the 0.6.5 notes list the changes since 0.6.1." },
         { "type": "h", "text": "0.6.1 — 16 Oct" },
         { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and bank accounts carry over. Changes since 0.6.0: private chest storage by the order board in the Wayfarer Village, upgradable from 80 to 240 cells; a forged-iron look for the backpack, equipment, crafting, loot, trade, cart and settings windows; the quality reveal moved into the recipe view, with new hammer-strike sounds for finished items; and smaller crafting and tooltip fixes." },
         { "type": "h", "text": "0.6.0 — 16 Oct" },
@@ -1233,6 +1266,26 @@
           "On first launch the game picks a preset for your card's memory: below 9 GB, Medium without ray tracing; below 13 GB, High. It only ever lowers the preset, once, and leaves custom settings alone. (The first-launch quality detection itself came in the Friday hotfixes — see Build & Patch History.)"
         ] },
         { "type": "p", "status": "live051", "text": "Fewer stutters the first time you see new places: a new set of shaders, recorded on 0.5.1 across all presets and several regions, is prepared at startup. The previous set was older than the current world materials, so many shaders were still compiled during play." },
+        { "type": "h", "text": "Video memory saver (0.6.5)" },
+        { "type": "p", "status": "live065", "text": "The game uses much less video memory. Cards with 8 and 12 GB should stutter far less in forests and when you turn the camera quickly." },
+        { "type": "table", "caption": "Video memory in a dense forest at 1080p (0.6.5)", "headers": ["Preset", "Before", "After"], "rows": [
+          ["Epic", "About 9.6 GB", "7.2 GB"],
+          ["High", "8.7 GB", "About 6.3 GB"],
+          ["Medium", "About 7 GB", "5.8 GB"]
+        ] },
+        { "type": "list", "status": "live065", "items": [
+          "Interface textures are compressed (about 80 MB less), Nanite keeps a smaller geometry cache on High and lower presets, and the shadow buffers for grass no longer balloon when you turn the camera quickly.",
+          "New option in Graphics: Video memory saver. It lowers the texture budget, shadow pages, grass density, hair shadow detail and the geometry cache. It turns on by itself when video memory stays full with ray tracing already off, and from the first start on cards below 9 GB. You can switch it off any time.",
+          "Fixed a crash when ray tracing was turned off during play — lowering the preset to Medium or Low, switching ray tracing off, or the automatic switch when video memory is full. Ray tracing now turns fully off after you restart the game; the graphics window tells you when a restart is needed."
+        ] },
+        { "type": "h", "text": "Server load (0.6.5)" },
+        { "type": "p", "status": "live065", "text": "Getting the server ready for bigger playtests:" },
+        { "type": "list", "status": "live065", "items": [
+          "The server does much less work per player: your character's animation is only calculated on the server while you attack or use a skill, monsters asleep far from everyone stop sending network updates, and when a mob is hit, only characters close to it are checked for line of sight.",
+          "Saving is spread out: one character every quarter of a second instead of everyone at once every minute, so there's no more short freeze each minute when many people are online.",
+          "Party frames send gear and looks only when they change.",
+          "Obelisk claim waves arrive in groups instead of all at once (see Territory Control)."
+        ] },
         { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
     },
