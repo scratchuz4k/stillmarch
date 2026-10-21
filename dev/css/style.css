@@ -322,7 +322,12 @@ button { font-family: inherit; }
   letter-spacing: 0.06em;
   white-space: nowrap;
   color: var(--ink-faint);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
 }
+.brand__sub:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 .search {
   width: 100%;
@@ -384,6 +389,7 @@ button { font-family: inherit; }
 }
 
 .nav-group { display: flex; flex-direction: column; }
+.nav-group--pinned { padding-bottom: 6px; margin-bottom: 4px; border-bottom: 1px solid var(--border); }
 
 .nav-group__title {
   display: flex;
@@ -457,6 +463,20 @@ button { font-family: inherit; }
   border-radius: 50%;
   flex: none;
   opacity: 0.8;
+}
+
+.nav-item__new {
+  flex: none;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--glow);
+  background: color-mix(in srgb, var(--glow) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--glow) 35%, transparent);
 }
 
 .sidebar__foot {
@@ -871,6 +891,158 @@ tbody tr:hover { background: var(--surface-2); }
   font-size: 1rem;
   color: var(--accent);
 }
+
+/* ---------- What's New timeline ---------- */
+
+.timeline__summary {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  margin: -6px 0 32px;
+}
+
+/* One line runs down the whole timeline; day and entry markers sit on it. */
+.timeline__day {
+  margin-left: 5px;
+  padding-bottom: 44px;
+  border-left: 2px solid var(--border);
+}
+.timeline__day:last-child { padding-bottom: 0; }
+
+.timeline__date {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 0 0 20px;
+  padding-left: 20px;
+}
+.timeline__date::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.timeline__date time {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.timeline__ago {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-dim);
+}
+
+.timeline__entries {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.timeline__entry {
+  position: relative;
+  padding-bottom: 30px;
+}
+.timeline__entry:last-child { padding-bottom: 0; }
+.timeline__entry::before {
+  content: '';
+  position: absolute;
+  left: -27px;
+  top: 0.4em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+.timeline__entry.is-new::before {
+  background: var(--glow);
+  border-color: var(--glow);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--glow) 50%, transparent);
+}
+
+.timeline__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.timeline__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+.timeline__kind,
+.timeline__new {
+  padding: 0 6px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--border);
+  color: var(--ink-faint);
+}
+.timeline__new {
+  color: var(--glow);
+  background: color-mix(in srgb, var(--glow) 14%, transparent);
+  border-color: color-mix(in srgb, var(--glow) 35%, transparent);
+}
+
+.timeline__text {
+  margin: 6px 0 10px;
+  color: var(--ink-dim);
+}
+
+.timeline__links {
+  display: flex;
+  align-items: baseline;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+.timeline__links-label {
+  flex: none;
+  margin-right: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.timeline__link-list {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 2px;
+}
+.timeline__link {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--ink-faint);
+  font-family: var(--font-body);
+  font-size: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+/* The separator trails each link so a wrapped line never starts with one. */
+.timeline__link:not(:last-child)::after {
+  content: '·';
+  display: inline-block;
+  margin: 0 8px;
+  color: var(--border-strong);
+}
+.timeline__link:hover { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Prev/Next footer nav ---------- */
 

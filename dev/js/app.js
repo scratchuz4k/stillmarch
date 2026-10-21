@@ -29,6 +29,53 @@
     return node;
   }
 
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+  // Dates are stored as YYYY-MM-DD; split them by hand so the viewer's
+  // timezone can't shift them a day.
+  function formatDate(iso) {
+    var parts = iso.split('-');
+    return parseInt(parts[2], 10) + ' ' + MONTHS[parseInt(parts[1], 10) - 1] + ' ' + parts[0];
+  }
+
+  var WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  function dateUTC(iso) {
+    var parts = iso.split('-');
+    return Date.UTC(+parts[0], +parts[1] - 1, +parts[2]);
+  }
+
+  // "20 Oct" plus "Tuesday · yesterday"; the year only shows when it isn't
+  // the current one.
+  function describeDay(iso) {
+    var now = new Date();
+    var today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = Math.round((today - dateUTC(iso)) / 86400000);
+    var parts = iso.split('-');
+    var label = parseInt(parts[2], 10) + ' ' + MONTHS[parseInt(parts[1], 10) - 1];
+    if (+parts[0] !== now.getFullYear()) label += ' ' + parts[0];
+    var ago = null;
+    if (days === 0) ago = 'today';
+    else if (days === 1) ago = 'yesterday';
+    else if (days > 1 && days < 14) ago = days + ' days ago';
+    else if (days >= 14 && days < 63) ago = Math.floor(days / 7) + ' weeks ago';
+    var weekday = WEEKDAYS[new Date(dateUTC(iso)).getUTCDay()];
+    return { label: label, detail: ago ? weekday + ' · ' + ago : weekday };
+  }
+
+  function latestUpdate() {
+    var updates = state.data.updates || [];
+    return updates.length ? updates[0].date : state.data.site.updated;
+  }
+
+  function loadSeenUpdate() {
+    try { return localStorage.getItem('stillmarch-updates-seen') || ''; } catch (e) { return ''; }
+  }
+
+  function saveSeenUpdate(date) {
+    try { localStorage.setItem('stillmarch-updates-seen', date); } catch (e) {}
+  }
+
   function badge(statusKey) {
     var meta = state.data.statuses[statusKey];
     if (!meta) return null;
@@ -55,8 +102,15 @@
         });
       });
       buildShell();
-      var initial = (location.hash || '').replace('#', '') || state.sectionOrder[0];
-      if (!state.sectionsById[initial]) initial = state.sectionOrder[0];
+      // Pinned groups sit above the menu but aren't the landing page.
+      var home = state.sectionOrder[0];
+      data.nav.some(function (group) {
+        if (group.pinned) return false;
+        home = group.items[0];
+        return true;
+      });
+      var initial = (location.hash || '').replace('#', '') || home;
+      if (!state.sectionsById[initial]) initial = home;
       goTo(initial, { replace: true });
     })
     .catch(function (err) {
@@ -72,8 +126,15 @@
   function buildShell() {
     document.title = state.data.site.title;
     $('#brandMark').textContent = state.data.site.title;
-    $('#brandSub').textContent = 'Build ' + state.data.site.build + ' · ' + state.data.site.updated;
-    $('#brandSub').title = 'Build ' + state.data.site.build + ', updated ' + state.data.site.updated;
+    var updated = latestUpdate();
+    $('#brandSub').textContent = 'Build ' + state.data.site.build + ' · ' + formatDate(updated);
+    $('#brandSub').title = 'Build ' + state.data.site.build + ', updated ' + formatDate(updated) + ' — see what changed';
+    $('#brandSub').addEventListener('click', function () {
+      if (state.sectionsById.updates) {
+        goTo('updates');
+        closeNav();
+      }
+    });
     $('#topbarTitle').textContent = state.data.site.title;
 
     buildNav();
@@ -148,8 +209,8 @@
     var wrap = $('#navGroups');
     wrap.innerHTML = '';
     state.data.nav.forEach(function (group) {
-      var collapsed = state.collapsedGroups.has(group.group);
-      var groupEl = el('div', { class: 'nav-group' + (collapsed ? ' is-collapsed' : ''), 'data-group': group.group });
+      var collapsed = !group.pinned && state.collapsedGroups.has(group.group);
+      var groupEl = el('div', { class: 'nav-group' + (group.pinned ? ' nav-group--pinned' : '') + (collapsed ? ' is-collapsed' : ''), 'data-group': group.group });
 
       var titleBtn = el('button', {
         class: 'nav-group__title', type: 'button',
@@ -180,6 +241,9 @@
           dot = el('span', { class: 'nav-item__dot' });
           dot.style.background = 'var(--' + section.status + ')';
         }
+        if (section.generated === 'updates-timeline' && latestUpdate() > loadSeenUpdate()) {
+          dot = el('span', { class: 'nav-item__new', text: 'New' });
+        }
         var btn = el('button', { class: 'nav-item', type: 'button', 'data-id': id, 'data-title': section.title.toLowerCase() }, [
           el('span', { text: section.title }),
           dot
@@ -196,7 +260,7 @@
         itemsWrap.appendChild(btn);
       });
 
-      groupEl.appendChild(titleBtn);
+      if (!group.pinned) groupEl.appendChild(titleBtn);
       groupEl.appendChild(itemsWrap);
       wrap.appendChild(groupEl);
     });
@@ -232,7 +296,8 @@
       } else {
         itemsWrap.hidden = g.classList.contains('is-collapsed');
       }
-      $('.nav-group__title', g).hidden = query && !groupHasVisible;
+      var title = $('.nav-group__title', g);
+      if (title) title.hidden = query && !groupHasVisible;
       if (groupHasVisible) any = true;
     });
     var existing = $('#noResults');
@@ -323,6 +388,10 @@
       content.appendChild(buildBacklogIndex(id));
     }
 
+    if (section.generated === 'updates-timeline') {
+      content.appendChild(buildUpdatesTimeline());
+    }
+
     content.appendChild(buildPageNav(id));
 
     main.appendChild(content);
@@ -404,6 +473,76 @@
     if (!total) {
       wrap.appendChild(el('p', { class: 'backlog-index__summary', text: 'Nothing left on the backlog — everything proposed has shipped.' }));
     }
+
+    return wrap;
+  }
+
+  function buildUpdatesTimeline() {
+    var wrap = el('div', { class: 'timeline block' });
+    var updates = state.data.updates || [];
+    if (!updates.length) return wrap;
+
+    // Anything newer than the last time this viewer opened the page gets a
+    // "New" mark; opening the page counts as having seen everything.
+    var seen = loadSeenUpdate();
+    var latest = updates[0].date;
+    saveSeenUpdate(latest);
+    var navNew = $('.nav-item[data-id="updates"] .nav-item__new');
+    if (navNew) navNew.remove();
+
+    var oldest = updates[updates.length - 1].date;
+    wrap.appendChild(el('p', {
+      class: 'timeline__summary',
+      text: updates.length + ' update' + (updates.length === 1 ? '' : 's') + ' since ' + formatDate(oldest) + '. Last updated ' + formatDate(latest) + '.'
+    }));
+
+    var days = [];
+    updates.forEach(function (u) {
+      var day = days[days.length - 1];
+      if (!day || day.date !== u.date) {
+        day = { date: u.date, items: [] };
+        days.push(day);
+      }
+      day.items.push(u);
+    });
+
+    days.forEach(function (day) {
+      var dayEl = el('section', { class: 'timeline__day' });
+      var when = describeDay(day.date);
+      dayEl.appendChild(el('h2', { class: 'timeline__date' }, [
+        el('time', { datetime: day.date, title: formatDate(day.date), text: when.label }),
+        el('span', { class: 'timeline__ago', text: when.detail })
+      ]));
+      var ol = el('ol', { class: 'timeline__entries' });
+      day.items.forEach(function (u) {
+        var isNew = seen && u.date > seen;
+        var li = el('li', { class: 'timeline__entry' + (isNew ? ' is-new' : '') });
+        var head = el('div', { class: 'timeline__head' }, [
+          el('span', { class: 'timeline__title', text: u.title }),
+          u.kind === 'site' ? el('span', { class: 'timeline__kind', text: 'Site' }) : null,
+          isNew ? el('span', { class: 'timeline__new', text: 'New' }) : null
+        ]);
+        li.appendChild(head);
+        li.appendChild(el('p', { class: 'timeline__text', text: u.text }));
+        var links = (u.sections || []).filter(function (sid) { return state.sectionsById[sid]; });
+        if (links.length) {
+          var linkList = el('span', { class: 'timeline__link-list' });
+          var linkRow = el('div', { class: 'timeline__links' }, [
+            el('span', { class: 'timeline__links-label', text: 'Pages' }),
+            linkList
+          ]);
+          links.forEach(function (sid) {
+            var a = el('button', { class: 'timeline__link', type: 'button', text: state.sectionsById[sid].title });
+            a.addEventListener('click', function () { goTo(sid); });
+            linkList.appendChild(a);
+          });
+          li.appendChild(linkRow);
+        }
+        ol.appendChild(li);
+      });
+      dayEl.appendChild(ol);
+      wrap.appendChild(dayEl);
+    });
 
     return wrap;
   }

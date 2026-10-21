@@ -3,9 +3,31 @@
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
     "build": "0.6.7",
-    "updated": "2026-10-20",
     "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
+  "updates": [
+    { "date": "2026-10-21", "title": "Settlement planning and walls", "sections": ["building-logistics", "territory-control"], "text": "From a Scratch ↔ Sethan chat: the settlement planner (zones and roads, the Civic zone, the land limit, renting and evictions) and prefab walls with gates on roads." },
+    { "date": "2026-10-20", "title": "0.6.7 patch notes", "sections": ["world-geography", "crafting-materials", "ui-hud", "dungeons-raids", "building-logistics", "territory-control", "patch-notes"], "text": "Rebuilt rivers and a repainted world map, swimming, bandits gathered into nine roadside camps, T0–T4 tools, windows back to the Escape menu look, the R key for CRAFT and compass directions that match the map." },
+    { "date": "2026-10-20", "title": "0.6.6 patch notes", "sections": ["combat", "party-social", "territory-control", "world-geography", "dungeons-raids", "patch-notes"], "text": "Open-world PvP and the aggression flag, warbands and Need / Greed / Pass loot rolls, claim hours, fortifications and banner levels, and 1,936 new rocks." },
+    { "date": "2026-10-19", "title": "0.6.5 patch notes", "sections": ["dev-testing", "combat", "territory-control", "world-geography", "patch-notes"], "text": "The video memory table and Video memory saver, the rubber-banding fix, grouped Blight waves with Forgotten Servants, and names for all three Wayfarer villages." },
+    { "date": "2026-10-16", "title": "0.6.1 patch notes", "sections": ["building-logistics", "ui-hud", "crafting-materials", "sound", "patch-notes"], "text": "Private chest storage, forged-iron windows, the in-place quality reveal, and finishing and rare-loot sounds." },
+    { "date": "2026-10-16", "title": "0.6.0 patch notes", "sections": ["crafting-materials", "combat", "focus-system", "ui-hud", "sound", "great-projects-chronicles", "patch-notes"], "text": "Item quality, durability and repair, Relics and armour tiers, the archer rework, the Focus bonuses and the grid loot window." },
+    { "date": "2026-10-13", "title": "0.5.3 patch notes", "sections": ["combat", "world-geography", "forgotten", "territory-control", "patch-notes"], "text": "A single damage number and “N Blocked”, staff and Lumen changes, monster AI, and smaller, later claim waves." },
+    { "date": "2026-10-13", "title": "0.5.1 patch notes", "sections": ["dev-testing", "ui-hud", "sound", "patch-notes"], "text": "Video memory and graphics settings: lower VRAM use on 12 GB cards, the Hardware ray tracing option and the VRAM readout." },
+    { "date": "2026-10-13", "title": "0.5.0 patch notes", "sections": ["territory-control", "building-logistics", "economy-banking", "houses-politics", "patch-notes"], "text": "Claiming a dormant Obelisk (Claim Banner, Supplies, Blight waves), generated plots and rent, build mode, bank-first payments and the crest creator." },
+    { "date": "2026-10-10", "title": "0.4.3 patch notes", "sections": ["dev-testing", "world-geography", "combat", "sound", "wayfarers", "patch-notes"], "text": "Stutter numbers from the test route, wind, bandits and wildlife, and the staff on the move." },
+    { "date": "2026-10-09", "title": "0.4.2 patch notes", "sections": ["forgotten", "dungeons-raids", "combat", "world-geography", "ui-hud", "sound", "patch-notes"], "text": "Garrisoned strongholds, The Old Mine, melee reach cut to match the blade, the storm rework, and a new Sound page." },
+    { "date": "2026-10-05", "title": "The Spire, and no more Blackrust Gaol", "sections": ["dungeons-raids", "world-geography"], "text": "The floor-by-floor challenge is now called the Spire. Blackrust Gaol is being removed from the game, so it's gone from the record." },
+    { "date": "2026-10-05", "title": "PvE content list", "sections": ["dungeons-raids"], "text": "Dungeons & Raids splits into instanced content (5-man dungeons, Cursed Dungeons, 20–25-man raids) and open-world content (world bosses, PvE raids on settlements)." },
+    { "date": "2026-09-24", "title": "Wayfarers & NPC Workers", "sections": ["wayfarers", "houses-politics", "backlog"], "text": "Hired workers that run crafting stations, region NPCs, the Regions vs Houses part, wayfarer lore, and Scratch's levelled House wayfarer pitch." },
+    { "date": "2026-09-24", "title": "New look", "kind": "site", "sections": [], "text": "The game's logo and palette across both themes, with banner art on the Elevator Pitch and Setting & Lore." },
+    { "date": "2026-09-23", "title": "Getting Started", "sections": ["getting-started", "combat", "focus-system", "crafting-materials", "economy-banking", "world-geography"], "text": "A new page from the demo cheatsheet (keys, first hours), with its details folded into the system pages." },
+    { "date": "2026-09-23", "title": "Armies & Campaigns", "sections": ["armies", "territory-control", "community-meta"], "text": "Army roles and their rewards, scout map marks, pay from the commander's House treasury, and the dev-build Army tab." },
+    { "date": "2026-09-22", "title": "action.20 patch notes", "sections": ["forgotten", "combat", "ui-hud", "party-social", "world-geography", "patch-notes"], "text": "Rebuilt strongholds, skill commit and spin attacks, healing and support, and a new Party & Player Interaction page." },
+    { "date": "2026-09-22", "title": "Status badges and the backlog page", "kind": "site", "sections": ["backlog"], "text": "Confirmed now means announced only; anything playable is Implemented. Ideas from every page are collected on Backlog & Ideas." },
+    { "date": "2026-09-22", "title": "Great Projects", "sections": ["great-projects-chronicles", "territory-control"], "text": "Great Projects can be destroyed, each grants a kingdom-wide bonus, and there are no seasons or resets." },
+    { "date": "2026-09-22", "title": "The record opens", "sections": ["overview", "patch-notes"], "text": "Every system from the design notes, plus the patch history from action.17." }
+  ],
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
     "live067": { "label": "Implemented", "short": "0.6.7", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.7 (20 Oct). Supersedes earlier builds where numbers conflict." },
@@ -28,6 +50,11 @@
     "info": { "label": "Information", "short": "Info", "group": "narrative", "desc": "A factual or contextual aside — a number, a clarification, dev process — that isn't itself a build or backlog status." }
   },
   "nav": [
+    {
+      "group": "The Record",
+      "pinned": true,
+      "items": ["updates"]
+    },
     {
       "group": "The World",
       "items": ["overview", "getting-started", "setting-lore", "world-geography", "dungeons-raids"]
@@ -1226,6 +1253,15 @@
           "Bounties must be self-funded by whoever places them, to keep them tied to genuine motivation.",
           "Intended to drive roleplay/drama; possible “Bounty Hunter”-style achievements floated."
         ] }
+      ]
+    },
+    {
+      "id": "updates",
+      "title": "What's New",
+      "dek": "Every update to this record, newest first — when it landed and what changed.",
+      "generated": "updates-timeline",
+      "blocks": [
+        { "type": "p", "text": "Patch notes are dated by the day the patch came out; everything else by the day it was added to the record. For the full notes on each build, see Build & Patch History." }
       ]
     },
     {
