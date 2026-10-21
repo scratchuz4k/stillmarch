@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.5.0",
+    "build": "0.5.1",
     "updated": "2026-10-13",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct) and 0.5.0 (13 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0 and 0.5.1 (13 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live051": { "label": "Implemented", "short": "0.5.1", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.1 (13 Oct). Supersedes earlier builds where numbers conflict." },
     "live050": { "label": "Implemented", "short": "0.5.0", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.0 (13 Oct). Supersedes earlier builds where numbers conflict." },
     "live043": { "label": "Implemented", "short": "0.4.3", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.4.3 (10 Oct). Supersedes earlier builds where numbers conflict." },
     "live042": { "label": "Implemented", "short": "0.4.2", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.4.2 (9 Oct). Supersedes the action builds where numbers conflict." },
@@ -392,6 +393,9 @@
           "Map (M): the cart and your last death spot now render as proper icons.",
           "Settings → HUD settings (new panel): HUD visibility profile (Minimal / Full / Auto — Auto hides the whole HUD when calm), bar numbers (in combat / always / hover-only), nameplate mode (default / names always / minimal), compass on/off, interface scale (80–125%), and chat opacity."
         ] },
+        { "type": "list", "status": "live051", "items": [
+          "Main menu: a new SOUND button holds the volume sliders, and SETTINGS is now called GRAPHICS (see Development & Testing → Video memory & graphics settings)."
+        ] },
         { "type": "h", "text": "Visual style" },
         { "type": "list", "items": [
           "Flat bars and plates in a cold-steel palette — no gradient backgrounds, no pack textures or frames (the single font of action.19 was replaced in action.20 — see below).",
@@ -477,6 +481,10 @@
         ] },
         { "type": "h", "text": "Settings" },
         { "type": "p", "text": "The sound settings have an “Other players' voices” slider (50% by default) that sets how loud other players' grunts and shouts are." },
+        { "type": "list", "status": "live051", "items": [
+          "The volume sliders are also in the main menu, under the new SOUND button.",
+          "Your saved volumes apply in the main menu right away — the menu music used to play at full volume until you entered the world."
+        ] },
         { "type": "note", "status": "info", "text": "Earlier sound fixes live with their systems: enemy skill sounds stopped carrying across the whole map in the Friday hotfixes, and hit sounds were made quieter and throttled in action.19 (see Combat)." }
       ]
     },
@@ -952,8 +960,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.5.0 (13 Oct).",
+      "dek": "action.17 (20 Sept) through 0.5.1 (13 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.5.1 — 13 Oct" },
+        { "type": "p", "text": "Update required (client + server). Changes since 0.5.0: much less video memory use, aimed at 12 GB and smaller cards, where forests on Medium to Epic used to overflow it and freeze the picture; a Hardware ray tracing on/off option, a video memory readout and a first-launch preset picked by your card's memory; a fresh set of shaders prepared at startup, for fewer stutters the first time you see a place; and a SOUND button in the main menu, where saved volumes now apply right away (SETTINGS is now GRAPHICS)." },
         { "type": "h", "text": "0.5.0 — 13 Oct" },
         { "type": "p", "text": "Update required (client + server); characters, Houses, regions and bank accounts carry over. Changes since 0.4.3: claiming a dormant Obelisk (a 15-minute fight for a ring around a Claim Banner, with a claim camp, Supplies for respawns and Blight waves); an event HUD and boss health bars; a new House crest creator; plots generated from the settlement plan, with rent per period paid from your bank account; the Castellan's Table and redone region windows; bank first, purse second for fees and wages; item and stack sizes from one value-based rule, a separate quiver and cart bundles; combat changes (camera-cone targeting, basics cutting off skills, full dodges, Taunt targeting); and a rebuilt dungeon entered from the Abandoned Chapel." },
         { "type": "h", "text": "0.4.3 — 10 Oct" },
@@ -1021,6 +1031,22 @@
           "Bandits coming into range appear one after another instead of all in the same frame.",
           "A storm building up or dying down no longer reworks the sunlight every frame."
         ] },
+        { "type": "h", "text": "Video memory & graphics settings (0.5.1)" },
+        { "type": "p", "status": "live051", "text": "The game uses noticeably less video memory. On 12 GB cards, walking through forests on Medium, High and Epic used to overflow video memory and freeze the picture for seconds at a time." },
+        { "type": "list", "status": "live051", "items": [
+          "The texture pool shrinks on its own when the game goes over your card's memory budget, instead of spilling into system memory.",
+          "Ray tracing covers a smaller area around you (150 m), small plants (ferns, saplings, bushes) take part in it only up to 10 m, and ray tracing data for newly loaded forest is built over several frames instead of one.",
+          "Small plants no longer feed the Lumen lighting system (the engine's lighting, not the mana resource) or its distance fields, so newly loaded forest costs less, on Medium too.",
+          "Lumen updates the lighting of newly loaded areas over more frames on Medium and High.",
+          "Leaves no longer trace their own reflections on High and Epic — they were barely visible.",
+          "On Low and Medium, and whenever hardware ray tracing is off, ray tracing is switched off completely and no longer holds memory."
+        ] },
+        { "type": "list", "status": "live051", "items": [
+          "New graphics option: Hardware ray tracing (On/Off). It applies with High or Epic global illumination. Turning it off frees about 1 GB of video memory and keeps everything else on your chosen preset.",
+          "A video memory readout under the preset — used / budget in GB — with a hint when you're close to the limit.",
+          "On first launch the game picks a preset for your card's memory: below 9 GB, Medium without ray tracing; below 13 GB, High. It only ever lowers the preset, once, and leaves custom settings alone. (The first-launch quality detection itself came in the Friday hotfixes — see Build & Patch History.)"
+        ] },
+        { "type": "p", "status": "live051", "text": "Fewer stutters the first time you see new places: a new set of shaders, recorded on 0.5.1 across all presets and several regions, is prepared at startup. The previous set was older than the current world materials, so many shaders were still compiled during play." },
         { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
     },
