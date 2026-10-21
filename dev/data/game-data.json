@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.0",
+    "build": "0.6.1",
     "updated": "2026-10-16",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct) and 0.6.0 (16 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0 and 0.6.1 (16 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live061": { "label": "Implemented", "short": "0.6.1", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.1 (16 Oct). Supersedes earlier builds where numbers conflict." },
     "live060": { "label": "Implemented", "short": "0.6.0", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.0 (16 Oct). Supersedes earlier builds where numbers conflict." },
     "live053": { "label": "Implemented", "short": "0.5.3", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.3 (13 Oct). Supersedes earlier builds where numbers conflict." },
     "live051": { "label": "Implemented", "short": "0.5.1", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.5.1 (13 Oct). Supersedes earlier builds where numbers conflict." },
@@ -488,6 +489,13 @@
           "Item tiles use one mark per meaning: the glow shows quality, the corner badge shows tier, a crack mark shows a broken item, and a small mark shows a Relic.",
           "Durability shows as a thin bar on the item and in the tooltip; you get a warning when something drops below 20%."
         ] },
+        { "type": "h", "text": "Forged-iron windows (0.6.1)" },
+        { "type": "list", "status": "live061", "items": [
+          "Backpack, equipment, crafting, loot, trade, cart and settings windows are made of soot-blackened forged iron: a hammered iron band around the edge, left open at the bottom-right corner, and the window name on its own iron plate.",
+          "Buttons, search fields, filters and equipment slots are forged iron too. The main action button (Craft, Take All) has an edge that glows like hot iron, brighter when you point at it.",
+          "Obelisk, region, castellan, storehouse, map, chronicle and order windows keep their slate-and-gold look.",
+          "“Crafted by” in tooltips is grey and no longer blends into the item description."
+        ] },
         { "type": "h", "text": "Loot window (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
           "Loot opens as a grid like your backpack, with items at their real size. The grid grows with the bag and keeps items in place while you take them.",
@@ -539,6 +547,10 @@
           "Bow sounds you can feel: a string crack and a low kick on every shot, separate sounds for each skill, arrow impacts, and a dry “tok” for every arrow that hits, which you hear even from 30 m.",
           "The crafting reveal plays sparks and a sound that grow with the item's quality.",
           "A loot bag with something valuable plays its own sound."
+        ] },
+        { "type": "list", "status": "live061", "items": [
+          "New sounds when an item is finished: a hard hammer strike that grows with quality, up to a full burst for Masterwork and Legendary.",
+          "Rare loot has a new sound too."
         ] },
         { "type": "h", "text": "Settings" },
         { "type": "p", "text": "The sound settings have an “Other players' voices” slider (50% by default) that sets how loud other players' grunts and shouts are." },
@@ -709,6 +721,11 @@
           "Quality and durability stay with the item when you trade it, carry it in the cart, drop and pick it up, or lose it in a death bag.",
           "Items you owned before 0.6.0 count as Common quality at full durability."
         ] },
+        { "type": "list", "status": "live061", "items": [
+          "The quality reveal plays right in the recipe view at the station, not on a separate panel: the Rose heart stays where it was, and the result appears next to it.",
+          "Item icons in the crafting window keep their shape — ingots are no longer squeezed into squares.",
+          "The “+” in the relic slot sits in the middle of the slot."
+        ] },
         { "type": "h", "text": "Durability & repair (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
           "Weapons wear with every hit you land, armour and shields with every hit you take, and tools with every gathering strike. Dying costs 25% durability on everything you wear.",
@@ -833,6 +850,13 @@
           ["Cloth, leather", "10"]
         ] },
         { "type": "p", "status": "live050", "text": "The cart carries bundles, so processed goods are worth hauling further than raw ones. Cart load comes from the cargo's weight: a full cart of stone is over 100% and stops on a steep slope." },
+        { "type": "h", "text": "Private storage (0.6.1)" },
+        { "type": "list", "status": "live061", "items": [
+          "The chest by the order board in the Wayfarer Village is your private storage. Each chest keeps its own contents for every player: what you put in one chest stays in that chest — items don't travel between chests.",
+          "The grid and stacking work like the cart: 80 cells to start, and 4 upgrades up to 240 cells, for 50 Marks, then 2, 8 and 32 Crowns. The cost comes from your bank first, and the coin is spent for good.",
+          "The grid in the storage and cart windows now looks like the backpack."
+        ] },
+        { "type": "note", "status": "info", "text": "The 0.6.1 notes price the upgrades in Marks and Crowns — coin names that appear nowhere else in this record, which otherwise speaks of gold (and grains, for plot rent)." },
         { "type": "p", "status": "confirmed", "text": "Caravans are planned for later — larger-scale transport, and the supply-line mechanic for sieges." }
       ]
     },
@@ -1086,8 +1110,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.0 (16 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.1 (16 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.1 — 16 Oct" },
+        { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and bank accounts carry over. Changes since 0.6.0: private chest storage by the order board in the Wayfarer Village, upgradable from 80 to 240 cells; a forged-iron look for the backpack, equipment, crafting, loot, trade, cart and settings windows; the quality reveal moved into the recipe view, with new hammer-strike sounds for finished items; and smaller crafting and tooltip fixes." },
         { "type": "h", "text": "0.6.0 — 16 Oct" },
         { "type": "p", "text": "Update required (client + server); characters, Houses, regions and bank accounts carry over, and items you already own count as Common quality at full durability. Changes since 0.5.3: item quality (Common, Fine, Superior, Masterwork) on every crafted weapon, armour piece, shield and tool, with crafting that no longer fails; durability, repair and recycling; Relics from monsters that add an effect and a second quality roll, and Legendary items; a grid loot window; the archer rebuilt (RMB to aim, a new bow, Hawk's Descent, new skill effects and sounds); armour sets that change shape by tier, with shoulders merged into the chest piece; new item icons with tier badges, even steps between tiers and a darker iron-and-soot interface; blocked hits showing both numbers; and fixes to dawn and dusk light, daylight in the dungeon, grass and forest mist." },
         { "type": "h", "text": "0.5.3 — 13 Oct" },
