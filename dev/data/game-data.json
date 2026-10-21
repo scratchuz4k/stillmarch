@@ -2,10 +2,11 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.7",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.6.8",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct) and 0.6.8 (21 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "updates": [
+    { "date": "2026-10-21", "title": "0.6.8 patch notes", "sections": ["crafting-materials", "combat", "building-logistics", "territory-control", "economy-banking", "world-geography", "ui-hud", "getting-started", "dev-testing", "patch-notes"], "text": "Tier 0 starter gear and wooden training swords, quality caps by tier, weapon skills unlocked by tier, settlement planner 2.0, no loot drop in your own town, new bandit outfits and slower wading." },
     { "date": "2026-10-21", "title": "Settlement planner and walls are in the game", "sections": ["building-logistics", "territory-control"], "text": "The settlement planner and the prefab walls are marked implemented instead of coming soon. Farming zones and what sieges do to walls are still planned." },
     { "date": "2026-10-21", "title": "Settlement planning and walls", "sections": ["building-logistics", "territory-control"], "text": "From a Scratch ↔ Sethan chat: the settlement planner (zones and roads, the Civic zone, the land limit, renting and evictions) and prefab walls with gates on roads." },
     { "date": "2026-10-20", "title": "0.6.7 patch notes", "sections": ["world-geography", "crafting-materials", "ui-hud", "dungeons-raids", "building-logistics", "territory-control", "patch-notes"], "text": "Rebuilt rivers and a repainted world map, swimming, bandits gathered into nine roadside camps, T0–T4 tools, windows back to the Escape menu look, the R key for CRAFT and compass directions that match the map." },
@@ -31,6 +32,7 @@
   ],
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live068": { "label": "Implemented", "short": "0.6.8", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.8 (21 Oct). Supersedes earlier builds where numbers conflict." },
     "live067": { "label": "Implemented", "short": "0.6.7", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.7 (20 Oct). Supersedes earlier builds where numbers conflict." },
     "live066": { "label": "Implemented", "short": "0.6.6", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.6 (20 Oct). Supersedes earlier builds where numbers conflict." },
     "live065": { "label": "Implemented", "short": "0.6.5", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.5 (19 Oct). Supersedes earlier builds where numbers conflict." },
@@ -140,7 +142,8 @@
           "Keep Focus above 75% for +10% XP; carry a lantern at night.",
           "Settle down: a House leader claims an Obelisk and builds a settlement on the claim grid (N). Talk to people — most of the economy is other people's needs."
         ] },
-        { "type": "note", "status": "info", "text": "Source: the demo cheatsheet handed to players. It isn't dated and likely predates action.20: it places the skeleton guards at the watchtowers, which action.20 rebuilt as four strongholds — updated to strongholds here." }
+        { "type": "note", "status": "info", "text": "Source: the demo cheatsheet handed to players. It isn't dated and likely predates action.20: it places the skeleton guards at the watchtowers, which action.20 rebuilt as four strongholds — updated to strongholds here." },
+        { "type": "p", "status": "live068", "text": "New characters start in a Castaway tunic and shorts, given once when you pick your starting village. A first weapon can be made by hand: a Wooden Training Sword or Longsword (Woodworking 1) from sticks and a scrap of cloth (see Crafting → Tier 0 & quality caps)." }
       ]
     },
     {
@@ -363,10 +366,25 @@
           ["White", "Strangers"],
           ["Red", "Only an enemy House at war, or a player with an aggression flag"]
         ] },
+        { "type": "p", "status": "live068", "text": "Residents take no PvP damage within 12 m of their region's Obelisk, except while it's under attack, and drop no loot when they die in their own town (see Building & Logistics → Resident towns)." },
+        { "type": "h", "text": "Weapon tier unlocks skills (0.6.8)" },
+        { "type": "p", "status": "live068", "text": "A lower-tier weapon unlocks only part of its skills. The basic attack and dodge always work, and skills unlock in the same order as they do with weapon level." },
+        { "type": "table", "caption": "Skills a weapon unlocks by its tier (0.6.8)", "headers": ["Weapon tier", "Two-handed (greatsword, staff, bow)", "One-handed (sword, shield)"], "rows": [
+          ["0", "1", "1"],
+          ["1", "2", "2"],
+          ["2", "4", "3"],
+          ["3 and 4", "All", "All"]
+        ] },
+        { "type": "list", "status": "live068", "items": [
+          "One-handed weapons unlock fewer because your other hand holds a second weapon. A shield counts by its own tier.",
+          "A weapon in the highest tier that exists for its type unlocks everything. Today that's the bow: it only exists as T1, so archers keep all their skills.",
+          "A locked skill is dimmed on the action bar with a padlock, and its tooltip says “Requires a Tier N weapon”. The skills window (K) shows the tier needed (“T2”) instead of a level.",
+          "The weapon tooltip says how many skills it unlocks, e.g. “Weapon skills: 2 of 5 · Tier 2 unlocks 4”."
+        ] },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
-          { "text": "No classes — the weapon in your hand is your class: sword & shield = tank, two-hander = damage, staff = healer, bow = ranged. At weapon level 1 you only have the basic attack; each level unlocks one skill (K shows skills and weapon levels)." },
+          { "text": "No classes — the weapon in your hand is your class: sword & shield = tank, two-hander = damage, staff = healer, bow = ranged. At weapon level 1 you only have the basic attack; each level unlocks one skill (K shows skills and weapon levels). Since 0.6.8 the weapon's tier also limits how many skills it unlocks (see above)." },
           { "text": "Heavy armour protects more but slows you down. The weapon tooltip shows Attack Speed." },
           { "text": "Dying leaves your body where you fell: a staff user can resurrect you, otherwise you respawn at the graveyard." },
           { "text": "Individual skill trees per weapon are planned.", "status": "confirmed" },
@@ -557,6 +575,13 @@
           "Compass directions match the world map. Before, east on the compass was south on the map. The war HUD and the claim death panel use the same directions.",
           "The world map (M) is repainted — see World Geography → Rivers."
         ] },
+        { "type": "h", "text": "Character select & interaction (0.6.8)" },
+        { "type": "list", "status": "live068", "items": [
+          "On character select your character stands in an idle pose instead of a T-pose, and the leftover hat from an old set is gone.",
+          "No more multi-second freeze after logging in when your character first appears: its look loads in the background.",
+          "Interaction works like New World: the thing you use (a rock, herb, tree or chest) is picked from where you look near your character, not only exactly under the crosshair.",
+          "The “F” prompt floats next to the object instead of in the middle of the screen."
+        ] },
         { "type": "h", "text": "Loot window (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
           "Loot opens as a grid like your backpack, with items at their real size. The grid grows with the bag and keeps items in place while you take them.",
@@ -676,6 +701,7 @@
       "blocks": [
         { "type": "h", "text": "Gold loss on death" },
         { "type": "p", "status": "live17", "text": "Dying drops your entire purse into the bag by your corpse. 20% is permanently lost; the remainder is a lootable entry in the loot window with Take / Take All options. This was deliberately set extreme to start, to be tuned down later if needed." },
+        { "type": "p", "status": "live068", "text": "Not in your own town: a resident who dies inside their region's building area drops no loot — gear and backpack stay with them (see Building & Logistics → Resident towns)." },
         { "type": "h", "text": "Starter money: the Crown orders board" },
         { "type": "p", "text": "The Crown buys basic goods (pebbles, sticks, herbs) at fixed prices at the Crown orders board, next to the mint in the Wayfarer Village — the starter money tap. Trades between players happen player to player (Tab, click a player → Trade)." },
         { "type": "h", "text": "Mints & regional banking" },
@@ -824,6 +850,19 @@
           "Processing: “All” means everything you can afford, and “Collect ready” works when an order is only partly done.",
           "New names: Iron and Steel Longsword, Iron and Steel Zweihander."
         ] },
+        { "type": "h", "text": "Tier 0 & quality caps (0.6.8)" },
+        { "type": "list", "status": "live068", "items": [
+          "Tier 0 is for starter items: the Castaway set and the wooden training swords. Their tooltip says “Tier 0 (starter)”.",
+          "New starter weapons: a one-handed Wooden Training Sword and a two-handed Wooden Training Longsword. Craft them by hand (Woodworking 1) from sticks and a scrap of cloth for the grip.",
+          "New characters start in a Castaway tunic and shorts, given once when you pick your starting village."
+        ] },
+        { "type": "table", "caption": "Highest quality by tier (0.6.8)", "headers": ["Tier", "Highest quality", "Relics"], "rows": [
+          ["0", "Fine (green)", "No"],
+          ["1", "Superior (blue)", "Yes"],
+          ["2 and up", "Masterwork (gold)", "Yes"]
+        ] },
+        { "type": "p", "status": "live068", "text": "The crafting odds panel shows the cap (“this tier caps at …”). Items crafted earlier are not changed." },
+        { "type": "note", "status": "info", "text": "A Legendary item is a Masterwork piece with a Relic, so Legendary now starts at T2. The 0.6.7 notes also call the stone tools T0; the 0.6.8 notes name only the Castaway set and the wooden swords as Tier 0 starter items." },
         { "type": "h", "text": "Durability & repair (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
           "Weapons wear with every hit you land, armour and shields with every hit you take, and tools with every gathering strike. Dying costs 25% durability on everything you wear.",
@@ -916,7 +955,14 @@
           "Residents see the plots in the Obelisk window and can rent one.",
           "The region's ruler can evict someone from their plot with a 72-hour warning, at the cost of House prestige."
         ] },
-        { "type": "note", "status": "info", "text": "Sethan put the minimum plot area at “around 120 m²” from memory. The 0.5.0 notes say at least 80 m² (Plots & rent above)." },
+        { "type": "list", "status": "live068", "items": [
+          "Planner 2.0: plots form a ring around the square and come in three sizes per district — small 8×16 m, medium 12×28 m and large 20×40 m.",
+          "Each shape can have rounded or straight edges, for square towns and straight streets.",
+          "The planner shows where the wall will stand (2 m out from the plots, smoothed) and where the gates go: on every road that crosses the wall.",
+          "The plan is drawn as vector art, with smooth lines and readable labels. Plots show their numbers; hover one for its size, status, rent and income.",
+          "The building panel is wider, with bigger tiles. Outside a settlement in a claimed region, the game tells you what to pay in at the Obelisk to found one."
+        ] },
+        { "type": "note", "status": "info", "text": "Sethan put the minimum plot area at “around 120 m²” from memory. The 0.5.0 notes say at least 80 m² (Plots & rent above); since 0.6.8 the smallest plot is 8×16 m, or 128 m²." },
         { "type": "note", "status": "info", "text": "The planner carries the 0.5.0 badge because the 0.5.0 notes are the first to describe plots generated from the settlement plan's districts and roads. It may have been in earlier." },
         { "type": "p", "text": "Why draw it: Sethan saw how hard city planning is in Pax Dei. People have to agree to give up their plots, everything has to connect perfectly, some plots are wasted on roads and bridges, and sometimes someone builds their own little cobblestone airport in the middle of town. In Stillmarch, planning goes to a House's architects, as most big Pax Dei clans do anyway: a House can appoint a Castellan to run the region. It's less free than Pax Dei, where you put down plots and do whatever, but it lets a House set a city layout with roads and Civic zones, without the game predefining it." },
         { "type": "quote", "text": "Beautiful cities will be one of the main endgame activities I believe.", "cite": "Sethan, on why every region should look different" },
@@ -930,6 +976,12 @@
         ] },
         { "type": "p", "status": "live053", "text": "Wall gates no longer close by themselves while settlement raids are disabled (the current QA setting)." },
         { "type": "p", "status": "live065", "text": "After claiming a region you can place the Castellan's Table and assign plots again. A new region starts with a basic town plan (civic core and roads) instead of none." },
+        { "type": "h", "text": "Resident towns (0.6.8)" },
+        { "type": "list", "status": "live068", "items": [
+          "Dying in your own town — as a resident, inside your region's building area — drops no loot: your gear and backpack stay with you. PvP still works there.",
+          "Obelisk sanctuary: within 12 m of the Obelisk, residents take no PvP damage. It switches off while the Obelisk is under attack.",
+          "The region HUD shows SAFE ZONE in the sanctuary and NO LOOT in your own town."
+        ] },
         { "type": "h", "text": "Build mode (0.5.0)" },
         { "type": "list", "status": "live050", "items": [
           "The piece catalogue sits in the left column, with a status badge under the compass and a subtler grid.",
@@ -1069,6 +1121,7 @@
           "The game builds a settlement's walls itself, from prefabs, along the border of the drawn settlement, on the outside of the Town zone, with gates where roads cross it (see the settlement planner in Building & Logistics).",
           "Walls expand and shrink with the shape and size of the settlement."
         ] },
+        { "type": "p", "status": "live068", "text": "The settlement planner shows where the wall will stand, 2 m out from the plots and smoothed, with a gate on every road that crosses it (see Building & Logistics)." },
         { "type": "list", "status": "confirmed", "items": [
           "For now, sieges only affect walls. Walls can be destroyed during a siege and then need rebuilding. Whether sieges will reach anything else comes later."
         ] },
@@ -1159,6 +1212,7 @@
           "There's water under all six bridges and no visible steps in the riverbed. Bridges, ramps and roads stay where they were.",
           "The western river keeps a steep cascade where it drops over a rock ledge."
         ] },
+        { "type": "p", "status": "live068", "text": "Heartland bridge by the lake: the vertical wall of the old ditch under the span is gone, and the banks slope down to the water." },
         { "type": "p", "status": "live067", "text": "The world map (M) has been repainted: rivers follow their exact in-game course and Blight patches match the current world. Region borders are unchanged." },
         { "type": "h", "text": "Swimming (0.6.7)" },
         { "type": "list", "status": "live067", "items": [
@@ -1166,6 +1220,10 @@
           "Swimming drains stamina. Once it runs out you lose health every second, so cross wide rivers with a full bar.",
           "Your weapon goes on your back in the water, and abilities can't be used while swimming.",
           "Mobs won't follow you into water. Jump into a river and they'll wait on the bank, then give up after a few seconds and head back."
+        ] },
+        { "type": "list", "status": "live068", "items": [
+          "Wading: from half a metre of water you slow down, to half speed at swimming depth. From 80 cm you can't sprint.",
+          "Swimmers ride the waves instead of being half the time under water and half above it."
         ] },
         { "type": "h", "text": "Bandits & wildlife" },
         { "type": "list", "status": "live043", "items": [
@@ -1184,6 +1242,10 @@
           "Monsters forget a player who died or moved more than 90 m away, and bleeding ends on death. No more random damage after you respawn in the village while a fight goes on at the Obelisk."
         ] },
         { "type": "p", "status": "live067", "text": "Bandits no longer wander the fields. They hold nine camps along the roads and keep watch from their posts. Roadside ambushes are still there." },
+        { "type": "list", "status": "live068", "items": [
+          "Bandits wear five outfits instead of rags: Highwayman (hood with face scarf, belted jerkin), Leader (hat with half mask, brigandine, fur-trimmed cloak), Poacher (hood, vest, wool trousers with leg wraps) and two Brute sets (cheek-guard helmet, mail over a gambeson, and a fur mantle or pauldron).",
+          "The outfit goes with the bandit: Cutthroats wear the Highwayman hood or the Leader's hat, Brutes wear helmet and mail, Archers wear the Poacher hood. Every outfit has a male and a female version."
+        ] },
         { "type": "h", "text": "Weather & sky" },
         { "type": "list", "status": "live042", "items": [
           "In a storm the sun and its rays disappear behind the clouds, and the sky closes over with a heavy grey layer. A full storm gets darker, with muted colours.",
@@ -1294,8 +1356,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.7 (20 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.8 (21 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.8 — 21 Oct" },
+        { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and chest storage are kept. Changes since 0.6.7: Tier 0 starter items — a Castaway outfit for new characters and wooden training swords made by hand; quality capped by tier (Fine at T0, Superior at T1, Masterwork from T2); weapon skills unlocked by the weapon's tier; five new bandit outfits; an idle pose and no login freeze on character select; New World–style interaction with the F prompt next to the object; settlement planner 2.0, with plots in three sizes around the square, rounded or straight edges, and the wall and gates shown; no loot drop for residents who die in their own town, and a PvP-free sanctuary by the Obelisk; slower wading and swimmers that ride the waves; sloped banks under the Heartland lake bridge; and fewer micro-stutters in the forest, with a refreshed shader cache." },
         { "type": "h", "text": "0.6.7 — 20 Oct" },
         { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and chest storage are kept. Changes since 0.6.6: all four rivers rebuilt to meander, with water that sits in its bed, gentle banks and gorges, and a repainted world map; swimming, which drains stamina, and mobs that won't follow you into water; bandits gathered into nine roadside camps; hatchets, pickaxes, sickles and skinning knives in five tiers from stone to mithril; windows back to the semi-transparent Escape menu look, and an R key for CRAFT; compass directions that match the map; the dungeon closed to warbands; the storage chest moved off the road; fortifications anywhere in the claim circle; and fewer first-time hitches from combat effects, with a refreshed shader cache." },
         { "type": "h", "text": "0.6.6 — 20 Oct" },
@@ -1424,6 +1488,11 @@
         { "type": "list", "status": "live067", "items": [
           "Fewer hitches the first time combat effects appear (frost, bleeding): some of them are now loaded during the loading screen.",
           "A refreshed shader cache for every graphics preset, including combat."
+        ] },
+        { "type": "h", "text": "Performance (0.6.8)" },
+        { "type": "list", "status": "live068", "items": [
+          "Fewer once-a-second micro-stutters in the forest: game systems refresh spread out over time, and gathering nodes around the player are lighter.",
+          "A refreshed shader cache, including the new outfits, swords and prompts."
         ] },
         { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
