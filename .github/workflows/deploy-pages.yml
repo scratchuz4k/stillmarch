@@ -46,6 +46,16 @@ jobs:
           cp -r dev/. _site/
           mkdir -p "_site/$PREVIEW_PATH"
           cp -r web/dist/. "_site/$PREVIEW_PATH/"
+      # Pages caches everything for 10 minutes and dev/ uses fixed file names,
+      # so stamp the commit SHA onto its asset URLs: each deploy gets fresh URLs
+      # and browsers can't keep serving a stale app.js / style.css / game-data.json.
+      - name: Cache-bust dev assets
+        run: |
+          v="${GITHUB_SHA::8}"
+          sed -i -E "s#(href|src)=\"(css/style\.css|js/app\.js)\"#\1=\"\2?v=$v\"#" _site/index.html
+          sed -i "s#'data/game-data\.json'#'data/game-data.json?v=$v'#" _site/js/app.js
+          grep -c "?v=$v" _site/index.html | grep -qx 2
+          grep -q "game-data.json?v=$v" _site/js/app.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
