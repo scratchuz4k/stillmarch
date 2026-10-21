@@ -2,12 +2,13 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.6",
+    "build": "0.6.7",
     "updated": "2026-10-20",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct) and 0.6.6 (20 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live067": { "label": "Implemented", "short": "0.6.7", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.7 (20 Oct). Supersedes earlier builds where numbers conflict." },
     "live066": { "label": "Implemented", "short": "0.6.6", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.6 (20 Oct). Supersedes earlier builds where numbers conflict." },
     "live065": { "label": "Implemented", "short": "0.6.5", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.5 (19 Oct). Supersedes earlier builds where numbers conflict." },
     "live061": { "label": "Implemented", "short": "0.6.1", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.1 (16 Oct). Supersedes earlier builds where numbers conflict." },
@@ -510,7 +511,7 @@
           "Item tiles use one mark per meaning: the glow shows quality, the corner badge shows tier, a crack mark shows a broken item, and a small mark shows a Relic.",
           "Durability shows as a thin bar on the item and in the tooltip; you get a warning when something drops below 20%."
         ] },
-        { "type": "h", "text": "Forged-iron windows (0.6.1)" },
+        { "type": "h", "text": "Forged-iron windows (0.6.1, dropped in 0.6.7)" },
         { "type": "list", "status": "live061", "items": [
           "Backpack, equipment, crafting, loot, trade, cart and settings windows are made of soot-blackened forged iron: a hammered iron band around the edge, left open at the bottom-right corner, and the window name on its own iron plate.",
           "Buttons, search fields, filters and equipment slots are forged iron too. The main action button (Craft, Take All) has an edge that glows like hot iron, brighter when you point at it.",
@@ -521,6 +522,12 @@
           "The character hub (Tab) no longer stops your character — you can walk with any tab open.",
           "The compass shows the three Wayfarer villages — Firstlanding, Fernhollow and Highmoor — as a house icon from anywhere on the map. The nearest village shows its name and distance, like the nearest Obelisk.",
           "The “Crafted by” line in item tooltips is easier to tell apart from the description."
+        ] },
+        { "type": "list", "status": "live067", "items": [
+          "Windows (crafting, backpack, character, regions and so on) are back to the Escape menu look: a semi-transparent background without texture, replacing the forged iron of 0.6.1.",
+          "Crafting: the main CRAFT button has an R key (hint on the button). You can rebind it in the controls settings (“Craft (crafting window)”).",
+          "Compass directions match the world map. Before, east on the compass was south on the map. The war HUD and the claim death panel use the same directions.",
+          "The world map (M) is repainted — see World Geography → Rivers."
         ] },
         { "type": "h", "text": "Loot window (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
@@ -741,6 +748,11 @@
           "Trees, ore veins and stone deposits are shared: everyone hitting the same node works on the same progress bar.",
           "Wolves and deer give hides, fat and bones — skin the body with a knife."
         ] },
+        { "type": "list", "status": "live067", "items": [
+          "New models for the hatchet, pickaxe, sickle and skinning knife in five tiers: stone (T0), bronze (T1), iron (T2), steel (T3) and mithril (T4).",
+          "Iron, steel and mithril tools are made by the blacksmith. Better tools give a better chance at rare finds.",
+          "Tools sit properly in a closed fist instead of crossing the hand at an angle."
+        ] },
         { "type": "h", "text": "Processors vs crafters" },
         { "type": "table", "headers": ["", "Who", "What they do"], "rows": [
           ["Processors", "Workshop stations in the village, worked by NPCs: sawmill, mason, smelter, tannery, loom, drying rack", "Turn raw materials into processed ones (logs → planks, ore → ingots, hides → leather) for a small Crown fee"],
@@ -934,6 +946,7 @@
           "The grid in the storage and cart windows now looks like the backpack."
         ] },
         { "type": "p", "status": "live065", "text": "In 0.6.1 the chest was missing from the world. Since 0.6.5 it stands next to the Crown Orders board (the wooden board with a roof) in Highmoor, Firstlanding and Fernhollow." },
+        { "type": "p", "status": "live067", "text": "In the Wayfarer Village the chest now stands next to the order board instead of in front of it on the road. Stored items are kept." },
         { "type": "note", "status": "info", "text": "The 0.6.1 notes price the upgrades in Marks and Crowns — coin names that appear nowhere else in this record, which otherwise speaks of gold (and grains, for plot rent)." },
         { "type": "p", "status": "confirmed", "text": "Caravans are planned for later — larger-scale transport, and the supply-line mechanic for sieges." }
       ]
@@ -990,7 +1003,7 @@
         { "type": "list", "status": "live066", "items": [
           "Claims are only possible between 16:30 and 22:30 Central European Time, and the last banner can be placed at 22:00. The Obelisk window shows the hours and a countdown to the opening.",
           "Blight waves come more often again: the first after 2 minutes, then every 3 minutes.",
-          "New fortifications from the carpenter's workshop: Spiked Barricade (Carpentry 10) and Mantlet (Carpentry 11), tier T2. Place them with RMB from your backpack at the edge of the claim circle. They have their own health and disappear when the claim ends. A wave that can't reach the circle breaks the fortifications together.",
+          "New fortifications from the carpenter's workshop: Spiked Barricade (Carpentry 10) and Mantlet (Carpentry 11), tier T2. Place them with RMB from your backpack at the edge of the claim circle (anywhere inside it since 0.6.7). They have their own health and disappear when the claim ends. A wave that can't reach the circle breaks the fortifications together.",
           "The banner cloth has folds and looks like canvas: weave, stains, a dirtier bottom edge, a shadow under the crossbar and light shining through. Its colours are much stronger and it slowly sways in the wind."
         ] },
         { "type": "table", "caption": "Banner levels (0.6.6)", "headers": ["Banner", "Level"], "rows": [
@@ -1002,6 +1015,7 @@
           ["Supplies", "10 (was 1)"]
         ] },
         { "type": "note", "status": "info", "text": "The levels match the Carpentry levels of the Claim Banner and Supplies recipes. The 0.6.6 notes don't say what the Raid, Takeover, Assault and Sabotage banners do yet." },
+        { "type": "p", "status": "live067", "text": "Fortifications (Spiked Barricade, Mantlet) can be placed anywhere inside the claim circle, not only near its edge. Keep 3 m away from the banner." },
         { "type": "note", "status": "info", "text": "The claim has the shape of the planned v1 siege below — an open-field fight for a point, with Supplies paying for respawns — but it's started by a House leader with a Claim Banner, not by an Army with a Siege Banner." },
         { "type": "h", "text": "Planned siege process" },
         { "type": "olist", "items": [
@@ -1105,6 +1119,23 @@
           { "text": "Bandit camps hold men and women, including the Brute and the Cutthroat; some lie in ambush. Drowners are out there too (both named in 0.4.2).", "status": "live042" }
         ] },
         { "type": "p", "status": "live066", "text": "1,936 new rocks across the whole map: 574 cliffs, 853 scree piles, 385 outcrops and 124 groups of tors. Every rock sits with its base in the ground, none of them cover ore nodes, and they all have collision." },
+        { "type": "h", "text": "Rivers (0.6.7)" },
+        { "type": "list", "status": "live067", "items": [
+          "All four rivers meander instead of running in straight segments. The bends are irregular, some wide, some tight.",
+          "Water no longer sits above the riverbed: the water level is taken from both banks, so the “wall of water” seen from the side is gone.",
+          "Banks are gentle: shallows at the waterline, then a slope. Where a river cuts through a hill, the upper banks turn into steep gorge walls. The stepped channels with sharp edges are gone.",
+          "Old riverbeds are filled in and covered with grass or forest to match the surroundings. Riverside forest (alder, floodplain) moved with the rivers.",
+          "There's water under all six bridges and no visible steps in the riverbed. Bridges, ramps and roads stay where they were.",
+          "The western river keeps a steep cascade where it drops over a rock ledge."
+        ] },
+        { "type": "p", "status": "live067", "text": "The world map (M) has been repainted: rivers follow their exact in-game course and Blight patches match the current world. Region borders are unchanged." },
+        { "type": "h", "text": "Swimming (0.6.7)" },
+        { "type": "list", "status": "live067", "items": [
+          "You can swim on the surface of water — no diving yet.",
+          "Swimming drains stamina. Once it runs out you lose health every second, so cross wide rivers with a full bar.",
+          "Your weapon goes on your back in the water, and abilities can't be used while swimming.",
+          "Mobs won't follow you into water. Jump into a river and they'll wait on the bank, then give up after a few seconds and head back."
+        ] },
         { "type": "h", "text": "Bandits & wildlife" },
         { "type": "list", "status": "live043", "items": [
           "In camp a sentry walks the edge of the clearing and stops to watch the forest, while the rest stay near the middle of the camp.",
@@ -1121,6 +1152,7 @@
           "An enemy returning to its spawn runs and takes no damage until it gets there — you can no longer kill it in the back on the way.",
           "Monsters forget a player who died or moved more than 90 m away, and bleeding ends on death. No more random damage after you respawn in the village while a fight goes on at the Obelisk."
         ] },
+        { "type": "p", "status": "live067", "text": "Bandits no longer wander the fields. They hold nine camps along the roads and keep watch from their posts. Roadside ambushes are still there." },
         { "type": "h", "text": "Weather & sky" },
         { "type": "list", "status": "live042", "items": [
           "In a storm the sun and its rays disappear behind the clouds, and the sky closes over with a heavy grey layer. A full storm gets darker, with muted colours.",
@@ -1162,6 +1194,7 @@
         { "type": "p", "status": "live053", "text": "The chapel with the dungeon entrance sits 1.8 m lower in the ground. Coming back from the dungeon puts you in the same spot as before." },
         { "type": "p", "status": "live060", "text": "Daylight no longer gets into the dungeon." },
         { "type": "p", "status": "live066", "text": "More stones, fixed rock heights and a filled-out boss room. There's a small bandit camp at the dungeon entrance." },
+        { "type": "p", "status": "live067", "text": "The dungeon can only be entered solo or in a regular party. Warbands are refused — raids for large groups come later." },
         { "type": "note", "status": "info", "text": "The 0.5.0 notes give dungeon bosses a health bar but don't say whether The Old Mine has enemies or a boss yet — “empty” is as of 0.4.2." },
         { "type": "h", "text": "Instanced" },
         { "type": "list", "items": [
@@ -1221,8 +1254,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.6 (20 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.7 (20 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.7 — 20 Oct" },
+        { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and chest storage are kept. Changes since 0.6.6: all four rivers rebuilt to meander, with water that sits in its bed, gentle banks and gorges, and a repainted world map; swimming, which drains stamina, and mobs that won't follow you into water; bandits gathered into nine roadside camps; hatchets, pickaxes, sickles and skinning knives in five tiers from stone to mithril; windows back to the semi-transparent Escape menu look, and an R key for CRAFT; compass directions that match the map; the dungeon closed to warbands; the storage chest moved off the road; fortifications anywhere in the claim circle; and fewer first-time hitches from combat effects, with a refreshed shader cache." },
         { "type": "h", "text": "0.6.6 — 20 Oct" },
         { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and bank accounts carry over. Changes since 0.6.5: open-world PvP outside safe zones, with names coloured by relation and a 2-minute aggression flag; warbands of up to 25 players in 5 groups, with their own frames, chat and thinly shared XP and gold; Need / Greed / Pass rolls for good relics and rare materials, and a chat log of loot taken from killed players; rebindable group-targeting and loot keys; Obelisk claims limited to 16:30–22:30 CET, with Blight waves back to every 3 minutes, fortifications, new banner levels and a canvas banner cloth; 1,936 new rocks across the map; and a filled-out dungeon with a bandit camp at its entrance." },
         { "type": "h", "text": "0.6.5 — 19 Oct" },
@@ -1344,6 +1379,11 @@
           "Saving is spread out: one character every quarter of a second instead of everyone at once every minute, so there's no more short freeze each minute when many people are online.",
           "Party frames send gear and looks only when they change.",
           "Obelisk claim waves arrive in groups instead of all at once (see Territory Control)."
+        ] },
+        { "type": "h", "text": "Shaders & effects (0.6.7)" },
+        { "type": "list", "status": "live067", "items": [
+          "Fewer hitches the first time combat effects appear (frost, bleeding): some of them are now loaded during the loading screen.",
+          "A refreshed shader cache for every graphics preset, including combat."
         ] },
         { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
