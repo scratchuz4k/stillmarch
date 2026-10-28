@@ -31,6 +31,7 @@
 
   --confirmed: #36598f;
   --implemented: #3f7d51;
+  --live0611: var(--implemented);
   --live0610: var(--implemented);
   --live069: var(--implemented);
   --live068: var(--implemented);
@@ -86,6 +87,7 @@
 
     --confirmed: #8fb0e6;
     --implemented: #6fbb85;
+    --live0611: var(--implemented);
     --live0610: var(--implemented);
     --live069: var(--implemented);
     --live068: var(--implemented);
@@ -134,6 +136,7 @@
 
   --confirmed: #8fb0e6;
   --implemented: #6fbb85;
+  --live0611: var(--implemented);
   --live0610: var(--implemented);
   --live069: var(--implemented);
   --live068: var(--implemented);
@@ -621,6 +624,7 @@ button { font-family: inherit; }
   background: currentColor;
 }
 .badge--confirmed { color: var(--confirmed); background: color-mix(in srgb, var(--confirmed) 14%, transparent); border-color: color-mix(in srgb, var(--confirmed) 35%, transparent); }
+.badge--live0611 { color: var(--live0611); background: color-mix(in srgb, var(--live0611) 14%, transparent); border-color: color-mix(in srgb, var(--live0611) 35%, transparent); }
 .badge--live0610 { color: var(--live0610); background: color-mix(in srgb, var(--live0610) 14%, transparent); border-color: color-mix(in srgb, var(--live0610) 35%, transparent); }
 .badge--live069 { color: var(--live069); background: color-mix(in srgb, var(--live069) 14%, transparent); border-color: color-mix(in srgb, var(--live069) 35%, transparent); }
 .badge--live068 { color: var(--live068); background: color-mix(in srgb, var(--live068) 14%, transparent); border-color: color-mix(in srgb, var(--live068) 35%, transparent); }

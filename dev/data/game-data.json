@@ -2,10 +2,11 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.10",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), 0.6.8 (21 Oct), 0.6.9 (23 Oct) and 0.6.10 (26 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.6.11",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), 0.6.8 (21 Oct), 0.6.9 (23 Oct), 0.6.10 (26 Oct) and 0.6.11 (27 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "updates": [
+    { "date": "2026-10-27", "title": "0.6.11 patch notes", "sections": ["dev-testing", "building-logistics", "economy-banking", "territory-control", "ui-hud", "patch-notes"], "text": "Sign in with Steam, storehouse sites in the settlement planner and a region stock that walls and repairs use up, Say heard within 40 m, and building on 1 m snaps with new beams, posts, stairs and stone foundations." },
     { "date": "2026-10-26", "title": "0.6.10 patch notes", "sections": ["territory-control", "building-logistics", "economy-banking", "dev-testing", "patch-notes"], "text": "A new Obelisk that grows with the region level, wooden stockades with House banners on the gates, a swinging battering ram, a build freeze before sieges, upkeep by plot area, mob coins by tier and rotation that stays put in build mode." },
     { "date": "2026-10-23", "title": "0.6.9 patch notes", "sections": ["world-geography", "dungeons-raids", "building-logistics", "territory-control", "ui-hud", "combat", "dev-testing", "patch-notes"], "text": "Nine small bandit camps on the roads and a new big camp by the chapel, a wall around every district, a minimum district size, a tighter F prompt with tool badges, and foundations that sink into the ground." },
     { "date": "2026-10-21", "title": "0.6.8 patch notes", "sections": ["crafting-materials", "combat", "building-logistics", "territory-control", "economy-banking", "world-geography", "ui-hud", "getting-started", "dev-testing", "patch-notes"], "text": "Tier 0 starter gear and wooden training swords, quality caps by tier, weapon skills unlocked by tier, settlement planner 2.0, no loot drop in your own town, new bandit outfits and slower wading." },
@@ -34,6 +35,7 @@
   ],
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live0611": { "label": "Implemented", "short": "0.6.11", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.11 (27 Oct). Supersedes earlier builds where numbers conflict." },
     "live0610": { "label": "Implemented", "short": "0.6.10", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.10 (26 Oct). Supersedes earlier builds where numbers conflict." },
     "live069": { "label": "Implemented", "short": "0.6.9", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.9 (23 Oct). Supersedes earlier builds where numbers conflict." },
     "live068": { "label": "Implemented", "short": "0.6.8", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.8 (21 Oct). Supersedes earlier builds where numbers conflict." },
@@ -500,6 +502,10 @@
           "Toasts (small popups above the bars) replace chat-line spam for: loot (stacks, e.g. “+2 Bone”), XP gains, warnings (e.g. lantern out of oil, shown with a red frame), and region/workshop messages. Max 3 toasts at once, 4s duration, each with an icon; a copy of every toast is still written to chat as a journal log.",
           "Chat fades after 10s with no new messages, and reappears on a new incoming line or when you start typing (Enter)."
         ] },
+        { "type": "list", "status": "live0611", "items": [
+          "“Say” is heard only by players within 40 m of the speaker, and a speech bubble appears above the character, visible up to 25 m.",
+          "Build messages (e.g. “Undone”) are tagged [Build] in chat instead of [Region], and only the builder sees them."
+        ] },
         { "type": "h", "text": "Menu & settings" },
         { "type": "list", "items": [
           "All menu icons collapsed into a single button in the bottom-right. Hovering or pressing Tab expands them under the cursor; a second Tab press or clicking an entry collapses it again. Tab no longer toggles the old bare cursor mode.",
@@ -553,6 +559,10 @@
           "The Obelisk window has tabs for the region, residency and plots.",
           "The Castellan's Table (a building piece) opens an officials-only window: treasury, projects, land, people (see Building & Logistics).",
           "Tabs look the same in every window."
+        ] },
+        { "type": "list", "status": "live0611", "items": [
+          "Opening the Obelisk window for the first time no longer opens the House window.",
+          "Obelisk window tabs no longer flicker when you switch them (the scrollbar keeps its place), and every tab opens at the top."
         ] },
         { "type": "h", "text": "Items & interface look (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
@@ -784,6 +794,7 @@
           "The week under way when 0.6.10 came out was still settled the old way; the new rates apply from the next period.",
           "The requisition board no longer appears next to the Obelisk by itself: the rulers build it as a Civic building (see Building & Logistics → Running a settlement). Until one stands, the Obelisk takes deliveries."
         ] },
+        { "type": "p", "status": "live0611", "text": "Fixed: a region that reached level 1 in the middle of the week had no upkeep and showed “0 / 0 items delivered”. Such regions got that week's requisitions right after the 0.6.11 update." },
         { "type": "p", "status": "live050", "text": "The region treasury is secret: only officials see the balance. Everyone else, on the map too, only sees whether the region is in debt." },
         { "type": "h", "text": "Bank first, purse second (0.5.0)" },
         { "type": "list", "status": "live050", "items": [
@@ -1024,6 +1035,27 @@
           "Weekly upkeep follows the plot area in the plan, not the number of residents (see Economy & Banking → Region upkeep).",
           "The Castellan's Table has props: candlesticks, books, a scroll, papers, an inkwell, coin purses and a goblet."
         ] },
+        { "type": "h", "text": "Project sites & the region storehouse (0.6.11)" },
+        { "type": "list", "status": "live0611", "items": [
+          "The Settlement Planner has a Projects section. The first project is a storehouse site in three sizes: Small 6 × 6 m, Medium 9 × 9 m and Large 12 × 12 m.",
+          "A site goes in the Civic district with its front on a road, touching it for at least 3 m. Click next to a road and the site turns to face it and moves up to its edge.",
+          "Sites can be dragged; Alt + click or the eraser removes one. A site in the wrong place shows red, and the hint says why. A plan holds up to 8 sites.",
+          "Once the plan is approved, a storehouse appears on the site: an open yard with sleepers and corner posts. It works from region level 1.",
+          "Goods pile up on the storehouse by kind: logs, planks, stone blocks, crates of metal and sacks. The stock is shared by the whole region, so every storehouse shows the same piles.",
+          "The site clears itself of grass and trees. Nobody can place their own pieces on a site; the settlement builds there.",
+          "The storehouse window [F] shows its capacity, e.g. “Storage 260 / 500”."
+        ] },
+        { "type": "table", "caption": "Region stock capacity (0.6.11)", "headers": ["Source", "Items"], "rows": [
+          ["The Obelisk alone", "200"],
+          ["Small storehouse", "+300"],
+          ["Medium storehouse", "+900"],
+          ["Large storehouse", "+1,800"]
+        ] },
+        { "type": "list", "status": "live0611", "items": [
+          "When the stock is full, the Baron's orders and deliveries for new walls wait. Upkeep and repairs are always taken, and goods set aside for upkeep don't take up room.",
+          "Walls and repairs use up the delivered materials. Until 0.6.11 they stayed in the stock for good.",
+          "The settlement plan can't be changed during a siege, the same as building (see Territory Control → Walls)."
+        ] },
         { "type": "h", "text": "Resident towns (0.6.8)" },
         { "type": "list", "status": "live068", "items": [
           "Dying in your own town — as a resident, inside your region's building area — drops no loot: your gear and backpack stay with you. PvP still works there.",
@@ -1057,6 +1089,18 @@
           "Plot and settlement borders are a misty, see-through curtain that fades upwards. The red and blue ground fill is gone.",
           "Building and demolition are frozen from 24 hours before a region's attack window until the siege is resolved (see Territory Control → Walls)."
         ] },
+        { "type": "h", "text": "Build mode (0.6.11)" },
+        { "type": "list", "status": "live0611", "items": [
+          "Walls and roofs no longer hover a few centimetres above the piece below: each floor sits on the module lines, and a row of walls no longer drifts away from the floors.",
+          "A piece on the ground rests its lowest corner on the terrain. A piece with a corner hanging in the air is refused (“one end hangs in the air”).",
+          "Ctrl + wheel turns the piece by 15°, R and Shift + Ctrl + wheel by 90°; both are in the key legend. Alt + wheel changes the height in 10 cm steps (Shift + Alt + wheel: 50 cm).",
+          "Pieces snap every 1 m, a third of a module, along walls and on top of foundations. You can butt a wall against another at a third of its length, or put a post on a foundation every metre. A longer piece can also rest on a shorter one, like a beam on a post.",
+          "Z picks which point of the piece lands on the line under the crosshair: the middle, one end or the other. The status line shows the current choice.",
+          "A roof placed on a wall sits with its eave on the wall, and R picks which side the roof goes.",
+          "New pieces: beams (1, 2 and 3 m), posts (1 and 2 m), stone stairs (1, 2 and 3 m) and stone foundations (1 and 2 m).",
+          "Fixed: R turns the piece in place, with its middle under the crosshair and the grid catching its corner; before, the piece jumped to the other side of the crosshair. T (face camera) no longer plays the “denied” sound — the same key was also looking for the next ally."
+        ] },
+        { "type": "note", "status": "info", "text": "The mouse wheel keys changed over three patches: in 0.6.9 Alt or Ctrl + wheel changed the height, 0.6.10 gave Ctrl + wheel to rotation, and since 0.6.11 Alt + wheel sets the height and Ctrl + wheel turns the piece by 15°." },
         { "type": "h", "text": "Resource protection inside build boundaries" },
         { "type": "p", "status": "live19", "text": "Nothing respawns inside a region's build boundary — gathered trees, mined ore, and killed animals do not come back inside the circle where zones can be painted. Living animals and standing (ungathered) trees are left alone. The boundary radius scales with Obelisk level." },
         { "type": "table", "headers": ["Obelisk level", "Boundary radius"], "rows": [
@@ -1119,6 +1163,7 @@
           "The gaps and the chamber glow brighter with each level. An Obelisk that hasn't been activated stays dark.",
           "The streak around the shaft and the sparks from the chamber are the cold colour of the Network. They used to be orange, with smoke."
         ] },
+        { "type": "p", "status": "live0611", "text": "The top of the pedestal no longer flickers: its pewter band was smooth enough to pick up a noisy reflection of the glowing shaft right above it, and it's matte now." },
         { "type": "h", "text": "Claiming a dormant Obelisk (0.5.0)" },
         { "type": "p", "status": "live050", "text": "A House can claim a dormant Obelisk and make its region the House's own. The claim is a 15-minute fight for a 20 m ring around the House's Claim Banner." },
         { "type": "list", "status": "live050", "items": [
@@ -1216,6 +1261,7 @@
           "New battering ram: a covered frame with a hide roof and a log with an iron head hung on two pairs of ropes. It swings like a pendulum — pull back, swing, bounce off the gate — and the impact sound plays when the head hits the gate.",
           "Building and demolition in a region are frozen from 24 hours before its attack window until the siege is resolved."
         ] },
+        { "type": "p", "status": "live0611", "text": "The settlement plan can't be changed during a siege either. Otherwise a new plan would move the walls and the breaches would disappear. Walls and repairs now use up the materials delivered to the region (see Building & Logistics → Project sites & the region storehouse)." },
         { "type": "list", "status": "confirmed", "items": [
           "For now, sieges only affect walls. Walls can be destroyed during a siege and then need rebuilding. Whether sieges will reach anything else comes later."
         ] },
@@ -1458,8 +1504,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.10 (26 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.11 (27 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.11 — 27 Oct" },
+        { "type": "p", "text": "Update required (client and server); characters, items, Houses, regions, settlement plans and chest storage carry over. Changes since 0.6.10: sign in with Steam, bringing a playtest account over or starting a new one; storehouse project sites in the Settlement Planner, and a region stock held by the Obelisk and storehouses that walls and repairs now use up; no plan changes during a siege; Say heard within 40 m, with speech bubbles; building on the module lines with 1 m snaps, the Z key, roofs that sit on walls, and new beams, posts, stone stairs and stone foundations; and fixes to rotation, the T key, the Obelisk window, mid-week upkeep and the flickering pedestal." },
         { "type": "h", "text": "0.6.10 — 26 Oct" },
         { "type": "p", "text": "Update required (client and server); characters, items, Houses, regions, settlement plans and chest storage carry over. Changes since 0.6.9: a new Obelisk, a relay of Perpetua's Network that grows in four versions with the region level; wooden stockades with real gates as level 1 walls, the palisade as the top level for now, House banners on gates and a swinging battering ram; building frozen from 24 hours before an attack window; no building on roads; the requisition board as a Civic building; the mint from level 1 and the requirements for a City; upkeep by plot area instead of residents; mob coins by tier; rotation that stays put in build mode, a T key and easier roofs; tables that stand on the ground; misty border curtains; and a refreshed shader cache and rebuilt HLOD." },
         { "type": "h", "text": "0.6.9 — 23 Oct" },
@@ -1543,6 +1591,13 @@
           "Client versioning: each build requires the matching client — older clients can't connect. Characters and the database persist across builds."
         ] },
         { "type": "p", "status": "live053", "text": "Login names are no longer case-sensitive: “Sethan” and “sethan” are the same account." },
+        { "type": "h", "text": "Sign in with Steam (0.6.11)" },
+        { "type": "list", "status": "live0611", "items": [
+          "Started from Steam, the game signs you in with your Steam account by itself — no account name or password to type.",
+          "The first time, you choose. BRING MY ACCOUNT: enter your playtest account's name and password once, and the account moves to your Steam account with all its characters. START A NEW ACCOUNT: a new, empty account; it takes a second click to confirm, because an older account can't be brought over afterwards.",
+          "One Steam account holds one game account. An account moved to Steam no longer signs in with a password.",
+          "Started outside Steam, the game shows the old sign-in with a password."
+        ] },
         { "type": "h", "text": "Performance (0.4.3)" },
         { "type": "p", "status": "live043", "text": "The game no longer stutters as you walk through the world, especially on Epic. On the dev's test route (Epic, 6 minutes walking through meadows and forest), stutters longer than a quarter of a second dropped from almost one a minute to zero, and shorter ones (50 ms and up) from several a minute to less than one." },
         { "type": "list", "status": "live043", "items": [
