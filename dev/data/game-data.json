@@ -2,10 +2,11 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.8",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct) and 0.6.8 (21 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.6.9",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), 0.6.8 (21 Oct) and 0.6.9 (23 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "updates": [
+    { "date": "2026-10-23", "title": "0.6.9 patch notes", "sections": ["world-geography", "dungeons-raids", "building-logistics", "territory-control", "ui-hud", "combat", "dev-testing", "patch-notes"], "text": "Nine small bandit camps on the roads and a new big camp by the chapel, a wall around every district, a minimum district size, a tighter F prompt with tool badges, and foundations that sink into the ground." },
     { "date": "2026-10-21", "title": "0.6.8 patch notes", "sections": ["crafting-materials", "combat", "building-logistics", "territory-control", "economy-banking", "world-geography", "ui-hud", "getting-started", "dev-testing", "patch-notes"], "text": "Tier 0 starter gear and wooden training swords, quality caps by tier, weapon skills unlocked by tier, settlement planner 2.0, no loot drop in your own town, new bandit outfits and slower wading." },
     { "date": "2026-10-21", "title": "Settlement planner and walls are in the game", "sections": ["building-logistics", "territory-control"], "text": "The settlement planner and the prefab walls are marked implemented instead of coming soon. Farming zones and what sieges do to walls are still planned." },
     { "date": "2026-10-21", "title": "Settlement planning and walls", "sections": ["building-logistics", "territory-control"], "text": "From a Scratch ↔ Sethan chat: the settlement planner (zones and roads, the Civic zone, the land limit, renting and evictions) and prefab walls with gates on roads." },
@@ -32,6 +33,7 @@
   ],
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live069": { "label": "Implemented", "short": "0.6.9", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.9 (23 Oct). Supersedes earlier builds where numbers conflict." },
     "live068": { "label": "Implemented", "short": "0.6.8", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.8 (21 Oct). Supersedes earlier builds where numbers conflict." },
     "live067": { "label": "Implemented", "short": "0.6.7", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.7 (20 Oct). Supersedes earlier builds where numbers conflict." },
     "live066": { "label": "Implemented", "short": "0.6.6", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.6 (20 Oct). Supersedes earlier builds where numbers conflict." },
@@ -381,6 +383,8 @@
           "A locked skill is dimmed on the action bar with a padlock, and its tooltip says “Requires a Tier N weapon”. The skills window (K) shows the tier needed (“T2”) instead of a level.",
           "The weapon tooltip says how many skills it unlocks, e.g. “Weapon skills: 2 of 5 · Tier 2 unlocks 4”."
         ] },
+        { "type": "h", "text": "0.6.9 changes" },
+        { "type": "p", "status": "live069", "text": "Monster arrows no longer kick up a dust puff when they hit." },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
@@ -581,6 +585,13 @@
           "No more multi-second freeze after logging in when your character first appears: its look loads in the background.",
           "Interaction works like New World: the thing you use (a rock, herb, tree or chest) is picked from where you look near your character, not only exactly under the crosshair.",
           "The “F” prompt floats next to the object instead of in the middle of the screen."
+        ] },
+        { "type": "h", "text": "The F prompt (0.6.9)" },
+        { "type": "list", "status": "live069", "items": [
+          "Targeting is tighter: a 12° cone instead of 30°. Within arm's reach (2 m) what counts is the direction from your character relative to the camera (±35°), so a sapling at your side no longer steals the beech you're looking at.",
+          "The prompt hides while a window is open, such as the planner, instead of showing through it.",
+          "A missing tool shows a round badge with the tool's icon in place of [F]: a red ring with a cross when you don't have the tool, a glowing ring with an arrow and the tier when yours is too weak. Before, it only said “needs a hatchet”.",
+          "New axe, pickaxe, sickle and knife icons that read at 16 px, and a stronger shadow under the prompt."
         ] },
         { "type": "h", "text": "Loot window (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
@@ -962,6 +973,11 @@
           "The plan is drawn as vector art, with smooth lines and readable labels. Plots show their numbers; hover one for its size, status, rent and income.",
           "The building panel is wider, with bigger tiles. Outside a settlement in a claimed region, the game tells you what to pay in at the Obelisk to found one."
         ] },
+        { "type": "list", "status": "live069", "items": [
+          "Minimum district size: 20 × 30 m, and never narrower than 20 m. The planner rejects a smaller shape when you close it or drag a corner; the message shows the size, and the shape stays so you can fix it. The server rejects such plans too, so tiny “dots” can no longer act as walls.",
+          "Districts placed apart from each other (“several towns” around one Obelisk) stay, and each gets its own wall (see Territory Control → Walls).",
+          "Fixed: after a region levelled up, the planner sent the plan on the old grid and the server rejected every plan as “Corrupt settlement sketch”. The plan now moves to the new level's grid."
+        ] },
         { "type": "note", "status": "info", "text": "Sethan put the minimum plot area at “around 120 m²” from memory. The 0.5.0 notes say at least 80 m² (Plots & rent above); since 0.6.8 the smallest plot is 8×16 m, or 128 m²." },
         { "type": "note", "status": "info", "text": "The planner carries the 0.5.0 badge because the 0.5.0 notes are the first to describe plots generated from the settlement plan's districts and roads. It may have been in earlier." },
         { "type": "p", "text": "Why draw it: Sethan saw how hard city planning is in Pax Dei. People have to agree to give up their plots, everything has to connect perfectly, some plots are wasted on roads and bridges, and sometimes someone builds their own little cobblestone airport in the middle of town. In Stillmarch, planning goes to a House's architects, as most big Pax Dei clans do anyway: a House can appoint a Castellan to run the region. It's less free than Pax Dei, where you put down plots and do whatever, but it lets a House set a city layout with roads and Civic zones, without the game predefining it." },
@@ -988,6 +1004,17 @@
           "The ghost piece follows your crosshair, and LMB and RMB no longer swing your weapon.",
           "Every refusal tells you why.",
           "Ruler rights work in every region — before, the client always asked about the first Obelisk."
+        ] },
+        { "type": "h", "text": "Build mode (0.6.9)" },
+        { "type": "list", "status": "live069", "items": [
+          "Foundations can be sunk into the ground until 25 cm of the top is left, other pieces up to 60 cm. A piece in the air turns red with “Nothing to rest on”. Before, a sunken foundation was refused and a piece above the ground showed green.",
+          "You can build right on the edge of your plot, face against your neighbour's, also rotated 180° and 270°. Snapping to the plot edge fits a piece from corner to corner.",
+          "The plot sign no longer shows on your own plot. Plot management is in the Obelisk window (Plots tab), where you also pay overdue rent.",
+          "Alt or Ctrl + mouse wheel only changes the piece's height and no longer zooms the camera.",
+          "With the catalogue open, holding RMB turns the camera while the ghost stays put.",
+          "Stations such as the smelter sit on their base instead of sinking into the ground up to the chimney.",
+          "“Someone is standing there” shows on the ghost right away. Before, it was green and only the server refused.",
+          "The smelter worker at a player's smelter stands by the coal, as at the Crown smelter (the new spot takes effect after a restart or reassignment)."
         ] },
         { "type": "h", "text": "Resource protection inside build boundaries" },
         { "type": "p", "status": "live19", "text": "Nothing respawns inside a region's build boundary — gathered trees, mined ore, and killed animals do not come back inside the circle where zones can be painted. Living animals and standing (ungathered) trees are left alone. The boundary radius scales with Obelisk level." },
@@ -1122,6 +1149,13 @@
           "Walls expand and shrink with the shape and size of the settlement."
         ] },
         { "type": "p", "status": "live068", "text": "The settlement planner shows where the wall will stand, 2 m out from the plots and smoothed, with a gate on every road that crosses it (see Building & Logistics)." },
+        { "type": "list", "status": "live069", "items": [
+          "Every district gets its own wall. Districts placed apart from each other (“several towns” around one Obelisk) are walled separately; before, only the core got a wall, with wall fragments and gates in the middle of the outer districts.",
+          "Two districts split by a street narrower than 16 m count as one town: the wall runs straight across the street, with no narrow corridors.",
+          "The wall only follows the outer edge of the settlement. Holes in the town and rings of districts around the Obelisk no longer get extra layers of wall.",
+          "A gate goes where a road crosses the wall. A district without a road gets a postern facing the Obelisk.",
+          "Districts smaller than 20 × 30 m are refused, so tiny districts can no longer act as walls (see Building & Logistics → Settlement planner)."
+        ] },
         { "type": "list", "status": "confirmed", "items": [
           "For now, sieges only affect walls. Walls can be destroyed during a siege and then need rebuilding. Whether sieges will reach anything else comes later."
         ] },
@@ -1246,6 +1280,13 @@
           "Bandits wear five outfits instead of rags: Highwayman (hood with face scarf, belted jerkin), Leader (hat with half mask, brigandine, fur-trimmed cloak), Poacher (hood, vest, wool trousers with leg wraps) and two Brute sets (cheek-guard helmet, mail over a gambeson, and a fur mantle or pauldron).",
           "The outfit goes with the bandit: Cutthroats wear the Highwayman hood or the Leader's hat, Brutes wear helmet and mail, Archers wear the Poacher hood. Every outfit has a male and a female version."
         ] },
+        { "type": "h", "text": "Bandit camps (0.6.9)" },
+        { "type": "list", "status": "live069", "items": [
+          "The roads have nine small camps instead of copies of the big camp: a tent, a campfire, two carts and a beech, with no fence. They stand where the camps stood before, with the clearing facing the road.",
+          "Each small camp has 6 bandits within about 10 m of each other, so the whole camp fights together like a full party: a Brute out front, two Cutthroats by the fire, an Archer by the carts, and a Brute and an Archer by the tent.",
+          "The big camp is one of a kind now: it stands in front of the Abandoned Chapel with the dungeon entrance. It has a new look — sharpened stakes with side gates instead of a palisade, torches, weapon racks, a brazier and a wooden ramp — and 6 bandits guard it (it used to stand empty).",
+          "Trees and bushes no longer grow through the tents: the ground is clear 20 m around the small camps and 30 m around the chapel camp. The forest around them stays."
+        ] },
         { "type": "h", "text": "Weather & sky" },
         { "type": "list", "status": "live042", "items": [
           "In a storm the sun and its rays disappear behind the clouds, and the sky closes over with a heavy grey layer. A full storm gets darker, with muted colours.",
@@ -1288,7 +1329,8 @@
         { "type": "p", "status": "live060", "text": "Daylight no longer gets into the dungeon." },
         { "type": "p", "status": "live066", "text": "More stones, fixed rock heights and a filled-out boss room. There's a small bandit camp at the dungeon entrance." },
         { "type": "p", "status": "live067", "text": "The dungeon can only be entered solo or in a regular party. Warbands are refused — raids for large groups come later." },
-        { "type": "note", "status": "info", "text": "The 0.5.0 notes give dungeon bosses a health bar but don't say whether The Old Mine has enemies or a boss yet — “empty” is as of 0.4.2." },
+        { "type": "p", "status": "live069", "text": "Interior fixes: more rocks, none floating or sunk into the floor, and the gaps in the boss room are filled. Entering through the chapel portal and coming back work as before. The bandit camp in front of the chapel now has 6 bandits (see World Geography → Bandit camps)." },
+        { "type": "note", "status": "info", "text": "The 0.5.0 notes give dungeon bosses a health bar but don't say whether The Old Mine has enemies or a boss yet — “empty” is as of 0.4.2. The 0.6.9 notes say there are still no monsters or chests inside." },
         { "type": "h", "text": "Instanced" },
         { "type": "list", "items": [
           { "text": "5-man dungeons — closed instances.", "status": "confirmed" },
@@ -1356,8 +1398,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.8 (21 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.9 (23 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.9 — 23 Oct" },
+        { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions, settlement plans and chest stashes are kept. Changes since 0.6.8: nine small roadside bandit camps of 6 bandits who fight together, and the big camp moved in front of the Abandoned Chapel with a new look and its own 6 guards; no trees through the tents; dungeon interior fixes; a wall around every district, one wall for districts split by a narrow street, gates on roads and posterns where there are none; a minimum district size of 20 × 30 m; the planner fixed after a region levels up; a tighter interaction cone and an F prompt that hides behind windows and shows a badge for a missing or too-weak tool; foundations that sink into the ground, building on the plot edge and other build mode fixes; monster arrows without a dust puff; and a refreshed shader cache." },
         { "type": "h", "text": "0.6.8 — 21 Oct" },
         { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions and chest storage are kept. Changes since 0.6.7: Tier 0 starter items — a Castaway outfit for new characters and wooden training swords made by hand; quality capped by tier (Fine at T0, Superior at T1, Masterwork from T2); weapon skills unlocked by the weapon's tier; five new bandit outfits; an idle pose and no login freeze on character select; New World–style interaction with the F prompt next to the object; settlement planner 2.0, with plots in three sizes around the square, rounded or straight edges, and the wall and gates shown; no loot drop for residents who die in their own town, and a PvP-free sanctuary by the Obelisk; slower wading and swimmers that ride the waves; sloped banks under the Heartland lake bridge; and fewer micro-stutters in the forest, with a refreshed shader cache." },
         { "type": "h", "text": "0.6.7 — 20 Oct" },
@@ -1494,6 +1538,8 @@
           "Fewer once-a-second micro-stutters in the forest: game systems refresh spread out over time, and gathering nodes around the player are lighter.",
           "A refreshed shader cache, including the new outfits, swords and prompts."
         ] },
+        { "type": "h", "text": "Performance (0.6.9)" },
+        { "type": "p", "status": "live069", "text": "A refreshed shader cache, including the new camps, the chapel camp and the tool icons." },
         { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
     },
