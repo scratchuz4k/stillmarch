@@ -2,10 +2,11 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.9",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), 0.6.8 (21 Oct) and 0.6.9 (23 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.6.10",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), 0.6.8 (21 Oct), 0.6.9 (23 Oct) and 0.6.10 (26 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "updates": [
+    { "date": "2026-10-26", "title": "0.6.10 patch notes", "sections": ["territory-control", "building-logistics", "economy-banking", "dev-testing", "patch-notes"], "text": "A new Obelisk that grows with the region level, wooden stockades with House banners on the gates, a swinging battering ram, a build freeze before sieges, upkeep by plot area, mob coins by tier and rotation that stays put in build mode." },
     { "date": "2026-10-23", "title": "0.6.9 patch notes", "sections": ["world-geography", "dungeons-raids", "building-logistics", "territory-control", "ui-hud", "combat", "dev-testing", "patch-notes"], "text": "Nine small bandit camps on the roads and a new big camp by the chapel, a wall around every district, a minimum district size, a tighter F prompt with tool badges, and foundations that sink into the ground." },
     { "date": "2026-10-21", "title": "0.6.8 patch notes", "sections": ["crafting-materials", "combat", "building-logistics", "territory-control", "economy-banking", "world-geography", "ui-hud", "getting-started", "dev-testing", "patch-notes"], "text": "Tier 0 starter gear and wooden training swords, quality caps by tier, weapon skills unlocked by tier, settlement planner 2.0, no loot drop in your own town, new bandit outfits and slower wading." },
     { "date": "2026-10-21", "title": "Settlement planner and walls are in the game", "sections": ["building-logistics", "territory-control"], "text": "The settlement planner and the prefab walls are marked implemented instead of coming soon. Farming zones and what sieges do to walls are still planned." },
@@ -33,6 +34,7 @@
   ],
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live0610": { "label": "Implemented", "short": "0.6.10", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.10 (26 Oct). Supersedes earlier builds where numbers conflict." },
     "live069": { "label": "Implemented", "short": "0.6.9", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.9 (23 Oct). Supersedes earlier builds where numbers conflict." },
     "live068": { "label": "Implemented", "short": "0.6.8", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.8 (21 Oct). Supersedes earlier builds where numbers conflict." },
     "live067": { "label": "Implemented", "short": "0.6.7", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.7 (20 Oct). Supersedes earlier builds where numbers conflict." },
@@ -715,12 +717,28 @@
         { "type": "p", "status": "live068", "text": "Not in your own town: a resident who dies inside their region's building area drops no loot — gear and backpack stay with them (see Building & Logistics → Resident towns)." },
         { "type": "h", "text": "Starter money: the Crown orders board" },
         { "type": "p", "text": "The Crown buys basic goods (pebbles, sticks, herbs) at fixed prices at the Crown orders board, next to the mint in the Wayfarer Village — the starter money tap. Trades between players happen player to player (Tab, click a player → Trade)." },
+        { "type": "h", "text": "Coins from mobs (0.6.10)" },
+        { "type": "p", "status": "live0610", "text": "Coins from mobs depend on their tier. Bandits give less than before (10–14 each), and the Forgotten give more." },
+        { "type": "table", "caption": "Coins per kill (0.6.10)", "headers": ["Mob", "Coins"], "rows": [
+          ["Bandit thug", "8"],
+          ["Bandit knifeman, bandit archer", "7"],
+          ["Bandit ambusher", "5"],
+          ["Drowner", "12"],
+          ["Forgotten acolyte, Forgotten warrior", "18"],
+          ["Forgotten tracker", "21"],
+          ["Forgotten patrol", "24"],
+          ["Forgotten veteran", "29"],
+          ["Dungeon mobs", "24"],
+          ["Dungeon boss", "Unchanged"]
+        ] },
+        { "type": "note", "status": "info", "text": "The 0.6.10 notes call the bandits thug, knifeman, archer and ambusher, and name a Forgotten tracker. Elsewhere this record uses Brute, Cutthroat and Archer for bandits and Stalker for the Forgotten; the notes don't say how the names match up." },
         { "type": "h", "text": "Mints & regional banking" },
         { "type": "list", "items": [
           "Mints act as regional banks: depositing gold protects it from theft/death loss and lets you spend it at markets/crafters within that region only. Mints are not global — moving gold elsewhere means carrying it in inventory, where it's stealable again.",
           "Ancient coins are convertible into gold via mints.",
           { "text": "Mint Deposit/Withdraw now refreshes your account balance and purse immediately — previously this could go stale.", "status": "bug-fixed" }
         ] },
+        { "type": "p", "status": "live0610", "text": "A region can build a mint from level 1 (it was level 2)." },
         { "type": "h", "text": "House banks" },
         { "type": "p", "text": "The bank belongs to the House, not the region — that's the core idea. The mint coins gold into a House bank account, and deposits/withdrawals happen at the mint.", "status": "live17" },
         { "type": "quote", "text": "If you own 3 regions as a House, everybody will be able to use the same bank in every of these regions.", "cite": "Sethan, on House bank branches" },
@@ -760,6 +778,12 @@
           ["Nail", "5 g"]
         ] },
         { "type": "note", "status": "info", "text": "A level-2 region's upkeep runs to roughly 7,200 gold/week." },
+        { "type": "list", "status": "live0610", "items": [
+          "Weekly region upkeep depends on the plot area in the settlement plan. The number of residents no longer counts, so alts can't inflate an enemy House's costs.",
+          "Each level has a minimum area the cost starts from: 200 m² at level 1, 600 m² at level 2. The planner shows an “upkeep ~N / week” estimate for the current plan.",
+          "The week under way when 0.6.10 came out was still settled the old way; the new rates apply from the next period.",
+          "The requisition board no longer appears next to the Obelisk by itself: the rulers build it as a Civic building (see Building & Logistics → Running a settlement). Until one stands, the Obelisk takes deliveries."
+        ] },
         { "type": "p", "status": "live050", "text": "The region treasury is secret: only officials see the balance. Everyone else, on the map too, only sees whether the region is in debt." },
         { "type": "h", "text": "Bank first, purse second (0.5.0)" },
         { "type": "list", "status": "live050", "items": [
@@ -992,6 +1016,14 @@
         ] },
         { "type": "p", "status": "live053", "text": "Wall gates no longer close by themselves while settlement raids are disabled (the current QA setting)." },
         { "type": "p", "status": "live065", "text": "After claiming a region you can place the Castellan's Table and assign plots again. A new region starts with a basic town plan (civic core and roads) instead of none." },
+        { "type": "list", "status": "live0610", "items": [
+          "You can't build on roads anymore, rulers included.",
+          "The requisition board no longer appears next to the Obelisk by itself. It's a Civic building that the settlement's rulers place in build mode, up to 4 per region. Until one is built, the Obelisk takes deliveries.",
+          "The mint is available from region level 1 (it was level 2).",
+          "Becoming a City (level 3) requires the Castellan's Table (town hall), a bank (mint) and a finished palisade. The region window and the Castellan's Table list what's built and what's missing. A breach in the wall or a demolished building doesn't take a level away.",
+          "Weekly upkeep follows the plot area in the plan, not the number of residents (see Economy & Banking → Region upkeep).",
+          "The Castellan's Table has props: candlesticks, books, a scroll, papers, an inkwell, coin purses and a goblet."
+        ] },
         { "type": "h", "text": "Resident towns (0.6.8)" },
         { "type": "list", "status": "live068", "items": [
           "Dying in your own town — as a resident, inside your region's building area — drops no loot: your gear and backpack stay with you. PvP still works there.",
@@ -1015,6 +1047,15 @@
           "Stations such as the smelter sit on their base instead of sinking into the ground up to the chimney.",
           "“Someone is standing there” shows on the ghost right away. Before, it was green and only the server refused.",
           "The smelter worker at a player's smelter stands by the coal, as at the Crown smelter (the new spot takes effect after a restart or reassignment)."
+        ] },
+        { "type": "h", "text": "Build mode (0.6.10)" },
+        { "type": "list", "status": "live0610", "items": [
+          "A piece keeps its rotation when you move the camera and after you place the previous one. The direction is set once when you open build mode; after that, R or Ctrl + wheel turns it. The new T key turns the piece to face the camera (Shift snaps to 15°). Next to another piece, rotation lines up with its axis.",
+          "Roofs are easier to close: a slope snaps to a slope, turned around past the ridge, and ridge pieces sit on top of the slopes.",
+          "The top of the screen shows the build mode keys (rotate, T, snap mode, free placement, height, catalogue, undo), also while the catalogue is open.",
+          "Workshop and crafting tables, the mint and the Castellan's Table always stand on the ground instead of floating or sinking. On very uneven ground (more than 60 cm under the table) placement is refused with “too uneven”.",
+          "Plot and settlement borders are a misty, see-through curtain that fades upwards. The red and blue ground fill is gone.",
+          "Building and demolition are frozen from 24 hours before a region's attack window until the siege is resolved (see Territory Control → Walls)."
         ] },
         { "type": "h", "text": "Resource protection inside build boundaries" },
         { "type": "p", "status": "live19", "text": "Nothing respawns inside a region's build boundary — gathered trees, mined ore, and killed animals do not come back inside the circle where zones can be painted. Living animals and standing (ungathered) trees are left alone. The boundary radius scales with Obelisk level." },
@@ -1066,6 +1107,18 @@
       "blocks": [
         { "type": "p", "text": "Obelisks are the core territorial control points. At the time of the DM conversation this system was barely tested, and taking land by force was the next major system on the roadmap. 0.5.0 shipped the first piece: a House can claim a dormant Obelisk (below). The notes only cover dormant Obelisks — taking a region another House holds isn't described yet." },
         { "type": "note", "status": "bug-fixed", "text": "Fixed, action.19: false “Move closer to the Obelisk” errors on activation, deposits, and settling are fixed — activation range is properly 12 m, measured on the ground plane, plus server-side slack." },
+        { "type": "h", "text": "The Obelisk (0.6.10)" },
+        { "type": "p", "status": "live0610", "text": "Obelisks have a new model: a relay of the Network built by Perpetua. A slender slate shaft made of four pillars, with cold Network light glowing in the gaps between them, a node chamber at about 9 m and a cut capstone floating above it. The old monolith with the sun is gone. The Obelisk stands on its own round, graduated platform; the stone slabs around it are gone." },
+        { "type": "table", "caption": "The Obelisk grows with the region level (0.6.10)", "headers": ["Region level", "Obelisk"], "rows": [
+          ["1", "Bare shaft; the capstone lies at its foot"],
+          ["2", "A graduated ring; the capstone floats above the shaft"],
+          ["3", "A meander on the platform and gold fittings; the capstone floats higher"],
+          ["4", "Four pylons on the diagonals, an armillary sphere and a halo above the capstone"]
+        ] },
+        { "type": "list", "status": "live0610", "items": [
+          "The gaps and the chamber glow brighter with each level. An Obelisk that hasn't been activated stays dark.",
+          "The streak around the shaft and the sparks from the chamber are the cold colour of the Network. They used to be orange, with smoke."
+        ] },
         { "type": "h", "text": "Claiming a dormant Obelisk (0.5.0)" },
         { "type": "p", "status": "live050", "text": "A House can claim a dormant Obelisk and make its region the House's own. The claim is a 15-minute fight for a 20 m ring around the House's Claim Banner." },
         { "type": "list", "status": "live050", "items": [
@@ -1155,6 +1208,13 @@
           "The wall only follows the outer edge of the settlement. Holes in the town and rings of districts around the Obelisk no longer get extra layers of wall.",
           "A gate goes where a road crosses the wall. A district without a road gets a postern facing the Obelisk.",
           "Districts smaller than 20 × 30 m are refused, so tiny districts can no longer act as walls (see Building & Logistics → Settlement planner)."
+        ] },
+        { "type": "list", "status": "live0610", "items": [
+          "Level 1 walls are a wooden stockade with a real gate instead of the little fence, and they actually stop people: a wall section has 600 HP and the gate 1,000 HP (the fence had 300 and 500). The cost is the same.",
+          "The palisade (level 2) is the highest wall level for now. Limestone and stone walls and towers were removed, so a siege means breaking a gate.",
+          "Gates fly banners with the crest of the House that rules the region: a pair of standing banners at a stockade, banners hanging from the gate frame at a palisade. The cloth has folds, faded dye streaks and frayed edges. A region without a House shows no banners.",
+          "New battering ram: a covered frame with a hide roof and a log with an iron head hung on two pairs of ropes. It swings like a pendulum — pull back, swing, bounce off the gate — and the impact sound plays when the head hits the gate.",
+          "Building and demolition in a region are frozen from 24 hours before its attack window until the siege is resolved."
         ] },
         { "type": "list", "status": "confirmed", "items": [
           "For now, sieges only affect walls. Walls can be destroyed during a siege and then need rebuilding. Whether sieges will reach anything else comes later."
@@ -1398,8 +1458,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.9 (23 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.10 (26 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.10 — 26 Oct" },
+        { "type": "p", "text": "Update required (client and server); characters, items, Houses, regions, settlement plans and chest storage carry over. Changes since 0.6.9: a new Obelisk, a relay of Perpetua's Network that grows in four versions with the region level; wooden stockades with real gates as level 1 walls, the palisade as the top level for now, House banners on gates and a swinging battering ram; building frozen from 24 hours before an attack window; no building on roads; the requisition board as a Civic building; the mint from level 1 and the requirements for a City; upkeep by plot area instead of residents; mob coins by tier; rotation that stays put in build mode, a T key and easier roofs; tables that stand on the ground; misty border curtains; and a refreshed shader cache and rebuilt HLOD." },
         { "type": "h", "text": "0.6.9 — 23 Oct" },
         { "type": "p", "text": "Update required (client + server); characters, items, Houses, regions, settlement plans and chest stashes are kept. Changes since 0.6.8: nine small roadside bandit camps of 6 bandits who fight together, and the big camp moved in front of the Abandoned Chapel with a new look and its own 6 guards; no trees through the tents; dungeon interior fixes; a wall around every district, one wall for districts split by a narrow street, gates on roads and posterns where there are none; a minimum district size of 20 × 30 m; the planner fixed after a region levels up; a tighter interaction cone and an F prompt that hides behind windows and shows a badge for a missing or too-weak tool; foundations that sink into the ground, building on the plot edge and other build mode fixes; monster arrows without a dust puff; and a refreshed shader cache." },
         { "type": "h", "text": "0.6.8 — 21 Oct" },
@@ -1540,6 +1602,11 @@
         ] },
         { "type": "h", "text": "Performance (0.6.9)" },
         { "type": "p", "status": "live069", "text": "A refreshed shader cache, including the new camps, the chapel camp and the tool icons." },
+        { "type": "h", "text": "Performance (0.6.10)" },
+        { "type": "list", "status": "live0610", "items": [
+          "A refreshed shader cache, including the new Obelisk, walls, banners, ram and border curtain.",
+          "The map HLOD — the simplified geometry you see from far away — is rebuilt."
+        ] },
         { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
     },
