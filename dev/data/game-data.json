@@ -2,10 +2,11 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.11",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), 0.6.8 (21 Oct), 0.6.9 (23 Oct), 0.6.10 (26 Oct) and 0.6.11 (27 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.6.13",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), 0.6.8 (21 Oct), 0.6.9 (23 Oct), 0.6.10 (26 Oct), 0.6.11 (27 Oct) and 0.6.13 (28 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "updates": [
+    { "date": "2026-10-28", "title": "0.6.13 patch notes", "sections": ["building-logistics", "economy-banking", "territory-control", "world-geography", "sound", "dev-testing", "patch-notes"], "text": "Storehouses built as projects, with a requisition board and private storage at each, building physics and collapses, 1 m walls, floors and roof pieces, arches and vaults, moving furniture with M, swinging doors and a world map in House colours." },
     { "date": "2026-10-27", "title": "0.6.11 patch notes", "sections": ["dev-testing", "building-logistics", "economy-banking", "territory-control", "ui-hud", "patch-notes"], "text": "Sign in with Steam, storehouse sites in the settlement planner and a region stock that walls and repairs use up, Say heard within 40 m, and building on 1 m snaps with new beams, posts, stairs and stone foundations." },
     { "date": "2026-10-26", "title": "0.6.10 patch notes", "sections": ["territory-control", "building-logistics", "economy-banking", "dev-testing", "patch-notes"], "text": "A new Obelisk that grows with the region level, wooden stockades with House banners on the gates, a swinging battering ram, a build freeze before sieges, upkeep by plot area, mob coins by tier and rotation that stays put in build mode." },
     { "date": "2026-10-23", "title": "0.6.9 patch notes", "sections": ["world-geography", "dungeons-raids", "building-logistics", "territory-control", "ui-hud", "combat", "dev-testing", "patch-notes"], "text": "Nine small bandit camps on the roads and a new big camp by the chapel, a wall around every district, a minimum district size, a tighter F prompt with tool badges, and foundations that sink into the ground." },
@@ -35,6 +36,7 @@
   ],
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live0613": { "label": "Implemented", "short": "0.6.13", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.13 (28 Oct), which also covers 0.6.12. Supersedes earlier builds where numbers conflict." },
     "live0611": { "label": "Implemented", "short": "0.6.11", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.11 (27 Oct). Supersedes earlier builds where numbers conflict." },
     "live0610": { "label": "Implemented", "short": "0.6.10", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.10 (26 Oct). Supersedes earlier builds where numbers conflict." },
     "live069": { "label": "Implemented", "short": "0.6.9", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.9 (23 Oct). Supersedes earlier builds where numbers conflict." },
@@ -661,6 +663,11 @@
           "New sounds when an item is finished: a hard hammer strike that grows with quality, up to a full burst for Masterwork and Legendary.",
           "Rare loot has a new sound too."
         ] },
+        { "type": "list", "status": "live0613", "items": [
+          "New Holy Bolt sounds: a separate cast for each combo step and six hit variants.",
+          "Placing and removing a building piece plays a stone or wood sound for every player nearby.",
+          "Doors creak as they open and knock as they close; shutters sound lighter."
+        ] },
         { "type": "h", "text": "Settings" },
         { "type": "p", "text": "The sound settings have an “Other players' voices” slider (50% by default) that sets how loud other players' grunts and shouts are." },
         { "type": "list", "status": "live051", "items": [
@@ -795,6 +802,10 @@
           "The requisition board no longer appears next to the Obelisk by itself: the rulers build it as a Civic building (see Building & Logistics → Running a settlement). Until one stands, the Obelisk takes deliveries."
         ] },
         { "type": "p", "status": "live0611", "text": "Fixed: a region that reached level 1 in the middle of the week had no upkeep and showed “0 / 0 items delivered”. Such regions got that week's requisitions right after the 0.6.11 update." },
+        { "type": "list", "status": "live0613", "items": [
+          "A delivery on a region board goes to the row you click. Before, upkeep always came first: as long as upkeep wanted planks or logs, it took the ones meant for a storehouse or the walls, and the next region level couldn't get them either.",
+          "Every storehouse site has a requisition board by the road, and once any board stands in the settlement the Obelisk stops taking deliveries (see Building & Logistics → Building the storehouse)."
+        ] },
         { "type": "p", "status": "live050", "text": "The region treasury is secret: only officials see the balance. Everyone else, on the map too, only sees whether the region is in debt." },
         { "type": "h", "text": "Bank first, purse second (0.5.0)" },
         { "type": "list", "status": "live050", "items": [
@@ -1056,6 +1067,28 @@
           "Walls and repairs use up the delivered materials. Until 0.6.11 they stayed in the stock for good.",
           "The settlement plan can't be changed during a siege, the same as building (see Territory Control → Walls)."
         ] },
+        { "type": "h", "text": "Building the storehouse (0.6.13)" },
+        { "type": "list", "status": "live0613", "items": [
+          "An approved storehouse site is a building site: stakes at the corners, no sleepers or piles. In the planner a site without a building is labelled “(site)”.",
+          "The head of the ruling House orders the construction at the Castellan's Table: Projects tab, Storehouses section, Build next to the site. The same section shows the cost, the deliveries so far and the finished storehouses.",
+          "The materials go on the requisition board under a new STOREHOUSE CONSTRUCTION group. The treasury pays per item, as for walls.",
+          "Sleepers appear on the site as the deliveries come in, and the last delivery raises the storehouse. The [F] window at a building site shows how much has been delivered.",
+          "Construction materials go straight onto the site. They don't enter the region's stock and take up no room in it.",
+          "Only finished storehouses add to the stock capacity. A building site holds nothing and can't be plundered.",
+          "Moving or removing a site in the planner cancels its construction, and the delivered materials go back to the region's stock. The planner warns you when you move a built storehouse, because after approval it has to be built again.",
+          "Storehouses raised in 0.6.11 became building sites, so a region's capacity is back to 200 until its storehouse is built."
+        ] },
+        { "type": "table", "caption": "Storehouse cost (0.6.13)", "headers": ["Storehouse", "Wood", "Planks", "Nails"], "rows": [
+          ["Small", "30", "40", "—"],
+          ["Medium", "60", "90", "20"],
+          ["Large", "120", "180", "40"]
+        ] },
+        { "type": "list", "status": "live0613", "items": [
+          "A region requisition board stands in front of every storehouse site, by the road. You can deliver there for the construction and for everything else the region needs.",
+          "Once any board stands in the settlement, the Obelisk stops taking deliveries, the same as with a board placed as a building piece.",
+          "A finished storehouse has a banner with the ruling House's crest at its entrance, like the ones at the wall gates, and a Private Storage chest (see Private storage below).",
+          "The grass cleared on a storehouse site follows the site's shape and rotation. On a site placed at an angle, the cleared patch used to be a diamond turned by 45°."
+        ] },
         { "type": "h", "text": "Resident towns (0.6.8)" },
         { "type": "list", "status": "live068", "items": [
           "Dying in your own town — as a resident, inside your region's building area — drops no loot: your gear and backpack stay with you. PvP still works there.",
@@ -1101,6 +1134,65 @@
           "Fixed: R turns the piece in place, with its middle under the crosshair and the grid catching its corner; before, the piece jumped to the other side of the crosshair. T (face camera) no longer plays the “denied” sound — the same key was also looking for the next ally."
         ] },
         { "type": "note", "status": "info", "text": "The mouse wheel keys changed over three patches: in 0.6.9 Alt or Ctrl + wheel changed the height, 0.6.10 gave Ctrl + wheel to rotation, and since 0.6.11 Alt + wheel sets the height and Ctrl + wheel turns the piece by 15°." },
+        { "type": "h", "text": "1 m pieces & roofs (0.6.13)" },
+        { "type": "list", "status": "live0613", "items": [
+          "Walls 1×3, 1×1 and 3×1 m in stone and wattle. The frame stays on the 1 m lines, so short walls meet full ones without steps.",
+          "Triangular gables 3, 2 and 1 m (stone and wattle) with a rafter along the slope. They close a gable roof: place them like a wall, and R picks the side.",
+          "Floors 1×1 and 1×3 m, in stone and planks. Stone pillars 1×1 m, 1, 2 and 3 m tall. Braces 1 and 2 m at 45°, from a post up to a beam.",
+          "Roof slopes 1×1 and 1×3 m, with 1×1 outer and inner corners; ridge caps 1 and 3 m; a 1 m eave with a gentler pitch.",
+          "Gable roofs in one piece: 2×1, 2×3 and 6×3 m, ridge cap included.",
+          "A slope on a wall puts its eave on the wall's axis, and R picks which way the roof goes. Aiming at the tiles places the next row higher, aiming past the eave one lower. A corner at the end of a slope picks its rotation by itself."
+        ] },
+        { "type": "h", "text": "New pieces (0.6.13)" },
+        { "type": "list", "status": "live0613", "items": [
+          "Reinforced beams 1, 2 and 3 m. They reach further sideways than wooden ones: three 3 m beams out from a post instead of two.",
+          "Stone arches 3×3 and 6×3 m that you can walk under.",
+          "A stone vault 3×3 m. It goes between two walls, its top level with theirs, and you can walk on it like a floor.",
+          "Wooden and stone railings, 1 and 3 m. A gallery is a floor along a wall, braces under it and a railing on the edge.",
+          "Arches, the vault and the stone railing use the foundation stone, and the beams and railings use the post wood, like the rest of the set."
+        ] },
+        { "type": "h", "text": "Building physics (0.6.13)" },
+        { "type": "list", "status": "live0613", "items": [
+          "Every piece has a stability based on its material (stone, wood, wattle, reinforced beams) and on what it stands on. On the ground it's full; each storey up and each metre of overhang lowers it. Stone has to rest on something, wood reaches further sideways, and wattle won't carry stone. A vault needs a wall on both sides.",
+          "The ghost shows “Stability N%” or “On the ground”. A piece that's too weak turns red and says what to put under it.",
+          "H in build mode colours nearby buildings by stability: blue is full, then green, yellow, orange and red.",
+          "Tearing down a support first asks how many pieces will come down. After you confirm, the unsupported pieces creak and shake for 10 s while dust trickles from their cracks. Prop them up in that time (a pillar, wall or brace) and nothing falls.",
+          "Otherwise they come down from the bottom up: blocks fall, raise dust when they hit, and the rubble lies for a moment before sinking away.",
+          "Furniture, workshops and tables aren't destroyed in a collapse; they drop onto whatever is below. Doors and shutters go with their wall.",
+          "Tearing down your own support can't bring down other players' pieces.",
+          "Buildings from before 0.6.13 never collapse by themselves. Only pieces that lose their support through a teardown can fall.",
+          "Fixed: a post under a roof's eave no longer counts as resting on the roof (which made a beam next to it “too far from solid ground”), and the basic wooden posts, fences, stairs and ramps count as wood, not stone."
+        ] },
+        { "type": "h", "text": "Snapping & grip (0.6.13)" },
+        { "type": "list", "status": "live0613", "items": [
+          "A piece placed next to another goes where you aim. Aim at the ground beside a foundation and the new one lines up beside it at the same level, even if the first is sunk into the ground. Aim at the top of a piece to build on it.",
+          "C switches the snap mode: auto, always beside, always on top.",
+          "Two foundations or floors side by side keep one floor level. Stairs placed beside a foundation or a floor end level with its top, so you can walk up onto it.",
+          "A beam or floor placed against the side of a post or a wall takes its height from where you aim: on the post's 1 m lines or flush with its top.",
+          "Z picks a point of the piece: the middle, a corner, or an end of a wall or beam. That point stays under the crosshair, R or Ctrl + wheel turns the piece around it, and a gold pin on the ghost shows it.",
+          "The middle mouse button picks the piece you're looking at, with its rotation. Auto-run is off in build mode.",
+          "Fixed: a foundation sunk into a slope no longer reports a hanging end."
+        ] },
+        { "type": "h", "text": "Furniture, work tables & moving (0.6.13)" },
+        { "type": "list", "status": "live0613", "items": [
+          "Furniture is placed freely, off the 1 m grid. It stands on the floor (or on a table) and is pushed out of walls instead of going into them.",
+          "Workshops and crafting stations are no longer stuck to a 10 cm grid, and they're pushed out of walls too.",
+          "The hanging lantern hangs on the wall you aim at, facing away from it. Alt + wheel moves it up and down.",
+          "M moves furniture, workshops and crafting stations: aim at the piece, press M, and put it down with LMB. M or RMB puts it back. A moved workshop keeps its orders. The bank and the Castellan's Table stay where they are. In build mode M doesn't open the world map.",
+          "With the catalogue open, the key legend sits to the right of it in three short lines instead of covering it.",
+          "Placing and removing a piece raises dust along its base and plays a stone or wood sound for every player nearby."
+        ] },
+        { "type": "h", "text": "Doors, shutters & plots (0.6.13)" },
+        { "type": "list", "status": "live0613", "items": [
+          "Doors and shutters swing open and shut smoothly, with a creak as they open and a knock as they close. Shutters sound lighter than doors and have two leaves, each on its own hinge.",
+          "Doors and shutters set in an opening: R flips them to the other side of the wall. The placement preview also shows the leaf open, so you can see whether it opens inwards or outwards.",
+          "In build mode, plots where you can't build show the same misty curtain as your own, but red. An edge shared with your plot stays blue.",
+          "Only rented plots have stakes; a vacant plot keeps its “for rent” sign. A rented plot no longer has a sign with its number and tenant, yours or anyone else's. Leases are managed in the Obelisk window (Plots)."
+        ] },
+        { "type": "list", "status": "live0613", "items": [
+          "Fixed: stone stairs (1, 2 and 3 m) are one solid piece, with no gaps between the steps letting light through. Each step shows a different patch of the stone texture and has a slightly chamfered nose.",
+          "Fixed: the cut ends of shorter posts, beams, 1 m walls, gable rafters and gable roof eaves show wood instead of a smeared streak."
+        ] },
         { "type": "h", "text": "Resource protection inside build boundaries" },
         { "type": "p", "status": "live19", "text": "Nothing respawns inside a region's build boundary — gathered trees, mined ore, and killed animals do not come back inside the circle where zones can be painted. Living animals and standing (ungathered) trees are left alone. The boundary radius scales with Obelisk level." },
         { "type": "table", "headers": ["Obelisk level", "Boundary radius"], "rows": [
@@ -1140,6 +1232,13 @@
         ] },
         { "type": "p", "status": "live065", "text": "In 0.6.1 the chest was missing from the world. Since 0.6.5 it stands next to the Crown Orders board (the wooden board with a roof) in Highmoor, Firstlanding and Fernhollow." },
         { "type": "p", "status": "live067", "text": "In the Wayfarer Village the chest now stands next to the order board instead of in front of it on the road. Stored items are kept." },
+        { "type": "list", "status": "live0613", "items": [
+          "Every finished storehouse has a Private Storage chest by the entrance. It's your own storage in that region, and every storehouse of the region opens the same one.",
+          "It grows with the region: 80 slots for each Small storehouse, 120 for each Medium and 160 for each Large, up to 400.",
+          "It's free. Only residents of the region can put goods in. If you stop being a resident, or the region changes hands, you can still take your things out — nothing is lost.",
+          "Raiders can't touch it, and it doesn't count towards the region's stock capacity.",
+          "The Storage Chest in the Wayfarer villages can now be expanded once, to 120 slots (50 mk). Space bought above that before 0.6.13 stays."
+        ] },
         { "type": "note", "status": "info", "text": "The 0.6.1 notes price the upgrades in Marks and Crowns — coin names that appear nowhere else in this record, which otherwise speaks of gold (and grains, for plot rent)." },
         { "type": "p", "status": "confirmed", "text": "Caravans are planned for later — larger-scale transport, and the supply-line mechanic for sieges." }
       ]
@@ -1164,6 +1263,7 @@
           "The streak around the shaft and the sparks from the chamber are the cold colour of the Network. They used to be orange, with smoke."
         ] },
         { "type": "p", "status": "live0611", "text": "The top of the pedestal no longer flickers: its pewter band was smooth enough to pick up a noisy reflection of the glowing shaft right above it, and it's matte now." },
+        { "type": "p", "status": "live0613", "text": "The Obelisk no longer flickers on the top of its plinth and crown either." },
         { "type": "h", "text": "Claiming a dormant Obelisk (0.5.0)" },
         { "type": "p", "status": "live050", "text": "A House can claim a dormant Obelisk and make its region the House's own. The claim is a 15-minute fight for a 20 m ring around the House's Claim Banner." },
         { "type": "list", "status": "live050", "items": [
@@ -1262,6 +1362,7 @@
           "Building and demolition in a region are frozen from 24 hours before its attack window until the siege is resolved."
         ] },
         { "type": "p", "status": "live0611", "text": "The settlement plan can't be changed during a siege either. Otherwise a new plan would move the walls and the breaches would disappear. Walls and repairs now use up the materials delivered to the region (see Building & Logistics → Project sites & the region storehouse)." },
+        { "type": "p", "status": "live0613", "text": "The wooden wall (level 1) has its wood texture back; in 0.6.11 it was plain grey." },
         { "type": "list", "status": "confirmed", "items": [
           "For now, sieges only affect walls. Walls can be destroyed during a siege and then need rebuilding. Whether sieges will reach anything else comes later."
         ] },
@@ -1354,6 +1455,12 @@
         ] },
         { "type": "p", "status": "live068", "text": "Heartland bridge by the lake: the vertical wall of the old ditch under the span is gone, and the banks slope down to the water." },
         { "type": "p", "status": "live067", "text": "The world map (M) has been repainted: rivers follow their exact in-game course and Blight patches match the current world. Region borders are unchanged." },
+        { "type": "h", "text": "World map (0.6.13)" },
+        { "type": "list", "status": "live0613", "items": [
+          "Regions are tinted in the colours of the House that rules them, one colour made from the whole coat of arms. Regions of one House blend into one area, with a thin, faint line between them; borders between different rulers stay strong.",
+          "Zoom out past the current lands to see the whole continent of Valdris under the fog of war: the lands still to come. The map opens centred on the current lands, and their edges fade into the fog.",
+          "Icons shrink as you zoom out. Places fade first, then region crests; with the whole continent in view, only your arrow stays."
+        ] },
         { "type": "h", "text": "Swimming (0.6.7)" },
         { "type": "list", "status": "live067", "items": [
           "You can swim on the surface of water — no diving yet.",
@@ -1504,8 +1611,10 @@
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.11 (27 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.13 (28 Oct).",
       "blocks": [
+        { "type": "h", "text": "0.6.13 — 28 Oct (with 0.6.12)" },
+        { "type": "p", "text": "Update required (client and server); covers 0.6.12 and 0.6.13. Characters, items, Houses, regions, settlement plans, buildings and chest storage carry over. Changes since 0.6.11: storehouses built as projects ordered at the Castellan's Table, with a requisition board in front of every site, a House banner and a free Private Storage chest at every finished one; deliveries that go to the row you click; 1 m walls, gables, floors, pillars and braces, a full set of roof pieces, reinforced beams, stone arches, a vault and railings; building physics with stability, an H overlay and collapses you can stop by propping pieces up; snapping that goes where you aim, C snap modes and Z pivot points; furniture placed freely and moved with M; doors and shutters that swing, with sound; dust and material sounds when building; a world map tinted in House colours, with the whole of Valdris under the fog of war; new Holy Bolt sounds; and fixes to storehouse loading, stone stairs, the level 1 wall texture and the Obelisk's flicker." },
         { "type": "h", "text": "0.6.11 — 27 Oct" },
         { "type": "p", "text": "Update required (client and server); characters, items, Houses, regions, settlement plans and chest storage carry over. Changes since 0.6.10: sign in with Steam, bringing a playtest account over or starting a new one; storehouse project sites in the Settlement Planner, and a region stock held by the Obelisk and storehouses that walls and repairs now use up; no plan changes during a siege; Say heard within 40 m, with speech bubbles; building on the module lines with 1 m snaps, the Z key, roofs that sit on walls, and new beams, posts, stone stairs and stone foundations; and fixes to rotation, the T key, the Obelisk window, mid-week upkeep and the flickering pedestal." },
         { "type": "h", "text": "0.6.10 — 26 Oct" },
@@ -1662,6 +1771,8 @@
           "A refreshed shader cache, including the new Obelisk, walls, banners, ram and border curtain.",
           "The map HLOD — the simplified geometry you see from far away — is rebuilt."
         ] },
+        { "type": "h", "text": "Performance (0.6.13)" },
+        { "type": "p", "status": "live0613", "text": "Coming near a storehouse for the first time no longer stalls the game for a moment: the pile models load in the background." },
         { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
     },
