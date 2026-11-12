@@ -1,6 +1,6 @@
 // What one player is allowed to see of the world. The client only ever gets this.
 
-import { BUILDINGS, HIRE_COST, RELEASE_COST, regionCap } from '../data/balance.ts'
+import { BUILDINGS, HIRE_COST, RELEASE_COST, allianceLimit, regionCap } from '../data/balance.ts'
 import { CARD_BY_ID } from '../data/cards.ts'
 import type {
   Army,
@@ -18,7 +18,7 @@ import type {
 import { combatSlots, neighbours, rationRate, settleFortress } from './armies.ts'
 import { ownedRegions, productionRates, storageOf, troopCap, troopsUsed } from './economy.ts'
 import { craftingSlots } from './village.ts'
-import { joinOpenUntil, sameSide } from './world.ts'
+import { joinOpenUntil, memberLimit, sameSide } from './world.ts'
 import { describeWindow, roughSize, totalUnits, windowOpen } from './util.ts'
 
 export interface PublicPlayer {
@@ -62,6 +62,9 @@ export interface PlayerView {
   window: string
   windowOpen: boolean
   joinOpenUntil: number
+  maxPlayers: number
+  houseMemberLimit: number
+  allianceLimit: number
   me: Player & {
     rates: Res
     storage: number
@@ -155,6 +158,9 @@ export function viewFor(world: World, playerId: string): PlayerView {
     window: describeWindow(world.config.battleWindow),
     windowOpen: windowOpen(world.config.battleWindow, t),
     joinOpenUntil: joinOpenUntil(world),
+    maxPlayers: world.config.maxPlayers,
+    houseMemberLimit: memberLimit(world),
+    allianceLimit: allianceLimit(world.config.maxPlayers),
     me: {
       ...structuredClone(me),
       rates: productionRates(world, me),
