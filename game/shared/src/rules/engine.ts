@@ -71,6 +71,7 @@ export function advance(world: World, now: number, ctx: Ctx = newCtx()): Ctx {
     settleAll(world, t)
     world.time = t
     processDue(ctx, world, t)
+    ctx.events += 1
     if (++guard > 200000) throw new Error('The world clock got stuck.')
   }
   if (now > world.time) world.time = now

@@ -22,10 +22,12 @@ export function fail(message: string): never {
 export interface Ctx {
   notices: Notice[]
   effects: Effect[]
+  /** How many timed events were handled (0 means nothing happened). */
+  events: number
 }
 
 export function newCtx(): Ctx {
-  return { notices: [], effects: [] }
+  return { notices: [], effects: [], events: 0 }
 }
 
 export const DEFAULT_CONFIG: WorldConfig = {
