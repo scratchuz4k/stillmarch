@@ -188,9 +188,8 @@ const quarterLabels = [
   { name: 'Heartland', x: 500, y: 420 },
 ]
 
-function ownerName(id: string | null): string {
-  return v.value.players.find((p) => p.id === id)?.name ?? ''
-}
+// Founded villages only: a player who hasn't claimed their Obelisk yet has no village to show.
+const villages = computed(() => new Set(v.value.players.map((p) => p.village).filter((x) => x !== null)))
 </script>
 
 <template>
@@ -221,12 +220,12 @@ function ownerName(id: string | null): string {
         <line v-for="(r, i) in roads" :key="i" :x1="r.x1" :y1="r.y1" :x2="r.x2" :y2="r.y2" :class="{ ford: r.river }" />
         <circle v-for="(r, i) in roads.filter((x) => x.river)" :key="`f${i}`" :cx="r.mx" :cy="r.my" r="4" class="bridge" />
       </g>
-      <g v-for="r in regions" :key="r.id" class="region" :class="[`side-${side(r.ownerId)}`, r.kind, { sel: selected === r.id, village: !!r.villageOf && !!ownerName(r.villageOf) }]" @click="pick(r.id)">
+      <g v-for="r in regions" :key="r.id" class="region" :class="[`side-${side(r.ownerId)}`, r.kind, { sel: selected === r.id, village: villages.has(r.id) }]" @click="pick(r.id)">
         <circle v-if="r.kind === 'blight'" :cx="r.x" :cy="r.y" r="34" class="blight-haze" />
         <circle :cx="r.x" :cy="r.y" r="26" class="hit" />
-        <circle :cx="r.x" :cy="r.y" :r="r.villageOf && ownerName(r.villageOf) ? 15 : 11" :fill="r.kind === 'blight' ? '#2a1d3a' : r.kind === 'fortress' ? '#1a1416' : TERRAIN_FILL[r.terrain]" class="node" />
+        <circle :cx="r.x" :cy="r.y" :r="villages.has(r.id) ? 15 : 11" :fill="r.kind === 'blight' ? '#2a1d3a' : r.kind === 'fortress' ? '#1a1416' : TERRAIN_FILL[r.terrain]" class="node" />
         <path v-if="r.kind === 'fortress'" :d="`M${r.x - 6},${r.y + 5} v-8 l3,2 v-3 l3,-2 l3,2 v3 l3,-2 v8 Z`" class="glyph fort" />
-        <path v-else-if="r.villageOf && ownerName(r.villageOf)" :d="`M${r.x - 7},${r.y + 5} v-6 l7,-5 l7,5 v6 Z`" class="glyph" />
+        <path v-else-if="villages.has(r.id)" :d="`M${r.x - 7},${r.y + 5} v-6 l7,-5 l7,5 v6 Z`" class="glyph" />
         <path v-else-if="r.kind === 'open'" :d="`M${r.x - 1.5},${r.y + 6} l0.6,-10 h1.8 l0.6,10 Z M${r.x - 2.5},${r.y - 5} l2.5,-4 l2.5,4 Z`" class="glyph obelisk" />
         <circle v-if="warRegions.has(r.id)" :cx="r.x" :cy="r.y" r="20" class="war-ring" />
         <text v-if="zoom > 1.6 || r.villageOf || r.kind !== 'open'" :x="r.x" :y="r.y + 28" class="label" text-anchor="middle" :style="{ fontSize: `${Math.max(9, 13 / Math.sqrt(zoom))}px` }">{{ r.name }}</text>

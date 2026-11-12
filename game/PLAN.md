@@ -178,6 +178,27 @@ added to your account collection and stay after the world ends.
 - **No buying cards with real money**, ever.
 - Lore: Wayfarers are people like you, coming back to the continent, just without a House.
 
+## The map
+
+A board-game map, not a grid: about 50 regions joined by roads. Armies march road by road, and
+each road's time depends on its length, the terrain at the far end and whether it crosses the
+river. Every world's map is generated from a seed.
+
+- **Four quarters** named after the Forgotten fortresses: Northreach (north), Eastwood (east),
+  Southmere (south) and Heartland (the centre and west). Each quarter has a Forgotten fortress,
+  with a stronger one near the centre and small camps near the villages.
+- **Player villages in a ring**, so neighbours start at roughly equal distances, plus an outer
+  ring of spots for late joiners.
+- **The richest regions in the centre**: bigger region bonuses, to pull everyone inward over time.
+- **Blight biomes in two far corners**: closed in v0.1, opened later by the adventure slot.
+- **Terrain:** forest (+wood, slower marches), hills (+stone, slower), mountains (+iron, slowest)
+  and plains (+food). A river crosses the map; roads over it are slower.
+- **On screen:** dark SVG map with drag to pan and pinch or scroll to zoom. Regions are coloured
+  by who holds them (you, your side, others), army tokens move along the roads in real time, and
+  tapping a region opens a panel with what you can do there.
+- **What you see:** every region and village; armies only near your own regions, your side's
+  armies, and any army marching to a declared siege you're part of.
+
 ## Armies on the map
 
 Armies aren't fire-and-forget attacks. They are **tokens on the map** that you move between
@@ -274,54 +295,60 @@ What sets it apart from a reskin:
 
 ## v0.1: first playable version
 
+**Status (2026-11-12):** everything on the list below is built on the `game-v0.1` branch, with
+rules tests and a playthrough in a phone-sized browser. See `README.md` to run it. Known gaps:
+AI Houses don't attack players yet, Forgotten fortresses don't raid villages, card portraits are
+placeholder initials, and every balance number is a first guess.
+
 Goal: a small world that a few people can play on phones for a few days, to check whether the
 loop is fun.
 
 **Server and accounts**
-- [ ] Game server that decides everything; clients only display
-- [ ] Username and password accounts
-- [ ] Joining a world, open for the first 7 world-days; edge start for late joiners
-- [ ] World speed setting, plus dev cheats (finish builds, add resources, skip time)
-- [ ] Web Push notifications (build finished, army arrived, war declared, battle starting)
+- [x] Game server that decides everything; clients only display
+- [x] Username and password accounts
+- [x] Joining a world, open for the first 7 world-days; edge start for late joiners
+- [x] World speed setting, plus dev cheats (finish builds, add resources, skip time)
+- [x] Web Push notifications (build finished, army arrived, war declared, battle starting);
+      built, but not yet tried on a real phone
 
 **Village**
-- [ ] One settlement: Obelisk, lumber camp, quarry, mine, farm, storehouse, walls, barracks
-- [ ] Real-time build queue
-- [ ] Resource production and storage caps; farm level as the troop cap
-- [ ] "Unfinished business" starter tasks
-- [ ] Beginner protection
+- [x] One settlement: Obelisk, lumber camp, quarry, mine, farm, storehouse, walls, barracks
+- [x] Real-time build queue
+- [x] Resource production and storage caps; farm level as the troop cap
+- [x] "Unfinished business" starter tasks
+- [x] Beginner protection
 
 **Wayfarer cards**
-- [ ] Cards with Might, Craft and Wits, a rarity (Common or Uncommon) and a trait
-- [ ] Account collection, available in every world
-- [ ] Crafting and combat slots
-- [ ] Hiring with gold
-- [ ] Captured commanders: 3 world-days in prison, then pay gold to get them back
-- [ ] Starting pool of 16 cards (12 Common, 4 Uncommon)
+- [x] Cards with Might, Craft and Wits, a rarity (Common or Uncommon) and a trait
+- [x] Account collection, available in every world
+- [x] Crafting and combat slots
+- [x] Hiring with gold
+- [x] Captured commanders: 3 world-days in prison, then pay gold to get them back
+- [x] Starting pool of 16 cards (12 Common, 4 Uncommon)
 
 **Map and armies**
-- [ ] Visual region map: player regions, dormant Obelisks, Forgotten fortresses, a Blight biome,
+- [x] Visual region map: player regions, dormant Obelisks, Forgotten fortresses, a Blight biome,
       1–2 simple AI Houses
-- [ ] Basic troops: infantry, archers, cavalry, ram
-- [ ] Armies as map tokens with rations, attrition and looting for food
-- [ ] Skirmishes when hostile armies meet on the map
-- [ ] Raids on Forgotten fortresses for gold
+- [x] Basic troops: infantry, archers, cavalry, ram
+- [x] Armies as map tokens with rations, attrition and looting for food
+- [x] Skirmishes when hostile armies meet on the map
+- [x] Raids on Forgotten fortresses for gold
 
 **Houses**
-- [ ] Create, join, leave and switch Houses; leader and officers
-- [ ] Switching blocked during a war, 3 world-day cooldown
-- [ ] Alliances between Houses, with the size cap; breaking one is instant
-- [ ] Chat (still open to players who are out)
+- [x] Create, join, leave and switch Houses; leader and officers
+- [x] Switching blocked during a war, 3 world-day cooldown
+- [x] Alliances between Houses, with the size cap; breaking one is instant
+- [x] Chat (still open to players who are out)
 
 **War**
-- [ ] War declaration and daily battle window
-- [ ] Sieges that take regions or destroy villages; elimination, with a map view for players
+- [x] War declaration and daily battle window
+- [x] Sieges that take regions or destroy villages; elimination, with a map view for players
       who are out
-- [ ] Visible marches, muster and roster lock
-- [ ] Battles in rounds with automatic orders and a battle log
+- [x] Visible marches, muster and roster lock
+- [x] Battles in rounds with automatic orders and a battle log
 
 **Client**
-- [ ] Phone-first touch layout; PWA manifest so it can go on the home screen
+- [x] Phone-first touch layout; PWA manifest so it can go on the home screen
 
 Out of scope for v0.1: the adventure slot, order choices and live round timers in battles
 (automatic orders first), declared reserves, Great Projects and the end of a world, barony and
@@ -346,31 +373,24 @@ kingdom, the Invasion, card trading, scouts.
   and battle numbers. Every number is a placeholder until playtested.
 - **Local testing:** run the server locally and open several browser profiles as different
   players.
-- **Deploy:** the client builds with `base: '/game/'` and is copied into `_site/game/` by
-  `.github/workflows/deploy-pages.yml`, the same way `web/` goes to `/preview/`. The server needs
-  its own host (a small VPS, Fly.io or Railway).
+- **Deploy (not done yet):** the client could be published at `/game/` by
+  `.github/workflows/deploy-pages.yml`, the same way `web/` goes to `/preview/`, but it's no use
+  without a server, so that waits until the server has a host. The server can also serve the
+  built client itself, which is simpler for a first playtest.
 
-Suggested layout:
+Layout as built:
 
 ```
 game/
-  PLAN.md
-  shared/
-    src/
-      rules/      # build queue, production, marches, rations, battles
-      data/       # balance numbers, buildings, units, Wayfarer cards
-  server/
-    src/
-      world/      # world state, event queue, AI Houses
-      api/        # HTTP + WebSocket
-      db/         # storage, migrations
-      push/       # Web Push
-  client/
-    index.html
-    vite.config.ts
-    src/
-      components/ # settlement view, map, build menu, cards, battle view
-      assets/icons/
+  PLAN.md, README.md
+  shared/src/
+    types.ts      # the world state as plain data
+    data/         # balance numbers, Wayfarer cards, starter tasks
+    rules/        # map generation, economy, village, armies, battles, sieges, Houses, AI,
+                  # the world clock (engine.ts), player actions, and what each player sees
+  shared/test/    # rules tests
+  server/src/     # main.ts, app.ts (HTTP + WebSocket), game.ts (runs the worlds), db.ts, push.ts
+  client/src/     # views (village, map, armies, cards, House, log) and components
 ```
 
 ## Later (after v0.1)
