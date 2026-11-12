@@ -61,6 +61,7 @@ async function redirect(armyId: string, mission: Mission | 'return', warId?: str
 </script>
 
 <template>
+  <Teleport to="body">
   <div class="sheet-backdrop" @click.self="emit('close')">
     <section class="sheet" role="dialog" :aria-label="r.name">
       <div class="grip" aria-hidden="true"></div>
@@ -124,6 +125,7 @@ async function redirect(armyId: string, mission: Mission | 'return', warId?: str
     </section>
     <SendArmy v-if="sending" :region-id="r.id" :mission="sending" :war-id="myWar?.id" @close="sending = null" @sent="sending = null; emit('close')" />
   </div>
+  </Teleport>
 </template>
 
 <style scoped>

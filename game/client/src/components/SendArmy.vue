@@ -77,6 +77,7 @@ async function send() {
 </script>
 
 <template>
+  <Teleport to="body">
   <div class="sheet-backdrop" @click.self="emit('close')">
     <section class="sheet" role="dialog" :aria-label="title">
       <div class="row spread">
@@ -114,7 +115,7 @@ async function send() {
       <input id="rat" type="range" min="0" :max="Math.floor(liveRes.food)" :value="rationsValue" @input="rations = Number(($event.target as HTMLInputElement).value)" />
       <p class="ui small muted">
         <template v-if="totalUnits(units) > 0">
-          March: {{ path ? countdown(travel) : 'no road' }} &middot; eats {{ perHour.toFixed(1) }}/h in the field &middot; food lasts {{ Number.isFinite(lasts) ? `${Math.floor(lasts)}h` : 'forever' }} (world time)
+          March: {{ path ? countdown(travel) : 'no road' }} &middot; eats {{ perHour.toFixed(1) }} per world-hour in the field &middot; food lasts {{ Number.isFinite(lasts) ? countdown((lasts * 3_600_000) / v.speed) : 'forever' }}
         </template>
         <template v-else>Pick some troops.</template>
       </p>
@@ -123,6 +124,7 @@ async function send() {
       <button class="btn block" :disabled="state.busy || totalUnits(units) === 0 || !path" @click="send">Send</button>
     </section>
   </div>
+  </Teleport>
 </template>
 
 <style scoped>

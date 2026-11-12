@@ -25,6 +25,14 @@ export function unitsText(u: Units): string {
   return parts.length ? parts.join(', ') : 'no troops'
 }
 
+/** Short numbers for tight spaces: 1,150 becomes 1.1k. */
+export function compact(n: number): string {
+  const v = Math.floor(n)
+  if (Math.abs(v) >= 100_000) return `${Math.round(v / 1000)}k`
+  if (Math.abs(v) >= 1000) return `${(Math.floor(v / 100) / 10).toFixed(1)}k`
+  return String(v)
+}
+
 export function ago(ms: number): string {
   if (ms < 60_000) return 'just now'
   if (ms < 3_600_000) return `${Math.floor(ms / 60_000)}m ago`

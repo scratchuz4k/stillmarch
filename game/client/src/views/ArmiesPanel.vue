@@ -28,7 +28,7 @@ function food(a: MyArmy): string {
   if (a.starvingSince !== null) return 'Out of food: losing troops every hour'
   if (a.rationRate <= 0) return `${Math.floor(a.rations)} food · eating nothing in your land`
   const hours = a.rations / a.rationRate
-  return `${Math.floor(a.rations)} food · lasts ${Math.floor(hours)}h world time`
+  return `${Math.floor(a.rations)} food · lasts ${countdown((hours * 3_600_000) / v.value.speed)}`
 }
 
 function setOrder(a: MyArmy, o: Order) {

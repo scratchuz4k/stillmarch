@@ -32,7 +32,7 @@ function centreOn(id: number, w = 420) {
   if (!r) return
   cam.w = w
   cam.x = r.x - w / 2
-  cam.y = r.y - (w * (box.h / box.w)) / 2.6
+  cam.y = r.y - (w * (box.h / box.w)) / 2
 }
 
 function measure() {
@@ -384,6 +384,9 @@ function ownerName(id: string | null): string {
 }
 .legend {
   position: absolute;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  background: #0f1118b3;
   left: 12px;
   right: 12px;
   top: calc(124px + env(safe-area-inset-top));

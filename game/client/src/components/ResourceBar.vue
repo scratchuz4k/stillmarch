@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import Icon from './Icon.vue'
 import { liveRes, state } from '../store.ts'
-import { num } from '../format.ts'
+import { compact } from '../format.ts'
 
 const items = computed(() => {
   const me = state.view!.me
@@ -21,8 +21,8 @@ const items = computed(() => {
   <div class="res ui" :title="`Storehouse holds ${state.view?.me.storage} of each`">
     <div v-for="i in items" :key="i.key" class="r" :class="[i.key, { full: i.full }]">
       <Icon :name="i.key" :size="16" />
-      <span class="v">{{ num(i.v) }}</span>
-      <span v-if="i.rate" class="rate">+{{ num(i.rate) }}/h</span>
+      <span class="v">{{ compact(i.v) }}</span>
+      <span v-if="i.rate" class="rate">+{{ compact(i.rate) }}/h</span>
     </div>
   </div>
 </template>
