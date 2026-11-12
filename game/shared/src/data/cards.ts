@@ -45,7 +45,7 @@ export const CARDS: CardDef[] = [
     might: 7,
     craft: 2,
     wits: 3,
-    trait: { kind: 'fortress', pct: 15, text: '+15% damage against the Forgotten' },
+    trait: { kind: 'fortress', pct: 15, text: 'The army she leads deals +15% damage to the Forgotten' },
     lore: 'Her grandmother kept both axes oiled for forty years, waiting.',
   },
   {
@@ -78,7 +78,7 @@ export const CARDS: CardDef[] = [
     might: 3,
     craft: 7,
     wits: 2,
-    trait: { kind: 'walls', pct: 10, text: 'Home troops defend 10% better' },
+    trait: { kind: 'walls', pct: 10, text: 'Home troops defend 10% better while running the walls' },
     lore: 'Leaves one stone in every wall uncut, as his father did.',
   },
   {
@@ -100,7 +100,7 @@ export const CARDS: CardDef[] = [
     might: 6,
     craft: 3,
     wits: 3,
-    trait: { kind: 'walls', pct: 10, text: 'Home troops defend 10% better' },
+    trait: { kind: 'walls', pct: 10, text: 'Home troops defend 10% better while running the walls' },
     lore: 'Has been holding the same gate, in his head, for thirty years.',
   },
   {
@@ -144,7 +144,7 @@ export const CARDS: CardDef[] = [
     might: 6,
     craft: 4,
     wits: 2,
-    trait: { kind: 'fortress', pct: 15, text: '+15% damage against the Forgotten' },
+    trait: { kind: 'fortress', pct: 15, text: 'The army she leads deals +15% damage to the Forgotten' },
     lore: 'Strings her bows with something she won’t name.',
   },
   {
@@ -199,7 +199,7 @@ export const CARDS: CardDef[] = [
     might: 5,
     craft: 4,
     wits: 9,
-    trait: { kind: 'fortress', pct: 25, text: '+25% damage against the Forgotten' },
+    trait: { kind: 'fortress', pct: 25, text: 'The army she leads deals +25% damage to the Forgotten' },
     lore: 'Walked into the Blight once and came back with directions.',
   },
 ]
