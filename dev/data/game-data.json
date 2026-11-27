@@ -2,10 +2,12 @@
   "site": {
     "title": "Stillmarch",
     "subtitle": "A living record of the game's systems",
-    "build": "0.6.13",
-    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), 0.6.8 (21 Oct), 0.6.9 (23 Oct), 0.6.10 (26 Oct), 0.6.11 (27 Oct) and 0.6.13 (28 Oct), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
+    "build": "0.6.17",
+    "note": "Compiled from Discord DMs (Scratch ↔ Sethan, 20–24 Sept 2026), a Discord chat on settlement planning and walls (Scratch ↔ Sethan), Sethan's official dev update, the demo cheatsheet, patch notes for action.17, action.19, action.20, 0.4.2 (9 Oct), 0.4.3 (10 Oct), 0.5.0, 0.5.1, 0.5.3 (13 Oct), 0.6.0, 0.6.1 (16 Oct), 0.6.5 (19 Oct), 0.6.6 and 0.6.7 (20 Oct), 0.6.8 (21 Oct), 0.6.9 (23 Oct), 0.6.10 (26 Oct), 0.6.11 (27 Oct), 0.6.13 (28 Oct), 0.6.16 (30 Oct) and 0.6.17 (26 Nov), and the dev team's PvE content list (5 Oct). Pre-alpha; numbers and systems will keep changing — that's what this record is for."
   },
   "updates": [
+    { "date": "2026-11-26", "title": "0.6.17 patch notes", "sections": ["territory-control", "houses-politics", "combat", "world-geography", "economy-banking", "getting-started", "crafting-materials", "building-logistics", "ui-hud", "sound", "dev-testing", "roadmap", "patch-notes"], "text": "Wars and sieges between Houses, switched on for the playtest, a battering ram that rolls and burns, archer platforms on palisades, starting Marks and footpads by the villages, three bandit castles, Archer 3.0, a login queue and lighter forests." },
+    { "date": "2026-10-30", "title": "0.6.16 patch notes", "sections": ["crafting-materials", "building-logistics", "economy-banking", "territory-control", "world-geography", "ui-hud", "sound", "dev-testing", "patch-notes"], "text": "Masonry and 18 building materials that upkeep, storehouses and walls now cost, rocky cliffs and six waterfalls with Drowner lairs, new building pieces and material variants, a region board with project cards and supplier rankings, statistics at the Castellan's Table, a plot map in the Obelisk window and a new font." },
     { "date": "2026-10-28", "title": "0.6.13 patch notes", "sections": ["building-logistics", "economy-banking", "territory-control", "world-geography", "sound", "dev-testing", "patch-notes"], "text": "Storehouses built as projects, with a requisition board and private storage at each, building physics and collapses, 1 m walls, floors and roof pieces, arches and vaults, moving furniture with M, swinging doors and a world map in House colours." },
     { "date": "2026-10-27", "title": "0.6.11 patch notes", "sections": ["dev-testing", "building-logistics", "economy-banking", "territory-control", "ui-hud", "patch-notes"], "text": "Sign in with Steam, storehouse sites in the settlement planner and a region stock that walls and repairs use up, Say heard within 40 m, and building on 1 m snaps with new beams, posts, stairs and stone foundations." },
     { "date": "2026-10-26", "title": "0.6.10 patch notes", "sections": ["territory-control", "building-logistics", "economy-banking", "dev-testing", "patch-notes"], "text": "A new Obelisk that grows with the region level, wooden stockades with House banners on the gates, a swinging battering ram, a build freeze before sieges, upkeep by plot area, mob coins by tier and rotation that stays put in build mode." },
@@ -36,6 +38,8 @@
   ],
   "statuses": {
     "confirmed": { "label": "Confirmed", "short": "Coming soon", "group": "announced", "desc": "Officially announced by the developer as coming to the game — not necessarily playable yet." },
+    "live0617": { "label": "Implemented", "short": "0.6.17", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.17 (26 Nov). Supersedes earlier builds where numbers conflict." },
+    "live0616": { "label": "Implemented", "short": "0.6.16", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.16 (30 Oct), which also covers 0.6.14 and 0.6.15. Supersedes earlier builds where numbers conflict." },
     "live0613": { "label": "Implemented", "short": "0.6.13", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.13 (28 Oct), which also covers 0.6.12. Supersedes earlier builds where numbers conflict." },
     "live0611": { "label": "Implemented", "short": "0.6.11", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.11 (27 Oct). Supersedes earlier builds where numbers conflict." },
     "live0610": { "label": "Implemented", "short": "0.6.10", "group": "implemented", "desc": "Implemented — shipped and testable as of build 0.6.10 (26 Oct). Supersedes earlier builds where numbers conflict." },
@@ -151,7 +155,8 @@
           "Settle down: a House leader claims an Obelisk and builds a settlement on the claim grid (N). Talk to people — most of the economy is other people's needs."
         ] },
         { "type": "note", "status": "info", "text": "Source: the demo cheatsheet handed to players. It isn't dated and likely predates action.20: it places the skeleton guards at the watchtowers, which action.20 rebuilt as four strongholds — updated to strongholds here." },
-        { "type": "p", "status": "live068", "text": "New characters start in a Castaway tunic and shorts, given once when you pick your starting village. A first weapon can be made by hand: a Wooden Training Sword or Longsword (Woodworking 1) from sticks and a scrap of cloth (see Crafting → Tier 0 & quality caps)." }
+        { "type": "p", "status": "live068", "text": "New characters start in a Castaway tunic and shorts, given once when you pick your starting village. A first weapon can be made by hand: a Wooden Training Sword or Longsword (Woodworking 1) from sticks and a scrap of cloth (see Crafting → Tier 0 & quality caps)." },
+        { "type": "p", "status": "live0617", "text": "New characters get 20 Marks to start with, for the first fees at Crown workshops, which charge 4 Marks per batch (8 before 0.6.17). Each starting village has two weak footpads hanging around about 170 m out: just right for a wooden sword, and they pay in coins." }
       ]
     },
     {
@@ -210,6 +215,12 @@
           "Crests look painted on wood on shields, and like cloth on banners and standards.",
           "Your crest shows on the Claim Banner, the claim camp standard, the world map, and in the House and region windows.",
           "The banner's flag waves more calmly and follows the in-game wind, no longer clips into the wooden pole, and the crest on it is no longer squashed."
+        ] },
+        { "type": "h", "text": "War & truce (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "A House master can declare war on another House over one of its regions: in the House window (Diplomacy, Other Houses, “War for <region>”) or at that region's Obelisk. One war at a time, and an alliance or a truce blocks it (see Territory Control → War).",
+          "A war lasts at most 14 days and is followed by a 2-week truce. Both sides can also agree to a truce earlier.",
+          "For the one-week playtest from 27 Nov, Houses have no member limit."
         ] },
         { "type": "note", "status": "lore", "text": "Betrayal is built into the culture: it gets written into the Chronicles, and in some Houses is considered an honor rather than a shame." }
       ]
@@ -391,6 +402,20 @@
         ] },
         { "type": "h", "text": "0.6.9 changes" },
         { "type": "p", "status": "live069", "text": "Monster arrows no longer kick up a dust puff when they hit." },
+        { "type": "h", "text": "Archer 3.0 (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "Aiming while moving: the hips turn with the movement and the upper body keeps the aim. Aiming up and down bends the body.",
+          "Shots come from the upper body, so you can shoot while running. New reload and ready animations.",
+          "Dodge with a bow in 8 directions.",
+          "Aiming draws the bow right away and keeps it from being put away. The arrow at rest sits properly in the hand and no longer stays there after the bow is put away.",
+          "New draw and arrow sounds — see Sound."
+        ] },
+        { "type": "h", "text": "0.6.17 changes" },
+        { "type": "list", "status": "live0617", "items": [
+          "Running sideways and backwards with a sword and shield or a staff no longer twists the body the wrong way.",
+          "Heals on other players go all the way to full HP. Before, they stopped short when the character had bonus HP from gear.",
+          "Dying in a siege field costs your backpack and purse; the gear you're wearing stays (see Territory Control → Sieges)."
+        ] },
         { "type": "h", "text": "General design notes" },
         { "type": "list", "items": [
           { "text": "Weapon-based leveling: each weapon has its own level/XP, including the offhand (a shield levels separately from the main-hand weapon).", "status": "live19" },
@@ -607,6 +632,23 @@
           "A missing tool shows a round badge with the tool's icon in place of [F]: a red ring with a cross when you don't have the tool, a glowing ring with an arrow and the tier when yours is too weak. Before, it only said “needs a hatchet”.",
           "New axe, pickaxe, sickle and knife icons that read at 16 px, and a stronger shadow under the prompt."
         ] },
+        { "type": "h", "text": "Interface (0.6.16)" },
+        { "type": "list", "status": "live0616", "items": [
+          "A new font: heavier, with digits on one line and no small caps in labels.",
+          "Less text to read: windows show numbers, icons and states instead of explanatory sentences. This covers the Obelisk (region claims included), the Castellan's Table, the House window, building, the planner, the storehouse, workshops, Wayfarers, trade, loot, equipment and the menus.",
+          "Amounts are always shown as coin icons, with earnings in green and costs in red.",
+          "Window backgrounds are consistent: one plate, with no coloured fills under chips and rows.",
+          "The House window is wider, and all its tabs fit in one row.",
+          "Gold you pick up shows next to your character as coin icons.",
+          "The region board, the Castellan's Table and the Obelisk window share one size (see Building & Logistics → Settlement windows).",
+          "Fixed: the label over a tree (e.g. “Beech”) sits at the trunk, not several metres away over the middle of the crown."
+        ] },
+        { "type": "h", "text": "Interface (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "Siege HUD: a control bar at the top, the attackers' remaining time, and the circle on the ground, with its percentage on the region card and in the Obelisk window (see Territory Control → Sieges).",
+          "Shader compiling looks the same everywhere: “Compiling shaders · 120/450” in the menu, on the loading screen, and in the bottom-left corner in game when a bigger batch is compiling.",
+          "When the world is full, a login queue shows your place in line and an estimated wait (see Development & Testing → Server). The menu no longer shows how many players are online."
+        ] },
         { "type": "h", "text": "Loot window (0.6.0)" },
         { "type": "list", "status": "live060", "items": [
           "Loot opens as a grid like your backpack, with items at their real size. The grid grows with the bag and keeps items in place while you take them.",
@@ -667,6 +709,15 @@
           "New Holy Bolt sounds: a separate cast for each combo step and six hit variants.",
           "Placing and removing a building piece plays a stone or wood sound for every player nearby.",
           "Doors creak as they open and knock as they close; shutters sound lighter."
+        ] },
+        { "type": "list", "status": "live0616", "items": [
+          "A fanfare plays when a region project reaches 25, 50, 75 and 100% from your delivery."
+        ] },
+        { "type": "list", "status": "live0617", "items": [
+          "Drawing a bow has one consistent sound, with no more scraping.",
+          "A shot from a strong draw has the whistle of the arrow in flight instead of a dull thump. The string crack stays.",
+          "The battering ram's heavy wheels rumble while it rolls, and a hit on the gate is a deep thud with cracking wood.",
+          "A breach crashes with snapping logs along the broken section."
         ] },
         { "type": "h", "text": "Settings" },
         { "type": "p", "text": "The sound settings have an “Other players' voices” slider (50% by default) that sets how loud other players' grunts and shouts are." },
@@ -732,8 +783,14 @@
         { "type": "h", "text": "Gold loss on death" },
         { "type": "p", "status": "live17", "text": "Dying drops your entire purse into the bag by your corpse. 20% is permanently lost; the remainder is a lootable entry in the loot window with Take / Take All options. This was deliberately set extreme to start, to be tuned down later if needed." },
         { "type": "p", "status": "live068", "text": "Not in your own town: a resident who dies inside their region's building area drops no loot — gear and backpack stay with them (see Building & Logistics → Resident towns)." },
+        { "type": "p", "status": "live0617", "text": "Not in a siege field: there, dying costs your backpack and purse, and the gear you're wearing stays. This applies to residents inside their own town too (see Territory Control → Sieges)." },
         { "type": "h", "text": "Starter money: the Crown orders board" },
         { "type": "p", "text": "The Crown buys basic goods (pebbles, sticks, herbs) at fixed prices at the Crown orders board, next to the mint in the Wayfarer Village — the starter money tap. Trades between players happen player to player (Tab, click a player → Trade)." },
+        { "type": "list", "status": "live0617", "items": [
+          "New characters get 20 Marks to start with, for the first fees at Crown workshops.",
+          "Crown workshops charge 4 Marks per batch instead of 8.",
+          "Each starting village has two weak footpads about 170 m out, who pay in coins (see World Geography → Bandit castles & footpads)."
+        ] },
         { "type": "h", "text": "Coins from mobs (0.6.10)" },
         { "type": "p", "status": "live0610", "text": "Coins from mobs depend on their tier. Bandits give less than before (10–14 each), and the Forgotten give more." },
         { "type": "table", "caption": "Coins per kill (0.6.10)", "headers": ["Mob", "Coins"], "rows": [
@@ -806,7 +863,19 @@
           "A delivery on a region board goes to the row you click. Before, upkeep always came first: as long as upkeep wanted planks or logs, it took the ones meant for a storehouse or the walls, and the next region level couldn't get them either.",
           "Every storehouse site has a requisition board by the road, and once any board stands in the settlement the Obelisk stops taking deliveries (see Building & Logistics → Building the storehouse)."
         ] },
+        { "type": "list", "status": "live0616", "items": [
+          "Upkeep and region level-ups (Village, Town, City) cost the new masonry materials (see Crafting → Masonry). The total value of the upkeep is unchanged, and the new upkeep applied from the next upkeep period."
+        ] },
+        { "type": "p", "status": "live0617", "text": "Founded regions have a standing “Siege supplies” order on the board that keeps the storehouse topped up to 30 Supplies for the defenders' risings (see Territory Control → Sieges). It pays 8 Marks each, but only from what the treasury has left over after a week of upkeep, so it never puts the treasury in debt." },
         { "type": "p", "status": "live050", "text": "The region treasury is secret: only officials see the balance. Everyone else, on the map too, only sees whether the region is in debt." },
+        { "type": "h", "text": "The region board (0.6.16)" },
+        { "type": "list", "status": "live0616", "items": [
+          "Every project is a card with an icon, its progress in percent and material bins that fill up as you deliver.",
+          "You choose what to deliver to: click a material to hand in 1, with Shift 10, with Ctrl all of them. Deliver all on a card hands in everything that fits, and R delivers everything to the selected card.",
+          "Weekly upkeep is the first tab. When a tab has only one card, a preview of the other tab sits next to it; click the preview to go there.",
+          "A ranking of the region's suppliers for the last 7 days and for all time, with your place and share. Every project shows its top suppliers.",
+          "After a delivery a message shows how many items you handed in, how far the project moved and how much you earned. A fanfare plays at 25, 50, 75 and 100%."
+        ] },
         { "type": "h", "text": "Bank first, purse second (0.5.0)" },
         { "type": "list", "status": "live050", "items": [
           "A region's bank is the bank of the House that rules it. If the region has no ruler, or the House has no mint, it's the Crown Bank.",
@@ -864,12 +933,14 @@
           "Iron, steel and mithril tools are made by the blacksmith. Better tools give a better chance at rare finds.",
           "Tools sit properly in a closed fist instead of crossing the hand at an angle."
         ] },
+        { "type": "p", "status": "live0617", "text": "Trees, rocks and herbs grow back faster when more players are around: from 3 players within 150 m, down to 30% of the normal time with 9 or more (see Development & Testing → Server)." },
         { "type": "h", "text": "Processors vs crafters" },
         { "type": "table", "headers": ["", "Who", "What they do"], "rows": [
           ["Processors", "Workshop stations in the village, worked by NPCs: sawmill, mason, smelter, tannery, loom, drying rack", "Turn raw materials into processed ones (logs → planks, ore → ingots, hides → leather) for a small Crown fee"],
           ["Crafters", "Players at the benches: carpenter, anvil, leatherworker, tailor, alchemist", "Make components and finished goods — weapons, armour, tools, potions — from processed materials"]
         ] },
         { "type": "p", "text": "Workshop queues are private and keep running while you're away, up to 2 hours of work per workshop — hand in the materials, come back later. A station only works with a wayfarer assigned to it (see Wayfarers & NPC Workers)." },
+        { "type": "p", "status": "live0617", "text": "Crown workshops charge 4 Marks per batch instead of 8." },
         { "type": "h", "text": "Other notes" },
         { "type": "list", "items": [
           "A mint exists for currency conversion/processing (see Economy & Banking).",
@@ -952,7 +1023,22 @@
           "The cross symbols on the Healer set are replaced with Stillmarch marks.",
           "Materials have tiers too: copper, tin and bronze T1, iron T2, steel T3, mithril T4 (spelled Mithral in older sources), and woods and hides likewise.",
           "The steps between tiers are now even: T2 and T3 armour give about 4–5% less protection and HP bonus; weapon damage barely changes."
-        ] }
+        ] },
+        { "type": "h", "text": "Masonry (0.6.16)" },
+        { "type": "list", "status": "live0616", "items": [
+          "Masonry is a new profession. The Mason's Bench (catalogue, Crafting) is a crafting station where you make masonry materials yourself.",
+          "The Mason's Kiln (catalogue, Workshops) is a workshop run by a hired worker that takes processing orders (see Wayfarers & NPC Workers).",
+          "18 building materials in tiers T1–T4. Some of them are made by the carpenter and the alchemist."
+        ] },
+        { "type": "table", "caption": "Masonry materials (0.6.16)", "headers": ["For", "Materials"], "rows": [
+          ["Timber", "Rough Timber, Hewn Timber, Ironbound Timber, Heartwood Beam"],
+          ["Walls", "Wattle and Daub, Brick-Nogged Frame, Fieldstone Masonry, Ashlar"],
+          ["Roofs", "Shingle Roofing, Clay Roof Tiles, Glazed Roof Tiles, Stone Slates"],
+          ["Floors", "Rubble Footing, Flagstones, Fired Floor Tiles, Polished Stone"],
+          ["Other", "Lime Mortar, Tin Glaze"]
+        ] },
+        { "type": "p", "status": "live0616", "text": "Settlement upkeep, level-ups, storehouses, the wooden wall and the palisade now cost these materials, and so do wall repairs (see Economy & Banking → Region upkeep and Territory Control → Walls)." },
+        { "type": "note", "status": "info", "text": "The 0.6.16 notes don't say which material sits in which tier, or which ones the carpenter and the alchemist make." }
       ]
     },
     {
@@ -1089,12 +1175,24 @@
           "A finished storehouse has a banner with the ruling House's crest at its entrance, like the ones at the wall gates, and a Private Storage chest (see Private storage below).",
           "The grass cleared on a storehouse site follows the site's shape and rotation. On a site placed at an angle, the cleared patch used to be a diamond turned by 45°."
         ] },
+        { "type": "p", "status": "live0616", "text": "Since 0.6.16 storehouses cost masonry materials instead (see Crafting → Masonry). The 0.6.16 notes don't give the new amounts." },
+        { "type": "h", "text": "Settlement windows (0.6.16)" },
+        { "type": "list", "status": "live0616", "items": [
+          "Castellan's Table: tiles at the top for the treasury with a mini chart, income and payouts over 7 days, and alerts (debt, missing upkeep, missed weeks, too few residents).",
+          "A new Statistics tab at the Table: the treasury balance day by day with the debt limit, income and expenses by kind, deliveries by material and the region's stock, over 7 days, 4 weeks or all time.",
+          "The Table's Projects tab shows the work in progress and the projects ready to start, with their material cost and the cost to the treasury.",
+          "Obelisk: an Overview tab with the level path Settlement → Village → Town → City, the state of upkeep, walls, residents and treasury, and the works in progress.",
+          "The Obelisk's Plots tab has a map of the plots: where each one lies and which are vacant, rented or yours. Hovering a plot on the map or in the list highlights it in both places, and clicking opens the rental. The list also shows how far each plot is from you.",
+          "The region board, the Table and the Obelisk window share one size. For the board, see Economy & Banking → The region board.",
+          "Notices about a finished storehouse, paid upkeep and repaired walls go only to the region's residents and the members of the ruling House. Everyone still sees politics, wars and “deliveries wanted” orders, because anyone can deliver."
+        ] },
         { "type": "h", "text": "Resident towns (0.6.8)" },
         { "type": "list", "status": "live068", "items": [
           "Dying in your own town — as a resident, inside your region's building area — drops no loot: your gear and backpack stay with you. PvP still works there.",
           "Obelisk sanctuary: within 12 m of the Obelisk, residents take no PvP damage. It switches off while the Obelisk is under attack.",
           "The region HUD shows SAFE ZONE in the sanctuary and NO LOOT in your own town."
         ] },
+        { "type": "p", "status": "live0617", "text": "Not in a siege field: dying there costs your backpack and purse, residents in their own town included. The gear you're wearing stays (see Territory Control → Sieges)." },
         { "type": "h", "text": "Build mode (0.5.0)" },
         { "type": "list", "status": "live050", "items": [
           "The piece catalogue sits in the left column, with a status badge under the compass and a subtler grid.",
@@ -1193,6 +1291,33 @@
           "Fixed: stone stairs (1, 2 and 3 m) are one solid piece, with no gaps between the steps letting light through. Each step shows a different patch of the stone texture and has a slightly chamfered nose.",
           "Fixed: the cut ends of shorter posts, beams, 1 m walls, gable rafters and gable roof eaves show wood instead of a smeared streak."
         ] },
+        { "type": "h", "text": "Pieces & materials (0.6.16)" },
+        { "type": "list", "status": "live0616", "items": [
+          "New pieces: slender stone pillars (1, 2 and 3 m), a 1.5 m gable, full gables (2, 3 and 6 m), gable roofs 3×3 and 3×1, and a scaffold walkway (1, 2 and 3 m) that can be stacked.",
+          "Material variants, chosen from the material row in the catalogue: walls in granite, limestone and rubble stone; floors in flagstones, marble and terracotta; foundations and pillars in granite, rubble stone and limestone; and slate roofs.",
+          "Gable roofs and ridge caps no longer have a solid wedge underneath, so the space under the roof stays open.",
+          "You can walk on 45° roofs.",
+          "A railing can stand inside an arch."
+        ] },
+        { "type": "h", "text": "Controls & catalogue (0.6.16)" },
+        { "type": "list", "status": "live0616", "items": [
+          "Tap R to turn a piece 90°; hold R and scroll to turn it in 15° steps. Ctrl + wheel still works.",
+          "Bigger icons in the catalogue.",
+          "A Recently used row at the bottom of the catalogue holds up to 8 pieces you placed last, newest first. Click one to pick it. The list is kept after you quit the game.",
+          "The catalogue ends higher up, so the chat no longer shows through its bottom."
+        ] },
+        { "type": "h", "text": "Round pieces & physics (0.6.16)" },
+        { "type": "list", "status": "live0616", "items": [
+          "A round wall now goes onto a round floor. Until now the game refused with “Something is already built there”.",
+          "Round walls, the round fence, floors, foundation and the corner fill take up only their arc, not the whole quarter square. A straight wall across a tower and a floor outside the circle no longer clash with the arc.",
+          "A player standing inside a tower no longer blocks its wall; only someone standing in the wall's own band does.",
+          "Braces and vaults take vertical support only from a piece that starts lower than they do. A brace hung under the end of a beam no longer holds up the next beam, so a beam–brace–beam chain can't carry a building far out sideways for free. A brace from a post up to a beam works as before."
+        ] },
+        { "type": "h", "text": "Build mode (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "The Smelter sits on its stone base instead of floating above the ground.",
+          "The defence zone along the walls is 4.5 m: plots can't reach the walls or the archer platforms, and trees in that strip are cleared (see Territory Control → Walls)."
+        ] },
         { "type": "h", "text": "Resource protection inside build boundaries" },
         { "type": "p", "status": "live19", "text": "Nothing respawns inside a region's build boundary — gathered trees, mined ore, and killed animals do not come back inside the circle where zones can be painted. Living animals and standing (ungathered) trees are left alone. The boundary radius scales with Obelisk level." },
         { "type": "table", "headers": ["Obelisk level", "Boundary radius"], "rows": [
@@ -1239,16 +1364,16 @@
           "Raiders can't touch it, and it doesn't count towards the region's stock capacity.",
           "The Storage Chest in the Wayfarer villages can now be expanded once, to 120 slots (50 mk). Space bought above that before 0.6.13 stays."
         ] },
-        { "type": "note", "status": "info", "text": "The 0.6.1 notes price the upgrades in Marks and Crowns — coin names that appear nowhere else in this record, which otherwise speaks of gold (and grains, for plot rent)." },
+        { "type": "note", "status": "info", "text": "The 0.6.1 notes price the upgrades in Marks and Crowns. Marks come back in 0.6.13 (the 50 mk chest upgrade) and 0.6.17 (starting money, Crown workshop fees, the Siege supplies order); elsewhere this record speaks of gold and coins (and grains, for plot rent)." },
         { "type": "p", "status": "confirmed", "text": "Caravans are planned for later — larger-scale transport, and the supply-line mechanic for sieges." }
       ]
     },
     {
       "id": "territory-control",
       "title": "Territory Control: Obelisks & Sieges",
-      "dek": "Claiming dormant Obelisks is in since 0.5.0, and settlements have walls; sieges are still to come.",
+      "dek": "Claiming dormant Obelisks since 0.5.0, walls around settlements, and since 0.6.17 wars and sieges between Houses.",
       "blocks": [
-        { "type": "p", "text": "Obelisks are the core territorial control points. At the time of the DM conversation this system was barely tested, and taking land by force was the next major system on the roadmap. 0.5.0 shipped the first piece: a House can claim a dormant Obelisk (below). The notes only cover dormant Obelisks — taking a region another House holds isn't described yet." },
+        { "type": "p", "text": "Obelisks are the core territorial control points. At the time of the DM conversation this system was barely tested, and taking land by force was the next major system on the roadmap. 0.5.0 shipped the first piece: a House can claim a dormant Obelisk (below). Since 0.6.17 a House can also declare war on another House over one of its regions, then raid and besiege it (see War and Sieges below)." },
         { "type": "note", "status": "bug-fixed", "text": "Fixed, action.19: false “Move closer to the Obelisk” errors on activation, deposits, and settling are fixed — activation range is properly 12 m, measured on the ground plane, plus server-side slack." },
         { "type": "h", "text": "The Obelisk (0.6.10)" },
         { "type": "p", "status": "live0610", "text": "Obelisks have a new model: a relay of the Network built by Perpetua. A slender slate shaft made of four pillars, with cold Network light glowing in the gaps between them, a node chamber at about 9 m and a cut capstone floating above it. The old monolith with the sun is gone. The Obelisk stands on its own round, graduated platform; the stone slabs around it are gone." },
@@ -1323,6 +1448,32 @@
         { "type": "note", "status": "info", "text": "The levels match the Carpentry levels of the Claim Banner and Supplies recipes. The 0.6.6 notes don't say what the Raid, Takeover, Assault and Sabotage banners do yet." },
         { "type": "p", "status": "live067", "text": "Fortifications (Spiked Barricade, Mantlet) can be placed anywhere inside the claim circle, not only near its edge. Keep 3 m away from the banner." },
         { "type": "note", "status": "info", "text": "The claim has the shape of the planned v1 siege below — an open-field fight for a point, with Supplies paying for respawns — but it's started by a House leader with a Claim Banner, not by an Army with a Siege Banner." },
+        { "type": "h", "text": "War (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "A House master can declare war on another House over one of its regions: at that region's Obelisk (“Declare war for this region”) or in the House window, Diplomacy, Other Houses (“War for <region>”).",
+          "War is blocked by an alliance, a truce, a war of your own still in progress (one at a time), a freshly founded or taken region, the daily diplomacy limit, and a dormant Obelisk.",
+          "In a war both sides can raid any of the enemy's regions. Only the declaring side can besiege, and only the region the war is about.",
+          "The first attack window opens no sooner than 24 hours after the declaration. Attacks only happen in the evening window voted on by the region's residents (20:00–22:00 CET by default).",
+          "A war ends when the siege of the target is won or held off, when both sides agree to a truce, after 14 days, or when a third House takes the target. A 2-week truce follows."
+        ] },
+        { "type": "h", "text": "Sieges (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "A siege fits into one evening: a won stage opens the next one right away. Burnt supply points stay burnt until the siege ends. Stage 2 counts a breach in the gate, a tower or the wall.",
+          "The circles at the storehouse, the assault point and the Obelisk work like Takeover 2.0: 60 s to capture, 90 s to retake, faster with more people on your side (up to ×2).",
+          "Respawning in the siege field: both sides choose between the next wave (every 60 s) and the graveyard. Every rising costs 1 Supplies.",
+          "Attackers get a siege camp, like the claim camp, behind the first supply point when the window opens. Supplies brought there in your backpack or cart are unloaded automatically, up to 60. Attackers rise at the bridgehead or, further back, at the camp.",
+          "Defenders rise at the Obelisk, using Supplies from the region's storehouse. Founded regions have a standing “Siege supplies” order on the board that keeps the storehouse topped up to 30 (see Economy & Banking → Region upkeep).",
+          "Dying in the siege field costs your backpack and purse; the gear you're wearing stays. This applies to residents inside their own town too.",
+          "New HUD: a control bar at the top, the attackers' remaining time, and the circle on the ground, with its percentage on the region card and in the Obelisk window."
+        ] },
+        { "type": "table", "caption": "Playtest settings (one week from 27 Nov, 0.6.17)", "headers": ["Setting", "Playtest", "Normally"], "rows": [
+          ["Protection of a freshly founded or taken region", "1 day", "7 days"],
+          ["Cooldown after a raid or a held-off siege stage", "1 day", "Not given"],
+          ["Cooldown after a conquered region", "2 days", "Not given"],
+          ["Banner Fragment drop from watchtower bosses", "50%", "15%"],
+          ["House member limit", "None", "Not given"]
+        ] },
+        { "type": "note", "status": "info", "text": "Not explained in the 0.6.17 notes: the siege stages beyond stage 2; Takeover 2.0 (the 0.6.6 banner levels list a Takeover banner); and Banner Fragments and the watchtower (or sentry) bosses that drop them, while this record has stronghold bosses dropping Warden Relics (0.5.0). The notes also count towers in the wall, though 0.6.10 removed stone walls and towers." },
         { "type": "h", "text": "Planned siege process" },
         { "type": "olist", "items": [
           "An attacking House crafts a Siege Banner.",
@@ -1341,6 +1492,7 @@
           "Max players per siege instance: undecided — a hard cap, or a flank system (separate sub-instances per flank, choosable respawn point) are both under consideration.",
           "A siege's objective doesn't have to be capturing the region: it can instead target a Great Project standing there for outright destruction (see Great Projects & The Chronicles). Capturing the region destroys any Great Project in it as a side effect either way."
         ] },
+        { "type": "note", "status": "info", "text": "What shipped in 0.6.17 starts differently: a House master declares war at the Obelisk or in the House window, and the fight takes place in the siege field around the region (see War and Sieges above). The 0.6.17 notes don't mention Siege Banners, Armies or a separate instance." },
         { "type": "h", "text": "Walls" },
         { "type": "list", "status": "live053", "items": [
           "The game builds a settlement's walls itself, from prefabs, along the border of the drawn settlement, on the outside of the Town zone, with gates where roads cross it (see the settlement planner in Building & Logistics).",
@@ -1363,6 +1515,11 @@
         ] },
         { "type": "p", "status": "live0611", "text": "The settlement plan can't be changed during a siege either. Otherwise a new plan would move the walls and the breaches would disappear. Walls and repairs now use up the materials delivered to the region (see Building & Logistics → Project sites & the region storehouse)." },
         { "type": "p", "status": "live0613", "text": "The wooden wall (level 1) has its wood texture back; in 0.6.11 it was plain grey." },
+        { "type": "list", "status": "live0616", "items": [
+          "The wooden wall and the palisade cost masonry materials (see Crafting → Masonry).",
+          "Wall repairs have their own cost, lower than building the wall: Rough Timber, nails and Rubble Footing for the stockade; beech, Rough Timber, nails and Rubble Footing for the palisade. The repair card at the Castellan's Table shows it.",
+          "Repairs can't be ordered during an attack."
+        ] },
         { "type": "list", "status": "confirmed", "items": [
           "For now, sieges only affect walls. Walls can be destroyed during a siege and then need rebuilding. Whether sieges will reach anything else comes later."
         ] },
@@ -1371,7 +1528,19 @@
           "Whether player buildings will be inside the siege instance isn't decided yet.",
           "The first playtest won't have a siege instance: it would be a separate server instance, which costs money, and 100 players isn't that many yet."
         ] },
-        { "type": "note", "status": "info", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." }
+        { "type": "note", "status": "info", "text": "Siege Banners were already implemented as of the DM conversation; Army formation and dynamic instance creation were the remaining MVP work. Still on the roadmap: raids for loot, Obelisk assaults, capture banners, Houses actually losing regions, then real baronies/kingdoms with alliances, elections, and casus belli." },
+        { "type": "h", "text": "Battering ram & palisade platforms (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "The ram rolls: it's set up next to you, up to 40 m from the walls, and its crew pushes it to the gate or wall, wheels turning. It starts battering only once it's in position. At least 2 people push it; 4 push it faster.",
+          "The ram has 5,000 HP. The House that built it and its allies can't damage it. Below 35% it catches fire and loses 1% per second until it breaks; the fire can't be put out. A broken ram throws off its crew, the kit is lost and everyone gets a message.",
+          "The ram's HP percentage shows on its F prompt, and the ram finally has collision.",
+          "Heavy wheels rumble while it rolls, and a hit on the gate is a deep thud with cracking wood and clouds of dust.",
+          "Walls and gates take damage the moment the log actually hits them, not when the swing starts. After a breach the ram stops; before, it kept hammering the empty gap or the section next to it.",
+          "A breach is a proper crash: snapping logs and big clouds of dust along the broken section. A breached gate takes the House banners hanging by it down too; they come back once the gate is repaired.",
+          "Damaged walls, gates and towers show their HP percentage and a bar above them, up to 45 m away and 8 at most. Breached sections don't get one.",
+          "Level 2 palisades get archer platforms: a 4.7 m deck 2.55 m up, with stairs, on both sides of every gate and then about every 35 m of wall. Existing palisades got them right away.",
+          "The defence zone along the walls is 4.5 m: plots can't reach the walls or the platforms, and trees in that strip are cleared."
+        ] }
       ]
     },
     {
@@ -1444,6 +1613,15 @@
           { "text": "Bandit camps hold men and women, including the Brute and the Cutthroat; some lie in ambush. Drowners are out there too (both named in 0.4.2).", "status": "live042" }
         ] },
         { "type": "p", "status": "live066", "text": "1,936 new rocks across the whole map: 574 cliffs, 853 scree piles, 385 outcrops and 124 groups of tors. Every rock sits with its base in the ground, none of them cover ore nodes, and they all have collision." },
+        { "type": "h", "text": "Rock & height (0.6.16)" },
+        { "type": "list", "status": "live0616", "items": [
+          "Smooth slopes break into rocky steps and cliffs. About 14,000 new rocks: cliffs, scree, outcrops, boulder fields in the forest and rock towers on hilltops.",
+          "Four new hills on the meadows, each with a steep rocky face.",
+          "The lake in Heartland drains through a cascade of rocky steps.",
+          "Six waterfalls with plunge pools: four on the lake's outflow and two further down the western river. Each has a Drowner lair (see Bandits & wildlife below).",
+          "Forest, plants and ore no longer grow inside rocks. Ore, scree and limestone appear only on gentler slopes.",
+          "An invisible wall stands 100 m before the terrain ends, so you can no longer walk to the edge of the world."
+        ] },
         { "type": "h", "text": "Rivers (0.6.7)" },
         { "type": "list", "status": "live067", "items": [
           "All four rivers meander instead of running in straight segments. The bends are irregular, some wide, some tight.",
@@ -1493,12 +1671,20 @@
           "Bandits wear five outfits instead of rags: Highwayman (hood with face scarf, belted jerkin), Leader (hat with half mask, brigandine, fur-trimmed cloak), Poacher (hood, vest, wool trousers with leg wraps) and two Brute sets (cheek-guard helmet, mail over a gambeson, and a fur mantle or pauldron).",
           "The outfit goes with the bandit: Cutthroats wear the Highwayman hood or the Leader's hat, Brutes wear helmet and mail, Archers wear the Poacher hood. Every outfit has a male and a female version."
         ] },
+        { "type": "p", "status": "live0616", "text": "Every waterfall has a Drowner lair: two or three spawn points with two Drowners each, among reeds and bones. A lair is always occupied." },
         { "type": "h", "text": "Bandit camps (0.6.9)" },
         { "type": "list", "status": "live069", "items": [
           "The roads have nine small camps instead of copies of the big camp: a tent, a campfire, two carts and a beech, with no fence. They stand where the camps stood before, with the clearing facing the road.",
           "Each small camp has 6 bandits within about 10 m of each other, so the whole camp fights together like a full party: a Brute out front, two Cutthroats by the fire, an Archer by the carts, and a Brute and an Archer by the tent.",
           "The big camp is one of a kind now: it stands in front of the Abandoned Chapel with the dungeon entrance. It has a new look — sharpened stakes with side gates instead of a palisade, torches, weapon racks, a brazier and a wooden ramp — and 6 bandits guard it (it used to stand empty).",
           "Trees and bushes no longer grow through the tents: the ground is clear 20 m around the small camps and 30 m around the chapel camp. The forest around them stays."
+        ] },
+        { "type": "h", "text": "Bandit castles & footpads (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "Three bandit castles, in Ashvale, Northreach and Heartland, with 20 bandits each, including a Bandit Brute Captain, and patrols inside the walls.",
+          "Each starting village has two weak footpads hanging around about 170 m out. They're just right for a wooden sword, and they pay in coins.",
+          "Wounded mobs limp away: a bandit fleeing at low HP, and deer, does and foxes under 25% HP, move at about 2.2 m/s instead of sprinting. Slows stack on top. If nobody chases them, they stop where the flight ended.",
+          "Mobs and wildlife come back faster when more players are around (see Development & Testing → Server)."
         ] },
         { "type": "h", "text": "Weather & sky" },
         { "type": "list", "status": "live042", "items": [
@@ -1605,14 +1791,19 @@
           "Early Access"
         ] },
         { "type": "note", "status": "info", "text": "No dates committed until they're real." },
-        { "type": "note", "status": "live050", "text": "Taking land by force has started: since 0.5.0 a House can claim a dormant Obelisk with a Claim Banner (see Territory Control). Assaults on regions other Houses hold are still to come." }
+        { "type": "note", "status": "live050", "text": "Taking land by force has started: since 0.5.0 a House can claim a dormant Obelisk with a Claim Banner (see Territory Control). Assaults on regions other Houses hold are still to come." },
+        { "type": "note", "status": "live0617", "text": "Since 0.6.17 Houses can go to war over each other's regions, with raids and sieges, switched on for the playtest (see Territory Control → War)." }
       ]
     },
     {
       "id": "patch-notes",
       "title": "Build & Patch History",
-      "dek": "action.17 (20 Sept) through 0.6.13 (28 Oct).",
+      "dek": "action.17 (20 Sept) through 0.6.17 (26 Nov).",
       "blocks": [
+        { "type": "h", "text": "0.6.17 — 26 Nov" },
+        { "type": "p", "text": "Update required (client and server). Characters, items, Houses, regions, settlements and buildings are kept. Changes since 0.6.16: wars between Houses over a region, switched on for the playtest, with raids, sieges that fit into one evening, siege camps, a Supplies cost for every rising and the loss of backpack and purse in the siege field; a battering ram that rolls, burns and breaks, with sound, HP bars on damaged walls and archer platforms on palisades; a 4.5 m defence zone along the walls; one week of playtest settings; 20 starting Marks, cheaper Crown workshops and footpads by the starting villages; three bandit castles and wounded mobs that limp away; Archer 3.0, with aiming and shooting on the move and dodges in 8 directions; heals that reach full HP; lighter forests, a video memory saver that kicks in sooner, 2K tree textures and a crowd mode; and on the server, less memory, respawns that scale with the crowd, less traffic in crowds and a login queue." },
+        { "type": "h", "text": "0.6.16 — 30 Oct (with 0.6.14 and 0.6.15)" },
+        { "type": "p", "text": "Update required (client and server); covers 0.6.14, 0.6.15 and 0.6.16. Characters, items, Houses, regions, settlements and buildings carry over. Changes since 0.6.13: rocky steps and cliffs, about 14,000 new rocks, four new hills, a cascade out of the Heartland lake and six waterfalls with Drowner lairs; an invisible wall 100 m before the edge of the map; new building pieces (slender pillars, gables, gable roofs, a scaffold walkway) and material variants, walkable 45° roofs, R to rotate, a Recently used row and fixes to round pieces and braces; Masonry, a new profession with the Mason's Bench, the Mason's Kiln and 18 building materials that settlement upkeep, level-ups, storehouses and walls now cost; cheaper wall repairs; a region board with project cards, a choice of what to deliver to and supplier rankings; tiles and a Statistics tab at the Castellan's Table, and an Overview tab and a plot map in the Obelisk window; a new font and less text across the interface; and a new replication system (Iris) and lighter combat physics on the server." },
         { "type": "h", "text": "0.6.13 — 28 Oct (with 0.6.12)" },
         { "type": "p", "text": "Update required (client and server); covers 0.6.12 and 0.6.13. Characters, items, Houses, regions, settlement plans, buildings and chest storage carry over. Changes since 0.6.11: storehouses built as projects ordered at the Castellan's Table, with a requisition board in front of every site, a House banner and a free Private Storage chest at every finished one; deliveries that go to the row you click; 1 m walls, gables, floors, pillars and braces, a full set of roof pieces, reinforced beams, stone arches, a vault and railings; building physics with stability, an H overlay and collapses you can stop by propping pieces up; snapping that goes where you aim, C snap modes and Z pivot points; furniture placed freely and moved with M; doors and shutters that swing, with sound; dust and material sounds when building; a world map tinted in House colours, with the whole of Valdris under the fog of war; new Holy Bolt sounds; and fixes to storehouse loading, stone stairs, the level 1 wall texture and the Obelisk's flicker." },
         { "type": "h", "text": "0.6.11 — 27 Oct" },
@@ -1773,6 +1964,28 @@
         ] },
         { "type": "h", "text": "Performance (0.6.13)" },
         { "type": "p", "status": "live0613", "text": "Coming near a storehouse for the first time no longer stalls the game for a moment: the pile models load in the background." },
+        { "type": "h", "text": "Server & network (0.6.16)" },
+        { "type": "list", "status": "live0616", "items": [
+          "A new replication system on the client and the server (Iris), a step towards many more players in one place.",
+          "Lighter combat physics on the server: hits on mobs are checked against character capsules, without collision against the mob mesh.",
+          "The QA server runs on the engine's performance threads."
+        ] },
+        { "type": "h", "text": "Performance (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "Trees further than 40 m away stop swaying in the wind (you can't see it from there anyway), so their shadows aren't recalculated every frame.",
+          "The video memory saver turns on by itself when video memory is full for 25 s in total within 3 minutes. Before, it needed 20 s in a row and never kicked in on 8 GB cards in the woods, which meant 1–2.5 s freezes and rubber-banding after them.",
+          "Tree textures (beech, hornbeam, alder and their impostors) and meadow flowers went from 4K/8K down to 2K. Forests take up to 2.3 GB less video memory, and the download is smaller.",
+          "Crowd mode: with a dozen or more other characters around you, the distant ones cast fewer shadows, animate less often and hide their hair far away. Nearby characters look the same as before.",
+          "Shader compiling shows the same way everywhere: “Compiling shaders · 120/450” in the menu, on the loading screen and in the bottom-left corner in game when a bigger batch is compiling."
+        ] },
+        { "type": "h", "text": "Server (0.6.17)" },
+        { "type": "list", "status": "live0617", "items": [
+          "The server needs much less memory: navigation data is gathered per tile when it's built.",
+          "Respawns scale with the crowd: the more players within 150 m, the faster trees, rocks and herbs grow back and mobs and wildlife return, starting at 3 players nearby and down to 30% of the normal time with 9 or more. Sentry bosses are unchanged, since they're the ones dropping Banner Fragments.",
+          "Crowd mode on the server: from 40 players online, characters send their state less often (100 → 50 → 30 times a second from 100 players), and the client sends movement 30 times a second instead of 45. When bandwidth runs short, nearby players get priority over distant ones.",
+          "Login queue when the world is full: instead of dropping you back to the menu after loading, the game shows your place in line and an estimated wait right away, then lets you in by itself (keep the game window open). Free spots go to whoever has waited longest. After quitting or a crash you have a few minutes to come back without queueing.",
+          "The menu no longer shows how many players are online."
+        ] },
         { "type": "note", "status": "info", "text": "Testing philosophy: testers are asked to judge the pre-alpha as a finished, final product — a practice Sethan says he learned from CD Projekt Red's QA approach on Cyberpunk 2077: Phantom Liberty and (in development) Witcher 4." }
       ]
     },
